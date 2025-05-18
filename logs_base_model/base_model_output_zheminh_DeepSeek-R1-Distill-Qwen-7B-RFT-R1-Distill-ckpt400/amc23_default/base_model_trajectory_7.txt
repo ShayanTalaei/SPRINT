@@ -1,0 +1,501 @@
+Okay, so I need to find the maximum value of the imaginary part of a complex number z that satisfies |1 + z + z²| = 4. Then express that maximum imaginary part as sqrt(m)/n where m and n are coprime, and find m + n. Hmm, let's start by recalling some complex number properties and see how to approach this.
+
+First, complex numbers can be represented in the form z = x + yi, where x and y are real numbers. The modulus |1 + z + z²| equals 4. So, maybe I should express 1 + z + z² in terms of x and y and then compute its modulus squared, set it equal to 16 (since |w| = 4 implies |w|² = 16), and then find the maximum y.
+
+Let me write that out. Let z = x + yi. Then:
+
+1 + z + z² = 1 + (x + yi) + (x + yi)².
+
+First, compute z²:
+
+z² = (x + yi)² = x² - y² + 2xyi.
+
+So, adding up all terms:
+
+1 + z + z² = 1 + x + yi + x² - y² + 2xyi.
+
+Combine like terms:
+
+Real parts: 1 + x + x² - y².
+
+Imaginary parts: y + 2xy.
+
+So, 1 + z + z² = (1 + x + x² - y²) + (y + 2xy)i.
+
+The modulus squared is then:
+
+[1 + x + x² - y²]^2 + [y + 2xy]^2 = 16.
+
+So, the equation we need to satisfy is:
+
+(1 + x + x² - y²)^2 + (y + 2xy)^2 = 16.
+
+Our goal is to maximize y, the imaginary part of z. So, we need to find the maximum value of y such that the above equation holds for some real x.
+
+This seems like a constrained optimization problem. Maybe we can use calculus here. Let me consider y as a function to maximize with the constraint given by the equation above.
+
+Alternatively, perhaps we can parameterize z on the complex plane and use some geometric interpretations. But since the equation is quadratic in z, maybe algebraic methods would be better.
+
+Alternatively, maybe using polar coordinates. Let me try that. Let z = r e^{iθ}, where r is the modulus of z and θ is the argument. Then, z² = r² e^{i2θ}. Then, 1 + z + z² can be written as 1 + r e^{iθ} + r² e^{i2θ}. The modulus of this sum is 4.
+
+But this might complicate things because exponents with angles can be tricky. Let's see. The modulus squared would be [1 + r cosθ + r² cos2θ]^2 + [r sinθ + r² sin2θ]^2 = 16.
+
+Hmm, that's still complicated. Maybe expand the squares and use trigonometric identities. Let me try that.
+
+First, expand [1 + r cosθ + r² cos2θ]^2:
+
+= 1 + 2r cosθ + 2r² cos2θ + r² cos²θ + 2r³ cosθ cos2θ + r^4 cos²2θ.
+
+Similarly, [r sinθ + r² sin2θ]^2:
+
+= r² sin²θ + 2r³ sinθ sin2θ + r^4 sin²2θ.
+
+Adding them together:
+
+1 + 2r cosθ + 2r² cos2θ + r² cos²θ + 2r³ cosθ cos2θ + r^4 cos²2θ + r² sin²θ + 2r³ sinθ sin2θ + r^4 sin²2θ = 16.
+
+Combine terms:
+
+1 + 2r cosθ + 2r² (cos2θ + (cos²θ + sin²θ)) + r^4 (cos²2θ + sin²2θ) + 2r³ (cosθ cos2θ + sinθ sin2θ) = 16.
+
+Note that cos²θ + sin²θ = 1, and cos²2θ + sin²2θ = 1. Also, cosθ cos2θ + sinθ sin2θ = cos(2θ - θ) = cosθ (using the cosine addition formula). Wait, actually:
+
+cos(A - B) = cosA cosB + sinA sinB. So, cosθ cos2θ + sinθ sin2θ = cos(2θ - θ) = cosθ. Therefore, the expression simplifies to:
+
+1 + 2r cosθ + 2r² (cos2θ + 1) + r^4 (1) + 2r³ cosθ = 16.
+
+So, combining terms:
+
+1 + 2r cosθ + 2r² (1 + cos2θ) + r^4 + 2r³ cosθ = 16.
+
+We can use the identity 1 + cos2θ = 2cos²θ, so:
+
+1 + 2r cosθ + 2r² * 2cos²θ + r^4 + 2r³ cosθ = 16.
+
+Simplify:
+
+1 + 2r cosθ + 4r² cos²θ + r^4 + 2r³ cosθ = 16.
+
+Combine like terms:
+
+1 + (2r + 2r³) cosθ + 4r² cos²θ + r^4 = 16.
+
+Hmm, this still looks complicated. Maybe it's not the best approach. Let me consider going back to the original algebraic approach with x and y.
+
+We had:
+
+(1 + x + x² - y²)^2 + (y + 2xy)^2 = 16.
+
+Let me denote A = 1 + x + x² - y² and B = y + 2xy.
+
+So, A² + B² = 16.
+
+We need to maximize y. Let's consider using calculus here. Let's treat this as a function of x and y, with the constraint A² + B² = 16. We can use Lagrange multipliers to maximize y subject to this constraint.
+
+So, let me set up the Lagrangian. Let’s let f(x, y) = y, and the constraint g(x, y) = A² + B² - 16 = 0.
+
+The Lagrangian is L = f(x, y) - λ g(x, y) = y - λ[(1 + x + x² - y²)^2 + (y + 2xy)^2 - 16].
+
+Then, take partial derivatives with respect to x, y, and λ, and set them equal to zero.
+
+Compute ∂L/∂x:
+
+∂L/∂x = 0 - λ [2(1 + x + x² - y²)(1 + 2x) + 2(y + 2xy)(2y)] = 0.
+
+Similarly, ∂L/∂y = 1 - λ [2(1 + x + x² - y²)(-2y) + 2(y + 2xy)(1 + 2x)] = 0.
+
+And ∂L/∂λ = -( (1 + x + x² - y²)^2 + (y + 2xy)^2 - 16 ) = 0.
+
+So, we have the system of equations:
+
+1. λ [2(1 + x + x² - y²)(1 + 2x) + 2(y + 2xy)(2y)] = 0.
+
+2. λ [2(1 + x + x² - y²)(-2y) + 2(y + 2xy)(1 + 2x)] = -1.
+
+3. (1 + x + x² - y²)^2 + (y + 2xy)^2 = 16.
+
+Since we are looking for a maximum y, and if the constraint is satisfied, λ cannot be zero (otherwise, equation 2 would imply 0 = -1, which is impossible). Therefore, the expressions inside the brackets in equations 1 and 2 must be zero.
+
+So, from equation 1:
+
+2(1 + x + x² - y²)(1 + 2x) + 2(y + 2xy)(2y) = 0.
+
+Divide both sides by 2:
+
+(1 + x + x² - y²)(1 + 2x) + (y + 2xy)(2y) = 0.
+
+Similarly, equation 2:
+
+2(1 + x + x² - y²)(-2y) + 2(y + 2xy)(1 + 2x) = -2.
+
+Divide both sides by 2:
+
+(1 + x + x² - y²)(-2y) + (y + 2xy)(1 + 2x) = -1.
+
+So now we have two equations:
+
+Equation 1:
+
+(1 + x + x² - y²)(1 + 2x) + (y + 2xy)(2y) = 0.
+
+Equation 2:
+
+(1 + x + x² - y²)(-2y) + (y + 2xy)(1 + 2x) = -1.
+
+Let’s denote C = 1 + x + x² - y² and D = y + 2xy. Then equations become:
+
+1. C(1 + 2x) + D(2y) = 0.
+
+2. C(-2y) + D(1 + 2x) = -1.
+
+So, we can write this as a system:
+
+C(1 + 2x) + 2y D = 0.
+
+-2y C + D(1 + 2x) = -1.
+
+This is a linear system in variables C and D. Let me write it in matrix form:
+
+[ (1 + 2x)   2y     ] [C]   = [0]
+[ -2y      (1 + 2x) ] [D]     [-1]
+
+The determinant of the coefficient matrix is (1 + 2x)^2 - (2y)(-2y) = (1 + 2x)^2 + 4y².
+
+Assuming the determinant is non-zero (which it is unless (1 + 2x)^2 + 4y² = 0, which can't happen since squares are non-negative and sum to zero only if both are zero. But (1 + 2x)^2 = 0 implies x = -1/2, and 4y² = 0 implies y = 0. Then 1 + 2*(-1/2) = 0, so determinant is zero in that case. So, except for that specific point, determinant is non-zero. So, the system has a unique solution given by Cramer's rule.
+
+But since we have C and D in terms of x and y, and C and D are defined as:
+
+C = 1 + x + x² - y²,
+
+D = y + 2xy.
+
+So, let's solve the system for C and D.
+
+Multiply the first equation by (1 + 2x):
+
+C(1 + 2x)^2 + 2y D(1 + 2x) = 0.
+
+Multiply the second equation by 2y:
+
+-4y² C + 2y D(1 + 2x) = -2y.
+
+Subtract the two equations:
+
+[ C(1 + 2x)^2 + 2y D(1 + 2x) ] - [ -4y² C + 2y D(1 + 2x) ] = 0 - (-2y)
+
+Simplify:
+
+C(1 + 2x)^2 + 4y² C = 2y.
+
+Factor out C:
+
+C[ (1 + 2x)^2 + 4y² ] = 2y.
+
+But from equation 1, C(1 + 2x) + 2y D = 0. Let's express D from equation 1:
+
+D = -C(1 + 2x)/(2y).
+
+Substitute into the expression for D:
+
+D = -C(1 + 2x)/(2y).
+
+But D is also equal to y + 2xy. So,
+
+y + 2xy = -C(1 + 2x)/(2y).
+
+Multiply both sides by 2y:
+
+2y² + 4xy² = -C(1 + 2x).
+
+But from the previous result, C = 2y / [ (1 + 2x)^2 + 4y² ].
+
+So,
+
+2y² + 4xy² = - [2y / ( (1 + 2x)^2 + 4y² ) ] * (1 + 2x).
+
+Multiply both sides by [ (1 + 2x)^2 + 4y² ]:
+
+(2y² + 4xy²)( (1 + 2x)^2 + 4y² ) = -2y(1 + 2x).
+
+Factor left side:
+
+2y²(1 + 2x)( (1 + 2x)^2 + 4y² ) = -2y(1 + 2x).
+
+Assuming 1 + 2x ≠ 0 (since if 1 + 2x = 0, x = -1/2, which we can check separately), we can divide both sides by 2y(1 + 2x):
+
+y( (1 + 2x)^2 + 4y² ) = -1.
+
+So,
+
+y( (1 + 2x)^2 + 4y² ) = -1.
+
+But we need to maximize y. Since we are maximizing y, and the left side is y times something squared, which is non-negative, so the left side is non-positive. But the right side is -1, so this implies that y is negative? Wait, but we want to maximize y, which would be positive. Hmm, this seems contradictory. Maybe there's a mistake here.
+
+Wait, let me check the algebra again.
+
+From the determinant approach, we had:
+
+C[ (1 + 2x)^2 + 4y² ] = 2y.
+
+But also, from equation 1:
+
+C(1 + 2x) + 2y D = 0.
+
+And D = y + 2xy.
+
+So, substituting D into equation 1:
+
+C(1 + 2x) + 2y(y + 2xy) = 0.
+
+Which is:
+
+C(1 + 2x) + 2y² + 4x y² = 0.
+
+So,
+
+C(1 + 2x) = -2y² - 4x y² = -2y²(1 + 2x).
+
+Thus,
+
+C = -2y²(1 + 2x)/(1 + 2x) = -2y².
+
+But this is only if 1 + 2x ≠ 0. So, if 1 + 2x ≠ 0, then C = -2y².
+
+But C is also equal to 1 + x + x² - y². So,
+
+1 + x + x² - y² = -2y².
+
+Simplify:
+
+1 + x + x² = -y².
+
+But the left side is a quadratic in x: x² + x + 1. The discriminant is 1 - 4 = -3, so it's always positive (since the coefficient of x² is positive). Therefore, x² + x + 1 is always positive. So, 1 + x + x² = -y² implies that the left side is positive and the right side is non-positive. The only way this can happen is if both sides are zero. But x² + x + 1 is never zero. Therefore, this is impossible. Contradiction.
+
+Therefore, our assumption that 1 + 2x ≠ 0 must be wrong. Therefore, 1 + 2x = 0, which implies x = -1/2.
+
+So, let's check the case when 1 + 2x = 0, i.e., x = -1/2.
+
+Then, let's substitute x = -1/2 into the original equations.
+
+First, x = -1/2.
+
+Compute z = x + yi = -1/2 + yi.
+
+Then, compute 1 + z + z²:
+
+1 + (-1/2 + yi) + (-1/2 + yi)^2.
+
+First, compute (-1/2 + yi)^2:
+
+= (1/4 - y²) - yi.
+
+So, 1 + (-1/2 + yi) + (1/4 - y² - yi) =
+
+1 - 1/2 + 1/4 + yi - yi - y² =
+
+(1 - 1/2 + 1/4) + (yi - yi) - y² =
+
+(3/4) - y².
+
+So, 1 + z + z² = (3/4 - y²) + 0i.
+
+Therefore, modulus squared is (3/4 - y²)^2 = 16.
+
+So,
+
+(3/4 - y²)^2 = 16.
+
+Take square roots:
+
+3/4 - y² = ±4.
+
+Case 1: 3/4 - y² = 4.
+
+Then, -y² = 4 - 3/4 = 13/4.
+
+So, y² = -13/4, which is impossible.
+
+Case 2: 3/4 - y² = -4.
+
+Then, -y² = -4 - 3/4 = -19/4.
+
+So, y² = 19/4.
+
+Therefore, y = ±√(19)/2.
+
+But since we are looking for the maximum value of the imaginary part, which is y, the maximum is √19 / 2.
+
+Wait, but the problem states that the maximum imaginary part is of the form sqrt(m)/n where m and n are coprime. So, sqrt(19)/2 is already in the form, with m=19 and n=2, which are coprime. So, m + n = 21.
+
+But hold on, is this correct? Because we assumed that 1 + 2x = 0, but does this give the maximum y?
+
+Wait, but in this case, when x = -1/2, we found that y can be ±√19 / 2. But does this correspond to a maximum? Let me verify.
+
+Alternatively, maybe there is a higher y when 1 + 2x ≠ 0. But earlier, when we tried solving with 1 + 2x ≠ 0, we arrived at a contradiction. So, perhaps the only solutions occur when x = -1/2, leading to y = ±√19 / 2. Therefore, the maximum imaginary part is √19 / 2, so m + n = 19 + 2 = 21.
+
+But let me check this again. Because when we set up the system with Lagrange multipliers, we ended up with a contradiction unless 1 + 2x = 0. Therefore, the only critical points are when x = -1/2, leading to y = ±√19 / 2. Hence, those are the only possible extrema. Therefore, the maximum imaginary part is √19 / 2, so m + n = 21.
+
+But let me verify this by plugging back into the original equation.
+
+Compute |1 + z + z²| when z = -1/2 + (√19 / 2)i.
+
+Compute 1 + z + z²:
+
+As before, we already computed that 1 + z + z² = 3/4 - y², which with y² = 19/4 is 3/4 - 19/4 = (-16)/4 = -4. So, the modulus is | -4 | = 4, which matches the condition. Therefore, this is a valid solution.
+
+But wait, if z is -1/2 + (√19 / 2)i, then the imaginary part is √19 / 2, which is approximately 2.179. Is there a way to have a larger imaginary part?
+
+Alternatively, maybe there's another method to solve this problem.
+
+Another approach could be to parameterize z in terms of its modulus and argument. Let z = r e^{iθ}. Then, 1 + z + z² = 1 + r e^{iθ} + r² e^{i2θ}. The modulus squared is |1 + r e^{iθ} + r² e^{i2θ}|² = 16.
+
+But this seems complicated. Alternatively, maybe use substitution.
+
+Let’s consider the equation 1 + z + z² = w, where |w| = 4. Then, z² + z + 1 = w. So, z² + z + (1 - w) = 0. The discriminant of this quadratic equation is 1 - 4(1 - w) = 4w - 3. Therefore, z = [-1 ± sqrt(4w - 3)] / 2.
+
+But z is a complex number, so sqrt(4w - 3) must be a complex number as well. The discriminant 4w - 3 must be a complex number. The square root of a complex number can be expressed in terms of its real and imaginary parts.
+
+But this might not be helpful. Alternatively, perhaps consider that |z² + z + 1| = 4. Let’s denote u = z + 1/2. Then, z = u - 1/2. Substitute into the equation:
+
+| (u - 1/2)^2 + (u - 1/2) + 1 | = 4.
+
+Compute:
+
+(u - 1/2)^2 = u² - u + 1/4.
+
+Then, adding (u - 1/2):
+
+u² - u + 1/4 + u - 1/2 + 1 = u² + (1/4 - 1/2 + 1) = u² + (3/4).
+
+So, |u² + 3/4| = 4.
+
+Therefore, |u² + 3/4| = 4.
+
+So, u² + 3/4 is a complex number whose modulus is 4. Let’s write u² = v. Then, |v + 3/4| = 4. The set of points v in the complex plane such that |v + 3/4| = 4 is a circle centered at (-3/4, 0) with radius 4. So, v must lie on this circle. Then, u² = v, which means u is a square root of v. Therefore, u = sqrt(v), which has two possible values for each v (except when v is zero). Therefore, the maximum imaginary part of z is related to the maximum imaginary part of u - 1/2, where u² is on the circle |v + 3/4| = 4.
+
+But this seems a bit abstract. Let me think.
+
+Alternatively, since |u² + 3/4| = 4, then u² = 4 e^{iφ} - 3/4, where φ is a real number. Then, u = sqrt(4 e^{iφ} - 3/4). But sqrt of a complex number is multi-valued, so we can take the principal value.
+
+But this might not be helpful. Alternatively, consider writing u² = a + bi, then |u² + 3/4| = sqrt( (a + 3/4)^2 + b^2 ) = 4. So,
+
+(a + 3/4)^2 + b^2 = 16.
+
+But u² = a + bi, which implies that u = sqrt(a + bi). Let's write u = c + di. Then, u² = (c² - d²) + 2cdi = a + bi. Therefore, c² - d² = a, and 2cd = b. So,
+
+(a + 3/4)^2 + b^2 = 16.
+
+But from u² = a + bi, we have c² - d² = a and 2cd = b. So, substituting a = c² - d² and b = 2cd into the above equation:
+
+(c² - d² + 3/4)^2 + (2cd)^2 = 16.
+
+Expand:
+
+(c² - d² + 3/4)^2 + 4c²d² = 16.
+
+Let me expand the first term:
+
+= [ (c² - d²)^2 + (3/4)(c² - d²) + (3/4)^2 ] + 4c²d²
+
+= (c^4 - 2c²d² + d^4) + (3/4)(c² - d²) + 9/16 + 4c²d²
+
+Combine like terms:
+
+c^4 - 2c²d² + d^4 + 4c²d² + (3/4)(c² - d²) + 9/16
+
+= c^4 + 2c²d² + d^4 + (3/4)(c² - d²) + 9/16
+
+Note that c^4 + 2c²d² + d^4 = (c² + d²)^2.
+
+So,
+
+(c² + d²)^2 + (3/4)(c² - d²) + 9/16 = 16.
+
+But c² + d² = |u|², which is |z + 1/2|². Let me denote |u|² = t. Then,
+
+t² + (3/4)(c² - d²) + 9/16 = 16.
+
+But c² - d² = a = Re(u²) = Re(z + 1/2)^2. Wait, maybe not. Alternatively, since u = c + di, then c² - d² = a and 2cd = b. So, c² + d² = sqrt(a² + b²) = |u|. But we already have |u² + 3/4| = 4, which is |v + 3/4| = 4 where v = u². So, perhaps this substitution isn't helpful.
+
+Alternatively, since we need to find the maximum imaginary part of z, which is Im(z) = Im(u - 1/2) = Im(u) - 1/2. So, to maximize Im(z), we need to maximize Im(u) - 1/2, which is equivalent to maximizing Im(u). So, the problem reduces to finding the maximum Im(u) such that u² lies on the circle |u² + 3/4| = 4.
+
+So, let’s set v = u². Then, |v + 3/4| = 4. So, v lies on a circle centered at (-3/4, 0) with radius 4. The maximum imaginary part of u is half the maximum imaginary part of v, since v = u². Wait, no. Wait, if u = c + di, then v = u² = (c² - d²) + 2cdi. So, Im(v) = 2cd. Therefore, Im(u) = d. So, Im(v) = 2c d. But since Im(u) = d, we can write Im(v) = 2c Im(u). Therefore, the maximum Im(u) is related to the maximum d such that v = (c² - d²) + 2cdi lies on |v + 3/4| = 4.
+
+So, to maximize d, we need to find the maximum d such that there exists c with (c² - d² + 3/4)^2 + (2c d)^2 = 16.
+
+Let’s write this equation:
+
+(c² - d² + 3/4)^2 + (2c d)^2 = 16.
+
+Let’s expand this:
+
+(c² - d² + 3/4)^2 + 4c² d² = 16.
+
+Which is similar to the previous equation.
+
+Let me denote s = c², t = d². Then, the equation becomes:
+
+(s - t + 3/4)^2 + 4s t = 16.
+
+But s and t are non-negative real numbers.
+
+Our goal is to maximize d, which is sqrt(t). So, we need to maximize t subject to the above equation.
+
+But this seems complicated. Alternatively, perhaps use calculus. Let’s consider the equation:
+
+(c² - d² + 3/4)^2 + 4c² d² = 16.
+
+We can treat this as a function of c and d, and try to maximize d. Let’s take partial derivatives with respect to c and set to zero.
+
+But this might get messy. Alternatively, maybe use substitution.
+
+Let’s set u = c² - d². Then, the equation becomes:
+
+(u + 3/4)^2 + 4c² d² = 16.
+
+But c² d² = (s)(t) = s t. Wait, but u = c² - d², and we have s = c², t = d². So, u = s - t. Then, the equation is:
+
+(u + 3/4)^2 + 4(s)(t) = 16.
+
+But s and t are related by u = s - t. So, t = s - u.
+
+But this might not help. Alternatively, maybe use Lagrange multipliers again here.
+
+Wait, but perhaps instead of going back to the original problem, let's recall that in the previous approach, we found that the maximum imaginary part is sqrt(19)/2, which is approximately 2.179. But is there a way to verify this?
+
+Wait, in the initial approach with Lagrange multipliers, we arrived at x = -1/2, leading to y = sqrt(19)/2. Since that approach seems to give a consistent solution, and substituting back into the original equation works, then that might indeed be the maximum. Therefore, the answer is sqrt(19)/2, so m + n = 19 + 2 = 21.
+
+But let me check if there is a higher possible y. For example, suppose z is purely imaginary. Let’s suppose z = ki, where k is real. Then, compute |1 + z + z²|:
+
+1 + ki + (ki)^2 = 1 + ki - k².
+
+The modulus squared is (1 - k²)^2 + k². Set equal to 16:
+
+(1 - k²)^2 + k² = 16.
+
+Expand:
+
+1 - 2k² + k^4 + k² = 1 - k² + k^4 = 16.
+
+So,
+
+k^4 - k² - 15 = 0.
+
+Let’s let m = k², so equation becomes:
+
+m² - m - 15 = 0.
+
+Solutions:
+
+m = [1 ± sqrt(1 + 60)] / 2 = [1 ± sqrt(61)] / 2.
+
+Since m must be non-negative, m = [1 + sqrt(61)] / 2 ≈ (1 + 7.81)/2 ≈ 4.405.
+
+Thus, k² ≈ 4.405, so k ≈ ±2.099. Therefore, when z is purely imaginary, the maximum imaginary part is approximately 2.099, which is less than sqrt(19)/2 ≈ 2.179. Therefore, the previous solution with z = -1/2 + sqrt(19)/2 i, which has a larger imaginary part, is indeed larger.
+
+Therefore, the maximum imaginary part of z is sqrt(19)/2, so m + n = 19 + 2 = 21.
+
+**Final Answer**
+\boxed{21}
+Therefore, the maximum value of the imaginary part of $z$ is $\boxed{\frac{\sqrt{19}}{2}}$, and $m+n = 19 + 2 = \boxed{21}$.
+</think>

@@ -1,0 +1,112 @@
+Okay, so I need to find the least prime number p such that there's a positive integer n where n⁴ + 1 is divisible by p². Then, I have to find the smallest positive integer m where m⁴ + 1 is divisible by p². Hmm, let's start by understanding the problem step by step.
+
+First, the question is about primes p where n⁴ ≡ -1 mod p² has a solution. Then, once we find that p, we need the minimal m such that m⁴ ≡ -1 mod p². So, maybe p is the smallest prime for which this congruence has a solution, and then m is the smallest such integer.
+
+I remember that for primes p where n² ≡ -1 mod p has solutions, these primes are of the form 1 mod 4. But here, it's n⁴ ≡ -1 mod p². So, maybe we need primes where -1 is a quartic residue modulo p².
+
+Let me think. If n⁴ ≡ -1 mod p², then n⁸ ≡ 1 mod p². So the order of n modulo p² divides 8. But also, since n⁴ ≡ -1 mod p², the order must be 8, right? Because if the order were 4, then n⁴ ≡ 1 mod p², but here it's -1. So the multiplicative order of n modulo p² is 8.
+
+Therefore, 8 must divide φ(p²), where φ is Euler's totient function. Since p is prime, φ(p²) = p² - p. So, 8 divides p² - p. Therefore, p² ≡ p mod 8. But p is a prime, so p is either 2 or odd. Let's check:
+
+If p = 2: p² - p = 4 - 2 = 2. 8 doesn't divide 2, so 8 doesn't divide φ(2²). So p ≠ 2.
+
+For odd primes, p is odd, so p² ≡ 1 mod 8, because any odd number squared is 1 mod 8. So p² - p ≡ 1 - p mod 8. For 8 to divide p² - p, 1 - p ≡ 0 mod 8. Therefore, p ≡ 1 mod 8. So primes p ≡ 1 mod 8.
+
+Therefore, the primes p must be 1 mod 8. The smallest primes that are 1 mod 8 are 17, 97, 113, etc. Wait, but maybe there's a prime smaller than 17 that satisfies the original condition. Let's check.
+
+Wait, hold on. The reasoning above is that 8 divides φ(p²) = p(p - 1). So 8 divides p(p - 1). But p is prime, so p is either 2 or odd. If p is odd, then p is 1 mod 2, so p - 1 is even. Therefore, p(p - 1) is even. For 8 to divide p(p - 1), since p is odd, p and p - 1 are coprime. Therefore, 8 must divide p - 1. Hence, p ≡ 1 mod 8. So indeed, primes p ≡ 1 mod 8.
+
+Therefore, the smallest prime p ≡ 1 mod 8 is 17. Wait, but let's check for p=5, which is 5 mod 8. Wait, 5 is 5 mod 8, not 1. The next prime is 13, which is 5 mod 8 as well. Then 17 is 1 mod 8. So 17 is the first prime ≡1 mod 8. So maybe p=17 is the least prime where such an n exists.
+
+But before jumping to conclusions, maybe check if there exists a prime smaller than 17 where n⁴ ≡ -1 mod p² has a solution.
+
+Let's test p=5 first. For p=5, check if there exists n such that n⁴ ≡ -1 mod 25. Let's compute n⁴ mod 25 for n=1 to 24.
+
+But that's a lot. Maybe check n=2: 2⁴=16≡16≠-1. n=3: 81≡6≠-1. n=7: 7⁴=2401≡1 mod 25. n=8: 8⁴=4096≡4096-163*25=4096-4075=21≡21≠-1. n=12: 12⁴=20736. 20736 /25=829*25=20725, so 20736-20725=11≡11≠-1. n=13: 13⁴=28561. 28561 - 1142*25=28561-28550=11≡11. Hmm, seems like n⁴ mod 25 cycles between 1 and 11? Wait, maybe I made a mistake. Let me check n=23: 23⁴. 23 mod 25 is -2, so (-2)^4=16≡16≠-1. n=24: 24⁴=(-1)^4=1≡1. n=22: (-3)^4=81≡6. Hmm, seems like none of them are -1 mod 25. So p=5 does not work.
+
+How about p=13? Let's check n⁴ ≡ -1 mod 169. Again, maybe checking some numbers. For example, n=5: 5⁴=625. 625 mod 169: 169*3=507, 625-507=118≡118. Not -1. n=8: 8⁴=4096. 169*24=4056, 4096-4056=40≡40. Not -1. n=10: 10⁴=10000. 169*59=10000-169*59. Let's compute 169*60=10140, so 10000-10140= -140≡29 mod 169. Not -1. Hmm, maybe n=12: 12⁴=20736. 169*123=20787. 20736 - 20787= -51≡118 mod 169. Not -1. Maybe n=14: 14⁴=38416. 169*227=38463. 38416 - 38463= -47≡122 mod 169. Still not -1. Hmm, not sure. Maybe p=13 doesn't work either.
+
+How about p=17? Let's check if there exists n with n⁴ ≡ -1 mod 17²=289. Let's see. Maybe n= 2, 3, 4, etc. Let's compute n⁴ mod 289. Alternatively, maybe check if -1 is a quartic residue mod 17².
+
+Alternatively, use Hensel's lemma. Since if there is a solution modulo 17, we can lift it to modulo 17² if certain conditions hold.
+
+First, check modulo 17. Does there exist n such that n⁴ ≡ -1 mod 17? Let's check.
+
+Compute n⁴ mod 17 for n from 1 to 16.
+
+1⁴=1, 2⁴=16, 3⁴=81≡13, 4⁴=256≡1, 5⁴=625≡625-36*17=625-612=13, 6⁴=1296≡1296-76*17=1296-1292=4, 7⁴=2401≡2401-141*17=2401-2397=4, 8⁴=4096≡4096-241*17=4096-4097= -1≡16 mod 17. Wait, 8⁴ ≡ 16 ≡ -1 mod 17. So n=8 is a solution modulo 17. Therefore, there is a solution modulo 17, so by Hensel's lemma, we can lift it to modulo 17².
+
+Therefore, p=17 is the least prime where n⁴ ≡ -1 mod p² has a solution. So p=17.
+
+Now, we need to find the minimal m such that m⁴ ≡ -1 mod 17². Since we already have n=8 mod 17, we can lift this solution to modulo 17².
+
+Let me recall Hensel's lemma. If f(n) ≡ 0 mod p and f'(n) not ≡ 0 mod p, then there is a unique lift to mod p². Here, f(n) = n⁴ +1. Then f'(n) = 4n³. Since we are working modulo 17, and n ≡8 mod 17, so f'(8) = 4*(8³). 8³=512≡512-30*17=512-510=2 mod 17. Therefore, f'(8) ≡4*2=8≡8 mod 17 ≠0. Therefore, Hensel's lemma applies. So we can find a unique solution mod 17².
+
+So let's compute the lift. Let n = 8 + 17k. Then, f(n) = (8 +17k)^4 +1 ≡0 mod 17².
+
+Let's expand (8 +17k)^4:
+
+Using the binomial theorem:
+
+(8 +17k)^4 =8⁴ + 4*8³*(17k) + 6*8²*(17k)^2 +4*8*(17k)^3 + (17k)^4.
+
+But modulo 17², terms with (17k)^2 and higher will be 0 mod 17². Therefore,
+
+(8 +17k)^4 ≡8⁴ + 4*8³*(17k) mod 17².
+
+Compute 8⁴: 8⁴=4096. 4096 mod 289: 289*14=4046, 4096-4046=50. So 8⁴≡50 mod 289.
+
+Compute 4*8³: 8³=512. 512 mod17=512-30*17=512-510=2. So 8³≡2 mod17. Then 4*8³=8 mod17. So 4*8³*17k=8*17k=136k. But 136 mod289 is 136. So 4*8³*(17k)≡136k mod289.
+
+Therefore, f(n) ≡50 +136k +1 ≡0 mod289. So 51 +136k ≡0 mod289.
+
+So 136k ≡-51 mod289. Let's solve for k.
+
+First, compute 136 and 289. GCD(136,289). 289=17², 136=17*8. So GCD is 17. So the equation 136k ≡-51 mod289 has a solution only if 17 divides -51. Since -51= -3*17, so yes. Therefore, divide the equation by 17:
+
+136/17 =8, 289/17=17, -51/17=-3. So equation becomes 8k ≡-3 mod17.
+
+Now solve 8k ≡-3 mod17. Multiply both sides by inverse of 8 mod17. 8*2=16≡-1 mod17, so inverse of 8 is -2≡15 mod17. Therefore, k≡-3*15 mod17. -3*15=-45≡-45+4*17= -45+68=23≡6 mod17.
+
+So k≡6 mod17. Therefore, k=6 +17m. But since we are solving modulo17², k=6 mod17. So the minimal k is 6. Therefore, n=8 +17*6=8+102=110. So n=110 is a solution modulo17². Therefore, m=110 is the minimal positive integer such that m⁴ +1 ≡0 mod17².
+
+But wait, let's check if there is a smaller m. Since the solutions modulo17² are congruent to 8 +17k mod17², where k=6 mod17. So the general solution is 8 +17*(6 +17t)=8 +102 +289t. So the minimal positive solution is 8+102=110. Therefore, m=110 is indeed the minimal positive integer.
+
+But let's verify this. Let's compute 110⁴ +1 mod289.
+
+First, compute 110 mod17=110-6*17=110-102=8, which is correct. So 110≡8 mod17, which is a solution. Now compute 110⁴ mod289.
+
+Alternatively, compute 110² first. 110²=12100. 12100 divided by289: 289*41=11849, 12100-11849=251. So 110² ≡251 mod289.
+
+Then 251²=63001. 63001 divided by289: 289*217=63013. 63001-63013=-12≡277 mod289. Therefore, 110⁴= (110²)² ≡251²≡277 mod289. Then 110⁴ +1≡277 +1=278≡278 mod289. Wait, that's not 0. Wait, did I compute something wrong?
+
+Wait, maybe I made a mistake in computing 251² mod289. Let me compute 251²: 251*251. Let's compute 250²=62500, plus 2*250*1 +1²=62500 +500 +1=63001. So yes, 251²=63001. Now divide 63001 by289:
+
+289*200=57800. 63001-57800=5201.
+
+289*17=4913. 5201-4913=288.
+
+So 63001=289*(200+17)+288=289*217 +288. Therefore, 251²≡288 mod289. Then 288 +1=289≡0 mod289. So 110⁴ +1≡288 +1=289≡0 mod289. So yes, 110⁴ +1 is divisible by289. So that checks out.
+
+But wait, earlier when I computed 110²=12100, which is 251 mod289. Then 251²=63001≡288 mod289. Then 288 +1=289≡0. So yes, correct. Therefore, m=110 is the minimal positive integer.
+
+But hold on, is there a smaller m? For example, maybe m=110 -289= -179, but since we need positive integers, the minimal positive is 110. But maybe there's another solution smaller than 110? Let's check.
+
+Since the solutions modulo289 are 8 +17k, where k≡6 mod17. So k=6,23,40,... So n=8 +17*6=110, 8 +17*23=8 +391=399, etc. So 110 is the smallest positive solution. So yes, m=110.
+
+But let's check if there is a smaller m. For example, check m= 8 +17*(-11)=8 -187= -179≡110 mod289. So negative solutions are equivalent to positive ones modulo289. So the minimal positive is 110. Therefore, m=110.
+
+Therefore, the answer is 110. But let me check if there's any smaller m. For example, maybe n= 110 -289= -179. But that's negative. So 110 is the minimal positive.
+
+But let's check for p=17, is 110 the minimal m? Wait, maybe there's another solution. Let's check n= 110 -289= -179. Then n= -179. Let's check (-179)^4 +1. Since (-179)^4=179^4. But 179≡179 -10*17=179-170=9 mod17. Wait, but 179≡9 mod17. 9⁴=6561≡6561-385*17=6561-6545=16≡-1 mod17. So 9⁴≡-1 mod17. Then 179⁴≡(9)^4≡-1 mod289? Wait, no. Wait, if n≡9 mod17, then n=17k +9. Then n⁴≡(17k +9)^4≡9⁴ + 4*9³*17k mod17². Let's compute that. 9⁴=6561. 6561 mod289: 289*22=6358, 6561-6358=203≡203 mod289. Then 4*9³*17k=4*729*17k=4*729=2916, 2916*17k. 2916 mod289: 289*10=2890, 2916-2890=26. So 26*17k=442k. 442 mod289: 442-289=153. So 153k. Therefore, total f(n)=203 +153k +1=204 +153k≡0 mod289. Therefore, 153k≡-204 mod289. Simplify:
+
+153 and 289. GCD(153,289). 289=17², 153=9*17. So GCD=17. Check if 17 divides -204. Yes, -204= -12*17. So divide equation by17:
+
+153/17=9, 289/17=17, -204/17=-12. So 9k≡-12 mod17. Multiply both sides by inverse of9 mod17. 9*2=18≡1 mod17, so inverse is 2. Therefore, k≡-12*2= -24≡-24+34=10 mod17. So k=10 +17t. Then n=17k +9=17*(10 +17t) +9=170 +289t +9=179 +289t. Therefore, n=179 mod289. So the solutions are 179 mod289. Therefore, the solutions are 179 and 110 (which is 179 -69=110). So 110 and 179 are the two solutions mod289. Therefore, the minimal positive integer is 110. So yes, m=110.
+
+Therefore, the answer is 110.
+
+**Final Answer**
+The least positive integer \( m \) is \(\boxed{110}\).
+Therefore, the least prime number $p$ is $\boxed{17}$ and the least positive integer $m$ such that $m^{4}+1$ is divisible by $p^{2}$ is $\boxed{110}$.
+</think>

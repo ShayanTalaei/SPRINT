@@ -1,0 +1,197 @@
+<Question>
+Let $f$ be the function defined by $f(x) = x^3 - 49x^2 + 623x - 2015,$ and let $g(x) = f(x + 5).$  Compute the sum of the roots of $g.$
+</Question>
+
+<think>
+<Plan_1>
+Okay, let's see. I need to find the sum of the roots of the function g(x), which is defined as f(x + 5). The original function f(x) is a cubic polynomial: f(x) = x³ - 49x² + 623x - 2015. So, g(x) = f(x + 5) means that we're shifting the graph of f(x) to the left by 5 units. But how does this shifting affect the roots and their sum?
+
+First, maybe I should recall that for a cubic equation ax³ + bx² + cx + d = 0, the sum of the roots is -b/a. This is from Vieta's formulas. So, if I can find the coefficients of the cubic polynomial g(x), then the sum of its roots would be - (coefficient of x²) / (coefficient of x³). Since g(x) is a cubic, the leading coefficient (coefficient of x³) should be the same as f(x), which is 1, because when we substitute x + 5 into f(x), the highest degree term will still be (x + 5)³, which expands to x³ + ... So, the coefficient of x³ in g(x) is 1. Therefore, the sum of the roots of g(x) would be - (coefficient of x² in g(x)) / 1, which is just - (coefficient of x² in g(x)).
+
+So, the key task is to find the coefficient of x² in g(x). To do that, I need to compute f(x + 5). Let's write out f(x + 5):
+
+f(x + 5) = (x + 5)³ - 49(x + 5)² + 623(x + 5) - 2015.
+
+Now, I need to expand each of these terms.
+
+Starting with (x + 5)³. The expansion of (a + b)³ is a³ + 3a²b + 3ab² + b³.
+
+<prompt_1.1> Expand (x + 5)³ using the binomial theorem. </prompt_1.1>
+
+Next term: -49(x + 5)². First expand (x + 5)².
+
+<prompt_1.2> Expand -49(x + 5)² and combine like terms with the previous expansion. </prompt_1.2>
+-----
+
+Alternatively, maybe there's a shortcut to find the sum of the roots without expanding the entire polynomial. Since g(x) = f(x + 5), the roots of g(x) are the roots of f(x) shifted left by 5. If the original roots of f(x) are r1, r2, r3, then the roots of g(x) would be r1 - 5, r2 - 5, r3 - 5. Therefore, the sum of the roots of g(x) would be (r1 + r2 + r3) - 15. But from Vieta's formula on f(x), the sum of the roots r1 + r2 + r3 is 49 (since for f(x) = x³ -49x² + ... , the coefficient of x² is -49, so sum is 49). Therefore, sum of roots of g(x) is 49 - 15 = 34.
+
+This seems much quicker. So, by recognizing that shifting the roots and then summing gives the result, we avoid expanding the entire polynomial.
+
+<prompt_1.3> Compare the expanded method with the shortcut method to find the sum of the roots. </prompt_1.3>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+So:
+
+(x + 5)³ = x³ + 3x²*5 + 3x*5² + 5³ = x³ + 15x² + 75x + 125.
+</execution_1.1>
+
+<execution_1.2>
+That would be x² + 10x + 25. Then multiply by -49: -49x² - 490x - 1225.
+
+Third term: 623(x + 5). That's 623x + 3115.
+
+Fourth term is -2015, which is just a constant.
+
+Now, let's combine all these expansions:
+
+f(x + 5) = (x³ + 15x² + 75x + 125) + (-49x² - 490x - 1225) + (623x + 3115) - 2015.
+</execution_1.2>
+
+<execution_1.3>
+But since I already did the expansion step-by-step and confirmed the coefficient of x² is -34, leading to sum of roots 34, this shortcut also gives 34. Therefore, the answer is 34. 
+
+But why does the shortcut work? Let me verify. If g(x) = f(x + 5), then to find the roots of g(x), we solve f(x + 5) = 0. Let the roots of f(x) be r1, r2, r3. Then, f(r_i) = 0. So, setting x + 5 = r_i, we get x = r_i - 5. Therefore, the roots of g(x) are r1 -5, r2 -5, r3 -5. Therefore, sum is (r1 + r2 + r3) -15. Since sum of roots of f(x) is 49, then sum of roots of g(x) is 49 -15=34.
+</execution_1.3>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.2:
+Now, let's combine like terms. Start with the x³ term: there's only one, so x³.
+
+<prompt_2.1> Combine like terms in the expanded polynomial to form g(x). </prompt_2.1>
+-----
+
+Based on execution_1.3:
+So, this problem is testing the understanding of function transformations and Vieta's formulas. The key insight is that shifting the function horizontally affects the roots in the opposite direction. So, shifting left by 5 units (i.e., replacing x with x +5) shifts each root to the left by 5, which subtracts 5 from each root. Therefore, the sum of the roots decreases by 5 times the number of roots.
+
+<prompt_2.2> Explain the effect of horizontal shifting on the roots and their sum. </prompt_2.2>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+Next, x² terms: 15x² -49x² = (15 -49)x² = -34x².
+
+Next, x terms: 75x -490x + 623x. Let's compute that step by step. 75 -490 is -415, then -415 +623 = 208. So, 208x.
+
+Constant terms: 125 -1225 + 3115 -2015. Let's compute this step by step. 125 -1225 = -1100. Then, -1100 + 3115 = 2015. Then, 2015 -2015 = 0. So, the constant term is 0.
+
+Putting it all together, g(x) = x³ -34x² +208x +0, so g(x) = x³ -34x² +208x.
+</execution_2.1>
+
+<execution_2.2>
+Since it's a cubic, there are 3 roots, so the total decrease is 15. Therefore, subtracting 15 from the original sum of roots (49) gives 34. 
+
+But let me confirm once again. The original function f(x) has roots at some points, say a, b, c. Then f(x) = (x - a)(x - b)(x - c). Then expanding this, the coefficient of x² is -(a + b + c), so in the given f(x), the coefficient of x² is -49, so a + b + c = 49. Then, g(x) = f(x +5) = ( (x +5) - a )( (x +5) - b )( (x +5) - c ) = (x +5 -a)(x +5 -b)(x +5 -c). Let’s denote the roots of g(x) as d, e, f. Then d = a -5, e = b -5, f = c -5. Therefore, d + e + f = (a + b + c) -15 =49 -15=34.
+</execution_2.2>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+So, the coefficient of x² is -34, so the sum of the roots of g(x) is -(-34)/1 = 34. Therefore, the answer is 34.
+
+Based on execution_1.1, execution_1.2:
+Wait, but let me double-check my expansion because that seems like a critical step.
+
+<prompt_3.1> Verify the expansion of f(x + 5) to ensure the coefficient of x² is correct. </prompt_3.1>
+-----
+
+Based on execution_2.2:
+Wait, but let me check if Vieta's formula applies here. Vieta's formula gives the sum of roots for a polynomial equation set to zero. So, if we have a cubic equation x³ + px² + qx + r = 0, the sum of the roots is -p. In our case, g(x) is x³ -34x² +208x = 0, so p here is -34, so sum of roots is -(-34) = 34. That's correct.
+
+Alternatively, if we use the shortcut method: the sum of the roots of f(x) is 49, then shifting each root by -5 (since the function is shifted left by 5), the new sum is 49 - 3*5 = 49 -15 =34. Either way, same answer.
+
+Based on execution_1.3:
+Let me just recap to ensure I didn't miss any steps. The problem gives f(x) and defines g(x) as f(x +5). We need the sum of the roots of g(x). 
+
+<prompt_3.2> Recap the solution and compare both methods to ensure no steps were missed. </prompt_3.2>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+First term: (x + 5)^3 = x³ + 15x² + 75x + 125. Correct.
+
+Second term: -49(x +5)^2. (x +5)^2 = x² +10x +25. Multiply by -49: -49x² -490x -1225. Correct.
+
+Third term: 623(x +5) = 623x + 3115. Correct.
+
+Fourth term: -2015. Correct.
+
+Adding them up:
+
+x³ +15x² +75x +125 -49x² -490x -1225 +623x +3115 -2015.
+
+Combine x³ terms: x³.
+
+x² terms: 15x² -49x² = -34x². Correct.
+
+x terms: 75x -490x +623x. 75 -490 is -415, then -415 +623 is 208. So, 208x. Correct.
+
+Constants: 125 -1225 +3115 -2015. 125 -1225 = -1100. Then, -1100 +3115 = 2015. 2015 -2015 = 0. So, constant term is 0.
+</execution_3.1>
+
+<execution_3.2>
+Since the roots of g(x) are the values of x such that f(x +5) = 0, which means x +5 must be a root of f. Let the roots of f be r1, r2, r3. Then x +5 = r1 => x = r1 -5, similarly for r2, r3. Therefore, roots of g are r1 -5, r2 -5, r3 -5. Sum is (r1 + r2 + r3) -15. Since sum of roots of f is 49, sum of roots of g is 49 -15 =34. 
+
+Alternatively, expanding f(x +5) and finding the coefficient of x². Either way, the answer is 34. So, I think that's solid.
+
+Is there a chance I made a mistake in the expansion? Let me check the x² term again. 
+
+In f(x +5), the x² term comes from two places: expanding (x +5)^3 gives an x² term of 15x². Then, the term -49(x +5)^2 expands to -49x². So total x² coefficient is 15 -49 = -34. Then, the sum of roots is -(-34)/1 =34. Correct.
+
+Alternatively, if I compute the sum of roots using the expanded form: if g(x) = x³ -34x² +208x, then the sum of roots is 34. Yep. So, all checks out.
+</execution_3.2>
+</Execution_3>
+
+<Plan_4>
+Based on execution_2.1, execution_3.1:
+Then, the coefficient of x is 208, so the sum of the roots is -208 / 1 = -208?
+
+<prompt_4.1> Re-evaluate the expansion and confirm the sum of the roots. </prompt_4.1>
+-----
+
+Based on execution_3.2:
+**Final Answer**
+\boxed{34}
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+Wait, but Vieta's formula for cubic ax³ + bx² + cx + d is sum of roots = -b/a. So here, the coefficient of x² is -34, so sum of roots is -(-34)/1 = 34. So, that's correct. The coefficient of x is 208, which is the coefficient q in the cubic x³ + qx + r =0. Wait, no. Wait, if the cubic is written as x³ + px² + qx + r =0, then sum of roots is -p, sum of products two at a time is q, and product is -r. So in our case, g(x) is x³ -34x² +208x. So, comparing to x³ + px² + qx + r =0, here p is -34, q is 208, r is 0. Therefore, sum of roots is -p = -(-34) = 34. So, that's correct. 
+
+But wait, the coefficient of x is 208, which in the standard form is q. So, in the standard Vieta's formula, the sum of roots is -p, the sum of products two at a time is q, and the product of roots is -r. So, in our case, since the cubic is x³ -34x² +208x, which is equivalent to x³ + (-34)x² +208x +0. So, p = -34, q =208, r=0. Therefore, sum of roots is -p = 34. So, that's correct.
+</execution_4.1>
+</Execution_4>
+
+<Plan_5>
+Based on execution_4.1:
+But let me check again. Let me recount the x terms:
+
+<prompt_5.1> Recount the x terms in the expansion to ensure accuracy. </prompt_5.1>
+
+The x² terms: 15x² -49x² = -34x². So, the coefficient is -34. Then, sum of roots is -(-34)/1 =34. Correct.
+So, the answer is 34.
+-----
+
+Therefore, the answer is 34.
+**Final Answer**
+\boxed{34}
+</Plan_5>
+
+<Execution_5>
+<execution_5.1>
+First expansion: 75x.
+
+Second expansion: -490x.
+
+Third expansion: +623x.
+
+So, 75 -490 +623. Let's compute 75 -490 first. That's -415. Then, -415 +623. 623 -415 is 208. So, 208x. So that's correct. So, the x term is 208x. So, in the standard cubic equation, that would be the coefficient q. So, in the sum of roots formula, the sum of roots is -p, where p is the coefficient of x². Since p here is -34, sum of roots is 34.
+</execution_5.1>
+</Execution_5>
+
+<Final_answer>
+Therefore, the sum of the roots of $g(x)$ is $\boxed{34}$.
+</Final_answer>
+</think>

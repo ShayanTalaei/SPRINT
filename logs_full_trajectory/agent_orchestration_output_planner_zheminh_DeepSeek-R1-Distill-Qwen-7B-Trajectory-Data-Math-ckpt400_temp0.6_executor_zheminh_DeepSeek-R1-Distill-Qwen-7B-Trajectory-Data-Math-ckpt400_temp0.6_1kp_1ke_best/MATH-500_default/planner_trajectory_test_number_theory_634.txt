@@ -1,0 +1,147 @@
+<Question>
+Compute $997^{-1}$ modulo $1000$. Express your answer as an integer from $0$ to $999$.
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to find the inverse of 997 modulo 1000. Hmm, let's see. I remember that the inverse of a number a modulo m is a number b such that (a * b) ≡ 1 mod m. So, in this case, I need to find an integer b where 997 * b ≡ 1 mod 1000. That means when I multiply 997 by b and divide by 1000, the remainder should be 1.
+
+First, I should check if 997 and 1000 are coprime. If they are, then an inverse exists. The greatest common divisor (gcd) of 997 and 1000 will tell me that. Let me compute gcd(997, 1000).
+
+<prompt_1.1> Use the Euclidean algorithm to find the gcd of 997 and 1000. </prompt_1.1>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+Since 1000 divided by 997 is 1 with a remainder of 3 (because 997 * 1 = 997; 1000 - 997 = 3). Then, take 997 and divide by 3. 3 * 332 = 996, so the remainder is 1. Then, divide 3 by 1, which is exactly 3 times with no remainder. So the gcd is 1.
+</execution_1.1>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1:
+Now, since the gcd is 1, that means the inverse exists. To find the inverse, I think the extended Euclidean algorithm is the way to go. Let me recall how that works. The extended Euclidean algorithm not only finds the gcd of two numbers but also finds integers x and y such that ax + by = gcd(a, b). In this case, we want 997x + 1000y = 1. The x here will be the inverse of 997 modulo 1000.
+
+Let me write down the steps of the Euclidean algorithm first to apply the extended version.
+
+<prompt_2.1> Apply the extended Euclidean algorithm to find the inverse of 997 modulo 1000. </prompt_2.1>
+-----
+
+Alternatively, another way to find the inverse is to note that 997 ≡ -3 mod 1000. So, we need to find the inverse of -3 mod 1000, which is the same as finding the inverse of 97 mod 1000 (since -3 ≡ 97 mod 1000). Wait, but 97 is not congruent to -3. Wait, 1000 - 3 = 997, so 997 ≡ -3 mod 1000.
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+As before:
+
+1000 = 997 * 1 + 3
+
+997 = 3 * 332 + 1
+
+3 = 1 * 3 + 0
+
+So, gcd is 1. Now, working backwards:
+
+1 = 997 - 3 * 332
+
+But 3 is from the first step: 3 = 1000 - 997 * 1
+
+Substituting back into the previous equation:
+
+1 = 997 - (1000 - 997 * 1) * 332
+
+Let me expand that:
+
+1 = 997 - 1000 * 332 + 997 * 332
+
+Combine like terms:
+
+1 = 997 * (1 + 332) - 1000 * 332
+
+Which is:
+
+1 = 997 * 333 - 1000 * 332
+
+Therefore, x is 333 and y is -332. So, the inverse of 997 modulo 1000 is 333.
+</execution_2.1>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+Wait, but let me verify that.
+
+<prompt_3.1> Verify the solution by checking if 997 * 333 ≡ 1 mod 1000. </prompt_3.1>
+-----
+
+Alternatively, maybe there's a smaller inverse? Wait, but since we're working modulo 1000, the inverse is unique modulo 1000. So, 333 is the only inverse in the range 0 to 999. Therefore, the answer is 333.
+
+But just to make sure I didn't make any mistakes in substitution. Let's redo the substitution step carefully.
+
+<prompt_3.2> Recheck the substitution step in the extended Euclidean algorithm to ensure the solution is correct. </prompt_3.2>
+
+Alternatively, maybe I can test with a smaller modulus to see if the method works. For example, find inverse of 3 mod 10. We know it's 7 because 3*7=21≡1 mod10.
+
+<prompt_3.3> Test the method with smaller moduli to ensure the extended Euclidean algorithm works correctly. </prompt_3.3>
+
+Another way to think about it: Since 997 is -3 mod1000, so we need to solve (-3)x ≡1 mod1000.
+Which is equivalent to -3x ≡1 mod1000, so 3x ≡-1 mod1000. Then, 3x=999 mod1000. So, x=999/3=333.
+
+Let me just check once more with actual multiplication. 997 * 333.
+
+<prompt_3.4> Perform a final verification of the solution by directly computing 997 * 333 and checking the remainder when divided by 1000. </prompt_3.4>
+
+**Final Answer**
+The inverse of 997 modulo 1000 is \boxed{333}.
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+997 * 333. Let's compute that. 1000 * 333 = 333,000. Subtract 3 * 333: 333,000 - 999 = 332,001. Now, 332,001 divided by 1000 is 332 with a remainder of 1. So yes, 997 * 333 = 332,001, which is 1 more than a multiple of 1000. Therefore, the remainder is indeed 1.
+</execution_3.1>
+
+<execution_3.2>
+Starting from:
+
+1 = 997 - 3 * 332
+
+But 3 is equal to 1000 - 997, so substituting:
+
+1 = 997 - (1000 - 997) * 332
+
+Multiply out the terms:
+
+1 = 997 - 1000 * 332 + 997 * 332
+
+Combine the 997 terms:
+
+997 * 1 + 997 * 332 = 997 * (1 + 332) = 997 * 333
+
+So, 1 = 997 * 333 - 1000 * 332
+</execution_3.2>
+
+<execution_3.3>
+Using the extended Euclidean algorithm:
+
+10 = 3*3 + 1
+
+3 = 1*3 + 0
+
+Then back substitution:
+
+1 = 10 - 3*3
+
+So, x is -3, but mod 10, that's 7. Which is correct. So the method works.
+</execution_3.3>
+
+<execution_3.4>
+Let me compute that:
+
+First, 1000 * 333 = 333,000. So, 997 * 333 = 333,000 - 3 * 333 = 333,000 - 999 = 332,001.
+
+Now, divide 332,001 by 1000. The remainder is the last three digits, which is 001. So, 332,001 mod 1000 is 1. Perfect, that's exactly what we needed.
+</execution_3.4>
+</Execution_3>
+
+<Final_answer>
+Therefore, the inverse of $997$ modulo $1000$ is $\boxed{333}$.
+</Final_answer>
+</think>

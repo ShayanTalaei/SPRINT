@@ -1,0 +1,346 @@
+<Question>
+Find the sum of all complex solutions of the equation
+\[\frac{1}{x^2 - 1} + \frac{2}{x^2 - 2} + \frac{3}{x^2 - 3} + \frac{4}{x^2 - 4} = 2010x - 4.\]
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to find the sum of all complex solutions of this equation:
+
+\[\frac{1}{x^2 - 1} + \frac{2}{x^2 - 2} + \frac{3}{x^2 - 3} + \frac{4}{x^2 - 4} = 2010x - 4.\]
+
+Hmm, that looks a bit complicated. Let me start by understanding what the equation is asking for. It's a rational equation on the left side with four terms, each having a linear numerator and a quadratic denominator. The right side is a linear function, 2010x - 4. The problem is to find all complex solutions x and then sum them up.
+
+Since the equation involves fractions, I should check for any restrictions on x. The denominators x² - 1, x² - 2, x² - 3, x² - 4 cannot be zero. Therefore, x ≠ ±1, ±√2, ±√3, ±2. These are the values that would make the denominators zero, so they are excluded from the domain.
+
+Now, to solve the equation, maybe I can clear the denominators by multiplying both sides by the common denominator. Let's see. The denominators are (x² - 1), (x² - 2), (x² - 3), (x² - 4). So the common denominator would be the product of all four: (x² - 1)(x² - 2)(x² - 3)(x² - 4). That seems like a lot, but perhaps there's a smarter way.
+
+Alternatively, maybe there's a substitution that can simplify the equation. Let me think.
+
+<prompt_1.1> Consider possible substitutions to simplify the equation and plan the next steps. </prompt_1.1>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+The left side has terms like 1/(x² - 1), 2/(x² - 2), etc. Each term has a numerator equal to the number before the denominator, which is 1, 2, 3, 4. Maybe if I let y = x², then each term becomes k/(y - k) where k is 1, 2, 3, 4. Let's try that substitution.
+
+Let y = x². Then the equation becomes:
+
+1/(y - 1) + 2/(y - 2) + 3/(y - 3) + 4/(y - 4) = 2010x - 4.
+
+Hmm, but now we have a mix of y and x. Since y = x², maybe this substitution isn't directly helpful because we still have x in the right side. However, perhaps if we can express x in terms of y? But x = ±√y, which might complicate things. Alternatively, maybe there's another way.
+
+Wait, but the equation is in terms of x, and after substitution, it's still a relation between x and y. Maybe this substitution isn't helpful. Let's think again.
+</execution_1.1>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1:
+Alternatively, maybe consider combining the fractions on the left side. Let's see.
+
+<prompt_2.1> Attempt to combine the fractions on the left side and simplify the equation. </prompt_2.1>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+The left side is the sum of four fractions. To combine them, we need a common denominator, which is the product of all four denominators. Let's denote D = (x² - 1)(x² - 2)(x² - 3)(x² - 4). Then, each term can be written as:
+
+1/(x² - 1) = [ (x² - 2)(x² - 3)(x² - 4) ] / D,
+
+and similarly for the others. So multiplying each term by D and then summing up would give:
+
+[ (x² - 2)(x² - 3)(x² - 4) ] + 2[ (x² - 1)(x² - 3)(x² - 4) ] + 3[ (x² - 1)(x² - 2)(x² - 4) ] + 4[ (x² - 1)(x² - 2)(x² - 3) ] = (2010x - 4)D.
+
+But expanding all of that seems really tedious. Maybe there's a pattern or a simplification here.
+</execution_2.1>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+Let me think. Let's denote t = x². Then each denominator is t - k for k = 1,2,3,4. So the left side becomes:
+
+<prompt_3.1> Re-evaluate the substitution idea and consider if there's a pattern or simplification. </prompt_3.1>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+1/(t - 1) + 2/(t - 2) + 3/(t - 3) + 4/(t - 4).
+
+So, maybe if I can compute this sum in terms of t, then set it equal to 2010x - 4, and then relate t to x. But since t = x², this might not directly help because x is still present on the right side.
+</execution_3.1>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.1:
+Alternatively, perhaps there is a telescoping nature here. Let me check.
+
+<prompt_4.1> Explore the possibility of a telescoping series in the left side. </prompt_4.1>
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+If I consider the left side:
+
+1/(x² - 1) + 2/(x² - 2) + 3/(x² - 3) + 4/(x² - 4).
+
+Is there a way to write each term as a difference of fractions that cancels out with adjacent terms? For example, sometimes when you have a sum of fractions like A/(x - a) + B/(x - b), you can write it as (A/(x - a) - A/(x - b)) + something. But here, the denominators are quadratic. Wait, but x² - k can be factored as (x - √k)(x + √k). So maybe partial fractions?
+
+But the numerators here are 1, 2, 3, 4, which are linear in the term number. Let me see:
+
+First term: 1/(x² - 1) = 1/[(x - 1)(x + 1)]. Similarly, the second term is 2/[(x - √2)(x + √2)], and so on. Maybe each term can be decomposed into partial fractions. Let's try that.
+
+For the first term: 1/[(x - 1)(x + 1)] = A/(x - 1) + B/(x + 1). Solving for A and B:
+
+1 = A(x + 1) + B(x - 1). Let x = 1: 1 = A(2) => A = 1/2. Let x = -1: 1 = B(-2) => B = -1/2. So 1/(x² - 1) = (1/2)[1/(x - 1) - 1/(x + 1)].
+
+Similarly, the second term: 2/[(x - √2)(x + √2)] = C/(x - √2) + D/(x + √2). Multiply both sides by (x - √2)(x + √2):
+
+2 = C(x + √2) + D(x - √2). Let x = √2: 2 = C(2√2) => C = 2/(2√2) = 1/√2. Let x = -√2: 2 = D(-2√2) => D = -2/(2√2) = -1/√2. Therefore, 2/(x² - 2) = (1/√2)[1/(x - √2) - 1/(x + √2)].
+
+Similarly, third term: 3/(x² - 3) = 3/[(x - √3)(x + √3)] = E/(x - √3) + F/(x + √3). Solving:
+
+3 = E(x + √3) + F(x - √3). Let x = √3: 3 = E(2√3) => E = 3/(2√3) = √3/2. Let x = -√3: 3 = F(-2√3) => F = -3/(2√3) = -√3/2. Therefore, 3/(x² - 3) = (√3/2)[1/(x - √3) - 1/(x + √3)].
+
+Fourth term: 4/(x² - 4) = 4/[(x - 2)(x + 2)] = G/(x - 2) + H/(x + 2). Solving:
+
+4 = G(x + 2) + H(x - 2). Let x = 2: 4 = G(4) => G = 1. Let x = -2: 4 = H(-4) => H = -1. So 4/(x² - 4) = [1/(x - 2) - 1/(x + 2)].
+
+So, putting all these partial fractions together, the left side becomes:
+</execution_4.1>
+</Execution_4>
+
+<Plan_5>
+Based on execution_4.1:
+(1/2)[1/(x - 1) - 1/(x + 1)] + (1/√2)[1/(x - √2) - 1/(x + √2)] + (√3/2)[1/(x - √3) - 1/(x + √3)] + [1/(x - 2) - 1/(x + 2)] = 2010x - 4.
+
+Hmm, so each term is of the form A[1/(x - a) - 1/(x + a)], where A and a are constants. Let's see if we can combine these terms.
+
+<prompt_5.1> Combine the transformed terms and simplify the equation. </prompt_5.1>
+</Plan_5>
+
+<Execution_5>
+<execution_5.1>
+Let me write all the coefficients:
+
+For 1/(x - 1): 1/2.
+
+For 1/(x + 1): -1/2.
+
+For 1/(x - √2): 1/√2.
+
+For 1/(x + √2): -1/√2.
+
+For 1/(x - √3): √3/2.
+
+For 1/(x + √3): -√3/2.
+
+For 1/(x - 2): 1.
+
+For 1/(x + 2): -1.
+
+So combining all these, the left side can be written as:
+
+[1/2]/(x - 1) - [1/2]/(x + 1) + [1/√2]/(x - √2) - [1/√2]/(x + √2) + [√3/2]/(x - √3) - [√3/2]/(x + √3) + 1/(x - 2) - 1/(x + 2) = 2010x - 4.
+
+Hmm, this seems complicated, but maybe if we consider the entire left side as a sum of simple fractions, there's a way to combine them. Alternatively, perhaps we can note that each pair like [1/(x - a) - 1/(x + a)] can be combined into 2a/(x² - a²). Wait, but that's how we started. So maybe this approach isn't helpful.
+
+Alternatively, perhaps the left side can be expressed as a derivative or something else. Wait, but maybe if we consider the sum of all these terms, we can think of it as a sum over residues or something. Wait, but this is a complex analysis thought, and the problem is about complex solutions. Maybe there's a connection.
+
+Alternatively, perhaps considering that the left side is a sum of terms each of which has a simple pole at x = ±√k, and the right side is a linear function. But I'm not sure how that helps. Maybe if we consider the equation as a rational function equal to a linear function, then the equation can be written as a single rational function minus 2010x + 4 equals zero. Then, the sum of roots can be found via Vieta's formula if we can write the equation as a polynomial.
+
+But to do that, we need to clear the denominators. Let's try that. Let's denote D = (x² - 1)(x² - 2)(x² - 3)(x² - 4). Then, multiplying both sides by D gives:
+</execution_5.1>
+</Execution_5>
+
+<Plan_6>
+Based on execution_5.1:
+N = (x² - 2)(x² - 3)(x² - 4) + 2(x² - 1)(x² - 3)(x² - 4) + 3(x² - 1)(x² - 2)(x² - 4) + 4(x² - 1)(x² - 2)(x² - 3).
+
+So expanding N and then moving everything to one side would give a polynomial equation. Then, the sum of all complex solutions is equal to minus the coefficient of x^{2n - 1} divided by the coefficient of x^{2n}, where 2n is the degree of the polynomial.
+
+But expanding N seems really tedious. Let me see if there's a smarter way.
+
+<prompt_6.1> Consider if there's a smarter way to find the sum of roots without expanding. </prompt_6.1>
+</Plan_6>
+
+<Execution_6>
+<execution_6.1>
+Alternatively, notice that the original equation is a sum of terms each with denominator x² - k, which are quadratics. When we multiply through by D, which is the product of all four denominators, each term in N will be the product of three denominators. For example, the first term is (x² - 2)(x² - 3)(x² - 4), and so on. So N is a polynomial of degree 6, since each term in N is a product of three quadratics, which is degree 6. Then, setting N - (2010x - 4)D = 0, which would be a degree 6 polynomial equation. Therefore, the sum of all roots (complex included) is given by Vieta's formula: the coefficient of x^5 divided by the coefficient of x^6, with a sign change.
+
+But computing the coefficients of x^6 and x^5 in N and D might be feasible without expanding everything.
+
+First, let's find the degree of N. As mentioned, each term in N is a product of three quadratics, so each term is a degree 6 polynomial. Therefore, N is a degree 6 polynomial. Similarly, D is a product of four quadratics, so D is degree 8. Therefore, when we write N - (2010x - 4)D = 0, the term (2010x - 4)D is a polynomial of degree 9 (since 2010x is degree 1 times D which is degree 8). Therefore, the equation is a polynomial of degree 9. However, the original equation after multiplying both sides by D would result in a degree 9 polynomial, but perhaps some terms cancel out.
+
+Wait, but let's check:
+
+Left side after multiplying by D: N, which is degree 6.
+
+Right side after multiplying by D: (2010x - 4)D, which is degree 8 + 1 = 9. Therefore, moving everything to left side: N - (2010x - 4)D is a polynomial of degree 9. Therefore, the equation is a degree 9 polynomial. Therefore, the sum of all roots (complex included) is equal to minus the coefficient of x^8 divided by the coefficient of x^9, by Vieta's formula.
+
+Therefore, if we can compute the coefficients of x^9 and x^8 in the polynomial N - (2010x - 4)D, then we can find the sum of all roots.
+
+So let's compute these coefficients.
+
+First, let's compute the coefficient of x^9 in (2010x - 4)D. Since D is (x² - 1)(x² - 2)(x² - 3)(x² - 4), which is a product of four quadratics. The leading term of D is x^8, so D = x^8 + lower degree terms. Therefore, (2010x - 4)D = 2010x * D - 4D. The leading term of 2010x * D is 2010x * x^8 = 2010x^9. The leading term of -4D is -4x^8. Therefore, the coefficient of x^9 in (2010x - 4)D is 2010, and the coefficient of x^8 is -4.
+
+Now, the coefficient of x^9 in N is zero, because N is a product of three quadratics, each of which is degree 2, so N is degree 6. Therefore, in the polynomial N - (2010x - 4)D, the coefficient of x^9 is 0 - 2010 = -2010. The coefficient of x^8 is 0 - (-4) = 4.
+
+Wait, hold on. Wait, N is degree 6, so when we subtract (2010x - 4)D, which is degree 9, the resulting polynomial is degree 9. The coefficient of x^9 comes only from the (2010x - 4)D term, since N doesn't have an x^9 term. So coefficient of x^9 in N - (2010x -4)D is 0 - 2010x^9 term, which is -2010. Similarly, the coefficient of x^8 in N is 0 (since N is degree 6), and in (2010x -4)D, the x^8 term comes from -4D. The leading term of D is x^8, so -4D has a term -4x^8. Therefore, the coefficient of x^8 in (2010x -4)D is -4. Therefore, in N - (2010x -4)D, the coefficient of x^8 is 0 - (-4) = 4.
+
+Therefore, the polynomial equation is of the form:
+
+-2010x^9 + 4x^8 + ... (lower degree terms) = 0.
+
+Therefore, according to Vieta's formula, the sum of all roots is equal to - (coefficient of x^8) / (coefficient of x^9) = - (4)/(-2010) = 4/2010 = 2/1005.
+
+Wait, 4 divided by 2010 is 2/1005. So the sum of all complex solutions is 2/1005.
+</execution_6.1>
+</Execution_6>
+
+<Plan_7>
+Based on execution_6.1:
+But hold on, this seems too straightforward. Let me verify.
+
+<prompt_7.1> Verify the calculated sum of roots. </prompt_7.1>
+</Plan_7>
+
+<Execution_7>
+<execution_7.1>
+Because when we clear denominators, the polynomial is degree 9, and Vieta's formula gives the sum of roots as - (coefficient of x^8)/(coefficient of x^9). The coefficient of x^9 is -2010, and coefficient of x^8 is 4, so sum is - (4)/(-2010) = 4/2010 = 2/1005.
+
+But let me make sure there are no mistakes here. Let's retrace the steps.
+
+1. Original equation: sum of four terms = 2010x -4.
+
+2. Multiply both sides by D = (x² -1)(x² -2)(x² -3)(x² -4).
+
+3. Left side becomes N, which is a product of three denominators each time, so degree 6.
+
+4. Right side becomes (2010x -4)D, which is degree 9.
+
+5. Therefore, moving everything to left side: N - (2010x -4)D is a degree 9 polynomial.
+
+6. The coefficient of x^9 in N is 0, in (2010x -4)D it's -2010x^9 (from 2010x * x^8 term in D), so coefficient of x^9 in the equation is 0 - (-2010) = +2010? Wait, wait, no. Wait, when we have N - (2010x -4)D = 0, so the coefficient of x^9 is coefficient of x^9 in N minus coefficient of x^9 in (2010x -4)D. Since N has no x^9 term, it's 0 - (2010) = -2010. Therefore, the coefficient of x^9 in the equation is -2010. Then the coefficient of x^8 is 0 - (-4) = +4. Therefore, the polynomial is -2010x^9 + 4x^8 + ... = 0.
+
+Therefore, the sum of roots is - (coefficient of x^8) / (coefficient of x^9) = - (4)/(-2010) = 4/2010 = 2/1005.
+
+Simplify 2/1005: 1005 = 5*201 = 5*3*67. So 2 and 1005 are coprime. So 2/1005 is the simplified form.
+</execution_7.1>
+</Execution_7>
+
+<Plan_8>
+Based on execution_7.1:
+But let me check if there are any other terms that might contribute to x^9 or x^8.
+
+<prompt_8.1> Re-evaluate the polynomial degree and confirm the sum of roots. </prompt_8.1>
+</Plan_8>
+
+<Execution_8>
+<execution_8.1>
+Wait, N is degree 6, so when subtracting (2010x -4)D, which is degree 9, the resulting polynomial is indeed degree 9. The x^9 term only comes from the (2010x -4)D term, since N doesn't have an x^9 term. Similarly, the x^8 term in (2010x -4)D comes from -4D. Since D is x^8 + ... , so -4D has a term -4x^8. Therefore, when subtracting (2010x -4)D, the x^8 term becomes +4x^8. Therefore, in the polynomial equation, the x^8 coefficient is +4, and x^9 coefficient is -2010. Therefore, the sum of roots is - (4)/(-2010) = 4/2010 = 2/1005.
+
+Therefore, the answer should be 2/1005.
+</execution_8.1>
+</Execution_8>
+
+<Plan_9>
+Based on execution_8.1:
+But let me confirm once more. Let's consider the degrees:
+
+<prompt_9.1> Confirm the solution through degree analysis. </prompt_9.1>
+</Plan_9>
+
+<Execution_9>
+<execution_9.1>
+D is degree 8, so (2010x -4)D is degree 9. N is degree 6. So when we write N - (2010x -4)D = 0, the highest degree term is x^9 with coefficient -2010. The next term is x^8 with coefficient 4. So yes, the polynomial is of degree 9, and Vieta's formula gives the sum of roots as - (coefficient of x^8)/(coefficient of x^9) = - (4)/(-2010) = 2/1005.
+
+Therefore, the sum of all complex solutions is 2/1005.
+</execution_9.1>
+</Execution_9>
+
+<Plan_10>
+Based on execution_9.1:
+But let me check if there's a miscalculation here. 2010x * D: D has leading term x^8, so 2010x * x^8 = 2010x^9.
+
+<prompt_10.1> Verify the calculations for the polynomial coefficients. </prompt_10.1>
+
+Therefore, the answer is 2/1005.
+
+But wait, 1005 is 5*201, which is 5*3*67. So 2/1005 is in simplest terms. So the sum is 2/1005.
+
+But let me check with a simpler case. Suppose instead of 2010x -4, the right side was a constant.
+
+<prompt_10.2> Consider a simpler case to verify the approach. </prompt_10.2>
+
+Therefore, applying the same logic here, the sum of roots is 2/1005.
+
+But let me check another angle. Suppose we consider the original equation:
+
+<prompt_10.3> Re-confirm the solution through substitution and symmetry. </prompt_10.3>
+</Plan_10>
+
+<Execution_10>
+<execution_10.1>
+So the coefficient of x^9 in (2010x -4)D is indeed -2010 (from -4D's x^8 term? Wait, no. Wait, (2010x -4)D = 2010x*D -4D. The term 2010x*D will have a leading term 2010x*(x^8) = 2010x^9, so coefficient 2010. The term -4D will have a leading term -4x^8. Therefore, the coefficient of x^9 in (2010x -4)D is 2010 (from 2010x*D) and the coefficient of x^8 is -4 (from -4D). Therefore, when we subtract (2010x -4)D from N, the coefficient of x^9 becomes 0 - 2010 = -2010, and the coefficient of x^8 becomes 0 - (-4) = +4. Therefore, the polynomial is -2010x^9 +4x^8 + ... =0. Therefore, the sum of roots is - (4)/(-2010) = 4/2010 = 2/1005.
+</execution_10.1>
+
+<execution_10.2>
+Then, multiplying through by D would give a polynomial equation of degree 8 (from D) plus degree 0 (from the constant term times D), so the max degree is 8. Then sum of roots would be coefficient of x^7 over coefficient of x^8, etc. But in our case, since the right side is degree 1, when multiplied by D (degree 8), gives degree 9. So the logic holds.
+
+Alternatively, perhaps we can test with specific values. Suppose x is a root, then 2010x -4 must equal the left side. If x is a complex number, but perhaps for certain x, the left side can be simplified.
+
+But given the complexity, the Vieta's approach seems the most straightforward.
+
+Therefore, after thorough analysis, the sum of all complex solutions is 2/1005.
+</execution_10.2>
+
+<execution_10.3>
+Sum_{k=1 to 4} [1/(x² - k)] = 2010x -4.
+
+If we consider that each term 1/(x² - k) is a function that is symmetric with respect to x and -x, except for the right side, which is linear in x. However, the right side 2010x -4 is not symmetric. Therefore, the equation is not symmetric with respect to x and -x. Therefore, the roots may not come in pairs that sum to zero. However, the problem asks for the sum of all complex solutions, which Vieta's formula gives as 2/1005.
+
+But let me check with a simpler equation. Suppose instead of 2010x -4, the right side was a constant, say 0. Then, the equation would be:
+
+Sum_{k=1 to 4} [1/(x² - k)] = 0.
+
+Then, multiplying both sides by D, we get N = 0, so N is a degree 6 polynomial. Then, the sum of roots would be - (coefficient of x^5)/ (coefficient of x^6). But in that case, perhaps the sum would be different. However, in our problem, the right side is 2010x -4, which when multiplied by D gives a degree 9 polynomial. So the previous calculation holds.
+
+Therefore, after thorough analysis, the sum of all complex solutions is 2/1005.
+</execution_10.3>
+</Execution_10>
+
+<Plan_11>
+Based on execution_10.1:
+But let me check once more. Let's suppose that after expanding all terms, the coefficients of x^9 and x^8 are as we found. So the polynomial is:
+
+-2010x^9 + 4x^8 + ... (lower terms) = 0.
+
+Dividing both sides by -2010, we get:
+
+<prompt_11.1> Verify the final polynomial and its root sum. </prompt_11.1>
+</Plan_11>
+
+<Execution_11>
+<execution_11.1>
+x^9 - (4/2010)x^8 + ... = 0.
+
+But Vieta's formula states that the sum of roots is equal to the coefficient of x^8 divided by the coefficient of x^9, with a sign change. Wait, no. Wait, in general, for a polynomial:
+
+a_n x^n + a_{n-1}x^{n-1} + ... + a_0 = 0,
+
+the sum of roots is -a_{n-1}/a_n.
+
+In our case, the polynomial is:
+
+-2010x^9 + 4x^8 + ... = 0.
+
+So here, a_9 = -2010, a_8 = 4. Therefore, the sum of roots is -a_8 / a_9 = -4 / (-2010) = 4/2010 = 2/1005.
+
+Yes, that's correct. Therefore, the sum of all complex solutions is 2/1005.
+</execution_11.1>
+</Execution_11>
+
+<Final_answer>
+Therefore, the sum of all complex solutions of the given equation is $\boxed{\dfrac{2}{1005}}$.
+</Final_answer>
+</think>

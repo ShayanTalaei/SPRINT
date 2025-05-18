@@ -1,0 +1,307 @@
+<Question>
+Solve
+\[\sqrt{x + \sqrt{3x + 6}} + \sqrt{x - \sqrt{3x + 6}} = 6.\]
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to solve this equation: √(x + √(3x + 6)) + √(x - √(3x + 6)) = 6. Hmm, that looks a bit complicated with nested square roots. Let me try to break it down step by step.
+
+<prompt_1.1> Identify the domain of the equation considering the conditions for the square roots to be defined. </prompt_1.1>
+
+Let me denote y = √(3x + 6). Then, since y is a square root, y must be non-negative, so y ≥ 0. Also, from the original equation, the expressions inside the square roots must be non-negative.
+
+<prompt_1.2> Substitute y = √(3x + 6) into the equation and simplify it. </prompt_1.2>
+-----
+
+Let me check x=10 in the original equation:
+
+<prompt_1.3> Verify if x=10 is a solution to the original equation. </prompt_1.3>
+
+Let's check x=3. Substitute x=3 into the original equation:
+
+<prompt_1.4> Verify if x=3 is a solution to the original equation. </prompt_1.4>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+First, I should figure out the domain of the variable x. Since there are square roots involved, the expressions inside them must be non-negative. Let's start from the innermost square root: √(3x + 6). For this to be real, 3x + 6 must be ≥ 0. So,
+
+3x + 6 ≥ 0 → 3x ≥ -6 → x ≥ -2.
+
+Okay, so x must be at least -2. But there are more restrictions because of the outer square roots. Let's look at the entire expressions inside the square roots:
+
+1. For √(x + √(3x + 6)), the expression inside is x + √(3x + 6). Since √(3x + 6) is non-negative, and x ≥ -2, this expression should be non-negative. Let's check the minimum value when x = -2: √(3*(-2) + 6) = √0 = 0. So, x + 0 = -2, which is negative. Wait, that's a problem. So when x = -2, the expression inside the first square root becomes -2 + 0 = -2, which is negative. Therefore, x cannot be -2. So the domain must exclude x = -2. Let's see when x + √(3x + 6) ≥ 0.
+
+Let me solve x + √(3x + 6) ≥ 0. Let’s set t = √(3x + 6). Then t ≥ 0, and t² = 3x + 6 → x = (t² - 6)/3. Substitute into the inequality:
+
+(t² - 6)/3 + t ≥ 0 → Multiply both sides by 3: t² - 6 + 3t ≥ 0 → t² + 3t - 6 ≥ 0.
+
+Solve the quadratic inequality t² + 3t - 6 ≥ 0. The roots of the equation t² + 3t - 6 = 0 are t = [-3 ± √(9 + 24)]/2 = [-3 ± √33]/2. Since t ≥ 0, we only consider the positive root: t = [-3 + √33]/2 ≈ (-3 + 5.7446)/2 ≈ 1.3723. So, t ≥ 1.3723. Therefore, √(3x + 6) ≥ 1.3723. Let's square that: 3x + 6 ≥ (1.3723)² ≈ 1.883. Therefore, 3x ≥ 1.883 - 6 ≈ -4.117 → x ≥ -4.117/3 ≈ -1.3723.
+</execution_1.1>
+
+<execution_1.2>
+First, 3x + 6 must be non-negative. So 3x + 6 ≥ 0 → x ≥ -2. So the domain of x is x ≥ -2.
+
+Now substituting y into the equation, we have:
+
+√(x + y) + √(x - y) = 6.
+</execution_1.2>
+
+<execution_1.3>
+Left side: sqrt(10 + sqrt(30 +6)) + sqrt(10 - sqrt(30 +6)) = sqrt(10 + sqrt(36)) + sqrt(10 - sqrt(36)) = sqrt(10 +6) + sqrt(10 -6) = sqrt(16) + sqrt(4) = 4 + 2 =6.
+</execution_1.3>
+
+<execution_1.4>
+Left side: √(3 + √(9 +6)) + √(3 - √(9 +6)) = √(3 + √15) + √(3 - √15). Let's compute this. √15 is about 3.872, so 3 - 3.872 is negative, so √(negative) is not real. Therefore, x=3 is invalid.
+</execution_1.4>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.2:
+Let me call this equation (1). Let’s also note that since y = √(3x + 6), then y² = 3x + 6. Therefore, x = (y² - 6)/3. Maybe substituting x in terms of y into equation (1) can help.
+
+<prompt_2.1> Substitute x = (y² - 6)/3 into equation (1) and simplify it. </prompt_2.1>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+Let's try that. Substitute x = (y² - 6)/3 into equation (1):
+
+√( ( (y² - 6)/3 ) + y ) + √( ( (y² - 6)/3 ) - y ) = 6.
+
+Let me simplify the expressions inside the square roots. Let's compute each term:
+
+First term inside the square root: (y² - 6)/3 + y = (y² - 6 + 3y)/3 = (y² + 3y - 6)/3.
+
+Second term inside the square root: (y² - 6)/3 - y = (y² - 6 - 3y)/3 = (y² - 3y - 6)/3.
+
+Therefore, equation (1) becomes:
+
+√[ (y² + 3y - 6)/3 ] + √[ (y² - 3y - 6)/3 ] = 6.
+
+Hmm, this looks a bit messy. Let me see if I can simplify this further. Let's factor out 1/√3 from each square root:
+
+√[ (y² + 3y - 6)/3 ] = √[ (y² + 3y - 6) ] / √3,
+
+Similarly, √[ (y² - 3y - 6)/3 ] = √[ (y² - 3y - 6) ] / √3.
+
+So, the equation becomes:
+
+[ √(y² + 3y - 6) + √(y² - 3y - 6) ] / √3 = 6.
+
+Multiply both sides by √3:
+
+√(y² + 3y - 6) + √(y² - 3y - 6) = 6√3.
+</execution_2.1>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+Hmm, maybe squaring both sides here would help, but that might get complicated. Let's denote the left side as A + B, where A = √(y² + 3y - 6) and B = √(y² - 3y - 6).
+
+<prompt_3.1> Square both sides of the equation to simplify it further. </prompt_3.1>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+Then, (A + B)² = A² + 2AB + B². Let's compute that:
+
+A² + B² = (y² + 3y - 6) + (y² - 3y - 6) = 2y² - 12.
+
+And 2AB = 2 * √(y² + 3y - 6) * √(y² - 3y - 6).
+
+Therefore, (A + B)² = 2y² - 12 + 2√[ (y² + 3y - 6)(y² - 3y - 6) ].
+
+But we know that (A + B)² = (6√3)² = 36 * 3 = 108. So,
+
+2y² - 12 + 2√[ (y² + 3y - 6)(y² - 3y - 6) ] = 108.
+
+Subtract 2y² - 12 from both sides:
+
+2√[ (y² + 3y - 6)(y² - 3y - 6) ] = 108 - (2y² - 12) = 108 - 2y² + 12 = 120 - 2y².
+
+Divide both sides by 2:
+
+√[ (y² + 3y - 6)(y² - 3y - 6) ] = 60 - y².
+</execution_3.1>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.1:
+Now, let's square both sides again to eliminate the square root:
+
+<prompt_4.1> Square both sides again to eliminate the square root and simplify the equation. </prompt_4.1>
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+[ (y² + 3y - 6)(y² - 3y - 6) ] = (60 - y²)².
+
+Let me compute the left side first. Multiply the two quadratics:
+
+(y² + 3y - 6)(y² - 3y - 6) = [y²(y² - 3y - 6)] + [3y(y² - 3y - 6)] + [-6(y² - 3y - 6)].
+
+Compute each term:
+
+First term: y²(y² - 3y - 6) = y⁴ - 3y³ - 6y²,
+
+Second term: 3y(y² - 3y - 6) = 3y³ - 9y² - 18y,
+
+Third term: -6(y² - 3y - 6) = -6y² + 18y + 36.
+
+Now, add all these together:
+
+y⁴ - 3y³ - 6y² + 3y³ - 9y² - 18y -6y² + 18y + 36.
+
+Combine like terms:
+
+y⁴ + (-3y³ + 3y³) + (-6y² -9y² -6y²) + (-18y +18y) +36.
+
+Simplify:
+
+y⁴ + 0y³ + (-21y²) + 0y +36 = y⁴ -21y² +36.
+
+Now, the right side is (60 - y²)² = 60² - 2*60*y² + y⁴ = 3600 -120y² + y⁴.
+
+So, setting left side equal to right side:
+
+y⁴ -21y² +36 = y⁴ -120y² +3600.
+
+Subtract y⁴ from both sides:
+
+-21y² +36 = -120y² +3600.
+
+Add 120y² to both sides:
+
+99y² +36 = 3600.
+
+Subtract 36:
+
+99y² = 3564.
+
+Divide both sides by 99:
+
+y² = 3564 / 99.
+
+Let me compute that. 3564 ÷ 99. Let's divide numerator and denominator by 9:
+
+3564 ÷ 9 = 396, 99 ÷9=11. So 396/11=36. Therefore, y²=36.
+
+So y²=36 → y=6 or y=-6. But since y=√(3x+6) ≥0, we discard y=-6. Thus, y=6.
+</execution_4.1>
+</Execution_4>
+
+<Plan_5>
+Based on execution_4.1:
+Therefore, y=6. Recall that y=√(3x +6), so:
+
+√(3x +6)=6 → 3x +6=36 → 3x=30 → x=10.
+
+But wait, we need to check if this solution is valid in the original equation and also consider if there were any extraneous solutions introduced during squaring steps.
+
+<prompt_5.1> Verify the solution x = 10 in the original equation. </prompt_5.1>
+</Plan_5>
+
+<Execution_5>
+<execution_5.1>
+Let's check x=10 in the original equation:
+
+√(10 + √(3*10 +6)) + √(10 - √(3*10 +6)) = √(10 + √36) + √(10 - √36) = √(10 +6) + √(10 -6) = √16 + √4 =4 +2=6. Which matches the right side. So x=10 is a valid solution.
+
+But wait, earlier when we squared both sides, sometimes extraneous solutions can be introduced, but in this case, since we checked and it works, x=10 is the only solution.
+
+But let me think again. When we squared the equation, could there be other solutions? Let's see.
+
+We had to square twice, so each squaring can introduce extraneous solutions. However, in this case, since we ended up with y²=36, which gives only y=6, and that leads to x=10, which checks out. So there are no other solutions.
+</execution_5.1>
+</Execution_5>
+
+<Plan_6>
+Based on execution_5.1:
+But let's go back to the domain. Earlier, we found that x must be ≥ -1.3723 approximately.
+
+<prompt_6.1> Verify the domain constraints for the solution x = 10. </prompt_6.1>
+
+Wait, but let me check if there could be another solution when we squared the equation. For example, sometimes when you square both sides, you can get solutions that satisfy the squared equation but not the original. But in this case, since we ended up with a unique solution for y (since y must be non-negative), and that led to a valid x, there are no other solutions.
+
+But let me test x=3 again. Wait, earlier when we substituted x=3, we had 3x +6=15, so √15≈3.872, so x - √(3x +6)=3 -3.872≈-0.872, which is negative, so the second square root is invalid. So x=3 is not in the domain. Wait, but according to our domain analysis, x must be ≥ -1.3723. So x=3 is in the domain (since 3 > -1.3723), but the expression inside the second square root becomes negative, so it's invalid. Therefore, x=3 is not a valid solution.
+
+<prompt_6.2> Re-evaluate the solution x = 3 and confirm the validity of x = 10. </prompt_6.2>
+</Plan_6>
+
+<Execution_6>
+<execution_6.1>
+x=10 is way larger than that, so it's within the domain. Also, when we checked x=3, which is within the domain (since 3 ≥ -1.3723), but it leads to a negative inside the second square root. So x=3 is invalid.
+
+Wait, but how did we get x=3? Wait, no, x=3 was from solving another equation. Wait, no, in the previous step, when solving for x, we had x=(y² -6)/3. If y=6, then x=(36 -6)/3=30/3=10. So x=10 is the only solution. So x=3 is not a solution here. Wait, but earlier when we considered x=3, we were testing another possible solution, but it turned out invalid. So the only solution is x=10.
+</execution_6.1>
+
+<execution_6.2>
+Therefore, even though algebraically we might get such a solution, it's invalid. Therefore, we must check if the expressions inside the square roots are non-negative for the solution. In this case, x=10 works, x=3 does not.
+
+Therefore, the only solution is x=10.
+</execution_6.2>
+</Execution_6>
+
+<Plan_7>
+Based on execution_6.1, execution_6.2:
+Let me check once more if there could be another solution. Suppose there was another y value that satisfies the equation. But when we solved the equation, we ended up with y²=36, so y=6 is the only possible solution. Therefore, x=10 is the only solution.
+
+But let me check if when we squared the equation, maybe we missed something. Let's retrace the steps.
+
+<prompt_7.1> Re-evaluate the steps and confirm the solution x = 10. </prompt_7.1>
+</Plan_7>
+
+<Execution_7>
+<execution_7.1>
+Original equation:
+
+√(x + √(3x +6)) + √(x - √(3x +6)) =6.
+
+Let’s denote a = √(x + √(3x +6)), b=√(x - √(3x +6)), so a + b =6.
+
+Then, we squared once to get a² + 2ab + b² =36. But a² =x + √(3x +6), b² =x - √(3x +6). Therefore, a² + b² =2x. So 2x + 2ab=36 → x + ab=18. So ab=18 -x.
+
+But also, a² - b² = [x + √(3x +6)] - [x - √(3x +6)] =2√(3x +6). Therefore, (a - b)(a + b)=2√(3x +6). Since a + b=6, then (a - b)*6=2√(3x +6) → a - b=(√(3x +6))/3.
+
+So now, we have two equations:
+
+1. a + b=6,
+
+2. a - b=(√(3x +6))/3.
+
+We can solve for a and b:
+
+Adding equations: 2a=6 + (√(3x +6))/3 → a=3 + (√(3x +6))/6,
+
+Subtracting equations: 2b=6 - (√(3x +6))/3 → b=3 - (√(3x +6))/6.
+
+But also, we have ab=18 -x.
+
+So, let's compute a*b:
+
+[3 + (√(3x +6))/6] * [3 - (√(3x +6))/6] =9 - [ (√(3x +6))/6 ]² =9 - (3x +6)/36=9 - (x +2)/12.
+
+Therefore, ab=9 - (x +2)/12= (108 -x -2)/12=(106 -x)/12.
+
+But we also have ab=18 -x. Therefore:
+
+(106 -x)/12=18 -x.
+
+Multiply both sides by12:
+
+106 -x=216 -12x.
+
+Bring variables to left and constants to right:
+
+- x +12x=216 -106 →11x=110 →x=10.
+
+So this method also leads to x=10, confirming the solution. Therefore, there are no other solutions.
+</execution_7.1>
+</Execution_7>
+
+<Final_answer>
+Therefore, after solving the equation step by step and verifying the solution, we conclude that the solution to the equation is $\boxed{10}$.
+</Final_answer>
+</think>

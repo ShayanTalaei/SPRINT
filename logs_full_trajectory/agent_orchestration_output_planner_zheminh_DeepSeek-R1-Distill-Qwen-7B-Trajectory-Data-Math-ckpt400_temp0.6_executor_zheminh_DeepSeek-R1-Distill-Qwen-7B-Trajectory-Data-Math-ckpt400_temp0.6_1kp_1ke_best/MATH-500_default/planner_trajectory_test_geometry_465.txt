@@ -1,0 +1,510 @@
+<Question>
+In the diagram, two circles, each with center $D$, have radii of $1$ and $2$. The total area of the shaded region is $\frac5{12}$ of the area of the larger circle. How many degrees are in the measure of (the smaller) $\angle ADC$?
+[asy]
+size(4cm);
+defaultpen(linewidth(0.75));
+real adc = 100;
+pair d = (0, 0); pair a = 2 * dir(100); pair c = (2, 0);
+path inner = arc(d, a/2, c/2, CW);
+
+path outer = arc(d, c, a, CCW);
+guide region1 = (a--a/2)..inner..(c/2--c)..outer..cycle;
+guide region2 = arc(d, a/2, c/2, CCW)..(c/2--d--a/2)..cycle;
+fill(region1, gray(0.75));
+fill(region2, gray(0.75));
+draw(unitcircle); draw(scale(2) * unitcircle);
+draw(a--d--c);
+label("$A$", a, N); label("$C$", c, E); label("$D$", d, NE);
+[/asy]
+</Question>
+
+<think>
+<Plan_1>
+Okay, let's try to figure out this problem. So, there are two circles with the same center D. The smaller one has a radius of 1, and the larger one has a radius of 2. The shaded region's total area is 5/12 of the area of the larger circle. We need to find the measure of angle ADC in degrees.
+
+First, let me visualize the diagram.
+There's a smaller circle inside a larger one, both sharing the same center D. Points A and C are on the circumferences of the smaller and larger circles, respectively. The angle ADC is formed at the center D by radii DA and DC. The shaded regions are probably the areas between the two circles, maybe like lens-shaped regions or something. The Asymptote code mentions two shaded regions, region1 and region2. Hmm, maybe one is the segment of the larger circle minus the smaller one, and the other is the segment of the smaller circle?
+
+Wait, the problem says "the total area of the shaded region," so maybe both shaded regions combined make up 5/12 of the larger circle's area. Let me confirm.
+
+The Asymptote code draws two arcs: one for the inner circle (radius 1) and one for the outer circle (radius 2). It seems like region1 is a sort of annular sector between angle ADC, going from the smaller circle to the larger one. Region2 is another shaded area, perhaps the segment of the smaller circle? Or maybe it's the triangle part?
+
+Looking at the Asymptote code, region1 is drawn as (a--a/2)..inner..(c/2--c)..outer..cycle. So that's starting at point A, going to the midpoint of DA (a/2), then following the inner arc from a/2 to c/2, then to point C/2, then following the outer arc back to C, and back to A. Hmm, that seems like a shape that's a combination of two sectors: one from the smaller circle and one from the larger circle, connected by lines. Similarly, region2 is the arc from A/2 to C/2 counterclockwise, then connecting to D and back to A/2.
+
+Maybe region1 is the area between the two arcs (an annular sector) and region2 is the triangle or segment in the smaller circle. But since both are shaded, the total shaded area is the sum of region1 and region2.
+
+Wait, the problem states "the total area of the shaded region," so perhaps both regions combined. Let me try to parse the Asymptote code more carefully. The code defines region1 as a path starting at A, going to a/2 (which is the midpoint between D and A), then following the inner arc (which is arc from a/2 to c/2, clockwise) to c/2, then following the outer arc (arc from c/2 to A, counterclockwise) back to A. Wait, maybe that's not quite right. Let me parse the Asymptote code step by step.
+
+<prompt_1.1> Parse the Asymptote code to understand how the shaded regions are constructed. </prompt_1.1>
+
+But maybe the total shaded area is the sum of the segment in the larger circle and the segment in the smaller circle. Alternatively, perhaps region1 is the area between the two arcs (annular sector) and region2 is the triangle in the smaller circle. Let me try to compute both areas.
+
+First, let's compute the area of the larger circle: π*(2)^2 = 4π. The total shaded area is 5/12 of that, so 5/12 * 4π = (5/12)*4π = (5/3)π. So the combined shaded areas (region1 and region2) equal 5π/3.
+
+Now, let's figure out what each region's area is.
+
+<prompt_1.2> Calculate the area of the smaller circle. </prompt_1.2>
+-----
+
+But let me check if the Asymptote code's description is accurate. The problem mentions "the smaller" angle ADC, so it's possible that angle ADC is the angle in the smaller circle, but since both circles share the same center, the angle would be the same for both.
+
+<prompt_1.3> Discuss the relationship between the sectors of the two circles and the shaded regions. </prompt_1.3>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+The inner path is defined as arc(d, a/2, c/2, CW). The outer path is arc(d, c, a, CCW). So, region1 is constructed by starting at point A, moving to a/2 (midpoint of DA), then following the inner arc from a/2 to c/2 clockwise, which would be a 100-degree arc if angle ADC is 100 degrees (as per the Asymptote code's example where adc = 100), then moving to c/2, then following the outer arc from c/2 to A counterclockwise, which is also 100 degrees, then back to A. Hmm, this seems to form a sort of curved quadrilateral.
+
+Region2 is constructed by the arc from a/2 to c/2 counterclockwise (which would be 260 degrees if angle ADC is 100 degrees, since the other arc is 260 degrees), then connecting back to D and to a/2. So region2 is a segment of the smaller circle connected to a triangle? Maybe.
+</execution_1.1>
+
+<execution_1.2>
+The smaller circle has radius 1, so its area is π*(1)^2 = π. The larger circle has area 4π as I said. The shaded area is 5π/3.
+</execution_1.2>
+
+<execution_1.3>
+Wait, no. The angle at the center is the same for both circles, but the arcs subtended by the angle would have different lengths. The sector area in the smaller circle would be (θ/360)*π*1², and in the larger circle, (θ/360)*π*2². But the shaded regions might be the difference between these sectors? Or maybe the segments?
+</execution_1.3>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.2:
+Wait, maybe the shaded regions are segments. For a circle, the area of a segment is the area of the sector minus the area of the triangle. So, if angle ADC is θ degrees, then the area of the segment in the smaller circle would be (θ/360)*π*1² - (1/2)*1²*sinθ = (θ/360)*π - (1/2)*sinθ. Similarly, the segment in the larger circle would be (θ/360)*π*2² - (1/2)*2²*sinθ = (θ/360)*4π - 2*sinθ.
+
+But the problem says the total shaded area is 5/12 of the larger circle's area. The larger circle's area is 4π, so 5/12 of that is (5/12)*4π = (5/3)π. So maybe the shaded regions consist of both segments from the smaller and larger circles. So total shaded area would be the segment area of the smaller circle plus the segment area of the larger circle.
+
+<prompt_2.1> Set up the equation for the total shaded area as the sum of the segments from both circles. </prompt_2.1>
+-----
+
+Based on execution_1.3:
+Let's clarify.
+
+<prompt_2.2> Clarify the relationship between the sectors of the two circles and the shaded regions. </prompt_2.2>
+-----
+
+Based on execution_1.2:
+But the problem says "the total area of the shaded region is 5/12 of the area of the larger circle". So maybe the shaded regions are only in the larger circle? But there are two shaded regions in the Asymptote code, one in the annulus and one in the smaller circle.
+Wait, perhaps region1 is the part of the annulus between the two arcs, and region2 is the part of the smaller circle that's shaded. So the total shaded area is region1 plus region2.
+
+<prompt_2.3> Confirm the setup of the shaded regions and their relation to the problem statement. </prompt_2.3>
+-----
+
+Based on execution_1.1:
+Alternatively, maybe region1 is the area between the two arcs, which would be the area of the sector in the larger circle minus the area of the sector in the smaller circle.
+Similarly, region2 is the area of the triangle D a/2 c/2.
+
+<prompt_2.4> Re-evaluate the Asymptote code's description to ensure the correct understanding of shaded regions. </prompt_2.4>
+-----
+
+Based on execution_1.2:
+But how does θ relate to the shaded regions?
+
+Alternatively, perhaps the shaded regions are the two segments: the segment in the smaller circle (between angle θ) and the segment in the annulus (between angle θ). So the total shaded area would be the area of the segment in the smaller circle plus the area of the annular segment.
+
+<prompt_2.5> Re-confirm the relationship between the sectors of the two circles and the shaded regions. </prompt_2.5>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+So:
+
+[(θ/360)*π - (1/2)*sinθ] + [(θ/360)*4π - 2*sinθ] = 5π/3.
+
+Simplify this equation:
+
+θ/360*(π + 4π) - (1/2 + 2)*sinθ = 5π/3
+
+That is:
+
+θ/360 * 5π - (5/2)*sinθ = 5π/3.
+</execution_2.1>
+
+<execution_2.2>
+Wait, the problem mentions "the smaller angle ADC". Since angle ADC is the same for both circles (because they share the center), the measure of the angle is the same regardless of the circle. So whether we look at the smaller or larger circle, the angle ADC is θ degrees.
+</execution_2.2>
+
+<execution_2.3>
+Alternatively, maybe region1 is part of the annulus and region2 is part of the smaller circle. Let's try to figure this out.
+
+Looking at the Asymptote code, region1 is constructed as follows: starting at A, goes to a/2 (midpoint), then follows the inner arc (from a/2 to c/2 clockwise), then to c/2, then follows the outer arc (from c/2 back to A counterclockwise). So this seems to form a shape that's like a curved triangle, bounded by two radii (DA and DC) and an arc (from A to C via the outer circle). Wait, but in the code, it's going from a/2 to c/2 via the inner arc, which is radius 1, and then from c/2 back to A via the outer arc, which is radius 2. So region1 is actually a shape that's a combination of two sectors: one sector from the smaller circle (radius 1) and one sector from the larger circle (radius 2), connected at points a/2 and c/2. But since the angle is the same θ at the center, the area of region1 would be the area between the two sectors. Wait, maybe it's the area of the sector in the larger circle minus the area of the sector in the smaller circle? That would be (θ/360)*π*(2)^2 - (θ/360)*π*(1)^2 = (θ/360)*π*(4 - 1) = (θ/360)*3π. But that's just the area of the annular sector. Then region2 is another shaded area.
+</execution_2.3>
+
+<execution_2.4>
+Wait, let's check.
+
+If region1 is constructed by the inner arc (radius 1) from a/2 to c/2 clockwise, which is angle θ, and the outer arc (radius 2) from c/2 to a counterclockwise, which is also angle θ. Then connecting these two arcs with lines from a/2 to c/2. So region1 is the area between the two arcs, which is like a curved trapezoid. The area of region1 would be the area of the sector in the larger circle minus the area of the sector in the smaller circle. So that would be (θ/360)*π*(2)^2 - (θ/360)*π*(1)^2 = (θ/360)*π*(4 - 1) = (θ/360)*3π.
+
+Then region2 is the arc from a/2 to c/2 counterclockwise (which is 360 - θ degrees) and then connecting back to D. So region2 is a sector of the smaller circle with angle (360 - θ) degrees. The area of that sector would be ( (360 - θ)/360 ) * π*(1)^2.
+</execution_2.4>
+
+<execution_2.5>
+Wait, but if the angle is θ, then the segment in the smaller circle is (θ/360)*π*1² - (1/2)*1²*sinθ, and the annular segment is (θ/360)*(π*2² - π*1²) = (θ/360)*3π. So total shaded area would be [(θ/360)*π - (1/2)*sinθ] + [(θ/360)*3π]. That would be (θ/360)*4π - (1/2)*sinθ. Then set this equal to 5/12 * 4π = (5/3)π. But that seems complicated because then we have an equation involving θ and sinθ. But maybe that's the case.
+
+Alternatively, maybe the shaded regions are the two sectors themselves. If region1 is the sector of the larger circle and region2 is the sector of the smaller circle, then the total shaded area would be (θ/360)*4π + (θ/360)*π = (θ/360)*5π. Then set this equal to 5/12 *4π = (5/3)π. Let's see:
+
+(θ/360)*5π = (5/3)π => (θ/360)*5 = 5/3 => θ/360 = 1/3 => θ = 120 degrees. Hmm, that's a possible answer. But is that correct?
+
+Wait, but if the shaded regions are the sectors themselves, then region1 is the sector of the larger circle (angle θ) and region2 is the sector of the smaller circle (angle θ). Then total shaded area is sector_large + sector_small = (θ/360)(π*2²) + (θ/360)(π*1²) = (θ/360)(4π + π) = (θ/360)(5π). According to the problem, this total should be 5/12 of the area of the larger circle, which is 5/12 *4π = (5/3)π. So:
+
+(θ/360)(5π) = (5/3)π
+
+Divide both sides by π:
+
+(θ/360)*5 = 5/3
+
+Divide both sides by 5:
+
+θ/360 = 1/3
+
+Multiply both sides by 360:
+
+θ = 120 degrees.
+
+Wait, that seems straightforward. But let me check if the shaded regions are indeed the sectors. Looking back at the Asymptote code, region1 is a path that starts at A, goes to a/2, follows the inner arc to c/2, then follows the outer arc back to A. The fill command would fill the area bounded by that path. Similarly, region2 is the inner arc from a/2 to c/2, then a line from c/2 to D and back to a/2. So, region1 is the area between the two arcs (the annular sector), and region2 is the triangle (or sector) in the smaller circle.
+</execution_2.5>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+Let's write that equation again:
+
+(θ/360)*5π - (5/2)*sinθ = 5π/3.
+
+Let's divide both sides by 5π to simplify:
+
+θ/360 - (sinθ)/(2π) = 1/(3π).
+
+Multiply both sides by 360 to solve for θ:
+
+θ - (360*(sinθ))/(2π) = 360/(3π).
+
+Simplify:
+
+θ - (180 sinθ)/π = 120/π.
+
+Hmm, this is getting complicated. There's a θ term and a sinθ term. This might not have an algebraic solution and might require numerical methods.
+
+<prompt_3.1> Solve the equation for θ using numerical methods. </prompt_3.1>
+-----
+
+Based on execution_2.3:
+So region1 area = 3π*(θ/360).
+
+<prompt_3.2> Calculate the area of region1 and region2, and set up the equation for the total shaded area. </prompt_3.2>
+-----
+
+Based on execution_2.5:
+θ/360 * 5π - (5/2) sinθ = 5π/3.
+
+Multiply both sides by 360 to eliminate denominators:
+
+<prompt_3.3> Solve the equation for θ using numerical methods. </prompt_3.3>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+Let me check my steps again to make sure I didn't make a mistake.
+
+Starting from the total shaded area:
+
+Segment_smaller + Segment_larger = 5π/3.
+
+Which translates to:
+
+[(θ/360)*π - (1/2)*sinθ] + [(θ/360)*4π - 2*sinθ] = 5π/3.
+
+Combine terms:
+
+θ/360*(π + 4π) - (1/2 + 2)*sinθ = 5π/3.
+
+So θ/360 *5π - (5/2) sinθ = 5π/3.
+
+Divide both sides by 5π:
+
+θ/360 - (sinθ)/(2π) = (5π/3)/(5π) = 1/3.
+
+So θ/360 - (sinθ)/(2π) = 1/3.
+
+Multiply both sides by 360:
+
+θ - (360 sinθ)/(2π) = 120.
+
+Simplify:
+
+θ - (180 sinθ)/π = 120.
+</execution_3.1>
+
+<execution_3.2>
+Region2 is the sector of the smaller circle with angle (360 - θ) degrees, so its area is ( (360 - θ)/360 ) * π*(1)^2 = (360 - θ)/360 * π.
+
+Therefore, total shaded area = region1 + region2 = 3π*(θ/360) + (360 - θ)/360 * π.
+
+Simplify this expression:
+
+= (3θπ/360) + (360π - θπ)/360
+
+= [3θπ + 360π - θπ]/360
+
+= [2θπ + 360π]/360
+
+Factor out π:
+
+= π(2θ + 360)/360
+
+We know this equals 5π/3, so:
+
+π(2θ + 360)/360 = 5π/3
+
+Divide both sides by π:
+
+(2θ + 360)/360 = 5/3
+
+Multiply both sides by 360:
+
+2θ + 360 = (5/3)*360
+
+Calculate (5/3)*360:
+
+(5/3)*360 = 5*120 = 600
+
+So:
+
+2θ + 360 = 600
+
+Subtract 360 from both sides:
+
+2θ = 240
+
+Divide by 2:
+
+θ = 120 degrees.
+</execution_3.2>
+
+<execution_3.3>
+θ * 5π - (5/2) sinθ * 360 = (5π/3) * 360.
+
+Simplify each term:
+
+First term: 5πθ.
+
+Second term: (5/2)*360 sinθ = 900 sinθ.
+
+Third term: (5π/3)*360 = 5π*120 = 600π.
+
+So the equation becomes:
+
+5πθ - 900 sinθ = 600π.
+
+Let's divide both sides by 5 to simplify:
+
+πθ - 180 sinθ = 120π.
+
+Bring all terms to one side:
+
+πθ - 180 sinθ - 120π = 0.
+
+Factor π:
+
+π(θ - 120) - 180 sinθ = 0.
+
+Hmm, this equation is still transcendental. Let's rearrange:
+
+π(θ - 120) = 180 sinθ.
+
+Divide both sides by 180:
+
+(π/180)(θ - 120) = sinθ.
+
+Note that π/180 is approximately 0.0174533.
+
+So:
+
+0.0174533*(θ - 120) = sinθ.
+</execution_3.3>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.2:
+Wait, but let me double-check this because I might have misinterpreted the shaded regions.
+
+<prompt_4.1> Verify the interpretation of the shaded regions and confirm the solution for θ. </prompt_4.1>
+-----
+
+Based on execution_3.3:
+Let me test θ = 120 degrees. Then left side:
+
+<prompt_4.2> Verify the solution using numerical methods and confirm the result. </prompt_4.2>
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+If region1 is the annular sector (area between the two arcs) and region2 is the sector of the smaller circle, then adding them gives the total shaded area. But according to this calculation, θ is 120 degrees. But let me check if this makes sense.
+
+Wait, if θ is 120 degrees, then the annular sector area is (120/360)*3π = (1/3)*3π = π. The sector of the smaller circle is (120/360)*π*1² = (1/3)*π. So total shaded area would be π + (1/3)π = (4/3)π. But the problem states that the total shaded area is 5/12 of the larger circle's area, which is 5/12 *4π = (5/3)π ≈ 1.666π. However, 4/3π ≈ 1.333π, which is less than 5/3π. So there's a discrepancy here. Therefore, my previous assumption must be wrong.
+</execution_4.1>
+
+<execution_4.2>
+0.0174533*(120 - 120) = 0.
+
+Right side: sin(120°) = √3/2 ≈ 0.866. So 0 ≈ 0.866? No, that's not correct. Wait, this suggests that θ = 120 is not a solution, which contradicts the previous result. So there must be a mistake in my reasoning.
+
+Wait, where did I go wrong? Let's retrace.
+
+Earlier, when I considered the shaded regions as the two sectors (smaller and larger), I assumed that the total shaded area is the sum of the two sectors. However, when interpreting the Asymptote code, region1 is the area between the two arcs (annular sector), and region2 is the sector in the smaller circle. But according to the problem, the total shaded area is 5/12 of the larger circle. However, if we take the sum of region1 (annular sector) and region2 (smaller sector), we might not be getting the correct proportion. 
+
+Alternatively, perhaps my initial approach where I considered the segments was correct, but solving the equation θ - (180 sinθ)/π = 120 numerically gives θ ≈ 120 degrees. Let me check θ = 120:
+
+Left side: 120 - (180 sin120)/π ≈ 120 - (180*(√3/2))/3.1416 ≈ 120 - (90*1.732)/3.1416 ≈ 120 - 155.88/3.1416 ≈ 120 - 49.6 ≈ 70.4. Which is not 120. So that approach is wrong.
+
+But when I considered the sectors, θ = 120 gives:
+
+Total shaded area as per sectors: 3π*(120/360) + (360 - 120)/360 * π = 3π*(1/3) + (240/360)*π = π + (2/3)π = (5/3)π, which matches the required 5/12 of the larger circle (which is 5π/3). But according to the segment approach, θ = 120 doesn't satisfy the equation. Therefore, my initial interpretation of the shaded regions as segments might be incorrect.
+
+Therefore, going back to the Asymptote code, region1 is the area between the two arcs (annular sector) and region2 is the triangle (sector) in the smaller circle. So total shaded area is region1 + region2. If that's the case, then my second approach is correct, leading to θ = 120 degrees.
+</execution_4.2>
+</Execution_4>
+
+<Plan_5>
+Based on execution_4.2:
+Let's verify again:
+
+<prompt_5.1> Verify the final interpretation of the shaded regions and confirm the solution for θ. </prompt_5.1>
+</Plan_5>
+
+<Execution_5>
+<execution_5.1>
+If θ = 120 degrees:
+
+Area of region1 (annular sector): (120/360)*π*(2² - 1²) = (1/3)*π*(4 - 1) = (1/3)*3π = π.
+
+Area of region2 (sector in smaller circle): (120/360)*π*(1²) = (1/3)*π*1 = π/3.
+
+Total shaded area: π + π/3 = 4π/3 ≈ 1.333π.
+
+But the problem states that the total shaded area is 5/12 of the larger circle's area. The larger circle's area is 4π, so 5/12*4π = (5/3)π ≈ 1.666π. Wait, this is a problem. 4π/3 is approximately 1.333π, which is less than 5/3π. So this suggests a contradiction. Therefore, my interpretation must still be wrong.
+
+Wait, perhaps the shaded regions are different. Let me re-examine the Asymptote code.
+
+The region1 is constructed as follows:
+
+- Starting at point A (which is on the smaller circle), moving to a/2 (midpoint), then following the inner arc (arc from a/2 to c/2, which is radius 1) clockwise. Then moving to c/2, then following the outer arc (radius 2) from c/2 back to A counterclockwise. So region1 is the area bounded by the two arcs. This is like a circular segment between the two circles.
+</execution_5.1>
+</Execution_5>
+
+<Plan_6>
+Based on execution_5.1:
+The area of this region can be calculated as the area of the sector in the larger circle minus the area of the sector in the smaller circle. So:
+
+<prompt_6.1> Calculate the area of the segment in the larger circle and the area of the segment in the smaller circle. </prompt_6.1>
+</Plan_6>
+
+<Execution_6>
+<execution_6.1>
+Area of sector in larger circle with angle θ: (θ/360)*π*2² = (θ/360)*4π.
+
+Area of sector in smaller circle with angle θ: (θ/360)*π*1² = (θ/360)*π.
+
+Thus, the area of region1 (the annular sector) is (θ/360)*4π - (θ/360)*π = (θ/360)*3π.
+
+Then, region2 is the area of the sector in the smaller circle. Wait, the code says region2 is the arc from a/2 to c/2 counterclockwise (which is 360 - θ degrees) and then connecting back to D. So region2 is actually the area of the sector of the smaller circle with angle (360 - θ) degrees. Wait, no. The arc from a/2 to c/2 counterclockwise is the remaining part of the circle not covered by the inner arc. Since the inner arc was θ degrees, the outer arc would be 360 - θ degrees. But in the Asymptote code, the outer arc is drawn from c/2 back to A, which is counterclockwise, so that would be 360 - θ degrees. However, the code then connects back to D. So region2 is the area bounded by the outer arc and the line from c/2 back to D. Wait, perhaps region2 is the segment of the smaller circle corresponding to angle (360 - θ). But this is getting confusing.
+
+Alternatively, maybe the total shaded area is the sum of the annular sector (region1) and the sector in the smaller circle (region2). But according to the problem, the total shaded area is 5/12 of the larger circle. Let's see.
+
+If region1 is the annular sector with angle θ, area = (θ/360)*(π*2² - π*1²) = (θ/360)*(4π - π) = (θ/360)*3π.
+
+Region2 is the sector in the smaller circle with angle (360 - θ), area = ((360 - θ)/360)*π*1² = ((360 - θ)/360)*π.
+
+Therefore, total shaded area = (θ/360)*3π + ((360 - θ)/360)*π = [3θ + 360 - θ]/360 * π = [2θ + 360]/360 * π.
+
+According to the problem, this equals 5/12 of the larger circle's area, which is (5/12)*4π = (5/3)π.
+
+So:
+
+[2θ + 360]/360 * π = (5/3)π.
+
+Divide both sides by π:
+
+(2θ + 360)/360 = 5/3.
+
+Multiply both sides by 360:
+
+2θ + 360 = (5/3)*360 = 600.
+
+Subtract 360:
+
+2θ = 240.
+
+θ = 120 degrees.
+
+Therefore, the measure of angle ADC is 120 degrees.
+</execution_6.1>
+</Execution_6>
+
+<Plan_7>
+Based on execution_6.1:
+But let's verify this.
+
+If θ = 120 degrees:
+
+<prompt_7.1> Verify the solution by checking the area calculations for θ = 120 degrees. </prompt_7.1>
+</Plan_7>
+
+<Execution_7>
+<execution_7.1>
+Area of region1 (annular sector): (120/360)*3π = (1/3)*3π = π.
+
+Area of region2 (smaller sector): ((360 - 120)/360)*π = (240/360)*π = (2/3)*π.
+
+Total shaded area: π + (2/3)π = (5/3)π. Which matches the required 5/12 of the larger circle (4π)*(5/12) = (5/3)π. So this checks out.
+
+Therefore, the measure of angle ADC is 120 degrees.
+</execution_7.1>
+</Execution_7>
+
+<Plan_8>
+Based on execution_7.1:
+But let's check with θ = 120 degrees.
+
+<prompt_8.1> Confirm the solution with additional calculations for θ = 120 degrees. </prompt_8.1>
+</Plan_8>
+
+<Execution_8>
+<execution_8.1>
+Then:
+
+Total shaded area = (θ/360)*5π - (5/2) sinθ.
+
+But with θ = 120 degrees:
+
+sinθ = sin(120) = √3/2 ≈ 0.866.
+
+So:
+
+(120/360)*5π - (5/2)*(√3/2) = (1/3)*5π - (5/4)*√3 ≈ 1.666π - 2.165 ≈ 5.236 - 2.165 ≈ 3.071, which is not equal to 5π/3 ≈ 5.236. Wait, that's not matching. Wait, no, 5π/3 is approximately 5.236. Wait, but according to the previous calculation, if θ = 120, the total shaded area as per the annular and smaller sector is 5π/3, which is correct. However, if we use the segment areas, it's different. So this suggests that the initial interpretation of shaded regions as segments is incorrect, and the correct interpretation is that the shaded regions are the sectors (annular and smaller). Therefore, the answer is 120 degrees.
+
+But let me check with another angle. Suppose θ = 90 degrees.
+
+Then, total shaded area as per sectors:
+
+(90/360)*3π + (270/360)*π = (0.25)*3π + (0.75)*π = 0.75π + 0.75π = 1.5π. Which is 3/2 π, which is 1.5π. But 5/12 of the larger circle is 5/3 π ≈ 1.666π. So 1.5π is less than that. Therefore, θ must be greater than 90 degrees. If θ = 120, as before, 5/3 π ≈ 1.666π. So that's correct.
+
+Therefore, the answer is 120 degrees. But let me confirm once more.
+
+The problem states that the total area of the shaded region is 5/12 of the area of the larger circle. The larger circle's area is 4π. 5/12 of that is (5/12)*4π = (5/3)π. The total shaded area as per the sectors (annular and smaller) when θ = 120 degrees is indeed (120/360)*3π + (240/360)*π = π + (2/3)π = (5/3)π. Therefore, θ = 120 degrees is the correct answer.
+</execution_8.1>
+</Execution_8>
+
+<Plan_9>
+Based on execution_8.1:
+**Final Answer**
+\boxed{120}
+</Plan_9>
+
+<Execution_9>
+No prompt to execute.
+</Execution_9>
+
+<Final_answer>
+Therefore, the measure of (the smaller) $\angle ADC$ is $\boxed{120^\circ}$.
+</Final_answer>
+</think>

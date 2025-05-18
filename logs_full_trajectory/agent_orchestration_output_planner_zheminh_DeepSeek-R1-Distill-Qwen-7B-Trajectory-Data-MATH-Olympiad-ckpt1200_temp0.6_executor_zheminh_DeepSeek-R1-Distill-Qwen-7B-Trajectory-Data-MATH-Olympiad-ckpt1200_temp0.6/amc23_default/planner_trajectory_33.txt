@@ -1,0 +1,159 @@
+<Question>
+Triangle $ABC$ has side lengths in arithmetic progression, and the smallest side has length $6.$ If the triangle has an angle of $120^\circ,$ Find the area of $ABC$. The final answer can be simplified in the form $m \sqrt{n}$, where $m$ and $n$ are positive integers and $n$ without square factore. What is $m+n$?
+</Question>
+
+<think>
+<Plan_1>
+Okay, let's tackle this problem step by step. So, we have triangle ABC with side lengths in arithmetic progression, the smallest side is 6, and there's a 120-degree angle. We need to find the area and express it in the form m√n, then find m + n. Hmm, let's break this down.
+
+First, arithmetic progression means the sides are increasing by a common difference. Since the smallest side is 6, let's denote the sides as 6, 6 + d, and 6 + 2d, where d is the common difference. So the sides are 6, 6 + d, 6 + 2d. Now, we need to figure out which angle is 120 degrees. Because in a triangle, the largest angle is opposite the longest side. Since 6 + 2d is the longest side, the 120-degree angle must be opposite it. So, the sides opposite the angles would be 6, 6 + d, 6 + 2d, with the largest side (6 + 2d) opposite the 120-degree angle.
+
+Now, we can use the Law of Cosines here. The Law of Cosines relates the lengths of the sides of a triangle to the cosine of one of its angles. The formula is c² = a² + b² - 2ab cos(C), where C is the angle opposite side c.
+
+<prompt_1.1> Apply the Law of Cosines to the triangle with sides 6, 6 + d, and 6 + 2d, where the 120-degree angle is opposite the side 6 + 2d. </prompt_1.1>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+In our case, the side opposite the 120-degree angle is 6 + 2d, so applying the Law of Cosines:
+
+(6 + 2d)² = 6² + (6 + d)² - 2 * 6 * (6 + d) * cos(120°)
+
+First, let's compute cos(120°). Since 120 degrees is in the second quadrant, cos(120°) = cos(180° - 60°) = -cos(60°) = -0.5. So cos(120°) is -0.5.
+
+Let's substitute that into the equation:
+
+(6 + 2d)² = 6² + (6 + d)² - 2 * 6 * (6 + d) * (-0.5)
+
+Simplify the right-hand side:
+
+First, calculate 6² = 36
+
+Then, (6 + d)² = 36 + 12d + d²
+
+Next, the term with cosine: -2 * 6 * (6 + d) * (-0.5) = 2 * 6 * (6 + d) * 0.5 = 6 * (6 + d)
+
+So putting it all together:
+
+Left-hand side: (6 + 2d)² = 36 + 24d + 4d²
+
+Right-hand side: 36 + 36 + 12d + d² + 6*(6 + d) = 72 + 12d + d² + 36 + 6d = (72 + 36) + (12d + 6d) + d² = 108 + 18d + d²
+
+So now we have:
+
+36 + 24d + 4d² = 108 + 18d + d²
+
+Let's bring all terms to the left-hand side:
+
+36 + 24d + 4d² - 108 - 18d - d² = 0
+
+Combine like terms:
+
+(4d² - d²) + (24d - 18d) + (36 - 108) = 0
+
+3d² + 6d - 72 = 0
+
+Divide the entire equation by 3:
+
+d² + 2d - 24 = 0
+
+Now, solve for d using quadratic formula:
+
+d = [-2 ± √(4 + 96)] / 2 = [-2 ± √100]/2 = [-2 ± 10]/2
+
+So, two solutions:
+
+d = (-2 + 10)/2 = 8/2 = 4
+
+d = (-2 - 10)/2 = -12/2 = -6
+
+Since d is the common difference in side lengths, and the sides must be positive. The sides are 6, 6 + d, 6 + 2d. If d = -6, then the sides would be 6, 0, -6, which is impossible. So d must be 4.
+</execution_1.1>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1:
+Therefore, the sides are 6, 6 + 4 = 10, and 6 + 8 = 14. Wait, but 14 is the longest side, which is opposite the 120-degree angle. Let me check if that's correct.
+
+Wait, hold on. The sides are 6, 10, 14. Let me verify if these satisfy the triangle inequality. 6 + 10 = 16 > 14, 6 + 14 = 20 > 10, 10 + 14 = 24 > 6. So yes, they form a valid triangle.
+
+Now, we need to find the area of the triangle. Since we know all three sides and one angle (120 degrees), we can use the formula for the area: (1/2)*a*b*sin(C), where a and b are two sides enclosing angle C. Alternatively, since we have all three sides, we can use Heron's formula.
+
+Let's try both methods to verify.
+
+<prompt_2.1> Calculate the area of the triangle using the formula (1/2)*a*b*sin(C) where a = 6, b = 10, and angle C = 120°. </prompt_2.1>
+
+Alternatively, using Heron's formula:
+
+<prompt_2.2> Calculate the area of the triangle using Heron's formula with sides 6, 10, and 14. </prompt_2.2>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+First, using the formula with two sides and the included angle. Let's take sides 6 and 10 with the included angle 120 degrees.
+
+Area = (1/2)*6*10*sin(120°)
+
+sin(120°) is sin(60°) = √3/2, but since it's in the second quadrant, sin(120°) = √3/2.
+
+So Area = (1/2)*6*10*(√3/2) = (1/2)*60*(√3/2) = (30)*(√3/2) = 15√3.
+
+Alternatively, using Heron's formula. Let's compute the semi-perimeter:
+
+s = (6 + 10 + 14)/2 = 30/2 = 15
+
+Then, area = √[s(s - a)(s - b)(s - c)] = √[15*(15 - 6)*(15 - 10)*(15 - 14)] = √[15*9*5*1] = √[15*45] = √675
+
+Simplify √675: 675 = 25*27 = 25*9*3, so √675 = 5*3*√3 = 15√3. So both methods give the same result. Therefore, the area is 15√3.
+</execution_2.1>
+
+<execution_2.2>
+First, compute the semi-perimeter:
+
+s = (6 + 10 + 14)/2 = 30/2 = 15
+
+Then, area = √[s(s - a)(s - b)(s - c)] = √[15*(15 - 6)*(15 - 10)*(15 - 14)] = √[15*9*5*1] = √(15*45) = √675 = √(25*27) = 5√27 = 5*3√3 = 15√3.
+
+Alternatively, using the formula with two sides and the included angle. Let's see which sides are enclosing the 120-degree angle. Since the 120-degree angle is opposite the longest side (14), the other two sides (6 and 10) are the ones enclosing the 120-degree angle. Therefore, the area would be (1/2)*6*10*sin(120°).
+
+Compute that:
+
+(1/2)*6*10 = 30
+
+sin(120°) = √3/2
+
+So area = 30*(√3/2) = 15√3. Same result. Perfect, both methods give 15√3.
+</execution_2.2>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1, execution_2.2:
+Therefore, m = 15, n = 3, so m + n = 18.
+
+Wait, but let me just make sure that we didn't make a mistake in assuming which sides are which.
+
+<prompt_3.1> Verify the assumption that the sides 6, 10, and 14 correspond to the arithmetic progression and that the 120-degree angle is opposite the longest side. </prompt_3.1>
+
+But let me just check if there's another possible configuration. Suppose the 120-degree angle is not opposite the longest side. But in a triangle, the largest angle is opposite the longest side. Since 120 degrees is the largest possible angle here (as it's greater than 90 degrees), the side opposite must be the longest. So that's correct.
+
+Another check: Let's verify the Law of Cosines again with the sides 6, 10, 14 and angle 120 opposite 14.
+
+<prompt_3.2> Verify the Law of Cosines calculation with sides 6, 10, and 14 and angle 120° opposite the side 14. </prompt_3.2>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+The problem states the triangle has side lengths in arithmetic progression, with the smallest side 6. So sides are 6, 6 + d, 6 + 2d. We found d = 4, so sides are 6, 10, 14. That's correct. The 120-degree angle is opposite the longest side, which is 14. That's correct. So that's valid.
+
+Alternatively, could there be another triangle with sides in arithmetic progression, smallest side 6, but the 120-degree angle is not opposite the longest side? But in a triangle, the largest angle is opposite the longest side. So if the triangle has a 120-degree angle, which is the largest angle, then it must be opposite the longest side. So that's the only possibility. Therefore, our approach is correct.
+</execution_3.1>
+
+<execution_3.2>
+Compute 6² + 10² - 2*6*10*cos(120°) = 36 + 100 - 120*(-0.5) = 136 + 60 = 196. And 14² is 196. So that checks out. So the sides are indeed 6, 10, 14.
+</execution_3.2>
+</Execution_3>
+
+<Final_answer>
+Thus, the final answer is \boxed{18}.
+</Final_answer>
+</think>

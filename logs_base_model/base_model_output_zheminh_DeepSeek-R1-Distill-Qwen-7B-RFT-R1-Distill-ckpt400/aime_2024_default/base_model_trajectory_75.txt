@@ -1,0 +1,371 @@
+Okay, so I need to figure out how many residents in Aimeville own all four of these things: a diamond ring, a set of golf clubs, a garden spade, and a bag of candy hearts. Let me start by understanding the problem step by step.
+
+First, there are 900 residents in total. Each resident owns at least one of the four items mentioned. Wait, actually, the problem says each of the 900 owns a bag of candy hearts, but the counts for the other three are given. So, maybe everyone owns the bag of candy hearts, but not necessarily the other three. Hmm, that might be important.
+
+Let me list the numbers again to make sure I have them right. There are:
+
+- 195 who own a diamond ring (let's call this set D)
+- 367 who own a set of golf clubs (G)
+- 562 who own a garden spade (S)
+- 437 who own exactly two of these things
+- 234 who own exactly three of these things
+
+And the total number of residents is 900. Wait, but the problem says each resident owns a bag of candy hearts. So, does that mean that the four items include the candy hearts? Or is the candy hearts a separate item? Wait, the problem says "each of the 900 residents owns a bag of candy hearts." So, in addition to possibly owning the other three items, they all own a bag of candy hearts. So, the total number of residents is 900, and each has at least the candy hearts. But the other three items (D, G, S) have their own counts.
+
+So, the problem is asking for the number of residents who own all four: diamond ring, golf clubs, garden spade, and candy hearts. Let's denote this number as x.
+
+Now, the problem also mentions that 437 residents own exactly two of these things. Wait, does that mean exactly two of the four items, including the candy hearts? Or exactly two of the three non-candy hearts items? Hmm, the wording is "exactly two of these things," where "these things" refers to the four items mentioned. So, that would include the candy hearts.
+
+But wait, the problem says "each of the 900 residents owns a bag of candy hearts," so every resident has the candy hearts. So, if someone owns exactly two of these things, they could be owning the candy hearts and one other item. Similarly, someone owning exactly three of these things could be owning the candy hearts and two others, or three others (but since they must have the candy hearts, owning three would mean two others plus the candy hearts). Wait, but the problem also says that 234 residents own exactly three of these things. So, if we consider that the four items include the candy hearts, then "exactly three" would mean three items including the candy hearts. Similarly, "exactly two" would mean two items including the candy hearts.
+
+But that might complicate things. Alternatively, maybe "these things" refers to the four items, but the person might own any combination, including the candy hearts. But since the candy hearts are mandatory for everyone, maybe we need to adjust the counts accordingly.
+
+Wait, let's clarify. The problem states: "each of the 900 residents owns a bag of candy hearts." So, every resident has the candy hearts. So, when they talk about owning exactly two of these things, that would mean exactly two items from the four: D, G, S, and candy hearts. But since everyone has the candy hearts, owning exactly two would mean they have the candy hearts plus one other item. Similarly, owning exactly three would mean they have the candy hearts plus two others, and owning all four would mean they have all four.
+
+But the problem is asking for the number of residents who own all four. Let me denote that as x. So, x is the number of people who have D, G, S, and candy hearts.
+
+Now, let's think about the inclusion-exclusion principle here. The total number of residents is 900, and each has at least the candy hearts. So, the other three items (D, G, S) can be owned by some people. The counts given are for D, G, and S, but not considering the candy hearts. However, since the candy hearts are mandatory, we can model this as each person has the candy hearts, and they might have D, G, S, or any combination.
+
+Alternatively, maybe we can model this as a 4-set problem, where each person is in the intersection of at least the candy hearts set, and possibly the other three. But that might complicate things. Alternatively, since the candy hearts are universal, we can subtract that from the problem.
+
+Wait, let me think again. If everyone owns the candy hearts, then the counts for D, G, S already include the people who might own multiple items. So, the total counts for D, G, S are 195, 367, 562, respectively. However, these counts include people who might own multiple of these items, including the candy hearts.
+
+But the problem gives us the numbers of people who own exactly two of the four things and exactly three of the four things. So, let's try to model this.
+
+Let me denote:
+
+- Let a = number of people owning exactly 1 item (including candy hearts)
+- Let b = number of people owning exactly 2 items (including candy hearts)
+- Let c = number of people owning exactly 3 items (including candy hearts)
+- Let d = number of people owning exactly 4 items (all four)
+
+Given that, we know that the total number of residents is a + b + c + d = 900.
+
+But in the problem, it's given that b = 437 and c = 234. So, substituting these, we have a + 437 + 234 + d = 900. Therefore, a + d = 900 - 437 - 234 = 900 - 671 = 229. So, a + d = 229.
+
+Now, we need to find d. To find d, we need to relate the counts of D, G, S to the number of people owning them, considering overlaps.
+
+But since the counts for D, G, S are given, and we need to find the overlaps, perhaps we can use the inclusion-exclusion principle.
+
+Wait, but the inclusion-exclusion principle for three sets is:
+
+|D ∪ G ∪ S| = |D| + |G| + |S| - |D ∩ G| - |D ∩ S| - |G ∩ S| + |D ∩ G ∩ S|
+
+But in this case, since candy hearts are mandatory, and the problem is about owning exactly two or three items, including the candy hearts. So, maybe we can model the problem as a 4-set problem where the four sets are D, G, S, and CH (candy hearts). But since everyone is in CH, the total number of residents is |CH| = 900. So, the problem reduces to finding the number of people in the intersection of all four sets, which is |D ∩ G ∩ S ∩ CH| = x.
+
+But since everyone is in CH, x is just |D ∩ G ∩ S|, because CH is everyone. Wait, no. Wait, if someone is in all four, they must be in D, G, S, and CH. But since CH is all, then x is just |D ∩ G ∩ S|. Wait, but D, G, S are subsets of CH.
+
+Wait, maybe not. Wait, the problem states that each resident owns a bag of candy hearts. So, CH is the universal set here. So, the other three sets (D, G, S) are subsets of CH. Therefore, the total number of residents is 900, which is the size of CH. The sizes of D, G, S are 195, 367, 562, respectively. But these counts already include the overlaps with the other sets.
+
+But the problem is asking for the number of residents who own all four, which is |D ∩ G ∩ S ∩ CH|. But since CH is everyone, this is just |D ∩ G ∩ S|.
+
+So, if we can compute |D ∩ G ∩ S|, that would give us x.
+
+But how do we compute |D ∩ G ∩ S|? Let's recall that the inclusion-exclusion formula for three sets is:
+
+|D ∪ G ∪ S| = |D| + |G| + |S| - |D ∩ G| - |D ∩ S| - |G ∩ S| + |D ∩ G ∩ S|
+
+But we know that |D ∪ G ∪ S| is the number of people who own at least one of D, G, S. But since everyone owns CH, the total number of residents is 900, which is the number of people owning CH. However, some people might own CH and none of D, G, S. Wait, but the problem states that each resident owns a bag of candy hearts, but doesn't specify that they must own at least one of the other three. Wait, but the problem says "there are 195 who own a diamond ring, 367 who own a set of golf clubs, and 562 who own a garden spade." So, these counts include people who might own only that item and CH, or that item, CH, and others.
+
+But in the problem statement, we also have the numbers of people owning exactly two or three of the four things. So, maybe the counts given (195, 367, 562) are the counts for D, G, S, which are subsets of CH. Therefore, the size of D is 195, which includes people owning D and CH, D, G, CH, etc. Similarly for G and S.
+
+Given that, and since the problem gives the exact counts for people owning exactly two or three items, we can model this using the variables a, b, c, d as before.
+
+But let's recall that:
+
+- The total number of residents is 900, which is the number of people owning CH.
+
+- The number of people owning exactly two items (including CH) is 437.
+
+- The number owning exactly three items (including CH) is 234.
+
+- The number owning exactly four items (all four) is d.
+
+So, as we had before, a + 437 + 234 + d = 900, so a + d = 229.
+
+Now, we need to relate this to the counts for D, G, S. Let's think about how many times each person is counted in D, G, S.
+
+Each person who owns exactly one item (including CH) is counted once in D, G, or S. But since they own exactly one item, which is CH, they are not counted in D, G, or S. Wait, no. Wait, if they own exactly one item, that item has to be CH, right? Because the problem says "exactly two of these things," which includes the four items. Wait, no, the problem says "exactly two of these things," where "these things" are the four items: diamond ring, golf clubs, garden spade, and candy hearts. So, if someone owns exactly two of them, they could be owning any two, including CH. But since everyone owns CH, owning exactly two of the four things would mean owning CH plus one other. Similarly, exactly three would mean CH plus two others.
+
+Therefore, when we count the number of people owning exactly two items, that's 437, which includes those owning CH plus one other. Similarly, exactly three would be CH plus two others, and exactly four is CH plus all three others.
+
+Therefore, the counts for D, G, S would be the sum of all people who own that item, including those who own it with CH, and possibly with others. So, the count for D (195) is equal to the number of people who own D (including those who own D and CH, D and CH and G, etc.).
+
+Therefore, to model this, we can consider the counts for D, G, S as:
+
+For D: |D| = number of people owning D (including those who own D and CH, D and CH and G, D and CH and S, D and CH and G and S, etc.)
+
+Similarly for G and S.
+
+But since we have information about the number of people owning exactly two or three items, we can express |D|, |G|, |S| in terms of a, b, c, d.
+
+Wait, but let's note that:
+
+Each person owning exactly two items (including CH) is counted once in D, once in G, or once in S, but since they own exactly two items, which includes CH and one other. So, for example, if someone owns CH and D, they are counted in D but not in G or S. Similarly, someone owning CH and G is counted in G but not in D or S. Similarly for CH and S.
+
+Therefore, the total number of people owning D is equal to the number of people owning exactly two items where D is the non-CH item, plus the number of people owning exactly three items where D is the non-CH item, plus the number of people owning exactly four items.
+
+Wait, let's formalize this.
+
+Let me define the following variables:
+
+- Let a1 = number of people owning exactly one item (which must be CH, since everyone owns CH). So, a1 = a = 229 - d (from a + d = 229).
+
+- Let b1 = number of people owning exactly two items. These are the 437, which includes CH and one other. So, there are three possible categories here:
+
+    - CH and D: let's call this b11
+
+    - CH and G: b12
+
+    - CH and S: b13
+
+    So, b11 + b12 + b13 = 437
+
+- Let c1 = number of people owning exactly three items. These are the 234, which includes CH and two others. The possible categories:
+
+    - CH, D, G
+
+    - CH, D, S
+
+    - CH, G, S
+
+    Let's denote these as c11, c12, c13. So, c11 + c12 + c13 = 234
+
+- Let d1 = number of people owning exactly four items: CH, D, G, S. So, d1 = d
+
+Now, the counts for D, G, S can be expressed as:
+
+For D:
+
+|D| = (number of people owning CH and D) + (number owning CH, D, G) + (number owning CH, D, S) + (number owning CH, D, G, S)
+
+Which is b11 + c11 + c12 + d1
+
+Similarly, |G| = b12 + c11 + c13 + d1
+
+|S| = b13 + c12 + c13 + d1
+
+Given that |D| = 195, |G| = 367, |S| = 562
+
+So, we have:
+
+1. b11 + c11 + c12 + d1 = 195
+
+2. b12 + c11 + c13 + d1 = 367
+
+3. b13 + c12 + c13 + d1 = 562
+
+Also, we know that:
+
+b11 + b12 + b13 = 437
+
+c11 + c12 + c13 = 234
+
+a1 = 229 - d1
+
+But since a1 is the number of people owning exactly one item, which is CH only. However, since everyone owns CH, but the problem doesn't specify that they must own at least one of the other three. Wait, but the problem states "there are 195 who own a diamond ring, 367 who own a set of golf clubs, and 562 who own a garden spade." So, the counts for D, G, S include people who might own only that item and CH. Therefore, the counts for D, G, S do include people who own exactly that item plus CH. Therefore, the variables b11, b12, b13 are the counts of people owning exactly two items (CH and one other). Similarly, c11, c12, c13 are people owning exactly three items (CH and two others). And d1 is people owning exactly four items (CH and all three others).
+
+Therefore, the equations above should hold.
+
+Our goal is to find d1.
+
+So, we have the following equations:
+
+Equation 1: b11 + c11 + c12 + d1 = 195
+
+Equation 2: b12 + c11 + c13 + d1 = 367
+
+Equation 3: b13 + c12 + c13 + d1 = 562
+
+Equation 4: b11 + b12 + b13 = 437
+
+Equation 5: c11 + c12 + c13 = 234
+
+Equation 6: a1 + d1 = 229 → a1 = 229 - d1
+
+But since a1 is the number of people owning exactly one item (CH only), which is 229 - d1.
+
+But we don't have any more equations, but we can try to solve these equations.
+
+Let me try to subtract Equation 1 from Equation 2:
+
+Equation 2 - Equation 1:
+
+(b12 - b11) + (c13 - c12) = 367 - 195 = 172
+
+Similarly, Equation 3 - Equation 2:
+
+(b13 - b12) + (c12 - c13) = 562 - 367 = 195
+
+Equation 3 - Equation 1:
+
+(b13 - b11) + (c12 + c13 - c11 - c12) = 562 - 195 = 367
+
+Wait, that's (b13 - b11) + (c13 - c11) = 367
+
+But this might not be helpful. Let's see.
+
+Alternatively, let's denote:
+
+Let’s define:
+
+From Equation 4: b11 + b12 + b13 = 437
+
+From Equation 5: c11 + c12 + c13 = 234
+
+Let me also note that Equations 1, 2, 3 can be written as:
+
+1. b11 + c11 + c12 + d1 = 195
+
+2. b12 + c11 + c13 + d1 = 367
+
+3. b13 + c12 + c13 + d1 = 562
+
+Let’s subtract d1 from each equation:
+
+1. b11 + c11 + c12 = 195 - d1
+
+2. b12 + c11 + c13 = 367 - d1
+
+3. b13 + c12 + c13 = 562 - d1
+
+Now, let's denote:
+
+Equation 1a: b11 + c11 + c12 = 195 - d1
+
+Equation 2a: b12 + c11 + c13 = 367 - d1
+
+Equation 3a: b13 + c12 + c13 = 562 - d1
+
+Now, let's note that:
+
+From Equation 4: b11 + b12 + b13 = 437
+
+From Equation 5: c11 + c12 + c13 = 234
+
+Let’s try to express b11, b12, b13 in terms of other variables.
+
+From Equation 1a: b11 = 195 - d1 - c11 - c12
+
+From Equation 2a: b12 = 367 - d1 - c11 - c13
+
+From Equation 3a: b13 = 562 - d1 - c12 - c13
+
+Now, substitute these into Equation 4:
+
+(195 - d1 - c11 - c12) + (367 - d1 - c11 - c13) + (562 - d1 - c12 - c13) = 437
+
+Let me compute the left-hand side:
+
+195 + 367 + 562 - 3d1 - 2c11 - 2c12 - 2c13 - c13
+
+Wait, let's do term by term:
+
+195 - d1 - c11 - c12
+
++ 367 - d1 - c11 - c13
+
++ 562 - d1 - c12 - c13
+
+= (195 + 367 + 562) + (-d1 - d1 - d1) + (-c11 - c11) + (-c12 - c12) + (-c13 - c13)
+
+= 195 + 367 + 562 = 1124
+
+-3d1
+
+-2c11
+
+-2c12
+
+-2c13
+
+So, total is 1124 - 3d1 - 2c11 - 2c12 - 2c13
+
+Set equal to 437:
+
+1124 - 3d1 - 2c11 - 2c12 - 2c13 = 437
+
+So, 1124 - 437 = 3d1 + 2c11 + 2c12 + 2c13
+
+Compute 1124 - 437: 1124 - 400 = 724, 724 - 37 = 687. So, 687 = 3d1 + 2(c11 + c12 + c13)
+
+But from Equation 5: c11 + c12 + c13 = 234
+
+Therefore, substitute:
+
+687 = 3d1 + 2*234 = 3d1 + 468
+
+Subtract 468 from both sides:
+
+687 - 468 = 3d1 → 219 = 3d1 → d1 = 219 / 3 = 73
+
+So, d1 = 73. Therefore, the number of residents who own all four items is 73.
+
+Wait, so that's the answer? Let me check.
+
+Let me verify the calculations again.
+
+We had:
+
+1124 - 3d1 - 2c11 - 2c12 - 2c13 = 437
+
+Which simplifies to:
+
+1124 - 437 = 3d1 + 2(c11 + c12 + c13)
+
+687 = 3d1 + 468
+
+Then 687 - 468 = 3d1 → 219 = 3d1 → d1 = 73. Yes, that seems correct.
+
+Therefore, the number of residents who own all four things is 73.
+
+But let me check if this makes sense with the other equations. Let's see.
+
+If d1 = 73, then from Equation 5: c11 + c12 + c13 = 234
+
+From Equation 1a: b11 + c11 + c12 = 195 - 73 = 122
+
+From Equation 2a: b12 + c11 + c13 = 367 - 73 = 294
+
+From Equation 3a: b13 + c12 + c13 = 562 - 73 = 489
+
+Also, from Equation 4: b11 + b12 + b13 = 437
+
+So, let's denote:
+
+Let’s call c11 = x, c12 = y, c13 = z. Then:
+
+x + y + z = 234
+
+From Equation 1a: b11 = 122 - x - y
+
+From Equation 2a: b12 = 294 - x - z
+
+From Equation 3a: b13 = 489 - y - z
+
+Then, plug into Equation 4:
+
+(122 - x - y) + (294 - x - z) + (489 - y - z) = 437
+
+Compute the left-hand side:
+
+122 + 294 + 489 - 2x - 2y - 2z
+
+122 + 294 = 416, 416 + 489 = 905
+
+So, 905 - 2(x + y + z) = 437
+
+But x + y + z = 234, so:
+
+905 - 2*234 = 905 - 468 = 437
+
+Which matches the right-hand side. So, the equations are consistent.
+
+Therefore, the solution is consistent. Therefore, d1 = 73 is correct.
+
+Therefore, the number of residents who own all four things is 73.
+
+**Final Answer**
+\boxed{73}
+Thus, the number of residents of Aimeville who own all four of these things is $\boxed{73}$.
+</think>

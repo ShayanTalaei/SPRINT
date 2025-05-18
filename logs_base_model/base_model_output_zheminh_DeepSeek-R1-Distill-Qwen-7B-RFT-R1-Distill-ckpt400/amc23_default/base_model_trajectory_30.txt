@@ -1,0 +1,262 @@
+Okay, let's try to figure out how many ordered pairs (a, b) of integers make the polynomial x³ + a x² + b x + 6 have three distinct integer roots. Hmm, this seems like a problem involving factoring polynomials and maybe using Vieta's formulas. Let me start by recalling Vieta's formulas because they relate the coefficients of a polynomial to sums and products of its roots, which seems directly relevant here.
+
+So, if the polynomial has three distinct integer roots, let's call them p, q, and r. Then, according to Vieta's formulas for a cubic polynomial x³ + a x² + b x + c, the sum of the roots p + q + r is equal to -a, the sum of the products of the roots taken two at a time pq + pr + qr is equal to b, and the product of the roots pqr is equal to -c. In our case, c is 6, so pqr = -6. Also, since the polynomial is monic (the leading coefficient is 1), that simplifies things a bit.
+
+Wait, so p, q, r are integers, distinct, and their product is -6. Also, the roots must be integers, so they must be divisors of the constant term, which is 6. The divisors of 6 are ±1, ±2, ±3, ±6. So, the possible integer roots are limited to these numbers. Since we need three distinct roots, we have to find all possible triplets (p, q, r) where p, q, r are distinct integers from the set {±1, ±2, ±3, ±6} and their product is -6.
+
+Once we have all such triplets, we can compute a and b using Vieta's formulas: a = -(p + q + r) and b = pq + pr + qr. Then, each such triplet will correspond to a unique ordered pair (a, b). However, we need to ensure that the polynomial actually has these roots, which it will since we constructed it from the roots. But since the problem specifies "3 distinct integer roots," we need to make sure that all three roots are indeed integers and distinct.
+
+So, the plan is:
+
+1. Enumerate all possible triplets of distinct integers from the divisors of 6 (i.e., ±1, ±2, ±3, ±6) such that their product is -6.
+
+2. For each such triplet, compute a = -(sum of the triplet) and b = sum of products two at a time.
+
+3. Ensure that each triplet is unique (i.e., different orderings of the same numbers are considered the same triplet since we're dealing with sets, not ordered triplets in the polynomial). Wait, but in the polynomial, the order of the roots doesn't matter because the coefficients are symmetric. So, even if we permute the roots, the polynomial remains the same. Therefore, we need to consider unordered triplets (i.e., combinations) rather than ordered triplets (permutations). So, for example, the triplet (1, 2, -3) is the same as (2, 1, -3) in terms of the polynomial coefficients. Therefore, we need to avoid counting permutations of the same set multiple times.
+
+But wait, in the problem statement, the question is about ordered pairs (a, b). However, since a and b are determined uniquely by the multiset of roots (due to Vieta's formulas), each distinct set of roots (regardless of order) will correspond to exactly one (a, b). Therefore, we need to count the number of distinct sets of three distinct integers whose product is -6 and then compute a and b for each set.
+
+Therefore, first step is to find all sets of three distinct integers from the divisors of 6 (including negatives) such that their product is -6. Then, for each such set, compute a and b. Then, collect all unique (a, b) pairs.
+
+But we need to be careful: different sets of roots might lead to the same (a, b) pair. Wait, but since a is determined by the sum of roots and b by the sum of products two at a time, unless two different triplets have the same sum and same sum of products, they would lead to the same (a, b). But since the roots are distinct, it's possible that different triplets could result in the same a and b. However, I think it's less likely, but we need to check. For now, let's proceed under the assumption that each distinct set of roots gives a distinct (a, b) pair, but we'll verify later.
+
+So, first, let's list all possible triplets of distinct integers from the divisors of 6 (±1, ±2, ±3, ±6) with product -6.
+
+Let me list the divisors: -6, -3, -2, -1, 1, 2, 3, 6.
+
+We need to find all combinations of three distinct numbers from this list whose product is -6.
+
+Let's start by considering positive and negative numbers. Since the product is negative, there must be an odd number of negative numbers in the triplet. So, either one negative and two positive, or three negative. But since the product is -6, which is negative, so either:
+
+Case 1: One negative and two positive numbers.
+
+Case 2: Three negative numbers.
+
+But let's check if three negative numbers can multiply to -6. Let's see: (-1)*(-2)*(-3) = -6. Yes, that's a valid triplet. Similarly, (-1)*(-1)*(-6) = -6, but wait, but the roots must be distinct. So, in that case, -1, -1, -6 would not be allowed because they are not distinct. So, only triplets with distinct numbers. Therefore, the three negative numbers must be distinct. So, possible triplet in this case is (-1, -2, -3), since their product is (-1)*(-2)*(-3) = -6.
+
+Similarly, for case 1: one negative and two positive numbers. Let's try to find all such triplets.
+
+First, list all possible combinations of one negative and two positive numbers from the divisors, with distinct numbers, such that their product is -6.
+
+The positive divisors are 1, 2, 3, 6.
+
+The negative divisors are -1, -2, -3, -6.
+
+So, for each negative number, we need to find two distinct positive numbers such that (negative number) * (positive number) * (another positive number) = -6.
+
+Which is equivalent to (positive number) * (another positive number) = 6 / |negative number|.
+
+So, let's go through each negative divisor:
+
+1. Negative number = -1:
+
+Then, the product of the two positive numbers must be 6 / 1 = 6.
+
+So, find two distinct positive divisors of 6 (from 1, 2, 3, 6) such that their product is 6.
+
+Possible pairs:
+
+(1, 6): 1*6=6
+
+(2, 3): 2*3=6
+
+So, the triplets here are (-1, 1, 6) and (-1, 2, 3).
+
+But we need to ensure all three numbers are distinct. For (-1, 1, 6), all are distinct. For (-1, 2, 3), all are distinct. So, both are valid.
+
+2. Negative number = -2:
+
+Then, the product of the two positive numbers must be 6 / 2 = 3.
+
+Find two distinct positive divisors of 3 (from 1, 3) such that their product is 3.
+
+Possible pairs:
+
+(1, 3): 1*3=3
+
+So, the triplet is (-2, 1, 3). All are distinct. So, that's valid.
+
+3. Negative number = -3:
+
+Then, the product of the two positive numbers must be 6 / 3 = 2.
+
+Find two distinct positive divisors of 2 (from 1, 2) such that their product is 2.
+
+Possible pairs:
+
+(1, 2): 1*2=2
+
+So, the triplet is (-3, 1, 2). All are distinct. Valid.
+
+4. Negative number = -6:
+
+Then, the product of the two positive numbers must be 6 / 6 = 1.
+
+Find two distinct positive divisors of 1 (only 1) but we need two distinct numbers. However, there's only one positive divisor, so it's impossible. Therefore, no triplet here.
+
+So, from case 1, we have four triplets:
+
+(-1, 1, 6), (-1, 2, 3), (-2, 1, 3), (-3, 1, 2).
+
+Additionally, from case 2, the triplet (-1, -2, -3) which gives a product of -6.
+
+So, total triplets so far: 4 (from case 1) + 1 (from case 2) = 5.
+
+Wait, but let's check if there are any other triplets. For example, maybe a triplet with one negative number and two positive numbers where the two positive numbers are not divisors of 6? Wait, but the roots must be divisors of 6, right? Because the polynomial is monic with constant term 6, so by Rational Root Theorem, any rational root p/q must have p dividing 6 and q dividing 1. Therefore, all integer roots must be divisors of 6. So, yes, all roots must be in ±1, ±2, ±3, ±6. So, the two positive numbers must be among 1, 2, 3, 6. So, our earlier approach is correct.
+
+But let's confirm that. For example, if the negative number is -1, and we need two positive numbers whose product is 6. The possible pairs are (1,6) and (2,3). So, those are the only ones. Similarly, for -2, the product is 3, which can only be (1,3). For -3, product is 2, which can only be (1,2). For -6, product is 1, which is not possible with two distinct positive numbers. So, yes, only those four triplets.
+
+Plus the triplet with three negative numbers (-1, -2, -3). So, total of five triplets.
+
+Wait, but let's check the triplet (-1, -1, 6). Wait, that product is (-1)*(-1)*6 = 6, which is not -6, so that's invalid. Similarly, any triplet with repeated numbers would have product not equal to -6. So, we need all triplets to have distinct numbers.
+
+Therefore, so far, we have five triplets. Let's list them all:
+
+1. (-1, 1, 6)
+2. (-1, 2, 3)
+3. (-2, 1, 3)
+4. (-3, 1, 2)
+5. (-1, -2, -3)
+
+Now, for each of these triplets, we need to compute a and b.
+
+Starting with triplet 1: (-1, 1, 6)
+
+Sum of roots: (-1) + 1 + 6 = 6 → a = -6
+
+Sum of products two at a time:
+
+(-1)(1) + (-1)(6) + (1)(6) = (-1) + (-6) + 6 = (-7) + 6 = -1 → b = -1
+
+So, (a, b) = (-6, -1)
+
+Triplet 2: (-1, 2, 3)
+
+Sum: (-1) + 2 + 3 = 4 → a = -4
+
+Sum of products:
+
+(-1)(2) + (-1)(3) + (2)(3) = (-2) + (-3) + 6 = (-5) + 6 = 1 → b = 1
+
+So, (a, b) = (-4, 1)
+
+Triplet 3: (-2, 1, 3)
+
+Sum: (-2) + 1 + 3 = 2 → a = -2
+
+Sum of products:
+
+(-2)(1) + (-2)(3) + (1)(3) = (-2) + (-6) + 3 = (-8) + 3 = -5 → b = -5
+
+So, (a, b) = (-2, -5)
+
+Triplet 4: (-3, 1, 2)
+
+Sum: (-3) + 1 + 2 = 0 → a = 0
+
+Sum of products:
+
+(-3)(1) + (-3)(2) + (1)(2) = (-3) + (-6) + 2 = (-9) + 2 = -7 → b = -7
+
+So, (a, b) = (0, -7)
+
+Triplet 5: (-1, -2, -3)
+
+Sum: (-1) + (-2) + (-3) = -6 → a = 6
+
+Sum of products:
+
+(-1)(-2) + (-1)(-3) + (-2)(-3) = 2 + 3 + 6 = 11 → b = 11
+
+So, (a, b) = (6, 11)
+
+So, the ordered pairs (a, b) we have so far are:
+
+(-6, -1), (-4, 1), (-2, -5), (0, -7), (6, 11)
+
+But wait, let's check if these are all unique. Each pair is distinct, so yes.
+
+But wait a second, are there any other possible triplets that I might have missed?
+
+Wait, let's think. Suppose we have a triplet with two negative numbers and one positive. Wait, but in case 1, we considered one negative and two positive. But if we have two negatives and one positive, their product would be positive (since negative * negative * positive = positive). But we need the product to be -6, which is negative. Therefore, such triplets are invalid. Therefore, only triplets with one negative and two positive or three negatives.
+
+But three negatives: we already considered (-1, -2, -3). Are there any other triplets with three negatives that multiply to -6? Let's check.
+
+Suppose three negatives: p, q, r. Then their product is -6. Since all are negative, their product is negative. Let's see:
+
+Possible triplets of distinct negative numbers from -1, -2, -3, -6:
+
+- (-1, -2, -3): product is (-1)*(-2)*(-3) = -6. Valid.
+
+- (-1, -2, -6): product is (-1)*(-2)*(-6) = -12. Not -6.
+
+- (-1, -3, -6): product is (-1)*(-3)*(-6) = -18. Not -6.
+
+- (-2, -3, -6): product is (-2)*(-3)*(-6) = -36. Not -6.
+
+So, the only triplet with three negative numbers that works is (-1, -2, -3). So, we have that one.
+
+Therefore, the five triplets are all the possible ones.
+
+But let's double-check. Are there any other triplets with one negative and two positive numbers? For example, suppose the negative number is -1, and the two positive numbers are 6 and 1. Wait, that's the first triplet. Similarly, if negative is -2, and the two positives are 3 and 1, which is the second triplet. So, seems we covered all possibilities.
+
+But let's check another angle. Suppose we have a triplet like (-6, 1, 1), but then the roots are not distinct. So, invalid. Similarly, triplet (-1, -1, 6) is invalid. So, yes, all triplets must have distinct roots.
+
+Therefore, the five triplets are the only possible ones. Therefore, the ordered pairs (a, b) are five in total. But let's confirm with another method to be thorough.
+
+Alternatively, let's list all possible combinations of three distinct integers from the set {±1, ±2, ±3, ±6} and check which ones multiply to -6. That might be time-consuming but thorough.
+
+Total possible combinations of three distinct numbers from the 8 elements is C(8, 3) = 56. But many of them won't multiply to -6. Let's see.
+
+But instead of enumerating all 56, let's think of the factors. Since the product is -6, which is -1 * 2 * 3. So, any triplet must consist of factors of -6. The factors are ±1, ±2, ±3, ±6. So, the possible triplet combinations must be such that their product is -6.
+
+Given that, the triplet must include the factors 1, 2, 3 in some combination with a negative sign. But since the product is -6, exactly one or all three of the numbers must be negative.
+
+We already considered those two cases. So, in the case of one negative and two positives, the triplet is (-k, m, n) where k, m, n are positive divisors of 6 with k*m*n = 6. Similarly, in the case of three negatives, the triplet is (-k, -m, -n) with k*m*n = 6.
+
+But wait, in the three negatives case, the product is (-k)*(-m)*(-n) = -k m n. So, to have that equal to -6, we need k m n = 6. Therefore, the three positive numbers k, m, n must multiply to 6. The possible triplet is (1, 2, 3). So, the triplet is (-1, -2, -3). Therefore, that's the only triplet in this case.
+
+In the one negative and two positives case, the product of the two positive numbers must be 6 / |negative|. So, similar to before.
+
+Therefore, confirming again, the five triplets are indeed all possible.
+
+Therefore, the ordered pairs (a, b) are:
+
+1. (-6, -1)
+
+2. (-4, 1)
+
+3. (-2, -5)
+
+4. (0, -7)
+
+5. (6, 11)
+
+Each of these is unique. So, there are 5 ordered pairs.
+
+But wait, let's check if there are any other triplets that we might have missed. For example, suppose we have triplet (1, -1, 6). Wait, but that's the same as (-1, 1, 6), just reordered. Since we are considering sets, not ordered triplets, so this would be the same as the first triplet. Similarly, any permutation of the triplet would result in the same (a, b). Therefore, our count of five triplets is correct.
+
+But wait, let me check once again. Suppose someone argues that maybe there are other triplets with different numbers but same product. For example, maybe ( -2, 3, 1). But that's same as (-2, 1, 3). So, same triplet. Similarly, ( -3, 1, 2) is same as (-3, 2, 1). So, same triplet.
+
+Therefore, all the possible triplets are accounted for in the five cases.
+
+Therefore, the answer should be 5. However, let me double-check once more.
+
+Wait, another way to think is to list all possible triplets:
+
+1. (-1, 1, 6)
+2. (-1, 2, 3)
+3. (-2, 1, 3)
+4. (-3, 1, 2)
+5. (-1, -2, -3)
+
+Yes, these are all distinct sets. Each has distinct numbers and product -6. So, five triplets, leading to five (a, b) pairs. Therefore, the answer is 5.
+
+But wait a second, let's check if there's a triplet with one negative and two positive numbers that we might have missed. For example, suppose the negative number is -4. Wait, but -4 is not a divisor of 6, so it's not in our list. Similarly, 4 is not a divisor of 6. So, all the possible roots are in the set {±1, ±2, ±3, ±6}. So, no, we can't have -4 or 4 as roots. So, our initial list is correct.
+
+Therefore, the conclusion is that there are 5 ordered pairs (a, b). Therefore, the answer is 5.
+
+**Final Answer**
+The number of ordered pairs $(a,b)$ is $\boxed{5}$.
+Thus, there are $\boxed{5}$ ordered pairs $(a, b)$ of integers for which the polynomial $x^3 + ax^2 + bx + 6$ has three distinct integer roots.
+</think>

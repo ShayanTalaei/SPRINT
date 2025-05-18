@@ -1,0 +1,169 @@
+<Question>
+If $\omega^{1997} = 1$ and $\omega \neq 1,$ then evaluate
+\[\frac{1}{1 + \omega} + \frac{1}{1 + \omega^2} + \dots + \frac{1}{1 + \omega^{1997}}.\]
+</Question>
+
+<think>
+<Plan_1>
+Okay, let's tackle this problem. So, we have ω such that ω^1997 = 1 and ω ≠ 1. We need to evaluate the sum S = 1/(1 + ω) + 1/(1 + ω²) + ... + 1/(1 + ω^1997). Hmm, alright. Let me think step by step.
+
+First, since ω is a 1997th root of unity and not equal to 1, it's a primitive 1997th root. That means the minimal polynomial for ω is the 1997th cyclotomic polynomial, right? But maybe I don't need to go into that depth.
+
+<prompt_1.1> Identify the nature of ω and its implications for the roots of unity. </prompt_1.1>
+
+So, the sum S is over all these terms. Let me see. Maybe there's a symmetry or a pairing here. Since the roots come in conjugate pairs, perhaps adding terms like 1/(1 + ω^k) and 1/(1 + ω^{1997 - k}) would simplify?
+
+<prompt_1.2> Consider the symmetry and pairing of roots of unity to simplify the sum. </prompt_1.2>
+
+Let me check with a smaller n. Suppose n=3. Then ω^3=1, ω≠1. Then the sum would be 1/(1+ω) + 1/(1+ω²). Let's compute this.
+
+<prompt_1.3> Test the formula for smaller values of n, such as n=3 and n=5, to verify the general approach. </prompt_1.3>
+-----
+
+Wait, but in the original problem, the sum is from k=1 to 1997. So, when n=1997, which is prime, right? 1997 is a prime number. So, the cyclotomic polynomial Φ_1997(x) is (x^1997 - 1)/(x - 1) = x^1996 + x^1995 + ... + x + 1. So, the minimal polynomial is of degree 1996. But ω is a primitive 1997th root, so the degree of the extension Q(ω) over Q is φ(1997) = 1996, since 1997 is prime.
+
+But maybe that's not directly helpful here.
+
+Let me get back to the problem.
+
+So, we need to compute S = sum_{k=1}^{1997} 1/(1 + ω^k).
+
+<prompt_1.4> Re-evaluate the problem with a focus on the sum of reciprocals of 1 + ω^k. </prompt_1.4>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+Wait, 1997 is a prime number, right? Let me confirm. Yeah, 1997 is a prime. So, the cyclotomic polynomial Φ_1997(x) is indeed x^1996 + x^1995 + ... + x + 1. So, the minimal polynomial is that, and ω is a root of it. So, ω satisfies ω^1997 = 1, and 1 + ω + ω² + ... + ω^1996 = 0. That might be useful.
+</execution_1.1>
+
+<execution_1.2>
+Wait, ω^k and ω^{1997 - k} are complex conjugates if ω is a primitive root on the unit circle. So, maybe adding those two terms would give something manageable.
+
+Let me check. Let's take a term 1/(1 + ω^k) and its conjugate 1/(1 + ω^{1997 - k}). Let's add them:
+
+1/(1 + ω^k) + 1/(1 + ω^{1997 - k}) = [ (1 + ω^{1997 - k}) + (1 + ω^k) ] / [ (1 + ω^k)(1 + ω^{1997 - k}) ]
+
+Simplify numerator: 2 + ω^k + ω^{1997 - k}
+
+Denominator: (1 + ω^k)(1 + ω^{1997 - k}) = 1 + ω^k + ω^{1997 - k} + ω^{1997 - 1 + 1997 - k} Wait, hold on, maybe there's a better way to simplify the denominator.
+
+Wait, ω^k * ω^{1997 - k} = ω^{1997} = 1. So, the denominator becomes 1 + ω^k + ω^{1997 - k} + 1 = 2 + ω^k + ω^{-k} because ω^{1997 - k} = ω^{-k} since ω^1997 = 1. So, denominator is 2 + ω^k + ω^{-k}.
+
+Similarly, numerator is 2 + ω^k + ω^{-k}. So, the sum of the two terms is (2 + ω^k + ω^{-k}) / (2 + ω^k + ω^{-k}) = 1. So, each pair sums to 1. That's interesting!
+</execution_1.2>
+
+<execution_1.3>
+Since ω² is the other primitive root. Then, 1/(1 + ω) + 1/(1 + ω²). Let's combine them:
+
+[ (1 + ω²) + (1 + ω) ] / [ (1 + ω)(1 + ω²) ] = [2 + ω + ω²] / [1 + ω + ω² + ω³]. But ω³=1, so denominator becomes 1 + ω + ω² + 1 = 2 + ω + ω². Numerator is 2 + ω + ω². So, the sum is (2 + ω + ω²)/(2 + ω + ω²) = 1. But wait, the sum is 1? But there are two terms, and the sum is 1. So, average is 0.5 per term? Hmm, interesting. So, for n=3, the sum is 1. But let's check another n. Let's take n=5.
+
+Wait, but maybe the formula is (n-1)/2 when n is prime? Wait, n=3, (3-1)/2=1, which matches. Let's check n=5. Then the sum would be 1/(1+ω) + 1/(1+ω²) + 1/(1+ω³) + 1/(1+ω⁴). Let's try to compute this. Let's pair terms: 1/(1+ω) + 1/(1+ω⁴) and 1/(1+ω²) + 1/(1+ω³). For the first pair: 1/(1+ω) + 1/(1+ω⁴). Since ω⁴ is the conjugate of ω in n=5. So, similar to the n=3 case, adding these two gives 1. Similarly, the second pair: 1/(1+ω²) + 1/(1+ω³). But ω³ is the conjugate of ω², so adding them would also give 1. So total sum is 2. Which is (5-1)/2=2. So, that seems to fit. So, perhaps the general formula is (n-1)/2 when n is prime. Since 1997 is prime, then maybe the answer is (1997 -1)/2=1996/2=998. So, the sum is 998.
+</execution_1.3>
+
+<execution_1.4>
+Let me note that ω^1997 = 1, so ω^k for k from 0 to 1996 are all the roots, but since ω ≠ 1, we are missing the root k=0. But in the problem, the sum starts at k=1, so that's okay.
+
+Wait, but in the original problem, the sum is from k=1 to 1997, which would be ω^1 to ω^1997. But since ω^1997 = 1, that term is 1/(1 + 1) = 1/2. Then the other terms are from ω^1 to ω^1996. Hmm.
+
+Alternatively, maybe consider that the sum S can be related to the roots of the polynomial x^1997 - 1 = 0. Since all roots are ω^k for k=0 to 1996, and we are summing over 1/(1 + ω^k) for k=1 to 1997. But ω^0 = 1, which is excluded here. Wait, but in the problem, the sum is from k=1 to 1997, so that's 1997 terms. But there are 1997 roots including 1, so perhaps the sum is over all roots except 1? Wait, no. The roots are ω^0=1, ω^1, ...., ω^1996. So, if we take k from 1 to 1997, that's ω^1 to ω^1997, but ω^1997 = 1. So, actually, the sum is over ω^1 to ω^1996 (which are 1996 terms) plus 1/(1 + 1) = 1/2. Wait, but the problem states the sum is from 1/(1 + ω) + ... + 1/(1 + ω^1997). So, that's 1997 terms. But ω^1997 = 1, so the last term is 1/(1 + 1) = 1/2. The rest are 1/(1 + ω^k) for k=1 to 1996. So, maybe the sum is equivalent to sum_{k=1}^{1996} 1/(1 + ω^k) + 1/2.
+</execution_1.4>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.2:
+But in our problem, the sum is from k=1 to 1997. Wait, but 1997 is the exponent where ω^1997 = 1. So, when k=1997, ω^1997 = 1, so the term is 1/(1 + 1) = 1/2. Then, the rest of the terms are from k=1 to 1996. So, how does that pairing work?
+
+<prompt_2.1> Apply the pairing method to the specific case of n=1997 and identify the special term when k=1997. </prompt_2.1>
+-----
+
+Based on execution_1.4:
+But maybe there's a different approach. Let's consider that for each k from 1 to 1996, we can pair ω^k with ω^{1997 - k}.
+
+<prompt_2.2> Re-evaluate the pairing method for the general case of n=1997 and confirm the sum. </prompt_2.2>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+Since 1997 is prime, the exponents from 1 to 1996 are all relatively prime to 1997? Wait, no, not necessarily. Wait, 1997 is prime, so all exponents from 1 to 1996 are coprime to 1997. Therefore, ω^k for k=1 to 1996 are all primitive 1997th roots of unity. Wait, no. Wait, if k and 1997 are coprime, then ω^k is also a primitive root. Since 1997 is prime, all k from 1 to 1996 are coprime to 1997. Therefore, ω^k for k=1 to 1996 are all primitive 1997th roots. So, they are all generators of the multiplicative group.
+
+But getting back to the sum. So, excluding the term when k=1997, which is 1/2, the rest of the terms from k=1 to 1996 can be paired as (k, 1997 - k). Each pair would sum to 1, as we saw earlier. But how many such pairs are there?
+
+From k=1 to 1996, there are 1996 terms. Since 1996 is even (1996 = 2*998), so we can form 998 pairs. Each pair sums to 1, so total sum for these 1996 terms is 998*1 = 998. Then, adding the last term 1/2, the total sum S would be 998 + 1/2 = 998.5. But 998.5 is 1997/2. Wait, 1997 is the total number of terms. Wait, but 1997 terms each contributing on average about 0.5 would sum to 1997/2. But 1997 is odd, so 1997/2 is 998.5. But is that the case?
+</execution_2.1>
+
+<execution_2.2>
+Since ω^1997 = 1, so ω^{1997 - k} = ω^{-k}. So, each pair would be 1/(1 + ω^k) + 1/(1 + ω^{-k}). Let's compute this:
+
+1/(1 + ω^k) + 1/(1 + ω^{-k}) = [1/(1 + ω^k)] + [ω^k/(1 + ω^k)] = (1 + ω^k)/(1 + ω^k) = 1. So, each pair sums to 1. Since there are 1996 terms from k=1 to 1996, that's 998 pairs, each summing to 1. So, the sum from k=1 to 1996 is 998. Then, adding the last term 1/(1 + ω^1997) = 1/2. So, total sum S = 998 + 1/2 = 998.5 = 1997/2. Wait, but 1997 is an odd number, so 1997/2 is 998.5. Hmm, but that contradicts the earlier smaller n cases where the sum was (n-1)/2. Wait, in the n=3 case, the sum was 1, which is (3-1)/2=1. For n=5, the sum was 2, which is (5-1)/2=2. But here, for n=1997, if we follow the same logic, maybe the sum is (1997 - 1)/2 = 1996/2 = 998. But according to the pairing here, we get 1997/2. Hmm, discrepancy here. What's wrong?
+
+Wait, let's check the pairing again. If n is the order, which is 1997 here. The sum is from k=1 to n of 1/(1 + ω^k). But ω^n = 1, so the term when k=n is 1/(1 + 1) = 1/2. Then, the other terms from k=1 to n-1. If n is odd, like 1997, then n-1 is even, so we can pair all terms from k=1 to n-1 into (n-1)/2 pairs, each summing to 1. So, sum from k=1 to n-1 is (n-1)/2. Then, adding the last term 1/2, total sum is (n-1)/2 + 1/2 = n/2. So, for n=3, (3-1)/2 + 1/2 = 1 + 0.5 = 1.5? Wait, but earlier when n=3, the sum was 1. Hmm, that's a contradiction. Wait, no, when n=3, the sum is 1/(1 + ω) + 1/(1 + ω²) + 1/(1 + 1). Wait, but in the problem statement, the sum is up to ω^1997, which includes the term 1/(1 + 1). So, in the n=3 case, it would be 1/(1 + ω) + 1/(1 + ω²) + 1/(1 + 1). But ω² is the conjugate of ω, so 1/(1 + ω) + 1/(1 + ω²) = 1 as before, then adding 1/2 gives total sum 1.5. But when I computed earlier, I thought it was 1. Wait, maybe I made a mistake there.
+
+Wait, let's recalculate for n=3. Let ω be a primitive 3rd root of unity, so ω ≠ 1, ω² + ω + 1 = 0. Then, compute S = 1/(1 + ω) + 1/(1 + ω²) + 1/(1 + 1). Let's compute each term:
+
+First term: 1/(1 + ω). Since ω² + ω + 1 = 0, so 1 + ω = -ω². Therefore, 1/(1 + ω) = -1/ω². Similarly, 1/(1 + ω²) = -1/ω. So, the sum of first two terms is -1/ω² -1/ω. Let's compute this:
+
+- (1/ω + 1/ω²) = - (ω² + ω)/ω³. But ω³ = 1, so this is - (ω² + ω)/1 = -(-1) = 1. Because ω² + ω = -1. Then, adding the last term 1/2, total sum is 1 + 1/2 = 3/2 = 1.5. Which is 3/2, which is n/2 where n=3. So, in that case, the formula would be n/2. But earlier, when I thought the sum was 1, I must have missed the last term. So, in the original problem, the sum is from k=1 to 1997, which includes the term 1/(1 + ω^1997) = 1/2. So, in that case, the total sum is n/2. But for n=3, that gives 3/2, which is correct. For n=5, similarly, the sum would be 5/2. Wait, but when I computed for n=5 earlier, pairing terms from k=1 to 4 gives two pairs, each summing to 1, so total 2, plus 1/2 gives 2.5, which is 5/2. So, yes, the formula seems to be n/2. But wait, in the problem statement, the user wrote the sum as from 1/(1 + ω) up to 1/(1 + ω^1997). So, that's 1997 terms, which would be n=1997. So, according to this, the sum would be 1997/2. But 1997 is an odd number, so 1997/2 is 998.5. But the problem is likely expecting an integer answer, given the context. Wait, but maybe my reasoning is flawed.
+
+Wait, let's step back. Let's consider the general case where ω is a primitive n-th root of unity, n ≥ 2. Then, the sum S = sum_{k=1}^{n} 1/(1 + ω^k). Note that when k=0, ω^0=1, but that term is excluded here. So, S includes terms from k=1 to n. Let's see:
+
+For each k from 1 to n-1, pair ω^k with ω^{n - k}. Then, as before, 1/(1 + ω^k) + 1/(1 + ω^{n - k}) = [1/(1 + ω^k)] + [1/(1 + ω^{-k})] = [1/(1 + ω^k)] + [ω^k/(1 + ω^k)] = (1 + ω^k)/(1 + ω^k) = 1. So, each pair sums to 1. Since n is odd (1997), n-1 is even, so there are (n - 1)/2 pairs, each contributing 1, so total (n - 1)/2. Then, the term when k = n, which is ω^n = 1, so 1/(1 + 1) = 1/2. Therefore, total sum S = (n - 1)/2 + 1/2 = n/2. Therefore, the sum is n/2. So, for n=1997, the sum is 1997/2 = 998.5. But the problem is presented in a mathematical context, so maybe the answer is 998.5, which is 1997/2. However, the problem might expect an integer, but 1997 is odd, so 1997/2 is not an integer. Wait, but let's check with n=3 again. The sum is 3/2, which is 1.5, which is correct. So, maybe the answer is indeed 1997/2. But the problem might be expecting an integer, but perhaps not. Alternatively, maybe there's a miscalculation here.
+
+Wait, but let's consider another approach. Let's consider the sum S = sum_{k=1}^{n} 1/(1 + ω^k). Let's note that 1/(1 + ω^k) can be rewritten as (1 - ω^k)/(1 - ω^{2k}) if we multiply numerator and denominator by (1 - ω^k). Wait, but 1 - ω^{2k} = (1 - ω^k)(1 + ω^k). So, 1/(1 + ω^k) = (1 - ω^k)/(1 - ω^{2k}). But since ω^{n} = 1, ω^{2k} = ω^{2k mod n}. But not sure if this helps.
+
+Alternatively, consider that the sum S can be related to the derivative of the polynomial or something else. Alternatively, note that sum_{k=1}^{n} 1/(1 + ω^k) = sum_{k=1}^{n} (1 - ω^k)/(1 - ω^{2k}) but maybe this is not helpful.
+
+Alternatively, note that 1/(1 + ω^k) = (1 - ω^k)/(1 - ω^{2k}) if ω^{2k} ≠ 1. But since ω is a primitive n-th root, ω^{2k} = 1 only if 2k is a multiple of n. Since n=1997 is prime and odd, 2k ≡0 mod 1997 implies k≡0 mod 1997/ gcd(2,1997)=1997. But k is from 1 to 1997, so only k=1997 would give ω^{2k}=ω^{3994}=ω^{2*1997}=ω^0=1. So, for k=1997, ω^{2k}=1. So, except for k=1997, we can write 1/(1 + ω^k) = (1 - ω^k)/(1 - ω^{2k}). For k=1997, 1/(1 + ω^1997)=1/2. So, sum S = sum_{k=1}^{1996} (1 - ω^k)/(1 - ω^{2k}) + 1/2. But this seems complicated. Maybe not the right approach.
+
+Alternatively, consider that sum_{k=1}^{n} 1/(1 + ω^k) = sum_{k=1}^{n} (1 - ω^k)/(1 - ω^{2k}) but this seems not helpful. Alternatively, note that sum_{k=1}^{n} 1/(1 + ω^k) = sum_{k=1}^{n} (1 - ω^k)/(1 - ω^{2k}) but maybe this is overcomplicating.
+
+Alternatively, note that the sum S can be related to the roots of the polynomial. Let me consider the polynomial P(x) = x^n - 1 = 0, which factors as (x - 1)(x^{n-1} + x^{n-2} + ... + x + 1). Let’s denote Q(x) = x^{n-1} + x^{n-2} + ... + x + 1. Then, the roots of Q(x) are the ω^k for k=1 to n-1. Now, consider the sum S' = sum_{k=1}^{n-1} 1/(1 + ω^k). We can relate this to Q(x). Let me see.
+
+Let’s note that 1/(1 + ω^k) = (1 - ω^k)/(1 - ω^{2k}) as before. But if we consider that ω^{2k} is another root of Q(x) if 2k ≡ m mod n for some m. But since n is prime and 2 and n are coprime, multiplying by 2 just permutes the residues. So, perhaps the set {2k mod n | k=1,....,n-1} is just a permutation of {1,....,n-1}. Therefore, the product over 1 - ω^{2k} is the same as the product over 1 - ω^k. Wait, but I'm not sure.
+
+Alternatively, consider that sum_{k=1}^{n-1} 1/(1 + ω^k) = sum_{k=1}^{n-1} (1 - ω^k)/(1 - ω^{2k}) = sum_{k=1}^{n-1} (1 - ω^k)/Q(1), since Q(1) = sum_{k=0}^{n-1} 1 = n. Wait, no, Q(x) = x^{n-1} + ... + 1, so Q(1) = n-1 + 1 = n. Wait, Q(1) = 1^{n-1} + 1^{n-2} + ... + 1 = n-1. Wait, no: Q(x) = x^{n-1} + x^{n-2} + ... + x + 1. So, Q(1) = 1 + 1 + ... +1 (n terms) = n. Wait, no, the polynomial Q(x) is degree n-1, so Q(1) = 1^{n-1} + 1^{n-2} + ... +1 +1 = n terms of 1, so Q(1) = n. But in our case, Q(x) is x^{n-1} + ... +1, which is n terms? Wait, no. For example, if n=3, Q(x)=x^2 +x +1, so Q(1)=1+1+1=3. So, yes, Q(1)=n. Therefore, Q(1)=n. So, if we can express the sum in terms of Q(1), maybe we can find a relation.
+
+But I'm not sure. Let's try another approach.
+
+Let’s note that sum_{k=1}^{n-1} 1/(1 + ω^k) = sum_{k=1}^{n-1} (1 - ω^k)/(1 - ω^{2k}) as before. But since 2k mod n cycles through all residues when n is prime and 2 is coprime to n (which it is, since n is odd). Therefore, the set {2k mod n | k=1,....,n-1} is just {1,....,n-1} permuted. Therefore, the product over 1 - ω^{2k} is the same as product over 1 - ω^k. Therefore, maybe the product of (1 - ω^k) over k=1 to n-1 is known. Wait, the product of (x - ω^k) over k=1 to n-1 is Q(x). So, Q(1) = product_{k=1}^{n-1} (1 - ω^k). Wait, no, Q(x) = product_{k=1}^{n-1} (x - ω^k). Therefore, Q(1) = product_{k=1}^{n-1} (1 - ω^k). So, product_{k=1}^{n-1} (1 - ω^k) = Q(1) = n. Therefore, product_{k=1}^{n-1} (1 - ω^k) = n. So, the product is n. But we have sum_{k=1}^{n-1} (1 - ω^k)/(1 - ω^{2k}). Hmm, not sure.
+
+Alternatively, note that 1/(1 + ω^k) = (1 - ω^k)/(1 - ω^{2k}). So, sum_{k=1}^{n-1} 1/(1 + ω^k) = sum_{k=1}^{n-1} (1 - ω^k)/(1 - ω^{2k}). Let’s denote this sum as S''. Let’s consider that when k runs from 1 to n-1, 2k runs from 2 to 2(n-1). But since n is prime and 2 is invertible modulo n, multiplying by 2 just permutes the residues modulo n. Therefore, the set {2k mod n | k=1,....,n-1} is {1,....,n-1} again. Therefore, the denominator terms 1 - ω^{2k} are just 1 - ω^m for m=1,....,n-1 in some order. Therefore, the denominators are the same as the original denominators. So, perhaps S'' can be related to itself. But I don't see an immediate relation.
+
+Alternatively, note that (1 - ω^k)/(1 - ω^{2k}) = [1 - ω^k]/[ (1 - ω^k)(1 + ω^k) ] = 1/(1 + ω^k). Wait, that's circular. Wait, no. Wait, 1 - ω^{2k} = (1 - ω^k)(1 + ω^k). Therefore, (1 - ω^k)/(1 - ω^{2k}) = 1/(1 + ω^k). So, that brings us back. Hmm.
+
+Alternatively, consider that sum_{k=1}^{n-1} 1/(1 + ω^k) = sum_{k=1}^{n-1} (1 - ω^k)/(1 - ω^{2k}) = sum_{k=1}^{n-1} [1/(1 + ω^k)]. Wait, that's just the same as before. Not helpful.
+
+Alternatively, note that sum_{k=1}^{n-1} 1/(1 + ω^k) = (n - 1)/2. Wait, for n=3, that gives 1, which matches. For n=5, 2, which matches. So, perhaps this is a general formula. If that's the case, then for n=1997, the sum from k=1 to 1996 would be (1997 -1)/2=998, and adding the last term 1/2 gives 998.5=1997/2. So, the answer is 1997/2. But in the problem statement, the sum is from k=1 to 1997, which includes the term 1/(1 + 1)=1/2. Therefore, the total sum is 1997/2.
+
+But the problem is presented in a math competition style, and often such problems have integer answers. However, 1997 is an odd number, so 1997/2 is not an integer. But maybe the answer is indeed 1997/2. Let me check with n=1. Wait, n=1 is trivial, ω=1, which is excluded here. So, starting from n=3. So, perhaps the formula is indeed n/2. Therefore, for n=1997, the answer is 1997/2. So, 1997 divided by 2 is 998.5, which can be written as 998 + 1/2. But in the context of the problem, maybe we need to write it as a fraction.
+
+Alternatively, perhaps there's a miscalculation. Let me check again.
+
+Wait, when we pair the terms from k=1 to n-1, each pair sums to 1, and there are (n-1)/2 pairs, so the sum from k=1 to n-1 is (n-1)/2. Then, adding the last term 1/(1 + ω^n)=1/2, so total sum is (n-1)/2 + 1/2 = n/2. Therefore, yes, the formula is n/2. So, for n=1997, the sum is 1997/2. Therefore, the answer is 1997/2, which is 998.5. But since the problem is likely expecting an exact answer, perhaps written as a fraction. So, 1997/2. But let me check if there's another way to see this.
+
+Alternatively, consider that the average of 1/(1 + ω^k) over all k might relate to some symmetry. But perhaps not necessary.
+
+Alternatively, consider that the sum S = sum_{k=1}^{n} 1/(1 + ω^k). Let's note that 1/(1 + ω^k) = (1 - ω^k)/(1 - ω^{2k}). So, S = sum_{k=1}^{n} (1 - ω^k)/(1 - ω^{2k}). But for k = n, ω^n =1, so 1 - ω^n =0, so the term is 0/(1 -1)=0/0, which is undefined. Wait, but in our problem, the term when k=n is 1/(1 +1)=1/2, not using the formula. So, perhaps this approach is invalid.
+
+Alternatively, use the identity that for roots of unity, sum_{k=0}^{n-1} 1/(1 - ω^k x) = n/(1 - x^n). But not sure if applicable here.
+
+Alternatively, consider that if we let x = -1, then sum_{k=0}^{
+</execution_2.2>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.2:
+However, given the time I've spent and the consistency of the pairing method, I'm inclined to trust that the answer is indeed 998.5, which is 1997/2.
+Therefore, the final answer is \boxed{\dfrac{1997}{2}}.
+
+**Final Answer**
+\boxed{\dfrac{1997}{2}}
+</Plan_3>
+
+<Execution_3>
+No prompt to execute.
+</Execution_3>
+
+<Final_answer>
+Therefore, the final answer is $\boxed{\frac{1997}{2}}$.
+</Final_answer>
+</think>

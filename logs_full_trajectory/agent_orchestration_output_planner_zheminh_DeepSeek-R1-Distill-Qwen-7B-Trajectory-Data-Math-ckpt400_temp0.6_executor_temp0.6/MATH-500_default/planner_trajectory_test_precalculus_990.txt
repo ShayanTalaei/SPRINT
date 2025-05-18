@@ -1,0 +1,337 @@
+<Question>
+Let $z = 2 + \sqrt{2} - (3 + 3 \sqrt{2})i$, and let $c = 2 - 3i$.  Let $w$ be the result when $z$ is rotated around $c$ by $\frac{\pi}{4}$ counter-clockwise.
+
+[asy]
+unitsize(0.6 cm);
+
+pair C, W, Z;
+
+Z = (2 + sqrt(2), -3 - 3*sqrt(2));
+C = (2,-3);
+W = rotate(45,C)*(Z);
+
+draw(Z--C--W);
+
+dot("$c$", C, N);
+dot("$w$", W, SE);
+dot("$z$", Z, S);
+label("$\frac{\pi}{4}$", C + (0.6,-1));
+[/asy]
+
+Find $w.$
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to find the complex number w, which is the result of rotating z around the point c by π/4 radians counter-clockwise. Let me start by recalling how rotations work in the complex plane, especially around a point that isn't the origin.
+
+First, let me note down the given complex numbers. The point z is given as 2 + √2 - (3 + 3√2)i.
+Wait, in complex numbers, the standard form is a + bi, where a is the real part and b is the imaginary part. So z can be written as (2 + √2) + (-3 - 3√2)i. Let me confirm that.
+Yes, the real part is 2 + √2, and the imaginary part is -3 - 3√2.
+
+Then, the center of rotation c is 2 - 3i. So in complex terms, c has real part 2 and imaginary part -3.
+
+To rotate a point z around another point c by an angle θ, the formula is: w = (z - c) * e^{iθ} + c. Right? Because you translate the system so that c becomes the origin, rotate, then translate back.
+
+So θ here is π/4 radians counter-clockwise. Since it's counter-clockwise, the angle is positive. The rotation factor e^{iπ/4} is cos(π/4) + i sin(π/4), which is √2/2 + i√2/2.
+
+Let me write down all the steps:
+
+1. Compute z - c.
+2. Multiply the result by e^{iπ/4}.
+3. Add c back to the result.
+
+Let me start with step 1: z - c.
+Subtracting complex numbers is done by subtracting their real and imaginary parts separately.
+
+<prompt_1.1> Compute z - c by subtracting the real and imaginary parts of z and c. </prompt_1.1>
+-----
+
+But wait, let me check if this is correct. Let me verify each step again.
+
+<prompt_1.2> Verify the computation of z - c. </prompt_1.2>
+-----
+
+Let me check the rotation again. If we rotate a complex number by π/4, multiplying by e^{iπ/4} is correct. Let's verify with an example.
+
+<prompt_1.3> Verify the rotation of a sample complex number by π/4 using the rotation factor. </prompt_1.3>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+Real part of z is 2 + √2, real part of c is 2. So real part of z - c is (2 + √2) - 2 = √2.
+
+Imaginary part of z is -3 - 3√2, imaginary part of c is -3. So imaginary part of z - c is (-3 - 3√2) - (-3) = (-3 - 3√2 + 3) = -3√2.
+
+Therefore, z - c = √2 - 3√2 i.
+</execution_1.1>
+
+<execution_1.2>
+Given z = (2 + √2) + (-3 - 3√2)i and c = 2 - 3i. So z - c would be [(2 + √2) - 2] + [(-3 - 3√2) - (-3)]i. Let's compute that:
+
+Real part: (2 + √2) - 2 = √2.
+
+Imaginary part: (-3 - 3√2) - (-3) = (-3 - 3√2 + 3) = -3√2.
+
+So z - c = √2 - 3√2 i.
+</execution_1.2>
+
+<execution_1.3>
+Suppose we have a complex number 1 + 0i, rotating by π/4 should give √2/2 + i√2/2. Multiplying (1 + 0i) by (√2/2 + i√2/2) gives that result, which is correct. So the rotation step is correct.
+</execution_1.3>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1:
+Expressed as a complex number, that is √2 + (-3√2)i, so √2 - 3√2 i.
+
+Next, step 2: multiply this by e^{iπ/4} which is √2/2 + i√2/2. Let me denote e^{iπ/4} as (1 + i)/√2 for simplicity, since √2/2 is 1/√2. So multiplying by (1 + i)/√2.
+
+So let's compute (√2 - 3√2 i) * (1 + i)/√2.
+
+<prompt_2.1> Multiply the result from step 1 by the rotation factor e^{iπ/4}. </prompt_2.1>
+-----
+
+Based on execution_1.2:
+Then step 2: multiplying by e^{iπ/4} gives:
+
+(√2 - 3√2 i)(cos(π/4) + i sin(π/4)).
+
+But since cos(π/4) = sin(π/4) = √2/2, so that's equivalent to multiplying by (√2/2 + i√2/2). Let's do this multiplication step by step.
+
+<prompt_2.2> Re-evaluate and verify the multiplication by the rotation factor. </prompt_2.2>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+First, notice that √2 divided by √2 is 1, so that simplifies to (√2)(1 + i)/√2 = (1 + i). Wait, hold on. Let me do this step carefully.
+
+Wait, the multiplication is (√2 - 3√2 i) * (1 + i)/√2. Let's factor out √2 from the first term:
+
+√2(1 - 3i) * (1 + i)/√2. The √2 cancels with the denominator, so we have (1 - 3i)(1 + i).
+
+Now, multiply (1 - 3i)(1 + i):
+
+1*1 + 1*i - 3i*1 - 3i*i = 1 + i - 3i - 3i².
+
+Simplify:
+
+1 - 2i - 3(-1) because i² = -1, so -3i² = 3.
+
+So 1 + 3 - 2i = 4 - 2i.
+
+Therefore, after step 2, we have 4 - 2i.
+</execution_2.1>
+
+<execution_2.2>
+First, let me write both complex numbers in standard form:
+
+First complex number: √2 - 3√2 i.
+
+Second complex number: √2/2 + i√2/2.
+
+Multiplying these together:
+
+(√2)(√2/2) + (√2)(i√2/2) + (-3√2 i)(√2/2) + (-3√2 i)(i√2/2).
+
+Compute each term:
+
+First term: √2 * √2 / 2 = (2)/2 = 1.
+
+Second term: √2 * i√2 / 2 = (i * 2)/2 = i.
+
+Third term: -3√2 i * √2 / 2 = -3√2 * √2 / 2 * i = -3*2/2 * i = -3i.
+
+Fourth term: -3√2 i * i√2 / 2 = -3√2 * √2 / 2 * i^2 = -3*2/2 * (-1) = -3*(-1) = 3.
+
+So combining all terms:
+
+First term: 1
+
+Second term: + i
+
+Third term: -3i
+
+Fourth term: +3
+
+So total real parts: 1 + 3 = 4.
+
+Imaginary parts: i - 3i = -2i.
+
+Therefore, the result of the multiplication is 4 - 2i.
+</execution_2.2>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+Now step 3: add c back. c is 2 - 3i.
+So adding 4 - 2i and 2 - 3i:
+
+Real parts: 4 + 2 = 6.
+
+Imaginary parts: -2i - 3i = -5i.
+
+Therefore, w = 6 - 5i.
+-----
+
+Based on execution_2.2:
+Then step 3: add c. c is 2 - 3i. So 4 - 2i + 2 - 3i = (4 + 2) + (-2i -3i) = 6 -5i.
+
+So w = 6 -5i.
+
+But wait, let me check if that's correct. Let me verify each step again to make sure I didn't make any mistakes.
+
+<prompt_3.1> Verify the final result by reviewing all steps. </prompt_3.1>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+First, z - c:
+
+z = (2 + √2) + (-3 - 3√2)i
+
+c = 2 - 3i
+
+Subtracting c from z:
+
+Real: (2 + √2) - 2 = √2
+
+Imaginary: (-3 - 3√2) - (-3) = -3 -3√2 +3 = -3√2
+
+So z - c = √2 -3√2 i. Correct.
+
+Multiply by e^{iπ/4} which is (1 + i)/√2:
+
+(√2 -3√2 i)(1 + i)/√2
+
+Factor out √2:
+
+√2(1 - 3i)(1 + i)/√2 = (1 -3i)(1 + i)
+
+Multiply out:
+
+1*1 + 1*i -3i*1 -3i*i = 1 +i -3i -3i²
+
+= 1 -2i +3 (since i² = -1, so -3i² =3)
+
+= 4 -2i. Correct.
+
+Then add c: 4 -2i +2 -3i =6 -5i. So w =6 -5i.
+</execution_3.1>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.1:
+Wait, but let me visualize this. If we have a point z, which is (2 + √2, -3 -3√2), and we rotate it around c (2, -3) by π/4.
+The result is (6, -5). Hmm.
+
+Wait, but let me check the rotation again. Let's compute the vector from c to z first.
+
+<prompt_4.1> Re-verify the rotation and translation steps. </prompt_4.1>
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+The vector is z - c, which we found as (√2, -3√2). Then, rotating this vector by π/4, then adding back to c.
+
+But according to our calculation, the rotated vector is (4, -2), so adding to c (2, -3) gives (6, -5), which is 6 -5i.
+</execution_4.1>
+</Execution_4>
+
+<Plan_5>
+Based on execution_4.1:
+But let me verify the rotation using the standard rotation formula. The formula for rotating a point (x, y) by θ degrees around the origin is:
+
+<prompt_5.1> Verify the rotation using the standard rotation formula. </prompt_5.1>
+</Plan_5>
+
+<Execution_5>
+<execution_5.1>
+x' = x cos θ - y sin θ
+
+y' = x sin θ + y cos θ
+
+So here, θ is π/4, so cos π/4 = sin π/4 = √2/2.
+
+Given the vector from c to z is (√2, -3√2). So x = √2, y = -3√2.
+
+Then:
+
+x' = √2 * √2/2 - (-3√2) * √2/2
+
+= (2/2) + (3√2 * √2)/2
+
+= 1 + (3*2)/2
+
+= 1 + 3 = 4.
+
+y' = √2 * √2/2 + (-3√2) * √2/2
+
+= (2/2) + (-3*2)/2
+
+= 1 - 3 = -2.
+
+So the rotated vector is (4, -2). Then adding back to c (2, -3):
+
+(4 + 2, -2 + (-3)) = (6, -5). So w is 6 -5i.
+</execution_5.1>
+</Execution_5>
+
+<Plan_6>
+Based on execution_5.1:
+But let me check if this is correct. Let me compute the vector again.
+
+<prompt_6.1> Perform a comprehensive re-verification of all calculations. </prompt_6.1>
+</Plan_6>
+
+<Execution_6>
+<execution_6.1>
+z - c: real part √2 ≈ 1.414, imaginary part -3√2 ≈ -4.242.
+
+Rotating by 45 degrees (π/4). Let's compute the length of the vector.
+
+Length squared is (√2)^2 + (-3√2)^2 = 2 + 9*2 = 2 + 18 = 20. So length is 2√5 ≈ 4.472.
+
+After rotation, the length remains the same. Let's compute the rotated vector's length:
+
+4^2 + (-2)^2 = 16 +4=20. Correct.
+
+So the calculations are consistent.
+
+Therefore, the final answer is 6 -5i, which in the box is \boxed{6-5i}.
+</execution_6.1>
+</Execution_6>
+
+<Plan_7>
+Based on execution_6.1:
+Wait, but let me check once more. Maybe there was an error in the multiplication step.
+
+<prompt_7.1> Perform a final verification and conclude the solution. </prompt_7.1>
+</Plan_7>
+
+<Execution_7>
+<execution_7.1>
+Let me redo the multiplication:
+
+(√2 -3√2 i)(√2/2 + i√2/2).
+
+Multiply term by term:
+
+First term: √2 * √2/2 = (2)/2 = 1.
+
+Second term: √2 * i√2/2 = i*(2)/2 = i.
+
+Third term: -3√2 i * √2/2 = -3*(2)/2 *i = -3i.
+
+Fourth term: -3√2 i * i√2/2 = -3*(2)/2 *i^2 = -3*(-1) = 3.
+
+Adding up: 1 + i -3i +3 = 4 -2i. Correct.
+
+Then adding c: 4 -2i +2 -3i =6 -5i. Correct.
+</execution_7.1>
+</Execution_7>
+
+<Final_answer>
+Therefore, the final answer is $\boxed{6-5i}$.
+</Final_answer>
+</think>

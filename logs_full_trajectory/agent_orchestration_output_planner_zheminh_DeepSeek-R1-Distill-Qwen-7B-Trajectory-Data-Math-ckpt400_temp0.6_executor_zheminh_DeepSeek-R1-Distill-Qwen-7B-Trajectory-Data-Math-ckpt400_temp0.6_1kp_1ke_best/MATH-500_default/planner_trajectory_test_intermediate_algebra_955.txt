@@ -1,0 +1,404 @@
+<Question>
+Let $a,$ $b,$ $c$ be real numbers such that
+\[|ax^2 + bx + c| \le 1\]for all $0 \le x \le 1.$  Find the largest possible value of $|a| + |b| + |c|.$
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to find the largest possible value of |a| + |b| + |c| given that the quadratic |ax² + bx + c| is bounded by 1 for all x in the interval [0, 1]. Hmm, let me start by understanding the problem.
+
+First, the quadratic function ax² + bx + c must lie between -1 and 1 for all x between 0 and 1. And we need to maximize the sum of the absolute values of the coefficients a, b, and c. Interesting. So, it's an optimization problem with constraints.
+
+I remember that for polynomials bounded on an interval, there's something called the Chebyshev polynomial which extremizes certain quantities. But I'm not sure if that applies here directly. Chebyshev polynomials are usually considered on the interval [-1, 1], but maybe there's a version for [0, 1]. Alternatively, maybe I can use some sort of extremal principle here.
+
+Alternatively, maybe I can evaluate the quadratic at specific points in [0, 1] to get inequalities involving a, b, c, and then try to maximize |a| + |b| + |c| under those constraints. That might be a more straightforward approach.
+
+Let me try that.
+
+Let's consider the values of x where the quadratic could attain its maximum or minimum. Since it's a quadratic, it can have at most one extremum (vertex). The vertex occurs at x = -b/(2a).
+
+<prompt_1.1> Identify the critical points of the quadratic function and determine their nature. </prompt_1.1>
+
+Let me also check the endpoints x=0 and x=1.
+
+At x=0: |c| ≤ 1.
+
+<prompt_1.2> Evaluate the quadratic at specific points and establish initial constraints on the coefficients. </prompt_1.2>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+But since our interval is [0, 1], the vertex might lie inside or outside this interval. If the vertex is inside [0, 1], then the maximum or minimum of the quadratic could be at the vertex; otherwise, it's at the endpoints.
+
+So, possible points where the maximum of |ax² + bx + c| occurs are x=0, x=1, and the vertex if it's within [0, 1]. But since we are dealing with the absolute value, the maximum of |ax² + bx + c| could also be at these points. Therefore, to ensure that |ax² + bx + c| ≤ 1 for all x in [0,1], it's necessary and sufficient that it holds at x=0, x=1, and the vertex if it's in [0,1].
+</execution_1.1>
+
+<execution_1.2>
+At x=1: |a + b + c| ≤ 1.
+
+At the vertex x = -b/(2a), if that's within [0, 1], then the value there is c - b²/(4a) + (b²)/(4a) = c - (b²)/(4a) + (b²)/(4a)? Wait, no. Wait, let's compute it correctly. The quadratic at x = -b/(2a) is:
+
+a*(-b/(2a))² + b*(-b/(2a)) + c = a*(b²/(4a²)) - b²/(2a) + c = b²/(4a) - b²/(2a) + c = -b²/(4a) + c.
+
+So, the value at the vertex is c - b²/(4a). The absolute value of this must also be ≤ 1. But whether the vertex is in [0,1] depends on the sign of a. If a is positive, the parabola opens upwards, so the vertex is a minimum. If a is negative, it's a maximum.
+</execution_1.2>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1, execution_1.2:
+Therefore, if the vertex is in [0,1], then |c - b²/(4a)| ≤ 1.
+
+So, summarizing, the constraints are:
+
+1. |c| ≤ 1 (from x=0)
+2. |a + b + c| ≤ 1 (from x=1)
+3. If -b/(2a) is in [0,1], then |c - b²/(4a)| ≤ 1.
+
+But this seems a bit complicated because the third condition is conditional on the location of the vertex.
+Alternatively, maybe we can parameterize the quadratic in terms of its values at specific points, but I need a better approach.
+
+Alternatively, maybe use the Lagrange interpolation formula. Since the quadratic is determined by its values at three points.
+Let me consider that.
+
+Suppose we know the values of the quadratic at x=0, x=1/2, and x=1. Then we can reconstruct the quadratic. Let's denote:
+
+<prompt_2.1> Use Lagrange interpolation to express the quadratic polynomial in terms of its values at specific points. </prompt_2.1>
+-----
+
+But let's verify this.
+
+Wait, but how do we know that this is indeed the maximum? Maybe there's another quadratic where the coefficients are arranged differently to give a larger sum of absolute values.
+
+Alternatively, suppose we take a quadratic that oscillates between 1 and -1 at certain points in [0,1]. For example, if we can find a quadratic that reaches 1 at x=0, -1 at x=1/2, and 1 at x=1. Then, such a quadratic would have maximum absolute value 1, but perhaps the coefficients would be larger.
+
+<prompt_2.2> Explore alternative quadratic forms and calculate their coefficients. </prompt_2.2>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+f(0) = c
+
+f(1/2) = a*(1/4) + b*(1/2) + c
+
+f(1) = a + b + c
+
+So, given f(0), f(1/2), f(1), we can solve for a, b, c.
+
+Let me solve this system:
+
+c = f(0)
+
+a/4 + b/2 + c = f(1/2)
+
+a + b + c = f(1)
+
+Subtract the first equation from the second:
+
+a/4 + b/2 = f(1/2) - f(0)
+
+Subtract the second equation from the third:
+
+3a/4 + b/2 = f(1) - f(1/2)
+
+So, we have two equations:
+
+1) (a/4) + (b/2) = f(1/2) - f(0)
+
+2) (3a/4) + (b/2) = f(1) - f(1/2)
+
+Subtracting the first equation from the second:
+
+(3a/4 - a/4) = [f(1) - f(1/2)] - [f(1/2) - f(0)]
+
+(2a/4) = f(1) - 2f(1/2) + f(0)
+
+So, a/2 = f(1) - 2f(1/2) + f(0)
+
+Therefore, a = 2[f(1) - 2f(1/2) + f(0)]
+
+Then, substitute back into the first equation:
+
+(1/4)*[2(f(1) - 2f(1/2) + f(0))] + (b/2) = f(1/2) - f(0)
+
+Simplify:
+
+(1/2)[f(1) - 2f(1/2) + f(0)] + (b/2) = f(1/2) - f(0)
+
+Multiply both sides by 2:
+
+[f(1) - 2f(1/2) + f(0)] + b = 2f(1/2) - 2f(0)
+
+Therefore, b = 2f(1/2) - 2f(0) - [f(1) - 2f(1/2) + f(0)]
+
+Simplify the right-hand side:
+
+= 2f(1/2) - 2f(0) - f(1) + 2f(1/2) - f(0)
+
+= (2f(1/2) + 2f(1/2)) + (-2f(0) - f(0)) - f(1)
+
+= 4f(1/2) - 3f(0) - f(1)
+
+So, b = 4f(1/2) - 3f(0) - f(1)
+
+And c is just f(0).
+</execution_2.1>
+
+<execution_2.2>
+Wait, but a quadratic is determined by three coefficients, so if it takes three values, we can solve for a, b, c.
+
+Let's try that.
+
+Suppose f(0) = c = 1.
+
+f(1/2) = a*(1/4) + b*(1/2) + c = -1.
+
+f(1) = a + b + c = 1.
+
+So, we have:
+
+1. c = 1.
+
+2. (1/4)a + (1/2)b + 1 = -1 => (1/4)a + (1/2)b = -2.
+
+3. a + b + 1 = 1 => a + b = 0 => b = -a.
+
+Substitute b = -a into equation 2:
+
+(1/4)a + (1/2)(-a) = -2 => (1/4 - 1/2)a = -2 => (-1/4)a = -2 => a = 8.
+
+Then, b = -8.
+
+So, the quadratic is 8x² - 8x + 1. Let's check the values:
+
+At x=0: 1.
+
+At x=1/2: 8*(1/4) -8*(1/2) +1 = 2 -4 +1 = -1.
+
+At x=1: 8 -8 +1 =1.
+
+So, this quadratic oscillates between 1 and -1 at these three points. But is this the extremal case?
+
+Wait, but does this quadratic stay within [-1,1] for all x in [0,1]? Let's check its maximum and minimum.
+
+The quadratic is 8x² -8x +1. Its vertex is at x = -b/(2a) = 8/(16) = 0.5. So, at x=0.5, the value is -1, which is the minimum. At x=0 and x=1, it's 1. So, the quadratic reaches 1 at the endpoints and -1 at the midpoint. Therefore, it oscillates between 1 and -1 three times in the interval [0,1]. Therefore, it's bounded by 1 in absolute value. So, this quadratic satisfies the condition.
+
+Then, the sum |a| + |b| + |c| is |8| + | -8| + |1| = 8 +8 +1=17.
+</execution_2.2>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+Therefore, if we can bound |f(0)|, |f(1/2)|, |f(1)|, then we can bound |a|, |b|, |c|.
+But how?
+
+Since we want to maximize |a| + |b| + |c|, given that |f(x)| ≤1 for all x in [0,1], we need to find the quadratic that achieves the maximum of |a| + |b| + |c| under this constraint.
+
+Alternatively, perhaps the maximum occurs when the quadratic touches the bound 1 or -1 at several points.
+
+<prompt_3.1> Consider how to maximize the sum of absolute values of coefficients given the constraints. </prompt_3.1>
+
+But we need to relate this to |a| + |b| + |c|.
+
+Given that a, b, c are expressed in terms of f(0), f(1/2), f(1), which are each bounded by 1 in absolute value. Therefore:
+
+<prompt_3.2> Establish bounds on the coefficients and calculate the maximum possible sum of their absolute values. </prompt_3.2>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+For example, the example I just considered reaches 1 at x=0, 1, and -1 at x=1/2. Maybe that's the extremal case.
+
+But let's check. Let's compute |a| + |b| + |c| for this quadratic: 8 + 8 +1 =17.
+</execution_3.1>
+
+<execution_3.2>
+|a| = |2[f(1) - 2f(1/2) + f(0)]| ≤ 2[|f(1)| + 2|f(1/2)| + |f(0)|] ≤ 2[1 + 2*1 +1] = 2*4 = 8.
+
+Similarly, |b| = |4f(1/2) - 3f(0) - f(1)| ≤ 4|f(1/2)| + 3|f(0)| + |f(1)| ≤ 4*1 +3*1 +1 = 8.
+
+|c| = |f(0)| ≤1.
+
+Therefore, |a| + |b| + |c| ≤8 +8 +1=17.
+
+But is this bound achievable? The previous example where the quadratic is 8x² -8x +1 gives exactly |a| + |b| + |c| =8 +8 +1=17.
+</execution_3.2>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.2:
+Wait, but in that example, the quadratic reaches 1 at x=0 and x=1, and -1 at x=1/2. So, that's three points where it touches the bound.
+But in the general case, for a quadratic, the maximum number of alternations is three, according to the equioscillation theorem. Wait, but a quadratic is degree 2, so it can equioscillate at most 3 times?
+
+<prompt_4.1> Analyze the equioscillation of the quadratic and consider if more alternations are possible. </prompt_4.1>
+-----
+
+Based on execution_3.1:
+But we need to verify if this is actually the maximum. Let's see if there's another quadratic where |a| + |b| + |c| is larger while still satisfying |ax² + bx + c| ≤1 on [0,1].
+
+Suppose we try to have the quadratic reach 1 at more points. For example, if it reaches 1 at x=0, x=1, and x=1/2. But then, as in the previous example, that gives us a quadratic that's determined by those three points.
+
+<prompt_4.2> Consider other potential quadratics and verify if they can achieve a higher sum of absolute values. </prompt_4.2>
+-----
+
+But let me confirm this. Let's assume that the maximum is indeed 17, as per the example. But is there another quadratic where |a| + |b| + |c| is higher?
+
+<prompt_4.3> Attempt to find another quadratic with a higher sum of absolute values. </prompt_4.3>
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+Wait, no, the equioscillation theorem says that the best approximation equioscillates between the extreme values. For approximation by polynomials of degree n, the minimal maximum error is achieved when there are n+2 alternations. But here, we are not approximating, but rather looking for the maximum of |a| + |b| + |c| given that |quadratic| ≤1 on [0,1]. Maybe the maximum occurs when the quadratic equioscillates between 1 and -1 at three points.
+</execution_4.1>
+
+<execution_4.2>
+But that quadratic is 8x² -8x +1, which has |a| + |b| + |c| =17. So, perhaps that's the maximum. But maybe another quadratic can have a higher sum.
+
+Alternatively, suppose we take a quadratic that reaches 1 at x=0, -1 at x=1, and 1 at x=1/2. Let's see:
+
+f(0) =1, f(1/2) = -1, f(1)=1.
+
+Then, a =2[1 -2*(-1) +1] =2[1 +2 +1] =2*4=8.
+
+b=4*(-1) -3*1 -1= -4 -3 -1= -8.
+
+c=1.
+
+So, quadratic is 8x² -8x +1, same as before. So, same sum.
+
+Alternatively, if we take f(0)=1, f(1)= -1, and the vertex at x=1/2 is 1. Wait, but the vertex is at x=1/2, so f(1/2) would be the minimum or maximum. If the quadratic has a minimum at x=1/2, then f(1/2) = -1, and f(0)=1, f(1)= -1. But that's the same as before. Alternatively, if it's a maximum at x=1/2. Wait, but a quadratic can only have one extremum. If it's a maximum at x=1/2, then the quadratic opens downward. Let's see:
+
+Suppose f(0)=1, f(1/2)=1 (maximum), f(1)= -1.
+
+Then, a =2[(-1) -2*(1) +1] =2[-1 -2 +1]=2*(-2)= -4.
+
+b=4*(1) -3*(1) -(-1)=4 -3 +1=2.
+
+c=1.
+
+So, quadratic is -4x² +2x +1.
+
+Check the values:
+
+At x=0:1.
+
+At x=1/2: -4*(1/4) +2*(1/2) +1= -1 +1 +1=1.
+
+At x=1: -4 +2 +1= -1.
+
+So, this quadratic also oscillates between 1 and -1 three times. But |a| + |b| + |c| =4 +2 +1=7, which is less than 17.
+</execution_4.2>
+
+<execution_4.3>
+Suppose we take a quadratic that reaches 1 at x=0 and x=1, and -1 at some other point in (0,1). Let's see.
+
+Suppose f(0)=1, f(1)=1, and f(t)=-1 for some t in (0,1). Then, the quadratic is determined by these three points. Let's compute a, b, c.
+
+Using Lagrange interpolation:
+
+f(x) = 1 * [(x - 0)(x - 1)/((t - 0)(t - 1))] + 1 * [(x - 0)(x - t)/((1 - 0)(1 - t))] + (-1) * [(x - 1)(x - t)/((0 - 1)(0 - t))]
+
+But this might be tedious. Alternatively, set up the system:
+
+a*0 + b*0 + c =1 => c=1.
+
+a*1 + b*1 + c =1 => a + b +1=1 => a + b=0 => b = -a.
+
+a*t² + b*t + c = -1 => a*t² -a*t +1 = -1 => a(t² - t) = -2 => a = -2 / (t² - t) = 2 / (t - t²).
+
+So, a = 2 / [t(1 - t)].
+
+Then, b = -2 / [t(1 - t)].
+
+Therefore, the quadratic is [2 / (t(1 - t))]x² - [2 / (t(1 - t))]x +1.
+
+Let's compute |a| + |b| + |c|:
+
+|2 / (t(1 - t))| + | -2 / (t(1 - t))| + |1| = 4 / (t(1 - t)) +1.
+
+To maximize this, we need to minimize t(1 - t). Since t is in (0,1), the product t(1 - t) is maximized at t=1/2, where it is 1/4. Therefore, the minimal value of t(1 - t) approaches 0 as t approaches 0 or 1. Therefore, 4 / (t(1 - t)) can become arbitrarily large. However, we must ensure that the quadratic remains bounded by 1 in absolute value on [0,1].
+
+Wait, but in this construction, we fixed f(0)=1, f(1)=1, and f(t)=-1. However, the quadratic might exceed the bound of 1 or -1 elsewhere in [0,1]. Let's check.
+
+Take t approaching 0. Then, a = 2 / (t(1 - t)) ≈ 2/t, which becomes very large as t approaches 0. The quadratic is ax² -ax +1. Let's see its behavior as t approaches 0.
+
+At x=0, it's 1. At x=1, it's 1. At x=t≈0, it's -1. What about at x=1/2?
+
+f(1/2) = a*(1/4) -a*(1/2) +1 = -a/4 +1 ≈ - (2/t)/4 +1 = - (1)/(2t) +1. As t approaches 0, this tends to -infinity, which is way below -1. Therefore, the quadratic would violate the |f(x)| ≤1 condition. Therefore, this approach doesn't work because the quadratic would exceed the bound elsewhere.
+
+Therefore, such a quadratic with very large coefficients isn't valid. Therefore, the previous example where the quadratic oscillates between 1 and -1 at three points (x=0, 1/2, 1) is actually the extremal case where the coefficients are maximized while keeping the quadratic bounded by 1.
+
+Therefore, the maximum of |a| + |b| + |c| is 17.
+</execution_4.3>
+</Execution_4>
+
+<Plan_5>
+Based on execution_4.3:
+Wait, but let me check another case. Suppose the quadratic reaches 1 at three points. Is that possible?
+
+<prompt_5.1> Verify if a quadratic can reach the bound 1 at three distinct points. </prompt_5.1>
+
+But wait, in the example we considered, the quadratic is 8x² -8x +1. Let's plot it mentally.
+
+<prompt_5.2> Mentally plot the quadratic 8x² -8x +1 and verify its behavior. </prompt_5.2>
+
+Alternatively, suppose we take a quadratic that reaches 1 at x=0, -1 at x=1, and 1 at x=1/2. Wait, but that's similar to before. Let's check:
+
+<prompt_5.3> Consider another quadratic configuration and calculate its coefficients and sum of absolute values. </prompt_5.3>
+</Plan_5>
+
+<Execution_5>
+<execution_5.1>
+A quadratic can have at most two real roots unless it's identically zero. But here, if it reaches 1 at three distinct points, that would mean the quadratic equals 1 at three points, which is impossible unless it's a constant function. Since our quadratic is not constant (a≠0), it can intersect the line y=1 at most twice. Similarly, it can intersect y=-1 at most twice. Therefore, the quadratic can alternate between 1 and -1 at most three times (once for each extremum and the endpoints). But in our previous example, it does alternate three times: 1 at 0, -1 at 1/2, 1 at 1. So, that's three points where it reaches the bound. So, this seems to be the maximal case.
+</execution_5.1>
+
+<execution_5.2>
+At x=0:1, x=1/2: -1, x=1:1. So, it's a parabola opening upwards, vertex at x=1/2, which is the minimum. So, it's symmetric around x=1/2. So, yes, it's 1 at 0 and 1, and -1 at the midpoint.
+</execution_5.2>
+
+<execution_5.3>
+f(0)=1, f(1/2)=1, f(1)=-1.
+
+Then, a =2[(-1) -2*(1) +1] =2*(-1 -2 +1)=2*(-2)=-4.
+
+b=4*(1) -3*(1) -(-1)=4 -3 +1=2.
+
+c=1.
+
+So, quadratic is -4x² +2x +1. The sum is 4 +2 +1=7. But is this quadratic bounded by 1 in absolute value on [0,1]?
+
+Let's check its maximum. The vertex is at x = -b/(2a) = -2/(2*(-4)) = 1/4. The value at x=1/4 is -4*(1/16) +2*(1/4) +1 = -1/4 +1/2 +1 = 1.25. So, that's above 1, which violates the condition. Therefore, this quadratic is not valid. Therefore, such a quadratic cannot be considered.
+
+Therefore, the previous example where the quadratic is 8x² -8x +1, which oscillates between 1 and -1 at three points, is actually the extremal case. Because if we try to make it oscillate three times, the coefficients get large, but the quadratic remains bounded.
+
+Another way to check is to use the Chebyshev polynomial. The Chebyshev polynomial of degree 2 on [0,1] can be transformed to fit the interval. The standard Chebyshev polynomial on [-1,1] is T2(x) = 2x² -1. To map this to [0,1], we can use the substitution x = 2t -1, where t ∈ [0,1]. Then, T2(2t -1) = 2(2t -1)^2 -1 = 2(4t² -4t +1) -1 = 8t² -8t +2 -1 =8t² -8t +1. So, the transformed Chebyshev polynomial on [0,1] is 8t² -8t +1, which is exactly the quadratic we considered earlier. The maximum absolute value of this polynomial on [0,1] is 1, and the sum of the absolute values of coefficients is 8 +8 +1=17.
+</execution_5.3>
+</Execution_5>
+
+<Plan_6>
+Based on execution_5.3:
+Therefore, this seems to be the optimal case.
+
+But to confirm, let's check the derivative.
+
+<prompt_6.1> Verify the extremal quadratic by checking its derivative and confirming it has only one extremum. </prompt_6.1>
+</Plan_6>
+
+<Execution_6>
+<execution_6.1>
+The derivative of 8x² -8x +1 is 16x -8. Setting to zero gives x=0.5, which is the vertex. So, only one extremum, which is the minimum. Therefore, the quadratic decreases from x=0 to x=0.5, reaching -1, then increases back to 1 at x=1. So, it's a parabola opening upwards with vertex at (0.5, -1).
+</execution_6.1>
+</Execution_6>
+
+<Plan_7>
+Based on execution_6.1:
+I think that's the maximum. Therefore, the largest possible value of |a| + |b| + |c| is 17.
+</Plan_7>
+
+<Execution_7>
+No prompt to execute.
+</Execution_7>
+
+<Final_answer>
+\[|a| + |b| + |c| = \boxed{17}\]
+</Final_answer>
+</think>

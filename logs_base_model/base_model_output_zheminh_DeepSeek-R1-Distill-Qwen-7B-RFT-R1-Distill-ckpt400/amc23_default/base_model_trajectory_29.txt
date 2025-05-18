@@ -1,0 +1,76 @@
+Okay, let's see. I need to find the length of the longest interior diagonal of a rectangular box with distinct edge lengths a, b, and c. The problem gives me three pieces of information: the sum of all edges is 13, the total surface area is 11/2, and the volume is 1/2. Then, I need to express the diagonal as a fraction m/n where m and n are coprime, and find m + n.
+
+First, I recall that for a rectangular box, the space diagonal can be found using the formula sqrt(a² + b² + c²). So, if I can find a² + b² + c², then I can take the square root of that to get the diagonal.
+
+But to get a² + b² + c², I might need some relationships between a, b, c. The given information includes the sum of all edges, the total surface area, and the volume.
+
+Let me note down the given equations:
+
+1. The sum of all 12 edges: 4(a + b + c) = 13. So, a + b + c = 13/4. Let's call this equation (1).
+
+2. The total surface area: 2(ab + bc + ac) = 11/2. So, ab + bc + ac = 11/4. Let's call this equation (2).
+
+3. The volume: abc = 1/2. Equation (3).
+
+Our goal is to find a² + b² + c². I remember that (a + b + c)² = a² + b² + c² + 2(ab + bc + ac). So, if I can compute that, I can solve for a² + b² + c².
+
+From equation (1), (a + b + c)² = (13/4)² = 169/16.
+
+From equation (2), 2(ab + bc + ac) = 11/2, so ab + bc + ac = 11/4. Then, 2(ab + bc + ac) is 11/2, which is the same as equation (2).
+
+So, substituting into the identity:
+
+(a + b + c)² = a² + b² + c² + 2(ab + bc + ac)
+
+=> 169/16 = a² + b² + c² + 11/2
+
+Therefore, a² + b² + c² = 169/16 - 11/2
+
+But 11/2 is equal to 88/16, so 169/16 - 88/16 = 81/16.
+
+Therefore, a² + b² + c² = 81/16. Then, the space diagonal is sqrt(81/16) = 9/4.
+
+Wait, hold on. But the problem says the answer should be in the form m/n where m and n are coprime, and then m + n. So 9/4 would be m=9, n=4, so m + n = 13. But before I get too excited, let me check if all the given conditions are satisfied with these values. Because sometimes even if you use the formulas correctly, the individual edge lengths might not be distinct, or the volume might not match. Let me verify.
+
+Given that a, b, c are distinct, and their sum is 13/4, product is 1/2, and sum of products is 11/4. So, if we let a, b, c be the roots of the cubic equation x³ - (a + b + c)x² + (ab + bc + ac)x - abc = 0. Plugging in the known values:
+
+x³ - (13/4)x² + (11/4)x - 1/2 = 0
+
+Multiply both sides by 4 to eliminate denominators:
+
+4x³ - 13x² + 11x - 2 = 0
+
+Now, let's try to factor this cubic equation. Let's check possible rational roots using Rational Root Theorem. Possible roots are factors of 2 over factors of 4, so ±1, ±2, ±1/2, ±1/4.
+
+Testing x=1: 4(1) -13(1) +11(1) -2 = 4 -13 +11 -2 = 0. So x=1 is a root.
+
+Therefore, we can factor (x - 1) out of the cubic. Let's perform polynomial division or use synthetic division:
+
+Divide 4x³ -13x² +11x -2 by (x - 1):
+
+Using synthetic division:
+
+1 | 4  -13   11   -2
+
+          4   -9    2
+
+      4   -9    2     0
+
+So, the cubic factors as (x - 1)(4x² -9x +2). Now, factor the quadratic:
+
+4x² -9x +2. Let's find two numbers m and n such that m * n = 4*2=8 and m + n = -9. Hmm,  factors of 8: 1 & 8, 2 & 4. Looking for two numbers that add to -9. Maybe -1 and -8? No. Wait, 4x² -9x +2. Let's use quadratic formula:
+
+x = [9 ± sqrt(81 - 32)] / 8 = [9 ± sqrt(49)] /8 = [9 ±7]/8
+
+So, x = (9 +7)/8 = 16/8=2, and x=(9 -7)/8=2/8=1/4.
+
+Therefore, the roots are x=1, x=2, x=1/4. So, the edge lengths are 1, 2, and 1/4. But the problem states that the edge lengths are distinct. 1, 2, and 1/4 are all distinct, so that's okay. Also, the sum is 1 + 2 + 1/4 = 3 + 1/4 = 13/4, which matches equation (1). The product is 1*2*(1/4)=2/4=1/2, which matches equation (3). The sum of products is (1*2 + 2*(1/4) + 1*(1/4)) = 2 + 0.5 + 0.25 = 2.75 = 11/4, which matches equation (2). So all conditions are satisfied.
+
+Therefore, the edge lengths are 1/4, 1, and 2. Then, the space diagonal is sqrt( (1/4)^2 +1^2 +2^2 )= sqrt(1/16 +1 +4)= sqrt(1/16 +5)= sqrt(81/16)=9/4. So, 9/4 is the diagonal, which is already in lowest terms, so m=9, n=4, m+n=13.
+
+But wait, before I finish, let me make sure that the problem didn't have any trick. The problem says "the longest interior diagonal connecting two vertices of P". In a rectangular box, the space diagonal is the longest interior diagonal, so that's just the one we calculated. So, yes, 9/4 is correct. So the answer is 13.
+
+**Final Answer**
+\boxed{13}
+Therefore, the length of the longest interior diagonal is $\boxed{\frac{9}{4}}$, so $m + n = 9 + 4 = \boxed{13}$.
+</think>

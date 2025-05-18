@@ -1,0 +1,83 @@
+Okay, so I need to find the maximum area of an isosceles trapezoid with legs of length 1, and one base is twice as long as the other. The answer should be a fraction m/n where m and n are coprime, and then I have to find m² + n². Hmm, let me think step by step.
+
+First, let's recall the formula for the area of a trapezoid. The area is (a + b)/2 * h, where a and b are the lengths of the two bases, and h is the height. Since it's an isosceles trapezoid, the legs are equal, and the non-parallel sides (legs) are congruent. The problem says the legs are length 1, so that's good.
+
+Now, the trapezoid has one base twice as long as the other. Let's denote the shorter base as x, so the longer base would be 2x. Therefore, a = x and b = 2x. Then, the area becomes (x + 2x)/2 * h = (3x/2) * h. So, the area is (3x/2)h. Our goal is to maximize this area.
+
+But we need to relate h and x. Since the legs are length 1, we can use the Pythagorean theorem to find h in terms of the difference in the bases. Let me visualize the trapezoid: the two bases are x and 2x, so the difference in their lengths is 2x - x = x. Since it's isosceles, the legs extend out equally on both sides. Therefore, each side (the projection of the leg onto the base) would be (2x - x)/2 = x/2.
+
+So, if we drop a perpendicular from one end of the shorter base to the longer base, it forms a right triangle with one leg being h (the height), another leg being x/2, and the hypotenuse being the leg of the trapezoid, which is 1. Therefore, by Pythagoras:
+
+(x/2)² + h² = 1²
+=> x²/4 + h² = 1
+=> h² = 1 - x²/4
+=> h = sqrt(1 - x²/4)
+
+Therefore, the area A = (3x/2) * sqrt(1 - x²/4)
+
+Now, to maximize A with respect to x. Since x is positive and less than 2 (since the height must be real), we can consider x in (0, 2). However, the height h must also be positive, so 1 - x²/4 > 0 => x² < 4 => x < 2. So, x is in (0, 2).
+
+So, we need to maximize A(x) = (3x/2) * sqrt(1 - x²/4). Let's set this up for calculus. Let's square the area to make it easier to differentiate, since the square will have its maximum at the same x as the original area.
+
+Let A² = (9x²/4) * (1 - x²/4) = (9x²/4) - (9x⁴)/16
+
+Let’s denote f(x) = (9x²/4) - (9x⁴)/16. To find the maximum of f(x), take the derivative f’(x):
+
+f’(x) = (18x/4) - (36x³)/16 = (9x/2) - (9x³)/4
+
+Set f’(x) = 0:
+
+(9x/2) - (9x³)/4 = 0
+Multiply both sides by 4 to eliminate denominators:
+
+18x - 9x³ = 0
+Factor out 9x:
+
+9x(2 - x²) = 0
+
+Thus, critical points at x = 0 and 2 - x² = 0 => x = sqrt(2) or x = -sqrt(2). Since x is positive, x = sqrt(2).
+
+So, the maximum occurs at x = sqrt(2). Let's check the second derivative to confirm it's a maximum.
+
+f''(x) = derivative of f’(x) = 9/2 - (27x²)/4
+
+At x = sqrt(2):
+
+f''(sqrt(2)) = 9/2 - (27*(2))/4 = 9/2 - 54/4 = 9/2 - 27/2 = -18/2 = -9 < 0. So, concave down, so it's a maximum.
+
+Therefore, the maximum area occurs at x = sqrt(2). Now, compute h at this x:
+
+h = sqrt(1 - (sqrt(2))² /4) = sqrt(1 - 2/4) = sqrt(1 - 1/2) = sqrt(1/2) = 1/sqrt(2)
+
+Therefore, the area A = (3*sqrt(2)/2) * (1/sqrt(2)) = (3*sqrt(2)/2) * (sqrt(2)/2) = (3*2)/4 = 3/2
+
+Wait, that can't be right. Wait, let's check the calculation again.
+
+Wait, A = (3x/2) * h. At x = sqrt(2):
+
+h = 1/sqrt(2)
+
+So, A = (3*sqrt(2)/2) * (1/sqrt(2)) = (3/2) * (sqrt(2)/sqrt(2)) = 3/2 * 1 = 3/2. So, the area is 3/2. Then, 3/2 is m/n where m=3 and n=2. Then m² + n² = 9 + 4 = 13. So, the answer is 13.
+
+Wait, but let me verify if that's correct. Let me check the steps again.
+
+We have x = sqrt(2), which is approximately 1.414. Then the longer base is 2x = 2*sqrt(2) ≈ 2.828. The height is 1/sqrt(2) ≈ 0.707. Then the area is (x + 2x)/2 * h = (3x)/2 * h. Plugging in x = sqrt(2), we get (3*sqrt(2)/2) * (1/sqrt(2)) = (3/2) * (sqrt(2)/sqrt(2)) = 3/2. So, yes, 3/2. So, m=3, n=2, m² + n²=9+4=13.
+
+But wait, is there a mistake here? Because when I think of the trapezoid, the height is 1/sqrt(2), which is less than 1. But the legs are 1. Wait, in the right triangle formed by the leg, the height, and the projection, the leg is the hypotenuse. So, if the projection is x/2 = sqrt(2)/2 ≈ 0.707, then sqrt( (sqrt(2)/2)^2 + (1/sqrt(2))^2 ) = sqrt( 0.5 + 0.5 ) = sqrt(1) = 1, which is correct. So, that's right.
+
+Therefore, the area is indeed 3/2, so m² + n² is 9 + 4 = 13.
+
+But wait, let me check if maybe the maximum area is achieved when the trapezoid is actually a rectangle. But in that case, the legs would be the same as the height. But here, the legs are 1, which would be the same as the height if it's a rectangle, but in that case, the bases would be equal, which contradicts the given that one base is twice as long as the other. So, it's not a rectangle. So, the maximum area occurs at x = sqrt(2), giving area 3/2. So, the answer is 13.
+
+Wait, but let me confirm with another approach. Let's parameterize the trapezoid differently.
+
+Suppose we model the trapezoid with coordinates. Let’s place the longer base of length 2x on the x-axis from (-x, 0) to (x, 0). Then, the shorter base of length x is parallel and above, so it would be from (-x/2, h) to (x/2, h). Then, the legs connect (-x, 0) to (-x/2, h) and (x, 0) to (x/2, h). The length of each leg is 1, so the distance between (-x, 0) and (-x/2, h) is sqrt( (x/2)^2 + h^2 ) = 1. So, same equation as before: (x²)/4 + h² = 1, leading to h = sqrt(1 - x²/4). Then, the area is average of the two bases times height: ( (2x + x)/2 ) * h = (3x/2) * h, same as before.
+
+So, same result. So, the maximum area is indeed 3/2, so m² + n² is 13.
+
+But wait, another way to check. Let's consider that the maximum area occurs when the trapezoid is symmetric with the height at the center. Since it's isosceles, that's already the case. So, the area is (a + b)/2 * h, which we've used. So, all steps check out. Therefore, the answer is 13.
+
+**Final Answer**
+\boxed{13}
+Therefore, the maximum area of the isosceles trapezoid is $\frac{3}{2}$, and $m^2 + n^2$ is $\boxed{13}$.
+</think>

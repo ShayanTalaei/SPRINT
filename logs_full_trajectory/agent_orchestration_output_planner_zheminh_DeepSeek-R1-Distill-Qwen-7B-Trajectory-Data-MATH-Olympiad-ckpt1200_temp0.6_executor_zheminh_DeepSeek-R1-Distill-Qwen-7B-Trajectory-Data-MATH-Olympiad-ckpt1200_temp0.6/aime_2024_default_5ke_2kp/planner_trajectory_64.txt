@@ -1,0 +1,238 @@
+<Question>
+Let $p$ be the least prime number for which there exists a positive integer $n$ such that $n^{4}+1$ is divisible by $p^{2}$. Find the least positive integer $m$ such that $m^{4}+1$ is divisible by $p^{2}$.
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to find the least prime number p such that there exists a positive integer n where n⁴ + 1 is divisible by p². Then, once I find that p, I have to determine the smallest positive integer m for which m⁴ + 1 is divisible by p². Hmm, let's start by understanding the problem step by step.
+
+First, let's recall that if a prime p divides n⁴ + 1, then n⁴ ≡ -1 mod p. This congruence implies that the order of n modulo p divides 8 because n⁸ ≡ 1 mod p. Therefore, the multiplicative order of n modulo p is 8, which means that 8 divides p - 1 (by Fermat's little theorem). So, primes p ≡ 1 mod 8 are possible candidates. However, the problem is asking for p² dividing n⁴ + 1, which is a stronger condition.
+
+<prompt_1.1> Find the least prime \( p \) such that there exists a positive integer \( n \) where \( n^4 + 1 \) is divisible by \( p^2 \), using the above plan. </prompt_1.1>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+Let me check for the smallest primes first and see if their squares divide some n⁴ + 1.
+
+Let's start with the smallest primes:
+
+p = 2: Check if there exists n such that n⁴ + 1 ≡ 0 mod 4. Let's compute n⁴ mod 4. For even n, n = 2k, n⁴ = 16k⁴ ≡ 0 mod 4. For odd n, n = 2k + 1, n⁴ = (16k⁴ + 32k³ + 24k² + 8k + 1) ≡ 1 mod 4. Therefore, n⁴ + 1 ≡ 1 mod 4 if n is odd, and n⁴ + 1 ≡ 1 mod 4 if n is even (since 0 + 1 = 1 mod 4). Wait, that can't be. Wait, if n is even, n⁴ is 0 mod 4, so n⁴ + 1 ≡ 1 mod 4. If n is odd, n⁴ ≡ 1 mod 4, so n⁴ + 1 ≡ 2 mod 4. So in both cases, n⁴ + 1 is either 1 or 2 mod 4. Therefore, 4 does not divide n⁴ + 1 for any n. So p = 2 is out.
+
+Next, p = 3. Let's see if there exists n such that n⁴ + 1 ≡ 0 mod 9. Let's compute n⁴ mod 9 for n = 0 to 8:
+
+n | n⁴ mod 9
+0 | 0
+1 | 1
+2 | 16 ≡ 7
+3 | 0
+4 | 256 ≡ 256 - 27*9 = 256 - 243 = 13 ≡ 4
+5 | 625 ≡ 625 - 69*9 = 625 - 621 = 4
+6 | 0
+7 | 7⁴ = (49)² ≡ 4² = 16 ≡ 7
+8 | 8⁴ = 4096 ≡ 4096 - 455*9 = 4096 - 4095 = 1
+
+So n⁴ mod 9 can be 0, 1, 4, 7. Then n⁴ + 1 mod 9 would be 1, 2, 5, 8. None of these are 0. Therefore, there is no n such that n⁴ + 1 ≡ 0 mod 9. So p = 3 is out.
+
+Next prime p = 5. Let's check if n⁴ + 1 ≡ 0 mod 25 for some n. Let's compute n⁴ mod 25 for n from 0 to 24. But that's tedious. Alternatively, let's check if there exists n such that n⁴ ≡ -1 mod 5. First, check modulo 5. If such n exists, then maybe lift it to modulo 25.
+
+Compute n⁴ mod 5 for n = 0 to 4:
+
+n | n⁴ mod 5
+0 | 0
+1 | 1
+2 | 16 ≡ 1
+3 | 81 ≡ 1
+4 | 256 ≡ 1
+
+So n⁴ ≡ 0 or 1 mod 5. Therefore, n⁴ ≡ -1 mod 5 would require 1 ≡ -1 mod 5, which is 2 ≡ 0 mod 5, which is false. Therefore, there is no solution modulo 5, hence no solution modulo 25.
+</execution_1.1>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1:
+Therefore, p = 5 is out.
+
+Next prime p = 13. Wait, hold on. Wait, maybe I should check primes where p ≡ 1 mod 8 first.
+
+<prompt_2.1> Check for primes \( p \equiv 1 \mod 8 \) to see if \( p^2 \) divides \( n^4 + 1 \) for some \( n \), continuing the above plan. </prompt_2.1>
+
+Next prime p = 17. Let's check if 17² divides n⁴ + 1 for some n.
+
+<prompt_2.2> Check for primes \( p \equiv 1 \mod 8 \) to see if \( p^2 \) divides \( n^4 + 1 \) for some \( n \), continuing the above plan. </prompt_2.2>
+
+Wait, but before going further, maybe there's a better approach.
+
+I remember that primes p for which there exists n with n⁴ ≡ -1 mod p are primes p ≡ 1 mod 8. So the primes we need to consider are primes congruent to 1 mod 8. The smallest such primes are 17, 97, etc.
+
+<prompt_2.3> Use the fact that primes \( p \equiv 1 \mod 8 \) have solutions to \( n^4 \equiv -1 \mod p \) to identify the least prime \( p \) such that \( p^2 \) divides \( n^4 + 1 \). </prompt_2.3>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+Wait, but maybe it's better to check primes in order and check if their squares divide some n⁴ + 1.
+
+Wait, but the primes p where p ≡ 1 mod 8 are 17, 97, 113, etc. The next primes after 13 are 17, 19, 23, 29, 31, 37, etc. Wait, 17 is the first prime ≡1 mod 8. Let's check p=17.
+
+First, check if there exists n such that n⁴ +1 ≡0 mod 17. Let's compute n⁴ mod 17 for n from 1 to 16:
+
+1⁴=1; 2⁴=16; 3⁴=81≡13; 4⁴=256≡1; 5⁴=625≡625-36*17=625-612=13; 6⁴=1296≡1296-76*17=1296-1292=4; 7⁴=2401≡2401-141*17=2401-2397=4; 8⁴=4096≡4096-241*17=4096-4097= -1≡16; 9⁴=6561≡6561-386*17=6561-6562= -1≡16; 10⁴=10000≡10000-588*17=10000-9996=4; 11⁴=14641≡14641-861*17=14641-14637=4; 12⁴=20736≡20736-1219*17=20736-20723=13; 13⁴=28561≡28561-1680*17=28561-28560=1; 14⁴=38416≡38416-2260*17=38416-38420= -4≡13; 15⁴=50625≡50625-2978*17=50625-50626= -1≡16; 16⁴=65536≡65536-3855*17=65536-65535=1.
+
+So n⁴ mod 17 can be 1,4,13,16. Then n⁴ +1 mod 17 can be 2,5,14,0. Oh, wait, when n=2, n⁴=16, so n⁴ +1=17≡0 mod 17. So n=2 is a solution. So 17 divides 2⁴ +1. Therefore, 17 is a candidate. Now, we need to check if 17² divides n⁴ +1 for some n. Let's see. So we need n⁴ ≡ -1 mod 17².
+</execution_2.1>
+
+<execution_2.2>
+But before that, let me check the next prime after 13. Wait, primes congruent to 1 mod 8: 17, 97, 193, etc. Let's check p = 17.
+
+First, check if there exists n such that n⁴ ≡ -1 mod 17. Let's compute n⁴ mod 17 for n = 1 to 16.
+
+But maybe there's a smarter way. Since 17 is a prime, the multiplicative group is cyclic of order 16. The equation x⁴ ≡ -1 mod 17. Let's see if -1 is a quartic residue mod 17.
+
+Note that -1 is a quadratic residue mod 17 since 17 ≡ 1 mod 4. The quadratic residues mod 17 are 1, 4, 9, 16, 5, 6, 13, 2, 8, 15, 10, 12, 3, 7, 11, 14. Wait, but quartic residues would be the squares of quadratic residues. Alternatively, since the multiplicative group is cyclic of order 16, the quartic residues are the elements of order dividing 4. So the number of quartic residues is φ(4) = 2. Wait, maybe not. Alternatively, the number of quartic residues is 16 / 4 = 4. So there are 4 quartic residues. Let's check if -1 is among them.
+
+Compute (-1)^2 = 1, so -1 is a quadratic residue. But is it a quartic residue? Let's check if there exists x such that x⁴ ≡ -1 mod 17.
+
+Let's compute x⁴ mod 17 for x from 1 to 8 (since x and -x will have the same fourth power):
+
+1⁴ = 1
+
+2⁴ = 16
+
+3⁴ = 81 ≡ 13
+
+4⁴ = 256 ≡ 1
+
+5⁴ = 625 ≡ 625 - 36*17 = 625 - 612 = 13
+
+6⁴ = 1296 ≡ 1296 - 76*17 = 1296 - 1292 = 4
+
+7⁴ = 2401 ≡ 2401 - 141*17 = 2401 - 2397 = 4
+
+8⁴ = 4096 ≡ 4096 - 241*17 = 4096 - 4097 = -1 ≡ 16 mod 17
+
+Wait, 8⁴ ≡ 16 ≡ -1 mod 17. So yes, x = 8 is a solution to x⁴ ≡ -1 mod 17. Therefore, n = 8 mod 17 is a solution to n⁴ ≡ -1 mod 17. Therefore, n⁴ + 1 ≡ 0 mod 17. So 17 divides n⁴ + 1. But we need 17² to divide n⁴ + 1. So we need to check if there exists n such that n⁴ + 1 ≡ 0 mod 17².
+
+To check this, we can use Hensel's lemma. Since 17 divides n⁴ + 1, and 17 is odd, we can lift the solution from mod 17 to mod 17². Let's see.
+
+Suppose n ≡ 8 mod 17. Let n = 8 + 17k for some integer k. Then compute n⁴ + 1 mod 17².
+
+Compute (8 + 17k)⁴ + 1 mod 17².
+
+First, compute (8 + 17k)^4:
+
+Using the binomial theorem:
+
+= 8⁴ + 4*8³*(17k) + 6*8²*(17k)² + 4*8*(17k)³ + (17k)^4
+
+Compute each term modulo 17²:
+
+First term: 8⁴ = 4096 ≡ 4096 - 241*17 = 4096 - 4097 = -1 mod 17²
+
+Second term: 4*8³*17k = 4*512*17k = 2048*17k. 2048 mod 17: 2048 /17 = 120*17=2040, 2048 -2040=8, so 2048 ≡8 mod17. Therefore, 8*17k*17=8*17²k ≡0 mod17². So the second term is 0 mod17².
+
+Third term:6*8²*(17k)²=6*64*289k²=6*64*289k². 289=17², so 289k²≡0 mod17². So third term is 0 mod17².
+
+Fourth term:4*8*(17k)^3=4*8*4913k³=32*4913k³. 4913=17³, so 4913k³≡0 mod17². So fourth term is 0 mod17².
+
+Fifth term: (17k)^4=17⁴k⁴≡0 mod17².
+
+Therefore, modulo17², n⁴ +1 ≡ (-1) + 0 + 0 + 0 + 0 ≡ -1 mod17². But we need n⁴ +1 ≡0 mod17². Therefore, this lift doesn't work. So the solution n ≡8 mod17 doesn't lift to a solution modulo17². Therefore, p=17 is not the prime we're looking for.
+</execution_2.2>
+
+<execution_2.3>
+Wait, 17 is the first prime ≡1 mod 8. Let's check if 17² divides n⁴ + 1 for some n.
+
+First, check if there exists n such that n⁴ ≡ -1 mod 17. Then, if such n exists, lift the solution to modulo 17² using Hensel's lemma or some method.
+
+So first, check modulo 17. Let's find n such that n⁴ ≡ -1 mod 17. Since 17 is prime, the multiplicative group is cyclic of order 16. Then, the equation n⁴ ≡ -1 mod 17 implies that the order of n divides 8 (since n⁸ ≡ 1 mod 17). Therefore, the multiplicative order of n modulo 17 is 8, which divides 16. Therefore, such elements exist. For example, let's find a primitive 8th root of unity modulo 17.
+
+Let's try n = 2: 2⁴ = 16 ≡ -1 mod 17. Yes! So n = 2 is a solution. Therefore, 2⁴ ≡ -1 mod 17. Therefore, n = 2 is a solution modulo 17. Now, we need to check if this can be lifted to modulo 17². That is, does there exist m such that m ≡ 2 mod 17 and m⁴ ≡ -1 mod 17²?
+
+To lift the solution from modulo 17 to 17², we can use Hensel's lemma. Let's set m = 2 + 17k, where k is an integer to be determined. Then compute m⁴ and find k such that m⁴ ≡ -1 mod 17².
+
+Compute m⁴ = (2 + 17k)⁴. Expand using the binomial theorem:
+
+(2 + 17k)⁴ = 2⁴ + 4*2³*(17k) + 6*2²*(17k)² + 4*2*(17k)³ + (17k)⁴
+
+Compute each term modulo 17²:
+
+First term: 16 ≡ 16 mod 289.
+
+Second term: 4*8*17k = 32*17k. 32*17 = 544. 544 mod 289: 544 - 2*289 = 544 - 578 = -34 ≡ 255 mod 289. So second term is 255k mod 289.
+
+Third term: 6*4*(17k)² = 24*(289k²). 289k² ≡ 0 mod 289, so this term is 0 mod 289.
+
+Fourth term: 4*2*(17k)³ = 8*(4913k³). 4913 is 17³ = 4913, which is 0 mod 17³, but since we're working mod 17², this term is 0 mod 289.
+
+Fifth term: (17k)^4 = 83521k⁴ ≡ 0 mod 289.
+
+Therefore, modulo 289, m⁴ ≡ 16 + 255k mod 289.
+
+We need m⁴ ≡ -1 mod 289. Since -1 ≡ 288 mod 289. So:
+
+16 + 255k ≡ 288 mod 289
+
+Subtract 16:
+
+255k ≡ 272 mod 289
+
+Compute 255 mod 289: 255.
+
+272 mod 289: 272.
+
+We need to solve 255k ≡ 272 mod 289.
+
+Find the inverse of 255 modulo 289. Let's compute gcd(255, 289):
+
+289 = 255*1 + 34
+
+255 = 34*7 + 17
+
+34 = 17*2 + 0
+
+So gcd is 17. Wait, but 17 divides both 255 and 289. Therefore, 255k ≡ 272 mod 289 has a solution only if 17 divides 272. Let's check 272 ÷ 17 = 16. So 272 = 17*16. Therefore, 17 divides 272. Therefore, the equation is solvable.
+
+But 255k ≡ 272 mod 289. Let's divide both sides by 17:
+
+255/17 = 15, 272/17 = 16, 289/17 = 17.
+
+So 15k ≡ 16 mod 17.
+
+Now, solve 15k ≡ 16 mod 17. The inverse of 15 mod 17 is needed. 15 ≡ -2 mod 17. So inverse of -2 mod 17 is -9 ≡ 8 mod 17. Therefore, k ≡ 16*8 ≡ 128 mod 17. 128 ÷ 17 = 7*17=119, 128-119=9. So k ≡ 9 mod 17.
+
+Therefore, k = 9 + 17t for some integer t. Therefore, m = 2 + 17k = 2 + 17*(9 + 17t) = 2 + 153 + 289t = 155 + 289t.
+
+Therefore, m ≡ 155 mod 289. Therefore, the minimal positive integer m is 155. Therefore, p = 17 is the least prime such that p² divides n⁴ + 1, and the least m is 155.
+
+Wait, but let me check if m=155 indeed satisfies m⁴ +1 ≡0 mod 17². Let's compute 155⁴ mod 289.
+
+But 155 mod 17 is 155 - 9*17=155-153=2. So 155 ≡2 mod17. Then 155⁴ ≡2⁴=16≡-1 mod17, which is consistent.
+
+But let's compute 155⁴ mod 289. Let's compute 155² first:
+
+155² = 24025. 24025 ÷289: 289*83=24087. 24025 -24087= -62. So 155² ≡ -62 mod289.
+
+Then 155⁴ = (155²)² ≡ (-62)²=3844. 3844 ÷289: 289*13=3757. 3844 -3757=87. So 155⁴ ≡87 mod289. But we expected -1 mod289. Wait, that's 87 ≡ -1 mod289? 289-87=202, which is not 1. Wait, that can't be.
+
+Wait, something's wrong here. Let's check the calculation again.
+
+Wait, 155² = (2 + 17*9)² = 2² + 2*2*17*9 + (17*9)² = 4 + 612 + 289*81. But modulo 289, the last term is 0. So 155² ≡4 + 612 mod289. 612 ÷289=2*289=578, 612-578=34. So 155² ≡4 +34=38 mod289. Wait, 4 + 612 = 616. 616 - 2*289=616-578=38. So 155² ≡38 mod289.
+
+Then 155⁴ = (155²)² ≡38²=1444 mod289. Compute 1444 ÷289: 289*4=1156. 1444 -1156=288. So 155⁴ ≡288 mod289. 288 ≡ -1 mod289. Yes! So 155⁴ ≡-1 mod289. Therefore, m=155 is the minimal positive integer such that m⁴ +1 ≡0 mod17². Therefore, p=17 is the least prime with this property, and the minimal m is 155.
+
+But wait, the problem says "Find the least positive integer m such that m⁴ + 1 is divisible by p²". So p is the least prime for which there exists such an n, which we found to be p=17, and then m is the minimal positive integer for which m⁴ +1 is divisible by 17², which is 155. Therefore, the answer should be m=155.
+</execution_2.3>
+</Execution_2>
+
+<Plan_3>
+So the least prime \( p \) is 17, and the least positive integer \( m \) such that \( m^4 + 1 \) is divisible by \( p^2 \) is 155. Therefore, the answer is \boxed{155}.
+</Plan_3>
+
+<Execution_3>
+No prompt to execute.
+</Execution_3>
+
+<Final_answer>
+Thus, the final answer is \boxed{155}.
+</Final_answer>
+</think>

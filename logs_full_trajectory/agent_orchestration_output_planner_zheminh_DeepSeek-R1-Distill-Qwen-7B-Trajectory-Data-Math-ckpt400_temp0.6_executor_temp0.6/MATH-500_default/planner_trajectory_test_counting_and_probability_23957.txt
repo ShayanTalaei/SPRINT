@@ -1,0 +1,79 @@
+<Question>
+Mr. Brennan has 7 boys and 4 girls in his statistics class. In how many ways can he pick 3 boys and 2 girls to give a group presentation tomorrow? (The order in which the boys and girls are chosen does not matter.)
+</Question>
+
+<think>
+<Plan_1>
+Okay, let's try to figure out how many ways Mr. Brennan can pick 3 boys and 2 girls from his class. Hmm, so he has 7 boys and 4 girls. The problem says the order doesn't matter, so this is probably a combination problem. Combinations are used when the order isn't important, right? 
+
+First, I need to remember how combinations work. The formula for combinations is C(n, k) = n! / (k! * (n - k)! ), where n is the total number of items, and k is the number we want to choose. So, for the boys, since there are 7 and he needs to choose 3, that would be C(7, 3). Similarly, for the girls, choosing 2 out of 4, which is C(4, 2). Then, since these are independent choices (choosing boys doesn't affect choosing girls), I think we multiply the two results together to get the total number of ways.
+
+Let me check that logic. If there are, say, 2 ways to choose the boys and 3 ways to choose the girls, then for each boy choice, there are 3 girl choices, so 2*3=6 total ways.
+
+<prompt_1.1> Verify the logic of using combinations and multiplication to solve the problem. </prompt_1.1>
+
+Now let's compute C(7, 3).
+
+<prompt_1.2> Calculate C(7, 3) using the combination formula. </prompt_1.2>
+
+Next, C(4, 2).
+
+<prompt_1.3> Calculate C(4, 2) using the combination formula. </prompt_1.3>
+-----
+
+Wait, but let me think again if there's another way this could be approached. Maybe permutations? But no, since order doesn't matter, permutations would involve division by the factorial of the number of arrangements, which is exactly what combinations do. So using combinations is correct here.
+
+Alternatively, could I think of it as first choosing all 5 people and then adjusting for something? But no, because he has to specify 3 boys and 2 girls. So the total number is the product of the two combinations.
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+Yeah, that makes sense. So, applying that here should be correct.
+</execution_1.1>
+
+<execution_1.2>
+So, 7! / (3! * (7 - 3)! ) = 7! / (3! * 4! ) = (7*6*5*4! )/(3*2*1*4! ) = (7*6*5)/6 = 7*5 = 35? Wait, let me verify that. 7*6 is 42, 42*5 is 210, divided by 6 (which is 3! ) gives 35.
+</execution_1.2>
+
+<execution_1.3>
+Let's calculate that. 
+
+For the boys: 7! / (3! * (7-3)! ) = 7! / (3! * 4! ) = (7*6*5*4! )/(3*2*1*4! ) = (7*6*5)/6 = 7*5 = 35. Wait, that simplifies nicely. So 7*6*5 in the numerator, and 3*2*1 in the denominator. So 7*6*5 = 210, divided by 6 is 35.
+</execution_1.3>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.2, execution_1.3:
+Then for the girls: 4! / (2! * (4 - 2)! ) = (4*3*2! )/(2! *2! ) = (4*3)/2 = 12/2 = 6. So 6 ways.
+
+Then multiply 35 by 6.
+
+<prompt_2.1> Multiply the results of C(7, 3) and C(4, 2) to find the total number of ways. </prompt_2.1>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+Let's see, 35*6. 30*6=180, 5*6=30, so 180+30=210.
+</execution_2.1>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+So, the total number of ways is 210.
+-----
+
+Just to be absolutely thorough, let me list out all possibilities for a smaller case to see if the method works. Suppose there are 2 boys and 1 girl, and we want to choose 1 boy and 1 girl. According to the method, C(2,1)*C(1,1) = 2*1=2. Listing them: if boys are B1, B2 and girl is G1, then possible groups are (B1, G1) and (B2, G1). That's 2, which matches.
+
+Another test: 3 boys, 2 girls, choose 2 boys and 1 girl. C(3,2)=3, C(2,1)=2, total 3*2=6. Listing: boys B1,B2,B3. Possible boy pairs: (B1,B2), (B1,B3), (B2,B3). Girls G1,G2. Possible girl choices: G1, G2. So each boy pair can be paired with each girl, so 3*2=6. Correct.
+
+Therefore, the method works.
+</Plan_3>
+
+<Execution_3>
+No prompt to execute.
+</Execution_3>
+
+<Final_answer>
+Therefore, the total number of ways Mr. Brennan can pick 3 boys and 2 girls for the group presentation is $\boxed{210}$.
+</Final_answer>
+</think>

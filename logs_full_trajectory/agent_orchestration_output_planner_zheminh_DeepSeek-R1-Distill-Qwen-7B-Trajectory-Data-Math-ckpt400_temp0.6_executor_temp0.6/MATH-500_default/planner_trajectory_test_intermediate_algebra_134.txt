@@ -1,0 +1,127 @@
+<Question>
+Compute: $1-2+3-4+5- \dots +99-100$.
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to compute the sum 1 - 2 + 3 - 4 + 5 - ... + 99 - 100. Hmm, let's see. I remember that this is an alternating series where the signs alternate between positive and negative. The pattern seems to be that odd-numbered terms are positive, and even-numbered terms are negative. Let me confirm that. The first term is 1 (positive), then -2, then +3, -4, and so on until -100. Yep, that's right.
+
+First, I should figure out how many terms there are in total. Since we're going from 1 to 100, that's 100 terms. Each pair of terms consists of an odd number and the next even number. For example, 1 - 2 is one pair, 3 - 4 is another, and so on. Since there are 100 terms, that makes 50 pairs. Each pair has an odd number followed by an even number, with the odd being positive and the even being negative.
+
+Let me write out the first few pairs to see the pattern:
+
+<prompt_1.1> Write out the first few pairs of the series to identify the pattern. </prompt_1.1>
+
+So each pair sums to -1. If there are 50 pairs, then the total sum should be 50 * (-1) = -50.
+
+Wait, but let me check this again. Let's verify with a smaller example. Suppose we have up to 4:
+
+<prompt_1.2> Verify the solution by calculating the sum up to smaller numbers (e.g., 4, 6) and checking the pattern. </prompt_1.2>
+-----
+
+But wait, let me think again. Another way to approach this is to write the series as the sum of odd terms minus the sum of even terms.
+
+<prompt_1.3> Use an alternative method to verify the sum by separating the series into odd and even terms. </prompt_1.3>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+(1 - 2) + (3 - 4) + (5 - 6) + ... + (99 - 100)
+</execution_1.1>
+
+<execution_1.2>
+1 - 2 + 3 - 4. That's two pairs: (1 - 2) + (3 - 4) = (-1) + (-1) = -2. Which is 2 pairs * (-1) = -2. Correct. If I go up to 6: 1 -2 +3 -4 +5 -6. That's three pairs: (1-2) + (3-4) + (5-6) = (-1)*3 = -3. So the formula holds. Therefore, for 100 terms, 50 pairs, sum is -50.
+</execution_1.2>
+
+<execution_1.3>
+Let's see. The original series is 1 + 3 + 5 + ... + 99 (all the odd numbers from 1 to 99) minus (2 + 4 + 6 + ... + 100). So if I compute the sum of the odd numbers and subtract the sum of the even numbers, that should give the same result.
+
+First, how many odd terms are there from 1 to 99? Since they go from 1 to 99, that's (99 - 1)/2 + 1 = 50 terms. Similarly, the even numbers from 2 to 100 are 50 terms as well.
+
+The sum of the first n odd numbers is known to be n². Wait, is that true? Let me check. The sum of the first n odd integers is n². For example, 1 + 3 + 5 = 9 = 3². So if there are 50 odd numbers, their sum would be 50² = 2500.
+
+The sum of the first n even numbers is n(n + 1). Let me verify. The sum of 1 to n even numbers is 2 + 4 + 6 + ... + 2n = 2(1 + 2 + 3 + ... +n) = 2*(n(n+1)/2) = n(n+1). But in our case, the even numbers go up to 100, which is 2*50. So n here is 50. Therefore, the sum is 50*51 = 2550.
+
+Therefore, the total sum would be sum of odds minus sum of evens: 2500 - 2550 = -50.
+</execution_1.3>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.2:
+Alternatively, if I group the terms as (1 + 3 + 5 + ... +99) - (2 + 4 + 6 + ... +100). The first group is the sum of the first 50 odd numbers, and the second group is the sum of the first 50 even numbers. As I calculated earlier, that gives 2500 - 2550 = -50.
+
+But let me make sure I didn't make any mistakes here. Let's break it down again.
+
+<prompt_2.1> Re-evaluate the sums of odd and even terms to confirm the result. </prompt_2.1>
+-----
+
+Alternatively, maybe there's another way to see this. Let's consider the sequence:
+
+<prompt_2.2> Verify the result using another method by relating the series to a known sum. </prompt_2.2>
+-----
+
+Based on execution_1.3:
+Wait, but let me check with a smaller example. If we take up to 4, as before:
+
+<prompt_2.3> Verify the alternative method with smaller examples to ensure consistency. </prompt_2.3>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+The number of odd numbers from 1 to 99: since 99 is the 50th odd number (because (99 + 1)/2 = 50). So sum of first 50 odds is 50² = 2500. The even numbers from 2 to 100: there are 50 terms, so sum is 50*51 = 2550. So 2500 - 2550 = -50.
+</execution_2.1>
+
+<execution_2.2>
+S = 1 - 2 + 3 - 4 + ... + 99 - 100.
+
+If I add S and S shifted by one term:
+
+S = 1 -2 +3 -4 +... +99 -100
+
+S =     1 -2 +3 -4 +... +99 -100
+
+Adding these two equations:
+
+2S = 1 + (-2 +1) + (3 -2) + ( -4 +3 ) + ... + (99 -98) + (-100 +99)
+
+Wait, but this might complicate things. Let's see:
+
+Wait, actually, if I write S as:
+
+S = (1 -2) + (3 -4) + ... + (99 -100), which is 50 terms each of -1, so 50*(-1) = -50.
+</execution_2.2>
+
+<execution_2.3>
+Sum of odds: 1 + 3 = 4 (n=2, 2²=4). Sum of evens: 2 + 4 = 6. 4 -6 = -2. Which matches 1 -2 +3 -4 = -2. Similarly, up to 6: sum of odds 1+3+5=9 (n=3), sum of evens 2+4+6=12. 9 -12 = -3. Which is the same as 1-2+3-4+5-6 = -3. So that formula works.
+</execution_2.3>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+But let me check with another small example. Let's take up to 6:
+
+<prompt_3.1> Verify the sums of odd and even terms with the example up to 6. </prompt_3.1>
+-----
+
+Based on execution_2.1, execution_2.2, execution_1.3, execution_2.3:
+Therefore, I think the answer is -50. But just to be thorough, let's compute it step by step manually for a few terms and see if the pattern holds.
+
+<prompt_3.2> Perform a step-by-step manual calculation to verify the pattern and consistency. </prompt_3.2>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+1 -2 +3 -4 +5 -6. Sum of odds: 1+3+5=9. Sum of evens:2+4+6=12. 9-12=-3. Which is correct. So for n=50, 50² -50*51=2500-2550=-50.
+</execution_3.1>
+
+<execution_3.2>
+Let's take n=2: 1 -2 = -1. Which is -1*1. For n=4: (1-2)+(3-4)=(-1)+(-1)=-2. For n=6: -3, as above. So for n=100, which is even, the sum is -n/2 = -50. Perfect, that's another way to see it. Since each pair contributes -1, and there are n/2 pairs when n is even. Hence, total sum is -n/2. Here, n=100, so -50.
+</execution_3.2>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.2:
+**Final Answer**
+The sum of the series is \boxed{-50}.
+</Plan_4>
+</think>

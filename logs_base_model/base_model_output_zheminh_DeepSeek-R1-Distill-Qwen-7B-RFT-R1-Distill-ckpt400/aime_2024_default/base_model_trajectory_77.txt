@@ -1,0 +1,539 @@
+Okay, so I need to find the number of triples of nonnegative integers (a, b, c) such that a + b + c = 300 and the expression a²b + a²c + b²a + b²c + c²a + c²b equals 6,000,000. Hmm, let's start by understanding the problem step by step.
+
+First, the equation a + b + c = 300 is a linear constraint. The second equation is a bit more complex. Let me try to rewrite the second equation to see if I can simplify it or find a pattern. The expression is symmetric in a, b, c. Let's see: it's the sum of all terms where one variable is squared and multiplied by another. So, for example, a²b and a²c are both terms where a is squared and multiplied by another variable. Similarly for the others.
+
+Wait, maybe this can be factored or expressed in terms of symmetric sums. Let me recall that for symmetric expressions, sometimes we can express them in terms of elementary symmetric polynomials. Let me think. The expression is:
+
+a²b + a²c + b²a + b²c + c²a + c²b.
+
+I can factor this as:
+
+a²(b + c) + b²(a + c) + c²(a + b).
+
+Since a + b + c = 300, we can substitute b + c = 300 - a, a + c = 300 - b, and a + b = 300 - c. So substituting these into the expression gives:
+
+a²(300 - a) + b²(300 - b) + c²(300 - c).
+
+So the second equation becomes:
+
+a²(300 - a) + b²(300 - b) + c²(300 - c) = 6,000,000.
+
+Hmm, that might be a more manageable form. Let me compute this expression:
+
+300a² - a³ + 300b² - b³ + 300c² - c³ = 6,000,000.
+
+Which can be written as:
+
+300(a² + b² + c²) - (a³ + b³ + c³) = 6,000,000.
+
+So now, the problem reduces to finding the number of triples (a, b, c) of nonnegative integers with a + b + c = 300 and 300(a² + b² + c²) - (a³ + b³ + c³) = 6,000,000.
+
+Hmm, maybe we can express a³ + b³ + c³ in terms of other symmetric sums. Recall that a³ + b³ + c³ = (a + b + c)³ - 3(a + b + c)(ab + bc + ca) + 3abc.
+
+Since a + b + c = 300, we can write:
+
+a³ + b³ + c³ = 300³ - 3*300*(ab + bc + ca) + 3abc.
+
+Therefore, substituting back into the equation:
+
+300(a² + b² + c²) - [300³ - 3*300*(ab + bc + ca) + 3abc] = 6,000,000.
+
+Let me compute 300³ first. 300³ = 27,000,000. So:
+
+300(a² + b² + c²) - 27,000,000 + 900(ab + bc + ca) - 3abc = 6,000,000.
+
+Let's bring the 6,000,000 to the left side:
+
+300(a² + b² + c²) - 27,000,000 + 900(ab + bc + ca) - 3abc - 6,000,000 = 0.
+
+Combine constants:
+
+-27,000,000 - 6,000,000 = -33,000,000. So:
+
+300(a² + b² + c²) + 900(ab + bc + ca) - 3abc = 33,000,000.
+
+Hmm, maybe we can factor out 3:
+
+3[100(a² + b² + c²) + 300(ab + bc + ca) - abc] = 33,000,000.
+
+Divide both sides by 3:
+
+100(a² + b² + c²) + 300(ab + bc + ca) - abc = 11,000,000.
+
+Hmm, that's a bit complicated. Let's recall that a² + b² + c² can be written in terms of (a + b + c)² - 2(ab + bc + ca). Since a + b + c = 300, then:
+
+a² + b² + c² = 300² - 2(ab + bc + ca) = 90,000 - 2(ab + bc + ca).
+
+Substituting this into the equation:
+
+100*(90,000 - 2(ab + bc + ca)) + 300(ab + bc + ca) - abc = 11,000,000.
+
+Compute 100*90,000 = 9,000,000. Then:
+
+9,000,000 - 200(ab + bc + ca) + 300(ab + bc + ca) - abc = 11,000,000.
+
+Combine like terms:
+
+9,000,000 + 100(ab + bc + ca) - abc = 11,000,000.
+
+Subtract 9,000,000 from both sides:
+
+100(ab + bc + ca) - abc = 2,000,000.
+
+So now, the equation simplifies to:
+
+100(ab + bc + ca) - abc = 2,000,000.
+
+Hmm, okay. Let's denote S = ab + bc + ca. Then the equation becomes:
+
+100S - abc = 2,000,000.
+
+But we also know that a + b + c = 300. So, with three variables and two equations, but we have the third symmetric sum, which is abc. Maybe we can express abc in terms of S and the other variables. Wait, but we have three variables here. Let's think.
+
+We have:
+
+1. a + b + c = 300.
+
+2. ab + bc + ca = S.
+
+3. abc = 100S - 2,000,000.
+
+So, the idea is that for given a, b, c, if they satisfy these three equations, then they are solutions. But how do we find such triples?
+
+Alternatively, perhaps we can consider that the variables a, b, c are nonnegative integers, so maybe they are equal or have some symmetry. Let's check if there are symmetric solutions where a = b = c.
+
+If a = b = c, then a + b + c = 3a = 300, so a = 100. Then compute S = ab + bc + ca = 3a² = 3*(100)^2 = 30,000. Then abc = a³ = 1,000,000. Then plug into the equation:
+
+100*30,000 - 1,000,000 = 3,000,000 - 1,000,000 = 2,000,000. Which matches the required equation. So (100, 100, 100) is a solution. So that's one triple.
+
+But are there other solutions? Let's see.
+
+Suppose that two variables are equal, say a = b. Then, let's set a = b, then c = 300 - 2a. Let's substitute into the equation 100S - abc = 2,000,000.
+
+First, compute S = ab + bc + ca. Since a = b:
+
+S = a² + a(300 - 2a) + a(300 - 2a) = a² + 2a(300 - 2a) = a² + 600a - 4a² = -3a² + 600a.
+
+Then abc = a²(300 - 2a).
+
+So the equation becomes:
+
+100*(-3a² + 600a) - a²(300 - 2a) = 2,000,000.
+
+Compute each term:
+
+100*(-3a² + 600a) = -300a² + 60,000a.
+
+Then subtract a²(300 - 2a):
+
+-300a² + 60,000a - 300a² + 2a³ = 2a³ - 600a² + 60,000a.
+
+Set equal to 2,000,000:
+
+2a³ - 600a² + 60,000a = 2,000,000.
+
+Divide both sides by 2:
+
+a³ - 300a² + 30,000a = 1,000,000.
+
+Bring all terms to left:
+
+a³ - 300a² + 30,000a - 1,000,000 = 0.
+
+Let me try to factor this cubic equation. Maybe rational root theorem. Possible rational roots are factors of 1,000,000 divided by factors of 1. So possible integer roots are ±1, ±2, ..., ±1,000,000. But since a is nonnegative and a = b, and c = 300 - 2a must be nonnegative, so a ≤ 150. So possible a values are from 0 to 150.
+
+Let me test a = 100:
+
+100³ - 300*100² + 30,000*100 - 1,000,000 = 1,000,000 - 3,000,000 + 3,000,000 - 1,000,000 = 0. So a = 100 is a root. Then factor out (a - 100):
+
+Using polynomial division or synthetic division. Let's do synthetic division:
+
+Divide a³ - 300a² + 30,000a - 1,000,000 by (a - 100).
+
+Coefficients: 1 | -300 | 30,000 | -1,000,000
+
+Bring down 1.
+
+Multiply by 100: 1*100 = 100. Add to -300: -200.
+
+Multiply by 100: -200*100 = -20,000. Add to 30,000: 10,000.
+
+Multiply by 100: 10,000*100 = 1,000,000. Add to -1,000,000: 0. Perfect.
+
+So the cubic factors as (a - 100)(a² - 200a + 10,000). Now, set equal to zero:
+
+(a - 100)(a² - 200a + 10,000) = 0.
+
+Solve a² - 200a + 10,000 = 0.
+
+Discriminant: 40,000 - 40,000 = 0. So double root at a = (200)/2 = 100. So the roots are a = 100 (double root) and a = 100. So only a = 100 is the solution here. Therefore, the only solution when a = b is a = b = c = 100. So no other solutions in this case.
+
+Hmm, so if two variables are equal, the only solution is all three equal. So maybe all solutions are permutations of (100, 100, 100). But wait, let's check. Suppose that two variables are equal but not necessarily the third. Wait, but we just saw that even if two variables are equal, the only solution is all three equal. So maybe all solutions are permutations of (100, 100, 100). But wait, is that the case?
+
+Wait, let's check with different values. Suppose a = 0. Then c = 300 - b. Let's see if we can have a solution where a = 0. Let's substitute a = 0 into the equation 100(ab + bc + ca) - abc = 2,000,000.
+
+If a = 0, then the equation becomes 100(0 + bc + 0) - 0 = 2,000,000. So 100bc = 2,000,000 => bc = 20,000. Also, since a + b + c = 300, and a = 0, then b + c = 300. So we need to find nonnegative integers b, c such that b + c = 300 and bc = 20,000.
+
+So we can set up the quadratic equation: x² - 300x + 20,000 = 0. Let's compute discriminant: 90,000 - 80,000 = 10,000. So sqrt(10,000) = 100. So solutions x = [300 ± 100]/2 = 200 or 100. Therefore, b = 200, c = 100 or b = 100, c = 200. So two triples here: (0, 200, 100) and (0, 100, 200). But since a, b, c are nonnegative integers, these are valid. So here, the triples are permutations of (0, 100, 200). So these are distinct from the (100, 100, 100) case.
+
+So that's another set of solutions. So the total number of solutions would be the number of permutations of (0, 100, 200), which is 6, since all three numbers are distinct. But let's check if these triples satisfy the original equations.
+
+First, check a + b + c = 0 + 100 + 200 = 300. Good. Now, check the second equation:
+
+a²b + a²c + b²a + b²c + c²a + c²b.
+
+Compute each term:
+
+0²*100 + 0²*200 + 100²*0 + 100²*200 + 200²*0 + 200²*100.
+
+Which simplifies to 0 + 0 + 0 + 100²*200 + 0 + 200²*100.
+
+Compute 100²*200 = 10,000*200 = 2,000,000.
+
+200²*100 = 40,000*100 = 4,000,000.
+
+So total is 2,000,000 + 4,000,000 = 6,000,000. Perfect. So these are valid solutions.
+
+Similarly, if we take (100, 0, 200), it's the same.
+
+Therefore, these are valid solutions. So there are 6 permutations here.
+
+Wait, but let's check if there are other solutions where a, b, c are not permutations of (0, 100, 200). For example, maybe (50, 50, 200). Let's check.
+
+a + b + c = 50 + 50 + 200 = 300. Then compute the second equation:
+
+a²b + a²c + b²a + b²c + c²a + c²b.
+
+Compute each term:
+
+50²*50 + 50²*200 + 50²*50 + 50²*200 + 200²*50 + 200²*50.
+
+Compute:
+
+50² = 2,500.
+
+So first term: 2,500*50 = 125,000.
+
+Second term: 2,500*200 = 500,000.
+
+Third term: 2,500*50 = 125,000.
+
+Fourth term: 2,500*200 = 500,000.
+
+Fifth term: 200² = 40,000. 40,000*50 = 2,000,000.
+
+Sixth term: 40,000*50 = 2,000,000.
+
+Total sum: 125,000 + 500,000 + 125,000 + 500,000 + 2,000,000 + 2,000,000 = Let's add step by step:
+
+125k + 500k = 625k.
+
+625k + 125k = 750k.
+
+750k + 500k = 1,250k.
+
+1,250k + 2,000k = 3,250k.
+
+3,250k + 2,000k = 5,250k. Which is 5,250,000. But required is 6,000,000. So this is not equal. Therefore, (50, 50, 200) is not a solution.
+
+Alternatively, maybe (100, 100, 100) and permutations of (0, 100, 200) are the only solutions. Let's check another possibility.
+
+Suppose two variables are 100, and the third is 100. That's the first solution. Suppose two variables are 0, but then the third would be 300. Let's check (0, 0, 300). Compute the second equation.
+
+a²b + a²c + b²a + b²c + c²a + c²b.
+
+Each term: 0²*0 + 0²*300 + 0²*0 + 0²*300 + 300²*0 + 300²*0 = 0. So total is 0, which is not 6,000,000. So that's invalid.
+
+Alternatively, suppose one variable is 0, another is x, and the third is 300 - x. Let's check if any such x other than 100 and 200 would work. Let's let a = 0, b = x, c = 300 - x.
+
+Then the second equation becomes:
+
+0 + 0 + x²*0 + x²*(300 - x) + (300 - x)²*0 + (300 - x)²*x.
+
+Which simplifies to x²*(300 - x) + (300 - x)²*x.
+
+Factor out x*(300 - x):
+
+x*(300 - x)*(x + (300 - x)) = x*(300 - x)*300.
+
+So the equation becomes:
+
+300x*(300 - x) = 6,000,000.
+
+Divide both sides by 300:
+
+x*(300 - x) = 20,000.
+
+So x² - 300x + 20,000 = 0.
+
+Which is the same quadratic as before: x = [300 ± sqrt(90,000 - 80,000)]/2 = [300 ± 100]/2 = 200 or 100. So same solutions. Therefore, the only solutions in this case are x = 100 and x = 200, leading to the triples (0, 100, 200) and permutations.
+
+Therefore, so far, we have the all-100s triple and the permutations of (0, 100, 200). Are there any other solutions?
+
+Let's suppose that all three variables are distinct, not equal to 0, 100, or 200. Let's suppose a, b, c are distinct positive integers, none equal to 0, 100, 200. Let's see if such a triple exists.
+
+Alternatively, maybe if two variables are 100 and the third is 100. Wait, that's the all-100s case. So maybe we need to check if there are other possibilities.
+
+Alternatively, suppose that a, b, c are all different from each other and none are 0, 100, 200. Let's see if such triples exist.
+
+Alternatively, consider the equation 100(ab + bc + ca) - abc = 2,000,000.
+
+We can write this as abc = 100(ab + bc + ca) - 2,000,000.
+
+Since a + b + c = 300, and a, b, c are nonnegative integers, perhaps we can bound the possible values.
+
+First, since a, b, c are nonnegative integers, their product abc is nonnegative. So 100(ab + bc + ca) - 2,000,000 ≥ 0 => ab + bc + ca ≥ 20,000.
+
+But ab + bc + ca can be written in terms of a + b + c and a² + b² + c².
+
+We know that (a + b + c)² = a² + b² + c² + 2(ab + bc + ca). Since a + b + c = 300, 90,000 = a² + b² + c² + 2(ab + bc + ca). Therefore, ab + bc + ca = (90,000 - (a² + b² + c²))/2.
+
+So substituting into the equation abc = 100(ab + bc + ca) - 2,000,000:
+
+abc = 100*(90,000 - (a² + b² + c²))/2 - 2,000,000.
+
+Simplify:
+
+abc = 50*(90,000 - (a² + b² + c²)) - 2,000,000.
+
+But this might not be helpful. Alternatively, since we know that ab + bc + ca is ≥ 20,000, and a + b + c = 300, perhaps we can find the possible values of ab + bc + ca.
+
+But 20,000 is the lower bound. Let's see, the maximum value of ab + bc + ca occurs when two variables are as large as possible and the third is as small as possible. For example, if two variables are 300 and 0, then ab + bc + ca = 0 + 0 + 0 = 0. Wait, but in our case, ab + bc + ca must be at least 20,000.
+
+Wait, but if a, b, c are positive integers, then ab + bc + ca is maximized when two variables are as large as possible. For example, if a = 300 - b - c, then ab + bc + ca = b(300 - b - c) + c(300 - b - c) + bc. This might be complicated.
+
+Alternatively, maybe we can use the AM ≥ GM inequality. For nonnegative integers a, b, c, we have that ab + bc + ca ≥ 3*(abc)^(2/3). But not sure if this helps.
+
+Alternatively, since we have that abc = 100(ab + bc + ca) - 2,000,000, and since a + b + c = 300, perhaps we can consider that ab + bc + ca is related to the symmetric sums.
+
+Alternatively, perhaps we can consider that if two variables are equal, we've already handled that case, and the only solutions are the all-100s and the permutations of (0, 100, 200). So maybe those are the only solutions.
+
+But to confirm, let's suppose that there is a solution where two variables are different from 0, 100, 200. Let's assume a, b, c are distinct, none equal to 0, 100, 200. Then, perhaps we can find a contradiction or find such a solution.
+
+Alternatively, maybe there are other solutions where two variables are 100 and the third is 100, but that's the same as the all-100s case. Alternatively, maybe another set of numbers.
+
+Wait, let's check another case. Suppose that two variables are 50, 50, 200. Wait, we already checked that and the sum was 5,250,000, which is less than 6,000,000. So that's not a solution. What about (100, 100, 100)? That's the all-100s case. What about (0, 0, 300)? That's invalid. So maybe the only solutions are the all-100s and the permutations of (0, 100, 200). Let's check another case.
+
+Suppose a = 50, b = 150, c = 100. Let's compute the second equation.
+
+Compute a²b + a²c + b²a + b²c + c²a + c²b.
+
+Compute each term:
+
+50²*150 = 2,500*150 = 375,000.
+
+50²*100 = 2,500*100 = 250,000.
+
+150²*50 = 22,500*50 = 1,125,000.
+
+150²*100 = 22,500*100 = 2,250,000.
+
+100²*50 = 10,000*50 = 500,000.
+
+100²*150 = 10,000*150 = 1,500,000.
+
+Sum them up:
+
+375,000 + 250,000 = 625,000.
+
+625,000 + 1,125,000 = 1,750,000.
+
+1,750,000 + 2,250,000 = 4,000,000.
+
+4,000,000 + 500,000 = 4,500,000.
+
+4,500,000 + 1,500,000 = 6,000,000. Wait, that's 6,000,000! So this is a solution. So (50, 150, 100) is another solution. But wait, but a + b + c = 50 + 150 + 100 = 300. So that's valid. Then compute ab + bc + ca:
+
+50*150 + 150*100 + 100*50 = 7,500 + 15,000 + 5,000 = 27,500.
+
+Then abc = 50*150*100 = 750,000.
+
+Check the equation 100*27,500 - 750,000 = 2,750,000 - 750,000 = 2,000,000. Which matches. So this is another solution. Therefore, (50, 150, 100) is a solution.
+
+Therefore, my previous assumption that the only solutions are the all-100s and permutations of (0, 100, 200) is incorrect. So there are more solutions.
+
+Therefore, we need to find all possible triples (a, b, c) of nonnegative integers with a + b + c = 300, and 100(ab + bc + ca) - abc = 2,000,000.
+
+So perhaps we need a different approach.
+
+Let me recall that in the equation 100(ab + bc + ca) - abc = 2,000,000, we can write abc = 100(ab + bc + ca) - 2,000,000.
+
+But since a + b + c = 300, perhaps we can use some substitution.
+
+Alternatively, since the equation is symmetric, maybe we can fix one variable and express the others in terms of it.
+
+Alternatively, note that the equation can be rewritten as:
+
+abc - 100(ab + bc + ca) + 2,000,000 = 0.
+
+Hmm, maybe factor this. Let's see.
+
+Alternatively, perhaps factor variables. Let me consider the equation:
+
+abc - 100ab - 100bc - 100ca + 2,000,000 = 0.
+
+Let me add and subtract 100³ to complete the cube? Not sure.
+
+Wait, maybe factor as (a - 100)(b - 100)(c - 100). Let's check:
+
+(a - 100)(b - 100)(c - 100) = abc - 100ab - 100ac - 100bc + 10,000a + 10,000b + 10,000c - 1,000,000.
+
+But in our equation, we have abc - 100ab - 100bc - 100ca + 2,000,000. So if we compare:
+
+Our equation: abc - 100ab - 100bc - 100ca + 2,000,000 = 0.
+
+The product (a - 100)(b - 100)(c - 100) is abc - 100ab - 100ac - 100bc + 10,000(a + b + c) - 1,000,000.
+
+Given that a + b + c = 300, substitute:
+
+= abc - 100ab - 100ac - 100bc + 10,000*300 - 1,000,000
+
+= abc - 100ab - 100ac - 100bc + 3,000,000 - 1,000,000
+
+= abc - 100ab - 100ac - 100bc + 2,000,000.
+
+Which is exactly our equation. Therefore:
+
+(a - 100)(b - 100)(c - 100) = 0.
+
+Wait, so the equation simplifies to (a - 100)(b - 100)(c - 100) = 0.
+
+Therefore, the original equation 100(ab + bc + ca) - abc = 2,000,000 is equivalent to (a - 100)(b - 100)(c - 100) = 0.
+
+Therefore, this equation holds if and only if at least one of (a - 100), (b - 100), (c - 100) is zero. That is, at least one of a, b, c is equal to 100.
+
+So this is a key insight. Therefore, the equation reduces to (a - 100)(b - 100)(c - 100) = 0. Therefore, the solutions are all triples where at least one of a, b, c is equal to 100, and the other two are nonnegative integers such that a + b + c = 300.
+
+Therefore, the problem reduces to counting the number of triples (a, b, c) of nonnegative integers where at least one of a, b, c is equal to 100, and a + b + c = 300.
+
+Wait, but we need to be careful here. Because if a = 100, then b + c = 200. Similarly for b = 100 or c = 100. However, we need to be careful about overlapping cases where two or all three variables are 100. So the total number of solutions is the number of triples where a = 100 plus those where b = 100 plus those where c = 100 minus those where both a = 100 and b = 100 plus those where all three are 100.
+
+But since the problem counts triples as ordered, we need to consider all permutations.
+
+So let's compute:
+
+Number of solutions where a = 100: Then b + c = 200. The number of nonnegative integer solutions (b, c) is 201 (since b can be 0 to 200, and c = 200 - b). Similarly, the same for b = 100 and c = 100. However, when two variables are 100, the third is 100. For example, if a = 100 and b = 100, then c = 100. So in the counts above, these cases are included in both a = 100 and b = 100. Similarly for other overlaps.
+
+But since we need to count ordered triples, let's compute:
+
+Total solutions = N(a=100) + N(b=100) + N(c=100) - N(a=100 and b=100) - N(a=100 and c=100) - N(b=100 and c=100) + N(a=100 and b=100 and c=100).
+
+Where N(a=100) is the number of triples where a=100, regardless of b and c. Similarly for others.
+
+Compute N(a=100): a=100, so b + c = 200. The number of nonnegative integer solutions is 201 (from b=0 to b=200, c=200 - b). Similarly, N(b=100) = 201, N(c=100) = 201.
+
+Now, N(a=100 and b=100): Then c = 100. So only one solution: (100, 100, 100). Similarly, N(a=100 and c=100) = 1, N(b=100 and c=100) = 1.
+
+N(a=100 and b=100 and c=100) = 1.
+
+Therefore, applying inclusion-exclusion:
+
+Total solutions = 201 + 201 + 201 - 1 - 1 - 1 + 1 = 201*3 - 3 + 1 = 603 - 3 + 1 = 601.
+
+But wait, that can't be right. Wait, 201*3 is 603, subtract 3 and add 1: 603 - 3 = 600, 600 + 1 = 601. So total 601 solutions. But wait, but in the example I checked earlier, (50, 150, 100) is a solution where a = 50, b = 150, c = 100. But in this count, we have a=100, b=100, c=100. Wait, but (50, 150, 100) is not counted in this, because none of the variables are 100 except c=100. Wait, but in the original equation, if c=100, then a + b + c = 300 => a + b = 200. So (50, 150, 100) is a solution where c=100. So according to the count above, it's included in N(c=100), which is 201. But in reality, when c=100, a and b sum to 200, which includes (50, 150, 100). So perhaps the count is correct.
+
+Wait, but according to the equation, the original equation reduces to (a - 100)(b - 100)(c - 100) = 0, so any triple where at least one variable is 100. But (50, 150, 100) is a solution where c=100, which is accounted for in N(c=100). So according to the count, all such triples are included. Therefore, the total number of solutions is 601.
+
+But wait, when we did the inclusion-exclusion, we have 3*201 - 3*1 + 1 = 601. But let's check with a small example. Let's say a + b + c = 3. Then the equation would be similar, but let's see.
+
+Wait, but in our case, the count is 601. However, when we checked the triple (50, 150, 100), it's a valid solution. So according to the inclusion-exclusion formula, it's included in N(c=100). So why when I did the previous check with (50, 150, 100), which is a solution, the equation holds. So according to the inclusion-exclusion, the count is 601.
+
+But let's cross-verify.
+
+Compute N(a=100): a=100, so b + c = 200. Number of solutions: 201. Similarly for N(b=100) and N(c=100). Then subtract the overlaps where two variables are 100, which each have 1 solution, and add back the case where all three are 100. Therefore, total solutions: 3*201 - 3*1 + 1 = 603 - 3 + 1 = 601.
+
+Therefore, the number of triples is 601. But wait, let's check with the case where a=100, b=100, c=100. Then it's counted once in each N(a=100), N(b=100), N(c=100), but subtracted three times in the overlaps, then added back once. So total 1. Which is correct.
+
+But when a=100, b=100, c=100, it's only one solution. So the inclusion-exclusion formula works.
+
+Therefore, the total number of triples is 601.
+
+But wait, but when we considered the equation (a - 100)(b - 100)(c - 100) = 0, that's equivalent to the original equation, so all solutions must satisfy at least one variable equal to 100.
+
+Therefore, the total number of solutions is 601.
+
+But let's check with another example. Suppose a + b + c = 6, and the equation becomes a²b + a²c + b²a + b²c + c²a + c²b = 6,000,000. Wait, but that's way too big. Let's use a smaller number.
+
+Wait, maybe the initial problem is correct. So if the equation reduces to (a - 100)(b - 100)(c - 100) = 0, then all triples where at least one variable is 100, and the sum a + b + c = 300. Then the number of solutions is indeed 601.
+
+But wait, but when a + b + c = 300, and at least one variable is 100, then the number of solutions is 3*201 - 3 + 1 = 601. So that's 601. However, when we looked at the case with (50, 150, 100), which is a solution, and according to the inclusion-exclusion, it's counted in N(c=100), which is 201. So the count seems correct.
+
+But let's check again.
+
+If a=100, then b + c = 200. The number of solutions is 201, as b can be 0 to 200, and c = 200 - b.
+
+Similarly, if b=100, then a + c = 200, 201 solutions.
+
+Same for c=100.
+
+However, when a=100 and b=100, then c=100. So the triple (100, 100, 100) is counted in both N(a=100) and N(b=100), and similarly for others.
+
+So using inclusion-exclusion, the total number is 3*201 - 3*1 + 1 = 601. Therefore, this is correct.
+
+Therefore, the number of triples is 601.
+
+But wait, but in the problem statement, a, b, c are nonnegative integers. So if we count ordered triples, then the count is 601. But wait, let me check again.
+
+Wait, when a=100, then b + c = 200. The number of ordered pairs (b, c) is 201. Similarly for the other cases. So each N(a=100) is 201 ordered triples. Similarly for N(b=100) and N(c=100). Then the overlaps are when two variables are 100, which gives 1 ordered triple each, and the triple where all three are 100.
+
+Therefore, yes, inclusion-exclusion gives 3*201 - 3*1 + 1 = 601. Therefore, the answer is 601.
+
+But wait, but in our previous check, we found that (50, 150, 100) is a solution. According to this, it's included in N(c=100). So the inclusion-exclusion counts all triples where at least one variable is 100, which includes (50, 150, 100), (0, 200, 100), etc. So the count of 601 is correct.
+
+Therefore, the answer is 601.
+
+But wait, let me check the inclusion-exclusion once more. Let's compute:
+
+Total with a=100: 201.
+
+Total with b=100: 201.
+
+Total with c=100: 201.
+
+Subtract the overlaps where two variables are 100. For a=100 and b=100: c=100. So one solution. Similarly for a=100 and c=100: b=100. One solution. Similarly for b=100 and c=100: a=100. One solution. So total subtract 3*1=3.
+
+Then add back the case where all three are 100: 1.
+
+Therefore, total: 201*3 - 3 + 1 = 603 - 3 + 1 = 601. Yes, correct.
+
+Therefore, the number of triples is 601.
+
+But let's confirm with another example. Suppose a + b + c = 3. Then equation would be a²b + a²c + b²a + b²c + c²a + c²b = 6,000,000. But since 3 is small, it's not practical. Let's take a different equation. Suppose the equation is similar but with a smaller sum. Let's say a + b + c = 6.
+
+Then the equation would be (a - 2)(b - 2)(c - 2) = 0. So at least one variable is 2. Then the number of ordered triples with a + b + c = 6 and at least one variable is 2.
+
+Number of solutions where a=2: Then b + c = 4. Number of ordered pairs: 5 (b=0, c=4; b=1, c=3; ..., b=4, c=0). Similarly for b=2 and c=2. Then subtract overlaps.
+
+Total solutions: 3*5 - 3*1 + 1 = 15 - 3 + 1 = 13.
+
+Check manually:
+
+Triples where a=2: (2,0,4), (2,1,3), (2,2,2), (2,3,1), (2,4,0). Similarly for b=2 and c=2. But overlapping cases are (2,2,2), (2,2,2), which is counted thrice, so subtract 3*(2,2,2) and add back once. Wait, but in reality, when a=2, b=2, c=2 is the only triple where all three are 2. So in the inclusion-exclusion, the overlaps are the triples where two variables are 2. For example, a=2 and b=2, then c=2, which is the same as (2,2,2). Similarly for others.
+
+Wait, in a + b + c = 6, if a=2 and b=2, then c=2. So the only triple where two variables are 2 is (2,2,2). So the overlaps in inclusion-exclusion are only the triple (2,2,2). So in the count 3*5 - 3*1 + 1, the 3*1 is subtracting the overlaps where two variables are 2, but there is only one such triple, so subtract 1, then add back 1. So total 15 - 1 + 1 = 15? Wait, but this contradicts the earlier statement.
+
+Wait, no. Wait, when a=2, we have 5 solutions. Similarly for b=2 and c=2. However, the triple (2,2,2) is included in all three counts. Therefore, when we subtract the overlaps, we need to subtract the cases where two variables are 2, which is only (2,2,2). So total overlaps are 3*(1) - 1*(1) = 2? Wait, maybe not.
+
+Wait, inclusion-exclusion formula is:
+
+|A ∪ B ∪ C| = |A| + |B| + |C| - |A∩B| - |A∩C| - |B∩C| + |A∩B∩C|.
+
+So here, |A| = |B| = |C| = 5.
+
+|A∩B| = |A∩C| = |B∩C| = 1 (the triple (2,2,2)).
+
+|A∩B∩C| = 1 (same triple).
+
+Therefore, |A ∪ B ∪ C| = 5 + 5 + 5 - 1 - 1 - 1 + 1 = 15 - 3 + 1 = 13. Which matches.
+
+Therefore, the formula works. So in the case of a sum of 6, the number of solutions is 13. Similarly, in the original problem with sum 300, the number of solutions is 601.
+
+Therefore, the answer is 601. So the number of triples is 601.
+
+But wait, but in the problem statement, we have nonnegative integers. So in the case of a=100, b=100, c=100, that's valid. So the count is correct.
+
+Therefore, the final answer is 601, so \boxed{601}.
+
+**Final Answer**
+\boxed{601}
+</think>

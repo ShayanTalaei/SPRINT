@@ -1,0 +1,153 @@
+<Question>
+If $m$ and $n$ are integers such that $3m + 4n = 100$, what is the smallest possible value of $\left| m - n \right|$ ?
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to find the smallest possible value of |m - n| where m and n are integers satisfying the equation 3m + 4n = 100. Hmm, let's start by understanding the problem. We have a linear Diophantine equation, which is an equation that seeks integer solutions. The goal is to minimize the absolute difference between m and n.
+
+First, maybe I should express one variable in terms of the other. Let me solve for m in terms of n. So, from 3m + 4n = 100, subtract 4n from both sides: 3m = 100 - 4n. Then divide both sides by 3: m = (100 - 4n)/3. Since m has to be an integer, (100 - 4n) must be divisible by 3. Similarly, I could solve for n in terms of m: 4n = 100 - 3m, so n = (100 - 3m)/4. Again, (100 - 3m) needs to be divisible by 4.
+
+Let me focus on the first expression: m = (100 - 4n)/3. For m to be an integer, 100 - 4n must be a multiple of 3. Let's think about modular arithmetic here. 100 mod 3 is 1, because 3*33=99, so 100 - 99 =1. Then 4n mod 3 is equivalent to (1)n mod 3, since 4 divided by 3 leaves a remainder of 1. So, 100 -4n ≡1 - n ≡0 mod3. Therefore, 1 -n ≡0 mod3 ⇒n ≡1 mod3. So n must be congruent to 1 modulo3.
+
+<prompt_1.1> Use modular arithmetic to determine the condition for n such that m is an integer. </prompt_1.1>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+That means n can be written as 3k +1 for some integer k. Let me substitute n =3k +1 into the equation. Then m=(100 -4*(3k +1))/3 = (100 -12k -4)/3=(96 -12k)/3=32 -4k. So, m=32 -4k and n=3k +1. Therefore, m and n are expressed in terms of integer k.
+</execution_1.1>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1:
+Now, we need to find |m -n| in terms of k. Let's compute m -n: (32 -4k) - (3k +1)=32 -4k -3k -1=31 -7k. Therefore, |m -n|=|31 -7k|. Our goal is to minimize this expression by choosing an integer k.
+
+So the problem reduces to finding the integer k that makes |31 -7k| as small as possible.
+
+To minimize |31 -7k|, we can think of 7k being as close as possible to 31. So, 7k ≈31. Solving for k, we get k≈31/7≈4.428... Since k must be an integer, the closest integers to 4.428 are 4 and 5. Let's check both values.
+
+<prompt_2.1> Evaluate |31 - 7k| for k = 4 and k = 5 to find the minimum value. </prompt_2.1>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+First, k=4: |31 -7*4|=|31 -28|=|3|=3.
+
+Next, k=5: |31 -7*5|=|31 -35|=|-4|=4. So, k=4 gives a smaller value. Therefore, the minimal |m -n| is 3.
+</execution_2.1>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+But wait, let me verify if k=4 actually gives valid integers m and n. Let's compute m and n when k=4.
+
+<prompt_3.1> Verify that k = 4 gives valid integers m and n and check if the minimal |m - n| is correct. </prompt_3.1>
+
+But hold on, maybe there's a k closer to 31/7≈4.428? For example, k=4 gives 7*4=28, which is 31-28=3. The next one is k=5, which is 35, which is 35-31=4. So 3 is closer. So 3 is the minimal possible value?
+
+But let me check if there are other possible k values that might give a smaller difference. For example, maybe negative k?
+
+<prompt_3.2> Explore the possibility of negative k values and other k values to ensure no smaller |m - n| exists. </prompt_3.2>
+
+But let's check another approach. Maybe instead of expressing n in terms of k, express m in terms of n and see.
+
+<prompt_3.3> Re-evaluate the expression by solving for m and check if the minimal |m - n| is consistent. </prompt_3.3>
+
+But let me check another angle. Suppose we set |m -n| = d, and try to minimize d. So m =n + d or m =n -d. Let's substitute into 3m +4n=100.
+
+<prompt_3.4> Set up and solve the equation to confirm the minimal |m - n| using different substitutions. </prompt_3.4>
+
+But let me check another way. Suppose we consider that m and n must satisfy 3m +4n=100. Let's think of this as a straight line in the m-n plane. The minimal |m -n| would be the minimal distance from the line 3m +4n=100 to the line m=n, but restricted to integer points. However, this might be more complicated, but perhaps using geometry.
+
+<prompt_3.5> Explore a geometric interpretation to confirm the minimal |m - n| and ensure no smaller value exists. </prompt_3.5>
+
+Alternatively, another method: Let’s denote t = m -n. We want to minimize |t|. Then, m =n +t. Substitute into 3m +4n=100: 3(n +t) +4n=100 ⇒3n +3t +4n=100 ⇒7n +3t=100. So, 7n=100 -3t ⇒n=(100 -3t)/7. Since n must be integer, (100 -3t) must be divisible by7. So 100 ≡3t mod7. 100 divided by7 is 14*7=98, so 100≡2 mod7. Therefore, 2≡3t mod7. Solve for t: 3t≡2 mod7. Multiply both sides by the inverse of3 mod7. Since 3*5=15≡1 mod7, inverse of3 is5. Therefore, t≡2*5=10≡3 mod7. Therefore, t≡3 mod7. So possible t values are ... ,3-7= -4,3,10,17,... etc. Since we want minimal |t|, the possible t are ±3, ±4, etc. Wait, but t must be congruent to3 mod7. So the minimal |t| is3. Therefore, the minimal |m -n| is3.
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+m=32 -4*4=32 -16=16. n=3*4 +1=12 +1=13. So m=16, n=13. Then |16 -13|=3. Let's check if 3m +4n=3*16 +4*13=48 +52=100. Yes, that works.
+</execution_3.1>
+
+<execution_3.2>
+Let's see.
+
+For k=0: m=32, n=1. |32 -1|=31.
+
+k=1: m=28, n=4. |28 -4|=24.
+
+k=2: m=24, n=7. |24 -7|=17.
+
+k=3: m=20, n=10. |20 -10|=10.
+
+k=4: m=16, n=13. |16 -13|=3.
+
+k=5: m=12, n=16. |12 -16|=4.
+
+k=6: m=8, n=19. |8 -19|=11.
+
+k=7: m=4, n=22. |4 -22|=18.
+
+k=8: m=0, n=25. |0 -25|=25.
+
+k=9: m=-4, n=28. |-4 -28|=32.
+
+So as k increases beyond 5, the |m -n| starts increasing again. For negative k:
+
+k=-1: m=32 -4*(-1)=36, n=3*(-1)+1=-2. |36 - (-2)|=38.
+
+k=-2: m=32 -4*(-2)=40, n=3*(-2)+1=-5. |40 - (-5)|=45.
+
+So clearly, as k becomes more negative, |m -n| increases. Therefore, the minimal value occurs at k=4, where |m -n|=3.
+</execution_3.2>
+
+<execution_3.3>
+From earlier, m=32 -4k and n=3k +1. Then m -n=32 -4k -3k -1=31 -7k. So, same as before. So to minimize |31 -7k|, k must be as close as possible to 31/7≈4.428. So k=4 and 5. We saw that k=4 gives 3, k=5 gives 4. But perhaps k=3? Let's check k=3: |31 -21|=10, which is worse. Similarly, k=6: |31 -42|=11. So yes, k=4 is the closest.
+</execution_3.3>
+
+<execution_3.4>
+Case 1: m =n +d. Then 3(n +d) +4n=100 ⇒3n +3d +4n=100 ⇒7n +3d=100. So 7n=100 -3d ⇒n=(100 -3d)/7. n must be integer, so 100 -3d must be divisible by7. Therefore, 100 ≡3d mod7. 100 mod7: 7*14=98, so 100-98=2. Therefore, 2≡3d mod7. So 3d≡2 mod7. Multiply both sides by inverse of3 mod7, which is5, as before. So d≡2*5=10≡3 mod7. Therefore, d≡3 mod7. So possible d values are3,10,17,... or -4,-11,... Since we want minimal |d|, the smallest possible is3.
+
+Case 2: m =n -d. Then 3(n -d) +4n=100 ⇒3n -3d +4n=100 ⇒7n -3d=100. Then 7n=100 +3d ⇒n=(100 +3d)/7. Similarly, 100 +3d ≡0 mod7 ⇒100≡-3d mod7 ⇒2≡-3d mod7 ⇒3d≡-2 mod7 ⇒3d≡5 mod7. Multiply both sides by inverse of3 mod7 (5): d≡5*5=25≡4 mod7. So d≡4 mod7. Therefore, possible d values are4,11,18,... or -3,-10,... The minimal |d| here is3 (from negative side). So again, minimal d is3.
+
+Therefore, in both cases, the minimal |d| is3. Therefore, the minimal |m -n| is3.
+</execution_3.4>
+
+<execution_3.5>
+The minimal |m -n| occurs where the two lines are closest. But since we are restricted to integer solutions, the closest approach might not be exact. But perhaps using the formula for distance between parallel lines, but since these are not parallel, the minimal distance would be the minimal |m -n| over all solutions. But maybe this is overcomplicating. Let's stick to our first approach.
+
+But let me check if there's a k between 4 and 5 that could give a smaller value. But k must be integer, so 4 and 5 are the nearest. Since 4 gives 31 -28=3, and 5 gives 35 -31=4. So 3 is smaller. Therefore, 3 is the minimal.
+</execution_3.5>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.4:
+Wait, but in case 2, d=3 would give n=(100 +9)/7=109/7≈15.571, which is not integer. So d=3 is invalid here. Similarly, d=-3 would give n=(100 -9)/7=91/7=13, which is integer. Wait, but if d is negative, m =n -d would imply m =n -(-3)=n +3? Wait, maybe I messed up the substitution. Let's clarify.
+
+<prompt_4.1> Verify the consistency of the result from different substitutions and confirm the minimal |m - n|. </prompt_4.1>
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+If we take m =n -d, then d =n -m. But if d is negative, that would mean m >n. But in the equation 3m +4n=100, if m is larger, then n would have to be smaller. However, when we set m =n -d, d is m -n. Wait, maybe I confused the sign. Let me re-express.
+
+Wait, in case 2, m =n -d implies d =n -m. So substituting into the equation: 3(n -d) +4n=100 ⇒3n -3d +4n=100 ⇒7n -3d=100. Then solving for n: n=(100 +3d)/7. Then for n to be integer, 100 +3d must be divisible by7. So 100 ≡-3d mod7 ⇒3d ≡-100 mod7. But 100 mod7 is2, so -100 mod7 is-2≡5 mod7. Therefore, 3d≡5 mod7. Then multiply both sides by inverse of3 mod7, which is5: d≡5*5=25≡4 mod7. So d≡4 mod7. So possible d values are4,11,18,... or -3,-10,... Since d is n -m, and we want |d| minimal. So the minimal |d| here would be3 (from d=-3). Let's check d=-3: Then n=(100 +3*(-3))/7=(100 -9)/7=91/7=13. So n=13, then m =n -d=13 -(-3)=16. Which gives m=16, n=13. Which is the same solution as before. So |m -n|=|16 -13|=3. So this approach also gives the same minimal value. Therefore, regardless of substitution, the minimal |m -n| is3.
+</execution_4.1>
+</Execution_4>
+
+<Plan_5>
+Based on execution_3.5, execution_4.1:
+Therefore, after multiple approaches and verifications, the smallest possible value of |m -n| is3.
+**Final Answer**
+The smallest possible value of \(|m - n|\) is \(\boxed{3}\).
+</Plan_5>
+
+<Execution_5>
+No prompt to execute.
+</Execution_5>
+
+<Final_answer>
+Therefore, the smallest possible value of $\left|m - n\right|$ is $\boxed{3}$.
+</Final_answer>
+</think>

@@ -1,0 +1,543 @@
+<Question>
+Triangle $ABC$ is isosceles, with $AB=AC$ and altitude $AM=11.$ Suppose that there is a point $D$ on $\overline{AM}$ with $AD=10$ and $\angle BDC=3\angle BAC.$  Find the perimeter of triangle $ABC.$
+
+[asy]
+unitsize(0.4 cm);
+
+pair A, B, C, D, M;
+
+A = (0,11);
+D = (0,1);
+B = (-11/2,0);
+C = (11/2,0);
+M = (B + C)/2;
+
+draw(A--B--C--cycle);
+draw(A--M);
+draw(B--D--C);
+
+label("$A$", A, N);
+label("$B$", B, SW);
+label("$C$", C, SE);
+label("$D$", D, NW);
+label("$M$", M, S);
+[/asy]
+</Question>
+
+<think>
+<Plan_1>
+Okay, so I need to find the perimeter of triangle ABC, which is an isosceles triangle with AB = AC and an altitude AM of length 11. There's a point D on AM such that AD = 10, so D is 10 units away from A along the altitude, which makes DM = 1 unit since AM is 11. The key condition given is that angle BDC is three times angle BAC. Hmm, that seems a bit tricky, but let me break it down step by step.
+
+First, let me sketch the triangle in my mind. Since ABC is isosceles with AB = AC, the altitude AM from A to BC will also be the median and the angle bisector. So, M is the midpoint of BC. The length of AM is 11, which is the height of the triangle. Point D is on AM, closer to A since AD = 10, so D is just 1 unit below A along the altitude.
+
+Let me denote angle BAC as θ. Then, according to the problem, angle BDC is 3θ. Since ABC is isosceles, angles at B and C are equal. Let's call each of them β. So, θ + 2β = 180°, which is the sum of angles in a triangle.
+
+Given that AM is the altitude, triangle ABM and ACM are right-angled triangles. Let me denote the length of BM and MC as x.
+Then, AB = AC = sqrt(x² + 11²) = sqrt(x² + 121).
+
+The perimeter of ABC would be 2*AB + BC = 2*sqrt(x² + 121) + 2x. So, if I can find x, I can compute the perimeter.
+
+But how does the point D come into play? Let's analyze triangle BDC. Points B, D, and C form another triangle. We know that angle BDC is 3θ. Also, since D is on AM, which is the altitude, coordinates might help here. Let me assign coordinates to the points to make it easier.
+
+Let's place point A at (0, 11), M at (0, 0), so BC is along the x-axis from (-x, 0) to (x, 0).
+Then, point D is on AM, which is the y-axis, so D is at (0, 1) because AD = 10 (since AM is 11, subtracting 10 gives D at 1 unit from M).
+
+So coordinates:
+
+<prompt_1.1> Assign coordinates to the points in the triangle. </prompt_1.1>
+</Plan_1>
+
+<Execution_1>
+<execution_1.1>
+A(0,11), M(0,0), D(0,1), B(-x,0), C(x,0).
+
+Now, angle BDC is the angle at D between points B, D, and C. Let's compute this angle in terms of x and set it equal to 3θ. Also, angle BAC is θ, which is the angle at A between points B, A, and C. Let's compute θ in terms of x as well.
+
+First, let's compute θ. In triangle ABC, angle BAC is θ. Since ABC is isosceles with AB = AC, and AM is the altitude, triangle ABM is right-angled at M. So, angle at A (θ) can be found using trigonometry. The tangent of θ/2 is opposite over adjacent, which is BM / AM = x / 11. Therefore, θ/2 = arctan(x/11), so θ = 2*arctan(x/11).
+
+Alternatively, in triangle ABM, cos(θ/2) = adjacent/hypotenuse = AM / AB = 11 / sqrt(x² + 121). Similarly, sin(θ/2) = BM / AB = x / sqrt(x² + 121).
+</execution_1.1>
+</Execution_1>
+
+<Plan_2>
+Based on execution_1.1:
+Now, let's consider angle BDC. Points B(-x,0), D(0,1), C(x,0). We need to compute angle at D, which is angle BDC. To find this angle, we can use coordinates to compute vectors or use the Law of Sines or Cosines in triangle BDC.
+
+First, let's compute the lengths of BD, DC, and BC.
+
+<prompt_2.1> Calculate the lengths of BD, DC, and BC using coordinates. </prompt_2.1>
+-----
+
+Now, angle BDC = 3θ. So, in triangle BDC, angle at D is 3θ. Let's consider triangle BDC. The sides are BD, DC, BC. Let's apply the Law of Sines here.
+
+Law of Sines in triangle BDC:
+
+<prompt_2.2> Apply the Law of Sines in triangle BDC to relate angles and sides. </prompt_2.2>
+</Plan_2>
+
+<Execution_2>
+<execution_2.1>
+Coordinates:
+
+B(-x, 0), D(0,1), C(x,0).
+
+Compute BD: distance between B and D. sqrt[(0 - (-x))² + (1 - 0)²] = sqrt(x² + 1).
+
+Similarly, DC: distance between D and C: sqrt[(x - 0)² + (0 - 1)²] = sqrt(x² + 1). So BD = DC = sqrt(x² + 1). That's interesting, so triangle BDC is also isosceles with BD = DC. Therefore, angles at B and C in triangle BDC are equal.
+
+Wait, but angle at D is 3θ, so the other two angles in triangle BDC are (180° - 3θ)/2 each. But we need to relate this to something we know.
+
+Alternatively, since BD = DC, triangle BDC is isosceles with base BC. Wait, no, BC is the base of the original triangle ABC, but in triangle BDC, the base would be BC as well, but the apex is D. Wait, but BD = DC, so the triangle is symmetric with respect to the y-axis. So, angles at B and C in triangle BDC are equal.
+</execution_2.1>
+
+<execution_2.2>
+BD / sin(angle at C) = DC / sin(angle at B) = BC / sin(angle at D)
+
+But angle at D is 3θ. Let's denote angles at B and C in triangle BDC as φ and ψ respectively. Then, φ + ψ + 3θ = 180°. But since the original triangle ABC has angles θ, β, β, and since ABC is isosceles, perhaps there is a relation between angles in triangle BDC and angles in ABC?
+</execution_2.2>
+</Execution_2>
+
+<Plan_3>
+Based on execution_2.1:
+But how does this help?
+
+Alternatively, maybe we can compute angle BDC using coordinates or vectors. Let's consider vectors.
+
+<prompt_3.1> Use vectors to compute angle BDC. </prompt_3.1>
+-----
+
+Based on execution_2.2:
+But in triangle BDC, BD = DC = sqrt(x² + 1), and BC = 2x.
+
+Law of Sines gives:
+
+<prompt_3.2> Use the Law of Sines in triangle BDC to form an equation and solve for x. </prompt_3.2>
+</Plan_3>
+
+<Execution_3>
+<execution_3.1>
+From point D, the lines to B and C are vectors DB and DC. Vector DB is B - D = (-x, -1), and vector DC is C - D = (x, -1). The angle between these two vectors is angle BDC. The cosine of angle BDC can be found using the dot product formula:
+
+cos(angle BDC) = (DB · DC) / (|DB| |DC|)
+
+Compute the dot product:
+
+DB · DC = (-x)(x) + (-1)(-1) = -x² + 1
+
+The magnitudes |DB| and |DC| are both sqrt(x² + 1). Therefore,
+
+cos(angle BDC) = (-x² + 1) / (x² + 1) = (1 - x²)/(1 + x²)
+
+So angle BDC = arccos[(1 - x²)/(1 + x²)]
+
+But angle BDC is given as 3θ. So,
+
+arccos[(1 - x²)/(1 + x²)] = 3θ
+
+But θ is angle BAC, which we found earlier as θ = 2 arctan(x/11). Therefore, 3θ = 6 arctan(x/11). So,
+
+arccos[(1 - x²)/(1 + x²)] = 6 arctan(x/11)
+</execution_3.1>
+
+<execution_3.2>
+sqrt(x² + 1) / sin(φ) = 2x / sin(3θ)
+
+But since triangle BDC is isosceles with BD = DC, angles at B and C are equal, so φ = ψ. Therefore, angle at B in triangle BDC is φ, which is also angle between BD and BC. Wait, but angle at B in triangle ABC is β. How is angle at B in triangle BDC related to β?
+
+Alternatively, perhaps we can compute angle BDC using coordinates. Let's compute vectors DB and DC and use the dot product to find the angle between them.
+
+Vector DB is B - D = (-x, -1), and vector DC is C - D = (x, -1).
+
+The angle between vectors DB and DC is angle BDC. The cosine of this angle is equal to the dot product of DB and DC divided by the product of their magnitudes.
+
+Compute the dot product:
+
+DB · DC = (-x)(x) + (-1)(-1) = -x² + 1.
+
+The magnitudes of DB and DC are both sqrt(x² + 1). Therefore:
+
+cos(angle BDC) = (-x² + 1) / (sqrt(x² + 1) * sqrt(x² + 1)) = (-x² + 1) / (x² + 1).
+
+So, angle BDC = arccos[(1 - x²)/(1 + x²)].
+
+But angle BDC is given as 3θ. Therefore:
+
+arccos[(1 - x²)/(1 + x²)] = 3θ.
+
+But θ is angle BAC, which we found earlier as θ = 2*arctan(x/11). Therefore, 3θ = 6*arctan(x/11).
+
+So, we have:
+
+arccos[(1 - x²)/(1 + x²)] = 6*arctan(x/11).
+</execution_3.2>
+</Execution_3>
+
+<Plan_4>
+Based on execution_3.1:
+Hmm, this seems complicated. Maybe there's another approach. Let's recall that θ = 2 arctan(x/11). Let me denote φ = arctan(x/11), so θ = 2φ. Then, angle BDC = 3θ = 6φ. So, we have:
+
+arccos[(1 - x²)/(1 + x²)] = 6φ
+
+But φ = arctan(x/11). So, 6φ = 6 arctan(x/11). Therefore, the equation is:
+
+arccos[(1 - x²)/(1 + x²)] = 6 arctan(x/11)
+
+This equation relates x through φ and the arccos expression. However, solving this equation algebraically might be challenging. Maybe we can use trigonometric identities or make substitutions.
+
+Let me think. Let's denote t = x/11. Then, x = 11t, so φ = arctan(t). Then, the equation becomes:
+
+arccos[(1 - (11t)^2)/(1 + (11t)^2)] = 6 arctan(t)
+
+Let me compute the left-hand side (LHS):
+
+<prompt_4.1> Simplify the equation using trigonometric identities and substitutions. </prompt_4.1>
+-----
+
+Based on execution_3.2:
+This equation seems transcendental, meaning it might not have a solution in terms of elementary functions. Maybe we can use trigonometric identities to relate the two sides.
+
+Recall that arccos[(1 - x²)/(1 + x²)] can be expressed in terms of tan. Let me recall that if we set x = tan(α/2), then (1 - x²)/(1 + x²) = (1 - tan²(α/2))/(1 + tan²(α/2)) = cos α. Therefore, arccos[(1 - x²)/(1 + x²)] = α/2 when x = tan(α/2). Wait, let me check that.
+
+<prompt_4.2> Use trigonometric identities to simplify the equation further. </prompt_4.2>
+</Plan_4>
+
+<Execution_4>
+<execution_4.1>
+(1 - x²)/(1 + x²) = (1 - 121t²)/(1 + 121t²)
+
+But arccos[(1 - 121t²)/(1 + 121t²)] is equal to 2 arctan(11t). Wait, because if we set y = 11t, then (1 - y²)/(1 + y²) = cos(2 arctan(y)), since cos(2θ) = (1 - tan²θ)/(1 + tan²θ). Therefore, arccos[(1 - y²)/(1 + y²)] = 2 arctan(y). Therefore, arccos[(1 - 121t²)/(1 + 121t²)] = 2 arctan(11t).
+
+Therefore, the left-hand side is 2 arctan(11t), and the right-hand side is 6 arctan(t). Therefore, the equation becomes:
+
+2 arctan(11t) = 6 arctan(t)
+
+Divide both sides by 2:
+
+arctan(11t) = 3 arctan(t)
+</execution_4.1>
+
+<execution_4.2>
+Let’s suppose that x = tan(α/2). Then:
+
+(1 - x²)/(1 + x²) = [1 - tan²(α/2)]/[1 + tan²(α/2)] = [cos²(α/2) - sin²(α/2)]/[cos²(α/2) + sin²(α/2)] = cos α.
+
+Therefore, arccos[(1 - x²)/(1 + x²)] = α. So, if x = tan(α/2), then arccos[(1 - x²)/(1 + x²)] = α.
+
+Therefore, in our equation:
+
+arccos[(1 - x²)/(1 + x²)] = 6 arctan(x/11)
+
+Let’s set α = 6 arctan(x/11). Then, according to the identity above, if we set x = tan(α/2), then arccos[(1 - x²)/(1 + x²)] = α. Therefore, if we set x = tan(α/2), then α = 6 arctan(x/11). But x = tan(α/2), so arctan(x/11) = arctan(tan(α/2)/11). Hmm, this might not directly help, but perhaps we can relate α and arctan(x/11).
+
+Alternatively, let's set θ = 2φ, so φ = θ/2. Then, 6φ = 3θ. Therefore, angle BDC = 3θ = 6φ. So, arccos[(1 - x²)/(1 + x²)] = 6φ. But φ = arctan(x/11). Therefore, arccos[(1 - x²)/(1 + x²)] = 6 arctan(x/11). Let me denote y = x/11, so x = 11y. Then, the equation becomes:
+
+arccos[(1 - (11y)^2)/(1 + (11y)^2)] = 6 arctan(y)
+
+This substitution might not help much. Alternatively, perhaps use multiple-angle identities for tangent.
+
+Alternatively, let's consider that angle BDC = 3θ. Let me compute tan(3θ) in terms of tan θ, and see if that helps. But angle BDC is 3θ, and we have expressions for cos(angle BDC) and sin(angle BDC) in terms of x.
+
+Alternatively, perhaps use the Law of Cosines in triangle BDC. Since we know BD = DC = sqrt(x² + 1), BC = 2x, and angle at D is 3θ. Then, by Law of Cosines:
+
+BC² = BD² + DC² - 2*BD*DC*cos(angle BDC)
+
+Substituting:
+
+(2x)^2 = (x² + 1) + (x² + 1) - 2*(x² + 1)*cos(3θ)
+
+Simplify:
+
+4x² = 2x² + 2 - 2(x² + 1)cos(3θ)
+
+Subtract 2x² + 2 from both sides:
+
+2x² - 2 = -2(x² + 1)cos(3θ)
+
+Divide both sides by -2:
+
+(2 - 2x²)/2 = (x² + 1)cos(3θ)
+
+Simplify left side:
+
+(1 - x²) = (x² + 1)cos(3θ)
+
+Therefore:
+
+cos(3θ) = (1 - x²)/(1 + x²)
+
+But we also have that θ = 2 arctan(x/11). So, 3θ = 6 arctan(x/11). Therefore:
+
+cos(6 arctan(x/11)) = (1 - x²)/(1 + x²)
+
+So, this is the equation we need to solve for x.
+</execution_4.2>
+</Execution_4>
+
+<Plan_5>
+Based on execution_4.2:
+Let me denote φ = arctan(x/11). Then, x = 11 tan φ. Then, 3θ = 6φ. So, cos(6φ) = (1 - x²)/(1 + x²) = (1 - 121 tan² φ)/(1 + 121 tan² φ).
+
+But x = 11 tan φ, so tan φ = x/11. Let's compute (1 - x²)/(1 + x²):
+
+(1 - x²)/(1 + x²) = [1 - (121 tan² φ)]/[1 + (121 tan² φ)].
+
+Let me compute this:
+
+<prompt_5.1> Simplify the equation using trigonometric identities and substitutions. </prompt_5.1>
+-----
+
+Based on execution_4.1:
+Hmm, maybe we can use the identity for tan(3α) here? Let me recall that tan(3α) = (3 tan α - tan³ α)/(1 - 3 tan² α). But here we have arctan(11t) and arctan(t). Let me denote β = arctan(t), so t = tan β. Then, the equation becomes:
+
+arctan(11 tan β) = 3β
+
+So, arctan(11 tan β) = 3β. Let me take tangent of both sides:
+
+tan(arctan(11 tan β)) = tan(3β)
+
+Which simplifies to:
+
+11 tan β = tan(3β)
+
+Now, using the triple angle formula for tangent:
+
+tan(3β) = (3 tan β - tan³ β)/(1 - 3 tan² β)
+
+Therefore:
+
+11 tan β = (3 tan β - tan³ β)/(1 - 3 tan² β)
+
+Multiply both sides by (1 - 3 tan² β):
+
+11 tan β (1 - 3 tan² β) = 3 tan β - tan³ β
+
+Expand the left side:
+
+11 tan β - 33 tan³ β = 3 tan β - tan³ β
+
+Bring all terms to the left side:
+
+11 tan β - 33 tan³ β - 3 tan β + tan³ β = 0
+
+Combine like terms:
+
+(11 tan β - 3 tan β) + (-33 tan³ β + tan³ β) = 0
+
+8 tan β - 32 tan³ β = 0
+
+Factor out 8 tan β:
+
+8 tan β (1 - 4 tan² β) = 0
+
+So, either 8 tan β = 0 or 1 - 4 tan² β = 0.
+
+<prompt_5.2> Solve the equation 8 tan β (1 - 4 tan² β) = 0 for β. </prompt_5.2>
+-----
+
+Based on execution_4.2, execution_4.1:
+Let's check β = 0. Then, arctan(0) = 0, so 3*0 = 0. But β = 0 would mean x = 0, which degenerates the triangle, so we discard this solution.
+
+Now, 1 - 4 tan² β = 0 => tan² β = 1/4 => tan β = ±1/2. Since β is an angle in a triangle, it must be between 0 and 90°, so tan β is positive. Therefore, tan β = 1/2.
+
+<prompt_5.3> Verify the solution tan β = 1/2. </prompt_5.3>
+</Plan_5>
+
+<Execution_5>
+<execution_5.1>
+(1 - 121 tan² φ)/(1 + 121 tan² φ). Let me write this as [1 - (11 tan φ)^2]/[1 + (11 tan φ)^2]. Let me denote u = 11 tan φ. Then, this expression becomes (1 - u²)/(1 + u²). Wait, that's the same form as before. So, (1 - u²)/(1 + u²) = cos(2α) where u = tan α. Wait, if u = tan α, then (1 - u²)/(1 + u²) = cos(2α). Therefore, in this case, u = 11 tan φ, so (1 - u²)/(1 + u²) = cos(2α) where α = arctan(u) = arctan(11 tan φ). Wait, this is getting a bit convoluted. Let me step back.
+
+Alternatively, since we have:
+
+cos(6φ) = (1 - x²)/(1 + x²) = (1 - 121 tan² φ)/(1 + 121 tan² φ)
+
+Let me express the right-hand side in terms of cos and sin. Let's write:
+
+(1 - 121 tan² φ)/(1 + 121 tan² φ) = [cos² φ - 121 sin² φ]/[cos² φ + 121 sin² φ]
+
+Wait, no. Let me write tan φ = sin φ / cos φ. Then:
+
+(1 - 121 (sin² φ / cos² φ)) / (1 + 121 (sin² φ / cos² φ)) = [cos² φ - 121 sin² φ]/[cos² φ + 121 sin² φ]
+
+Let me factor numerator and denominator:
+
+= [cos² φ - (11 sin φ)^2] / [cos² φ + (11 sin φ)^2]
+
+Hmm, this resembles the cosine of a difference formula. Recall that cos(A - B) = cos A cos B + sin A sin B, but not sure. Alternatively, perhaps use the identity for cos(2α) = (1 - tan² α)/(1 + tan² α). Wait, but here we have a similar structure. Let's see.
+
+If we set 11 sin φ = k cos φ, then perhaps... Wait, maybe not. Alternatively, let's consider the angle addition formulas. Let me think.
+
+Alternatively, let me use the identity for cos(2α) again. If we have [cos² φ - (11 sin φ)^2]/[cos² φ + (11 sin φ)^2]. Let me divide numerator and denominator by cos² φ:
+
+= [1 - 121 tan² φ]/[1 + 121 tan² φ]
+
+But that's where we started. Hmm.
+</execution_5.1>
+
+<execution_5.2>
+Case 1: 8 tan β = 0 => tan β = 0 => β = 0. But β is arctan(x/11), which would imply x = 0, but that would collapse the triangle ABC into a line, which is impossible. So, discard this solution.
+
+Case 2: 1 - 4 tan² β = 0 => tan² β = 1/4 => tan β = ±1/2. Since β is an acute angle (as it's arctan(x/11) and x is positive), tan β is positive. Therefore, tan β = 1/2.
+</execution_5.2>
+
+<execution_5.3>
+Therefore, β = arctan(1/2). Then, t = tan β = 1/2. Recall that t = x/11, so x = 11t = 11*(1/2) = 11/2. Therefore, x = 11/2.
+</execution_5.3>
+</Execution_5>
+
+<Plan_6>
+Based on execution_5.3:
+Let me check if this is consistent.
+
+So, if tan β = 1/2, then β = arctan(1/2). Then, θ = 2β = 2 arctan(1/2). Let's compute θ in radians or degrees to check if angle BDC = 3θ holds.
+
+Alternatively, let's verify if arctan(1/2) satisfies the equation.
+
+Given tan β = 1/2, then tan(3β) should equal 11 tan β.
+
+<prompt_6.1> Verify that tan(3β) = 11 tan β for tan β = 1/2. </prompt_6.1>
+-----
+
+Based on execution_5.1, execution_5.3:
+But let me confirm this solution is valid. Let's check if angle BDC is indeed three times angle BAC.
+
+<prompt_6.2> Verify the solution x = 11/2 by checking if angle BDC is three times angle BAC. </prompt_6.2>
+-----
+
+Based on execution_5.2:
+Therefore, tan β = 1/2, so β = arctan(1/2). Then, θ = 2β = 2 arctan(1/2). Let's compute θ in terms of arctan.
+
+<prompt_6.3> Calculate the perimeter of triangle ABC using x = 11/2. </prompt_6.3>
+</Plan_6>
+
+<Execution_6>
+<execution_6.1>
+Compute tan(3β) using the triple angle formula:
+
+tan(3β) = (3*(1/2) - (1/2)^3)/(1 - 3*(1/2)^2) = (3/2 - 1/8)/(1 - 3/4) = (12/8 - 1/8)/(1/4) = (11/8)/(1/4) = (11/8)*(4/1) = 11/2.
+
+Which is equal to 11*(1/2) = 11 tan β. So, yes, tan(3β) = 11 tan β, which matches our earlier equation. Therefore, tan β = 1/2 is indeed the solution.
+</execution_6.1>
+
+<execution_6.2>
+Given x = 11/2, so AM = 11, so ABC is an isosceles triangle with AB = AC = sqrt((11/2)^2 + 11^2) = sqrt( (121/4) + 121 ) = sqrt( (121/4) + (484/4) ) = sqrt(605/4) = (sqrt(605))/2. Then, BC = 2*(11/2) = 11. So, the sides are AB = AC = sqrt(605)/2 ≈ 12.36, BC = 11. Then, perimeter ≈ 12.36*2 + 11 ≈ 35.72. But let's check angle conditions.
+
+Alternatively, let's compute angles. Let's compute θ = angle BAC. Since tan β = 1/2, where β is angle ABC. Wait, in triangle ABC, angle at B is β, and angle BAC is θ = 2β. Let's compute β.
+
+tan β = opposite/adjacent = (AM)/ (BM) = 11 / (x/2) = 11 / ( (11/2)/2 ) = 11 / (11/4) ) = 4. Wait, wait, if x = 11/2, then BM = x/2 = 11/4. Then, tan β = AM / BM = 11 / (11/4) = 4. Therefore, β = arctan(4). Then, θ = 2β = 2 arctan(4). Then, angle BDC is supposed to be 3θ = 6 arctan(4). Let's compute cos(6 arctan(4)) and see if it equals (1 - x²)/(1 + x²).
+
+First, compute x = 11/2, so x² = (121)/4. Then, (1 - x²)/(1 + x²) = (1 - 121/4)/(1 + 121/4) = (-117/4)/(125/4) = -117/125. So, cos(angle BDC) = -117/125. Then, angle BDC = arccos(-117/125). Let's compute this angle in radians or degrees.
+
+But let's compute 6 arctan(4). Let me compute arctan(4) first. arctan(4) is an angle whose tangent is 4, which is approximately 75.96 degrees. Then, 6*75.96 ≈ 455.76 degrees. But cosine is periodic every 360 degrees, so 455.76 - 360 = 95.76 degrees. cos(95.76 degrees) ≈ -0.094, but -117/125 = -0.936. These don't match. Wait, that's a problem.
+
+Wait, so there's a discrepancy here. If x = 11/2, then (1 - x²)/(1 + x²) = -117/125 ≈ -0.936, so angle BDC would be arccos(-0.936) ≈ 157.38 degrees. On the other hand, 3θ = 3*2β = 6β. Since β = arctan(4) ≈ 75.96 degrees, so 6β ≈ 455.76 degrees, which is equivalent to 95.76 degrees (since 455.76 - 360 = 95.76). But cos(95.76 degrees) ≈ -0.094, which is not equal to -0.936. Therefore, this suggests a contradiction. So, x = 11/2 is not a valid solution?
+</execution_6.2>
+
+<execution_6.3>
+Alternatively, maybe we can find sin θ or cos θ for further calculations.
+
+But first, let's verify that this solution is valid. Let's check if with x = 11/2, the equation arctan(11t) = 3 arctan(t) holds, where t = x/11 = (11/2)/11 = 1/2.
+
+So, t = 1/2. Then, arctan(11t) = arctan(11*(1/2)) = arctan(11/2). On the other hand, 3 arctan(t) = 3 arctan(1/2). So, we need to check if arctan(11/2) equals 3 arctan(1/2).
+
+Let me compute both sides. Let's compute 3 arctan(1/2). Let’s denote α = arctan(1/2). Then, tan α = 1/2. Then, tan(3α) = (3*(1/2) - (1/2)^3)/(1 - 3*(1/2)^2) = (3/2 - 1/8)/(1 - 3/4) = (12/8 - 1/8)/(1/4) = (11/8)/(1/4) = 11/8 * 4/1 = 11/2. Therefore, tan(3α) = 11/2. Therefore, 3α = arctan(11/2). But α = arctan(1/2), so 3 arctan(1/2) = arctan(11/2). Therefore, arctan(11/2) = 3 arctan(1/2), which is exactly the equation we had. Therefore, the solution t = 1/2, x = 11/2 is valid.
+</execution_6.3>
+</Execution_6>
+
+<Plan_7>
+Based on execution_6.3:
+Now, let's compute the perimeter. The sides are AB = AC = sqrt(x² + 121) = sqrt((121/4) + 121) = sqrt(121/4 + 484/4) = sqrt(605/4) = (sqrt(605))/2. Then, BC = 11. Therefore, the perimeter is 2*(sqrt(605)/2) + 11 = sqrt(605) + 11. Let's compute sqrt(605):
+
+<prompt_7.1> Calculate the perimeter of triangle ABC using the values of x and verify the calculations. </prompt_7.1>
+</Plan_7>
+
+<Execution_7>
+<execution_7.1>
+605 = 5*121 = 5*11². Therefore, sqrt(605) = 11*sqrt(5). Therefore, perimeter is 11√5 + 11 = 11(√5 + 1). But let's check the calculations again.
+
+Wait, x = BM = 11/2. Then, AB = sqrt(x² + AM²) = sqrt((11/2)^2 + 11^2) = sqrt(121/4 + 121) = sqrt(121/4 + 484/4) = sqrt(605/4) = sqrt(605)/2. Therefore, AB = AC = sqrt(605)/2. BC = 2x = 2*(11/2) = 11. Therefore, perimeter is 2*(sqrt(605)/2) + 11 = sqrt(605) + 11. Since 605 = 121*5, sqrt(605) = 11*sqrt(5). Therefore, perimeter is 11√5 + 11 = 11(√5 + 1). So, the perimeter is 11(√5 + 1). Let's check if this is the correct answer.
+</execution_7.1>
+</Execution_7>
+
+<Plan_8>
+Based on execution_7.1:
+But let me verify the steps again to ensure no miscalculations.
+
+1. Assign coordinates with A(0,11), M(0,0), D(0,1).
+
+<prompt_8.1> Verify the coordinate assignment and calculations for x = 11/2 and confirm the perimeter. </prompt_8.1>
+</Plan_8>
+
+<Execution_8>
+<execution_8.1>
+2. B(-x,0), C(x,0), where x = BM = MC = 11/2. So, x = 11/2.
+
+3. Then, AB = sqrt(x² + 11²) = sqrt((121/4) + 121) = sqrt(605/4) = sqrt(605)/2.
+
+4. BC = 2x = 11.
+
+5. Therefore, perimeter is 2*(sqrt(605)/2) + 11 = sqrt(605) + 11. Since 605 = 121*5, sqrt(605) = 11*sqrt(5). Therefore, perimeter is 11√5 + 11 = 11(√5 + 1). So, the answer should be 11(√5 + 1), which is approximately 11*3.236 = 35.596, but exact form is 11(√5 + 1).
+</execution_8.1>
+</Execution_8>
+
+<Plan_9>
+Based on execution_8.1:
+However, let me verify once more if there are other possible solutions. For example, when solving tan β = 1/2, we assumed β is acute, which it is, since x is positive. Also, the negative solution for tan β was discarded because x must be positive. Therefore, the only solution is x = 11/2.
+Therefore, the perimeter is 11(√5 + 1). Let me check if this is the minimal answer or if it can be simplified further. 11(√5 + 1) is already simplified. Therefore, the perimeter is 11(√5 + 1).
+
+But let me confirm with another approach. Let's use coordinate geometry to compute angles.
+
+<prompt_9.1> Consider alternative methods to confirm the perimeter result. </prompt_9.1>
+</Plan_9>
+
+<Execution_9>
+<execution_9.1>
+Given x = 11/2, so coordinates:
+
+A(0,11), M(0,0), D(0,1), B(-11/2,0), C(11/2,0).
+
+Compute angle BAC. Vectors AB and AC. AB vector is (-11/2, -11), AC vector is (11/2, -11). The angle between these vectors can be found using the dot product.
+
+Dot product AB · AC = (-11/2)(11/2) + (-11)(-11) = (-121/4) + 121 = (-121/4) + (484/4) = 363/4.
+
+|AB| = |AC| = sqrt((11/2)^2 + 11^2) = sqrt(121/4 + 121) = sqrt(605/4) = sqrt(605)/2.
+
+Therefore, cos θ = (363/4) / ( (sqrt(605)/2)^2 ) = (363/4) / (605/4) ) = 363/605 = 3*121 / (5*121) ) = 3/5. Therefore, θ = arccos(3/5). So, θ ≈ 53.13 degrees.
+
+Then, angle BDC is supposed to be 3θ ≈ 159.39 degrees. Let's compute angle BDC using coordinates.
+
+Points B(-11/2,0), D(0,1), C(11/2,0). Compute vectors DB and DC.
+
+DB = B - D = (-11/2, -1) , DC = C - D = (11/2, -1).
+
+Compute the angle between vectors DB and DC. The angle at D between B and C.
+
+Dot product DB · DC = (-11/2)(11/2) + (-1)(-1) = (-121/4) + 1 = (-121/4) + (4/4) = (-117/4).
+
+|DB| = |DC| = sqrt( (11/2)^2 + 1^2 ) = sqrt(121/4 + 1) = sqrt(125/4) = (5 sqrt(5))/2.
+
+Therefore, cos(angle BDC) = (dot product)/( |DB| |DC| ) = (-117/4) / ( (5 sqrt(5)/2)^2 ) = (-117/4) / (25*5/4) ) = (-117/4) / (125/4) ) = -117/125 ≈ -0.936. Therefore, angle BDC ≈ arccos(-0.936) ≈ 157.38 degrees. However, 3θ = 3*arccos(3/5). Let's compute 3*arccos(3/5).
+
+Since arccos(3/5) ≈ 53.13 degrees, 3*53.13 ≈ 159.39 degrees. The discrepancy is due to approximate values. The exact value is that cos(angle BDC) = -117/125, and cos(3θ) should equal -117/125. Let's check:
+
+Given θ = arccos(3/5). Compute cos(3θ) using the triple angle formula:
+
+cos(3θ) = 4 cos^3 θ - 3 cos θ = 4*(27/125) - 3*(3/5) = 108/125 - 9/5 = 108/125 - 225/125 = -117/125. Therefore, cos(3θ) = -117/125, which matches the computed value of cos(angle BDC). Therefore, angle BDC = 3θ, as required.
+
+Therefore, the solution is consistent. Thus, the perimeter is 11(√5 + 1).
+</execution_9.1>
+</Execution_9>
+
+<Plan_10>
+Based on execution_9.1:
+**Final Answer**
+\boxed{11\left(1 + \sqrt{5}\right)}
+</Plan_10>
+
+<Execution_10>
+No prompt to execute.
+</Execution_10>
+
+<Final_answer>
+Therefore, the final answer is $\boxed{11\left(1+\sqrt{5}\right)}$.
+</Final_answer>
+</think>
