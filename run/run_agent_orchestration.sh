@@ -1,10 +1,10 @@
 # Define variables directly in the script
-PLANNER_MODEL="xyz/DeepSeek-R1-Distill-Qwen-7B-Trajectory-Data-Math-ckpt400"
+PLANNER_MODEL="xyz/model_name"
 PLANNER_SERVER_URL="http://34.147.114.179:8000/v1/"
 PLANNER_TEMP="0.6"
 PLANNER_OUTPUT_TOKEN_LIMIT=1000
 
-EXECUTOR_MODEL="xyz/DeepSeek-R1-Distill-Qwen-7B-Trajectory-Data-Math-ckpt400"
+EXECUTOR_MODEL="xyz/model_name"
 EXECUTOR_SERVER_URL="http://34.147.114.179:8000/v1/"
 EXECUTOR_TEMP="0.6"
 

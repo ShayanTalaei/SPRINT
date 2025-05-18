@@ -1,9 +1,9 @@
-BASE_MODEL="zheminh/DeepSeek-R1-Distill-Qwen-7B-RFT-R1-Distill-ckpt400"
+BASE_MODEL="xyz/model_name"
 BASE_MODEL_SERVER_URL="http://35.199.63.160:8000/v1/"
 BASE_MODEL_TEMP="0.6"
 BASE_MODEL_TYPE="think_ft_trajectory"
 
-TEST_HUB_PATH="emilbiju/RL-MATH-DeepMath"
+TEST_HUB_PATH="HuggingFaceH4/MATH-500"
 ORCHESTRATION_SPLIT="train"
 TEST_SUBSET="default"
 ORCHESTRATION_RANGE=":500"

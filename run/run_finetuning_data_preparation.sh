@@ -1,6 +1,6 @@
 # Define input variables
 FINETUNING_RANGE=":"
-DATA_HUB_PATH="xyz/OpenThoughts-correct"
+DATA_HUB_PATH="xyz/OpenThoughts"
 SUBSET="math"
 COMPONENT_SEPARATION_MODEL="gpt-4o"
 DAG_CREATION_MODEL="gpt-4o"
