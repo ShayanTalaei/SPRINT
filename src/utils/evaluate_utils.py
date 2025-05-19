@@ -200,10 +200,6 @@ def get_max_token_len(trajectory, file_name, planner_multiplier=1):
         return None, None, None
 
 def get_seq_token_counts(folder_path):
-    max_token_lens = []
-    planner_contribs = []
-    exec_contribs = []
-    large_files = []
     agent_orchestration_dir = folder_path
     valid_trajectory_count, invalid_trajectory_count = 0,0
     files = [i for i in os.listdir(agent_orchestration_dir) if ".txt" in i]
@@ -215,13 +211,9 @@ def get_seq_token_counts(folder_path):
         if max_token_len is not None:
             seq_token_count_dict[file] = [max_token_len, planner_contrib, exec_contrib]
             valid_trajectory_count+=1
-            if max_token_len>6000:
-                large_files.append(file)
         else:
             invalid_trajectory_count+=1
-    print(f"Valid trajectories: {valid_trajectory_count}, Invalid trajectories: {invalid_trajectory_count}")
-    print(f"Avg. seq count: {np.mean([seq_token_count_dict[i][0] for i in seq_token_count_dict])}, Avg. planner contrib: {np.mean([seq_token_count_dict[i][1] for i in seq_token_count_dict])}, Avg. executor contrib: {np.mean([seq_token_count_dict[i][2] for i in seq_token_count_dict])}")
-    return seq_token_count_dict, large_files
+    return np.mean([seq_token_count_dict[i][0] for i in seq_token_count_dict])
 
 def count_tokens(text, tokenizer=executor_tokenizer):
     tokens = tokenizer.encode(text, add_special_tokens=False)

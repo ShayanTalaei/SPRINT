@@ -3,6 +3,20 @@
 ## Overview
 Large reasoning models (LRMs) excel at complex reasoning tasks but typically generate lengthy sequential chains-of-thought, resulting in long inference times before arriving at the final answer. To address this challenge, we introduce SPRINT, a novel post-training and inference-time framework designed to enable LRMs to dynamically identify and exploit opportunities for parallelization during their reasoning process. SPRINT incorporates an innovative data curation pipeline that reorganizes natural language reasoning trajectories into structured rounds of long-horizon planning and parallel execution. By fine-tuning LRMs on a small amount of such curated data, the models *learn* to dynamically identify independent subtasks within extended reasoning processes and effectively execute them in parallel. Through extensive evaluations, we show that the models fine-tuned with the SPRINT framework match the performance of reasoning models on complex domains such as mathematics while generating up to 39% fewer sequential tokens on problems requiring more than 8000 output tokens. Finally, we observe consistent results transferred to two out-of-distribution tasks of GPQA and Countdown with up to 45% and 65% reduction in average sequential tokens for longer reasoning trajectories, while achieving the performance of the fine-tuned reasoning model.
 
+To install required packages, run
+```
+$ pip install -r requirements.txt
+```
+
+## Directory Structure
+
+- `src`: Source code for the data curation pipeline and SPRINT inference
+  - `src/prompts`: Prompts used for all LLM calls.
+  - `src/utils`: Utility functions for text processing, evaluating results, and making API calls to models.
+- `run`: Bash scripts for running the data curation pipeline and SPRINT inference
+- `logs`: Logs created from running the data curation pipeline on a few problems from the MATH500 benchmark
+- `logs_full_trajectory`: Logs created from running SPRINT inference on a few problems from the MATH500 benchmark
+
 ## Data Curation
 
 ![Data curation pipeline](figures/SPRINT_Training_overview.png)
@@ -17,23 +31,25 @@ Set the following variables in `run_component_separation.sh`
 - `NUM_WORKERS`: Number of workers to use for component separation.
 
 ```
-$ sh run_component_separation.sh
+$ sh run/run_component_separation.sh
 ```
 
 ### 2) DAG creation
 - `DAG_CREATION_MODEL`: Name of the model to use for DAG creation.
 
 ```
-$ sh run_dag_creation.sh
+$ sh run/run_dag_creation.sh
 ```
 
 ### 3) Packing and Finetuning data preparation
 
 ```
-$ sh run_finetuning_data_preparation.sh
+$ sh run/run_finetuning_data_preparation.sh
 ```
 
-## Running SPRINT
+## SPRINT Inference
+
+![SPRINT Inference](figures/SPRINT_inference.png)
 
 To run SPRINT over a dataset, serve the model using vLLM and use the following variables in `run_agent_orchestration.sh` to configure the run:
 
@@ -47,10 +63,23 @@ To run SPRINT over a dataset, serve the model using vLLM and use the following v
 
 Finally, run the following command
 ```
-$ sh run_agent_orchestration.sh
+$ sh run/run_agent_orchestration.sh
 ```
 
+## Evaluation
 
+Each evaluation of SPRINT creates a folder within `LOGS_DIR`. The folder contains `agent_orchestration_output.csv` which summarizes the results from all evaluated problems. The folder also contains a `.txt` file for each problem indicating the full trajectory of plans and executions created by SPRINT for that problem. 
 
+To evaluate results, update the folder_path below and run the following code to get accuracy and sequential token count:
+```python
+import sys
+import pandas as pd
+sys.path.append("src/utils/")
+import evaluate_utils
 
-
+folder_path = "..."
+output_df = pd.read_csv(os.path.join(folder_path, "agent_orchestration_output.csv"))
+accuracy = evaluate_utils.get_eval_metrics(output_df)[0]
+sequential_token_count = evaluate_utils.get_seq_token_counts(folder_path)
+print(f"Accuracy: {accuracy}, Sequential token count: {sequential_token_count}")
+```
