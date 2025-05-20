@@ -8,6 +8,8 @@ To install required packages, run
 $ pip install -r requirements.txt
 ```
 
+If you want to use FlashInfer backend with vLLM, please refer to this guide: https://github.com/flashinfer-ai/flashinfer
+
 ## Directory Structure
 
 - `src`: Source code for the data curation pipeline and SPRINT inference
@@ -48,10 +50,6 @@ $ sh run/run_finetuning_data_preparation.sh
 ```
 
 ## Model Training
-Before running the following command, please install the `ms-swift` package by running 
-```
-pip install ms-swift -U
-```
 
 To full fine-tune a 7B model, run the following command:
 ``` 
