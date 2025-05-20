@@ -1,16 +1,16 @@
 # Define input variables
 FINETUNING_RANGE=":"
-DATA_HUB_PATH="xyz/OpenThoughts"
+DATA_HUB_PATH="xyz/input_dataset_name"
 SUBSET="math"
 COMPONENT_SEPARATION_MODEL="gpt-4o"
 DAG_CREATION_MODEL="gpt-4o"
 PARALLELIZATION_THRESHOLD=1.5
 MAX_PHASES=12
 TEST_FRAC=0.1
-OUTPUT_HUB_PATH="xyz/Plan-Execution-Data-Math-Full-Soln"
+OUTPUT_HUB_PATH="xyz/output_dataset_name"
 
 # Run the script with defined variables
-python src/finetuning_data_preparation/plans_and_executions_remove_prompt_merge_chains.py \
+python src/finetuning_data_preparation/plans_and_executions.py \
     --range $FINETUNING_RANGE \
     --data_hub_path $DATA_HUB_PATH \
     --subset $SUBSET \

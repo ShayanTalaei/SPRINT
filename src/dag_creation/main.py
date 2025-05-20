@@ -100,7 +100,7 @@ if __name__ == "__main__":
     os.makedirs(logs_dir, exist_ok=True)
     os.makedirs(os.path.join(logs_dir, f"dag_creation_output_{dag_creation_model}/{dataset_name}_{subset}"), exist_ok=True)
     os.makedirs(os.path.join(logs_dir, f"created_dags_{dag_creation_model}/{dataset_name}_{subset}"), exist_ok=True)
-    os.makedirs(os.path.join(logs_dir, f"dags_viz_{dag_creation_model}/{dataset_name}_{subset}"), exist_ok=True)
+    # os.makedirs(os.path.join(logs_dir, f"dags_viz_{dag_creation_model}/{dataset_name}_{subset}"), exist_ok=True)
 
     print(f"Using model {dag_creation_model} for DAG creation...")
     dag_creation_prompt = text_processing_utils.read_file_as_string("src/prompts/dag_creation_prompt.txt")

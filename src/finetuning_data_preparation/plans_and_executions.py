@@ -17,6 +17,7 @@ sys.path.append("src/utils/")
 import text_processing_utils
 import component_formatting_utils
 import evaluate_utils
+from dotenv import load_dotenv
 np.random.seed(42)
 
 def merge_data(data1, data2):
@@ -349,6 +350,7 @@ if __name__ == "__main__":
     parser.add_argument("--push_to_hub", action="store_true", help="Push the finetuned dataset to hub")
     parser.add_argument("--output_hub_path", type=str, required=False, help="Path to save the finetuned dataset to hub")
     args = parser.parse_args()
+    load_dotenv()  
 
     data_range = args.range
     data_hub_path = args.data_hub_path

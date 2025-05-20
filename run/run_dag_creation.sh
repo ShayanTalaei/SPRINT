@@ -1,9 +1,9 @@
 # Define input variables
 DAG_CREATION_MODEL="gpt-4o"
 COMPONENT_SEPARATION_MODEL="gpt-4o"
-DATA_HUB_PATH="xyz/OpenThoughts"
+DATA_HUB_PATH="xyz/dataset_name"
 SUBSET="math"
-RANGE=":"
+RANGE="1:5"
 NUM_WORKERS=10
 
 # Run the script with defined variables

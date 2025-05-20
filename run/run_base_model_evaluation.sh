@@ -1,5 +1,5 @@
 BASE_MODEL="xyz/model_name"
-BASE_MODEL_SERVER_URL="http://35.199.63.160:8000/v1/"
+BASE_MODEL_SERVER_URL="http://127.0.0.1:8000/v1/"
 BASE_MODEL_TEMP="0.6"
 BASE_MODEL_TYPE="think_ft_trajectory"
 

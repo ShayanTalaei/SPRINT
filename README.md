@@ -10,12 +10,16 @@ $ pip install -r requirements.txt
 
 If you want to use FlashInfer backend with vLLM, please refer to this guide: https://github.com/flashinfer-ai/flashinfer
 
+Before running the code, please make sure to set the following environment variables in `.env` file:
+- `OPENAI_API_KEY`: OpenAI API key for using OpenAI models.
+- `LOGS_DIR`: Directory to save logs and outputs.
+
 ## Directory Structure
 
 - `src`: Source code for the data curation pipeline and SPRINT inference
   - `src/prompts`: Prompts used for all LLM calls.
   - `src/utils`: Utility functions for text processing, evaluating results, and making API calls to models.
-- `run`: Bash scripts for running the data curation pipeline, model training and SPRINT inference
+- `run`: Bash scripts for running the data curation pipeline, model training and SPRINT inference. 
 - `logs`: Logs created from running the data curation pipeline on a few problems from the MATH500 benchmark
 - `logs_full_trajectory`: Logs created from running SPRINT inference on a few problems from the MATH500 benchmark
 
