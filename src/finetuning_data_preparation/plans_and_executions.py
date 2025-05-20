@@ -399,8 +399,8 @@ if __name__ == "__main__":
    
     num_dags_removed_due_to_low_parallelization = 0
 
-    planner_prompt = text_processing_utils.read_file_as_string("src/prompts/planner_prompt.txt")
-    executor_prompt = text_processing_utils.read_file_as_string("src/prompts/executor_prompt.txt")
+    planner_prompt = text_processing_utils.read_file_as_string("src/prompts/global_agent_prompt.txt")
+    executor_prompt = text_processing_utils.read_file_as_string("src/prompts/global_agent_prompt.txt")
 
     for problem_idx in tqdm(range(int(data_range.split(":")[0]), int(data_range.split(":")[1]))):
         try:
