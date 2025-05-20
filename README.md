@@ -13,7 +13,7 @@ $ pip install -r requirements.txt
 - `src`: Source code for the data curation pipeline and SPRINT inference
   - `src/prompts`: Prompts used for all LLM calls.
   - `src/utils`: Utility functions for text processing, evaluating results, and making API calls to models.
-- `run`: Bash scripts for running the data curation pipeline and SPRINT inference
+- `run`: Bash scripts for running the data curation pipeline, model training and SPRINT inference
 - `logs`: Logs created from running the data curation pipeline on a few problems from the MATH500 benchmark
 - `logs_full_trajectory`: Logs created from running SPRINT inference on a few problems from the MATH500 benchmark
 
@@ -45,6 +45,17 @@ $ sh run/run_dag_creation.sh
 
 ```
 $ sh run/run_finetuning_data_preparation.sh
+```
+
+## Model Training
+Before running the following command, please install the `ms-swift` package by running 
+```
+pip install ms-swift -U
+```
+
+To full fine-tune a 7B model, run the following command:
+``` 
+$ sh run/run_finetune.sh
 ```
 
 ## SPRINT Inference
