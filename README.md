@@ -53,9 +53,9 @@ $ sh run/run_dag_creation.sh
 $ sh run/run_finetuning_data_preparation.sh
 ```
 
-## Model Training
+### 4) Model Training (SFT)
 
-To full fine-tune a 7B model, run the following command:
+To perform full fine-tuning of a 7B model, run the following command:
 ``` 
 $ sh run/run_finetune.sh
 ```
@@ -85,7 +85,7 @@ Each evaluation of SPRINT creates a folder within `LOGS_DIR`. The folder contain
 
 To evaluate results, update the folder_path below and run the following code to get accuracy and sequential token count:
 ```python
-import sys
+import sys, os
 import pandas as pd
 sys.path.append("src/utils/")
 import evaluate_utils

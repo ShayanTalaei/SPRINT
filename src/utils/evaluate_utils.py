@@ -96,7 +96,7 @@ def use_math_verify(gold, answer):
 def get_eval_metrics(res_df):
     res_df_complete = res_df[res_df["PredictedFinalAnswer"].notna()]
     res_df_complete["IsCorrect"] = res_df_complete.apply(lambda x: use_math_verify(x["TrueFinalAnswer"], x["PredictedFinalAnswer"]), axis=1)
-    accuracy = res_df_complete["IsCorrect"].mean()
+    accuracy = res_df_complete["IsCorrect"].sum()/len(res_df)
     num_problems_attempted = len(res_df)
     num_problems_incomplete = len(res_df) - len(res_df_complete)
     return accuracy, num_problems_attempted, num_problems_incomplete, res_df_complete
