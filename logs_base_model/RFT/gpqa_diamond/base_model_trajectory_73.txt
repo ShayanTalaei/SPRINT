@@ -1,0 +1,88 @@
+Okay, so I need to figure out the probability that this atom will decay in the next 150 minutes, given that it hasn't decayed in the first 50 minutes. Let me start by recalling what I know about radioactive decay.
+
+First, radioactive decay follows an exponential probability distribution. The key here is that the decay is a memoryless process. That means the probability of decaying in the next time interval doesn't depend on how much time has already passed without decaying. Wait, but the question says that 50 minutes have passed and the atom hasn't decayed. So does that affect the probability? Hmm.
+
+Wait, maybe I should think in terms of the half-life. If I can find the half-life from the given decay probability, then I can use that to calculate the remaining probability. Let me check. The problem states that the decay probability is 32% within 100 minutes. So, the probability of decay in 100 minutes is 32%. That's like the cumulative probability, right?
+
+In exponential decay, the probability that the atom decays by time t is given by P(t) = 1 - e^(-λt), where λ is the decay constant. So if 32% chance in 100 minutes, then:
+
+0.32 = 1 - e^(-100λ)
+
+Which means e^(-100λ) = 1 - 0.32 = 0.68. Taking the natural logarithm of both sides:
+
+-100λ = ln(0.68)
+
+So λ = -ln(0.68)/100. Let me compute that. Let's see, ln(0.68) is approximately... Well, ln(0.5) is about -0.6931, and 0.68 is higher than 0.5, so ln(0.68) is less negative. Maybe around -0.3857? Let me check with a calculator. Wait, actually, ln(0.68) is approximately -0.38566. So λ ≈ 0.38566 / 100 ≈ 0.0038566 per minute.
+
+Now, the question is, after 50 minutes without decay, what's the probability it decays in the next 150 minutes. But since the exponential distribution is memoryless, the fact that 50 minutes have passed without decay doesn't change the probability. Wait, but that can't be right. Because the problem gives us that the decay probability in 100 minutes is 32%, and then asks about 150 minutes after 50 minutes. So maybe the memoryless property still applies here.
+
+Wait, the memoryless property says that the probability of decaying in the next t minutes, given that it hasn't decayed in the past s minutes, is the same as the probability of decaying in the next t minutes from the start. So in this case, the probability that it decays in the next 150 minutes, given that it hasn't decayed in the first 50, is the same as the probability that it decays in the first 150 minutes. But that can't be, because the given data is 32% for 100 minutes. So maybe I need to recalculate the decay probability for 150 minutes and then adjust for the fact that it hasn't decayed in 50 minutes.
+
+Alternatively, maybe the initial information about 32% decay in 100 minutes is just extra information to find the decay constant, and then use that to find the probability for the next 150 minutes. But then, since the decay is memoryless, the probability after 50 minutes is the same as the original probability for 150 minutes.
+
+Wait, but let's think again. The probability that the atom decays in the first 50 minutes is P(50) = 1 - e^(-λ*50). Then, given that it hasn't decayed in the first 50, the probability that it decays in the next 150 minutes is P(50+150) - P(50) divided by (1 - P(50)), which is the conditional probability. But since the process is memoryless, this should be equal to P(150). Wait, but that contradicts the memoryless property. Let me check.
+
+The memoryless property states that P(T > s + t | T > s) = P(T > t), where T is the time until decay. Therefore, the probability that T > s + t given T > s is equal to P(T > t). Therefore, the probability that it decays in the next t minutes after s minutes have passed is 1 - P(T > s + t | T > s) = 1 - P(T > t). But 1 - P(T > t) is equal to the probability that it decays within t minutes from the start. So actually, the probability that it decays in the next t minutes after s minutes is the same as the probability that it decays in the first t minutes. Wait, that seems counterintuitive. Let me think with numbers.
+
+Suppose the half-life is 10 minutes. So the probability of decay in 10 minutes is 50%. If the atom hasn't decayed in the first 10 minutes, the probability it decays in the next 10 minutes is still 50%. Because it's memoryless. So the answer would be 50% in that case. But if the initial time was 10 minutes, and then you have another 10 minutes, the probability is still 50%. So in that case, the memoryless property holds, and the probability doesn't change.
+
+But in our problem, the initial information is that in 100 minutes, there's a 32% chance of decay. Then, 50 minutes have passed without decay. So the probability that it decays in the next 150 minutes is the same as the probability that it decays in the first 150 minutes. So we can compute that.
+
+Alternatively, maybe the question is trying to trick us into using the conditional probability. Let me check both approaches.
+
+First approach: Using memoryless property. Since the decay is memoryless, the probability that the atom decays in the next 150 minutes, given that it hasn't decayed in the first 50, is the same as the probability that it decays in 150 minutes from the start. So we can compute that.
+
+Second approach: Calculate the conditional probability. That is, P(decays in 50-200 minutes | did not decay in first 50). Which would be [1 - P(not decay in 200)] / [1 - P(not decay in 50)].
+
+But according to the memoryless property, these two should be equal. Let me verify that.
+
+P(T > 200 | T > 50) = P(T > 200) / P(T > 50) = [e^(-λ*200)] / [e^(-λ*50)] = e^(-λ*150) = P(T > 150). Therefore, 1 - P(T > 200 | T > 50) = 1 - e^(-λ*150) = P(T ≤ 150). So yes, the conditional probability is equal to the probability over the first 150 minutes. Therefore, both approaches agree.
+
+Therefore, the answer is the same as the probability of decaying in 150 minutes from the start, regardless of the 50 minutes that have passed. So we can compute that probability using the decay constant λ we found earlier.
+
+Earlier, we found λ ≈ 0.0038566 per minute. Then, the probability of decaying in 150 minutes is P(150) = 1 - e^(-λ*150). Let's compute that.
+
+First, λ*150 = 0.0038566 * 150 ≈ 0.57849. Then, e^(-0.57849) ≈ e^(-0.578) ≈ 0.562 (since e^-0.5 ≈ 0.6065, e^-0.6 ≈ 0.5488, so 0.578 is between 0.5 and 0.6. Let me compute it more accurately. Let's use a calculator for e^-0.57849.
+
+Alternatively, since we know that λ = ln(0.68)/100 ≈ -0.38566/100 ≈ 0.0038566. Then, for 150 minutes, λ*150 ≈ 0.57849. So e^-0.57849 ≈ 0.562. Then, 1 - 0.562 ≈ 0.438, which is approximately 43.8%. Looking at the options, D is 44%. So that would be the answer.
+
+But wait, let me check the initial steps again. Let me confirm the decay constant calculation. The given probability is 32% in 100 minutes. So:
+
+0.32 = 1 - e^(-100λ) → e^(-100λ) = 0.68 → -100λ = ln(0.68) → λ = -ln(0.68)/100. Let me compute ln(0.68) precisely. Using a calculator, ln(0.68) ≈ -0.38566248. So λ ≈ 0.38566248 / 100 ≈ 0.0038566248 per minute. Then, for 150 minutes, the exponent is 150 * 0.0038566248 ≈ 0.57849372. Then e^-0.57849372 ≈ e^-0.57849 ≈ 0.5623 (calculating e^-0.57849: since ln(0.5623) ≈ -0.578, yes). So 1 - 0.5623 ≈ 0.4377, which is approximately 43.77%, so 44%. So the answer is D.
+
+But wait, another way to think: Since the decay probability in 100 minutes is 32%, then the half-life can be calculated. Wait, maybe that's another approach. Let's see.
+
+The probability of decay in time t is P(t) = 1 - e^(-λt). The half-life T1/2 is the time when P(T1/2) = 0.5. So:
+
+0.5 = 1 - e^(-λ*T1/2) → e^(-λ*T1/2) = 0.5 → -λ*T1/2 = ln(0.5) → T1/2 = -ln(0.5)/λ ≈ 0.6931/λ.
+
+But in our case, we don't need the half-life. Alternatively, since we have P(100) = 0.32, we can find λ as we did before. Then use that to compute P(150). Which we did, getting approximately 44%.
+
+Alternatively, maybe the problem is trying to trick us into thinking that after 50 minutes, the remaining time is 150 minutes, so the total time is 200 minutes. But that's not the case. The question is asking for the probability that it decays in the next 150 minutes, given that it hasn't decayed in the first 50. So the total time is 50 + 150 = 200, but the probability is just the probability of decaying in the next 150 minutes, which is the same as the probability of decaying in 150 minutes from the start, due to memorylessness.
+
+Therefore, the answer should be approximately 43.77%, which is 44%, so D. But let me check if there's another way this could be approached.
+
+Wait, perhaps the problem is using the conditional probability formula. Let's try that. The probability that the atom decays in the next 150 minutes given that it hasn't decayed in the first 50 minutes is:
+
+P(decays in next 150 | no decay in first 50) = P(no decay in first 50 and decays in next 150) / P(no decay in first 50).
+
+But since the decay is memoryless, the probability of decaying in the next 150 minutes is independent of the past 50. Therefore, P(decays in next 150 | no decay in first 50) = P(decays in next 150). So again, it's the same as the probability of decaying in 150 minutes.
+
+Alternatively, using the formula:
+
+P(T > 50 + 150 | T > 50) = P(T > 200 | T > 50) = P(T > 200) / P(T > 50) = [e^(-λ*200)] / [e^(-λ*50)] = e^(-λ*150) = P(T > 150). Therefore, the probability of decaying in the next 150 minutes is 1 - e^(-λ*150) = P(T ≤ 150). So again, same result.
+
+Therefore, regardless of the approach, the answer is approximately 44%, so D.
+
+Wait, but let me check the given options again. The options are A.52%, B.40%, C.48%, D.44%. So 44% is an option. But let me make sure that my calculation is accurate.
+
+Let me recalculate λ again. λ = -ln(0.68)/100. Let me compute ln(0.68) precisely. Using a calculator, ln(0.68) ≈ -0.385662479. So λ ≈ 0.385662479 / 100 ≈ 0.00385662479 per minute. Then, for 150 minutes, λ*150 ≈ 0.00385662479 * 150 ≈ 0.5784937185. Then, e^(-0.5784937185) ≈ e^-0.57849 ≈ 0.5623. Therefore, 1 - 0.5623 ≈ 0.4377, which is 43.77%, so 44% when rounded to the nearest whole number. Therefore, the answer is D.
+
+But wait, another way to think: Maybe the problem is using a different formula. For example, if the decay probability in 100 minutes is 32%, then the decay constant λ is such that 1 - e^(-100λ) = 0.32. Solving for λ gives λ = -ln(0.68)/100 ≈ 0.0038566 per minute. Then, the probability of decaying in 150 minutes is 1 - e^(-150λ) ≈ 1 - e^(-0.57849) ≈ 1 - 0.5623 ≈ 0.4377, which is 43.77%, so 44%.
+
+Alternatively, maybe the problem is using a different model, like a Poisson process, but that's essentially the same as the exponential distribution. So I think the answer is D.
+
+But let me check if there's another approach. Suppose we model the decay as a Poisson process with rate λ. Then, the number of decays in a time interval follows a Poisson distribution. However, since we are interested in the probability of at least one decay in the next 150 minutes, given that there were zero decays in the first 50 minutes, the Poisson process approach would give the same result as the exponential distribution because the Poisson process has the memoryless property as well.
+
+Therefore, regardless of the approach, the answer should be approximately 44%, so D.
+</think>

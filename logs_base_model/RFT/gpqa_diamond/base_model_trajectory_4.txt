@@ -1,0 +1,148 @@
+Okay, so I need to find the eigenvector of a quantum mechanical operator P for a muon along an arbitrary direction n in the x-z plane, corresponding to the eigenvalue +ħ/2. The eigenvector should be normalized. The options are given as A to D. Let me think through this step by step.
+
+First, I remember that in quantum mechanics, the spin operators (like Px, Py, Pz) for a spin-1/2 particle are represented by Pauli matrices multiplied by ħ/2. The problem states that Px, Py, and Pz are given as specific 2x2 matrices. Let me write them down properly.
+
+The Px matrix is given as ħ/2 times [[0, 1], [1, 0]]. That's the Pauli X matrix multiplied by ħ/2. Similarly, Py is ħ/2 times [[0, -i], [i, 0]], which is the Pauli Y matrix times ħ/2. Pz is ħ/2 times [[1, 0], [0, -1]], which is the Pauli Z matrix times ħ/2. Wait, but the problem statement says "the $Z-$component, $P_z$ of the operator is given by the product of $\hbar/2$ and another 2 by 2 square matrix having elements in the first row as $(1, 0)$, and that in the second row as $(0, -1)$." So that's correct. So the operator P is actually a vector operator, but here they are giving the components Px, Py, Pz. Wait, but the question is asking for the eigenvector of the operator P. Wait, but P is a vector operator, so maybe the total spin operator is P = (Px, Py, Pz), and the eigenvalue is given for the direction n in x-z plane. Wait, maybe the question is about the eigenstate of the spin operator in the direction n. Since the muon is along an arbitrary direction n in the x-z plane, the total spin operator would be P = n · P, where n is a unit vector in x-z plane. So the operator whose eigenvector we need is the dot product of the direction vector n with the Pauli matrices.
+
+Wait, but the problem says "the eigenvector of a quantum mechanical operator P for a muon along an arbitrary direction n lying in the x-z plane corresponding to the eigenvalue +ħ/2". So the operator P here is the spin operator in the direction n. So the operator is n · (Px, Py, Pz). So let me define that. Let me denote the direction vector n as (sinθ cosφ, sinθ sinφ, cosθ), but since it's in the x-z plane, φ is 0 or π, so sinφ is zero. Therefore, n would be (sinθ, 0, cosθ). Wait, but θ is measured from the z-axis, right? So in the x-z plane, the direction vector would have components (sinθ, 0, cosθ). So the operator P is n · P = n_x Px + n_y Py + n_z Pz. Since n_y is zero (because it's in x-z plane), it's n_x Px + n_z Pz. Let's compute that.
+
+Given that n_x = sinθ, n_z = cosθ. So the operator P is sinθ * Px + cosθ * Pz. Let me write out the matrices for Px and Pz. Px is (ħ/2) [[0,1],[1,0]], and Pz is (ħ/2) [[1,0],[0,-1]]. So multiplying by sinθ and cosθ respectively:
+
+P = (ħ/2) [ sinθ * [[0,1],[1,0]] + cosθ * [[1,0],[0,-1]] ]
+
+Let me compute this matrix. The first term is sinθ * [[0,1],[1,0]], which is [[0, sinθ], [sinθ, 0]]. The second term is cosθ * [[1,0],[0,-1]], which is [[cosθ, 0], [0, -cosθ]]. Adding these together:
+
+[[ cosθ, sinθ ], [ sinθ, -cosθ ] ] multiplied by (ħ/2). So the operator matrix is (ħ/2) times that. So the eigenvalue equation is P |v> = (+ħ/2) |v>, because the eigenvalue is given as +ħ/2.
+
+So we need to solve the equation (ħ/2) [ [cosθ, sinθ], [sinθ, -cosθ] ] |v> = (ħ/2) |v>. We can divide both sides by ħ/2 to simplify:
+
+[ [cosθ, sinθ], [sinθ, -cosθ] ] |v> = |v>
+
+Let me write this as (M - I) |v> = 0, where M is the matrix [[cosθ, sinθ], [sinθ, -cosθ]], and I is the identity matrix. So the matrix M - I is:
+
+[ [cosθ - 1, sinθ], [sinθ, -cosθ - 1] ]
+
+For this matrix to have a non-trivial solution, the determinant must be zero. Let me compute the determinant:
+
+det(M - I) = (cosθ - 1)(-cosθ -1) - sin^2θ
+
+Let's expand this:
+
+= ( -cos^2θ - cosθ + cosθ + 1 ) - sin^2θ
+
+Wait, let's compute (cosθ -1)(-cosθ -1):
+
+Multiply the terms:
+
+= (cosθ)(-cosθ) + (cosθ)(-1) -1*(-cosθ) -1*(-1)
+
+= -cos²θ - cosθ + cosθ +1
+
+Simplify:
+
+- cos²θ + 0 +1 = 1 - cos²θ
+
+Then subtract sin²θ:
+
+det = (1 - cos²θ) - sin²θ = 1 - cos²θ - sin²θ = 1 - (cos²θ + sin²θ) = 1 - 1 = 0
+
+So the determinant is zero, which means there is a non-trivial solution. Now, we can find the eigenvector by solving (M - I) |v> = 0. Let me denote |v> as [a, b]^T.
+
+So the equations are:
+
+(cosθ - 1) a + sinθ b = 0
+
+sinθ a + (-cosθ - 1) b = 0
+
+We can solve these two equations. Let's take the first equation:
+
+(cosθ -1)a + sinθ b = 0
+
+Let me solve for a in terms of b:
+
+(cosθ -1)a = - sinθ b
+
+a = [ - sinθ / (cosθ -1) ] b
+
+But cosθ -1 can be written as -2 sin²(θ/2), and sinθ = 2 sin(θ/2) cos(θ/2). So substituting:
+
+a = [ -2 sin(θ/2) cos(θ/2) ] / [ -2 sin²(θ/2) ] * b
+
+Simplify:
+
+a = [ cos(θ/2) / sin(θ/2) ] * b = cot(θ/2) * b
+
+So a = cot(θ/2) b
+
+Alternatively, since cot(θ/2) = 1 / tan(θ/2) = cos(θ/2)/sin(θ/2)
+
+So the eigenvector is proportional to [cot(θ/2), 1]^T. Alternatively, multiplying numerator and denominator by sin(θ/2), we get [cos(θ/2), sin(θ/2)]^T. Wait, let me check that.
+
+Wait, if a = cot(θ/2) b, then if we let b = sin(θ/2), then a = cos(θ/2). So the eigenvector can be written as [cos(θ/2), sin(θ/2)]^T. But wait, let me check with the second equation to make sure.
+
+Second equation:
+
+sinθ a + (-cosθ -1) b = 0
+
+Substitute a = cot(θ/2) b:
+
+sinθ * cot(θ/2) b + (-cosθ -1) b = 0
+
+Factor out b:
+
+[ sinθ cot(θ/2) - (cosθ +1) ] b = 0
+
+We can check if this is satisfied.
+
+First, express sinθ and cosθ in terms of θ/2:
+
+sinθ = 2 sin(θ/2) cos(θ/2)
+
+cot(θ/2) = cos(θ/2)/sin(θ/2)
+
+So sinθ * cot(θ/2) = 2 sin(θ/2) cos(θ/2) * [cos(θ/2)/sin(θ/2)] = 2 cos²(θ/2)
+
+Then, - (cosθ +1) = - [ (cos²(θ/2) - sin²(θ/2)) +1 ] = - [ cos²(θ/2) - sin²(θ/2) +1 ]
+
+But cos²(θ/2) + sin²(θ/2) =1, so cos²(θ/2) - sin²(θ/2) = cosθ (wait, cosθ = cos²(θ/2) - sin²(θ/2)). So cos²(θ/2) - sin²(θ/2) = cosθ. So:
+
+- [ cosθ +1 ] = - (cosθ +1)
+
+So the expression becomes:
+
+2 cos²(θ/2) - (cosθ +1) = 2 cos²(θ/2) - cosθ -1
+
+But cosθ = 2 cos²(θ/2) -1, so substitute that:
+
+= 2 cos²(θ/2) - [2 cos²(θ/2) -1] -1 = 2 cos²(θ/2) -2 cos²(θ/2) +1 -1 = 0
+
+So yes, the second equation is satisfied. Therefore, the eigenvector is proportional to [cos(θ/2), sin(θ/2)]^T. But wait, let me check the normalization.
+
+The eigenvector should be normalized. So the components are [cos(θ/2), sin(θ/2)]^T. The norm squared is cos²(θ/2) + sin²(θ/2) =1, so it's already normalized. Therefore, the eigenvector is [cos(θ/2), sin(θ/2)]^T. But wait, looking at the options:
+
+Option C is (cos(θ/2), sin(θ/2)), which is exactly what we have. Option D is (cosθ, e^{iφ} sinθ), but since the direction is in x-z plane, φ is 0 or π, so e^{iφ} would be 1 or -1, but the components would be (cosθ, sinθ) or (cosθ, -sinθ). However, since the eigenvector we found is [cos(θ/2), sin(θ/2)], which doesn't depend on φ, because the direction is in x-z plane, φ is 0 or π. Wait, but the problem states that the direction n is in the x-z plane, so φ is 0 or π, but the components of n would be (sinθ, 0, cosθ) if θ is measured from the z-axis. Wait, actually, in spherical coordinates, the angles are typically (θ, φ), with θ from the z-axis, and φ around the z-axis. So in x-z plane, φ would be 0 or π. But in this case, since the direction is in the x-z plane, the y-component is zero, so the direction vector is (sinθ cosφ, 0, cosθ). If φ is 0, then it's (sinθ, 0, cosθ). If φ is π, then it's (-sinθ, 0, cosθ). But since the problem states "lying in the x-z plane", but doesn't specify direction, so the eigenvector should be expressed in terms of θ, but φ is either 0 or π. However, the options don't have any dependence on φ. Wait, looking at the options:
+
+Option C is (cos(θ/2), sin(θ/2)), which is a 2-component vector. But in the problem, the operator is a 2x2 matrix, so the eigenvector is a 2-component vector. Wait, but in quantum mechanics, spin-1/2 particles have 2-component spinors. The problem mentions a muon, which is a spin-1/2 particle. So the eigenvector should be a 2-component vector. However, the problem's question is a bit ambiguous. Wait, the question says "the eigenvector of a quantum mechanical operator P", which is a matrix, so the eigenvector is a 2-component vector. The options are given as A, B, C, D, but looking at the options:
+
+Option C is (cos(θ/2), sin(θ/2)), which is a 2-component vector. Option D is (cosθ, e^{iφ} sinθ), which is also 2-component. Option A is (sqrt(2/3)ħ, sqrt(1/3)ħ), which is 2-component. Option B is (sqrt(2/3)ħ cos(θ/2), sqrt(1/3)ħ sin(θ/2)), which is also 2-component.
+
+But wait, according to our calculation, the eigenvector is [cos(θ/2), sin(θ/2)]^T, which matches option C. However, the problem states that the eigenvalue is +ħ/2. Let me check if there's a possibility of a negative eigenvector. For example, if we multiply the eigenvector by -1, it's still an eigenvector with the same eigenvalue. But since we've already normalized the eigenvector, it's correct.
+
+Wait, but let me think again. The operator P is (ħ/2)(cosθ [[0,1],[1,0]] + cosθ [[1,0],[0,-1]]). Wait no, earlier calculation was correct. Wait, Px is (ħ/2) [[0,1],[1,0]], Pz is (ħ/2) [[1,0],[0,-1]]. So when we take the sum sinθ Px + cosθ Pz, it's (ħ/2)[ sinθ [[0,1],[1,0]] + cosθ [[1,0],[0,-1]] ].
+
+Which gives [[cosθ, sinθ], [sinθ, -cosθ]] multiplied by ħ/2. Then, the eigenvalue equation leads to the eigenvector [cos(θ/2), sin(θ/2)]. But wait, the standard Pauli matrices have eigenvalues ±1. Let me confirm the eigenvalues.
+
+For a general combination of Pauli matrices, say n · σ, where σ are the Pauli matrices, the eigenvalues are ±1. So when we have (n · σ) |v> = ± |v>. So in our case, the operator is (ħ/2)(n · σ), and the eigenvalue is given as +ħ/2. Therefore, the eigenvalue equation is (n · σ) |v> = +1 |v>, so |v> is the eigenvector corresponding to eigenvalue +1. Therefore, the eigenvector should be [cos(θ/2), sin(θ/2)]^T as we found, which is normalized. So the correct answer should be option C.
+
+But let me check the options again. Option C is (cos(θ/2), sin(θ/2)), which is a 2-component vector. Option D is (cosθ, e^{iφ} sinθ). But since the direction is in x-z plane, φ is 0 or π, so e^{iφ} would be 1 or -1. However, the eigenvector we found doesn't depend on φ, it's only dependent on θ. Therefore, option D is incorrect because it includes φ. Option B has sqrt(2/3) and sqrt(1/3) factors, which don't align with our result. Option A has sqrt(2/3) and sqrt(1/3), but without any trigonometric functions, which seems off.
+
+Wait, but let me think again. The problem states that the operator P is the sum of Px, Py, Pz, but actually, in the problem statement, the operator P is not explicitly given as the sum of the components, but rather, the components Px, Py, Pz are given. Wait, the problem says "the eigenvector of a quantum mechanical operator P for a muon along an arbitrary direction n lying in the x-z plane...". So the operator P is the spin operator along direction n. So the operator is n · P, which is a combination of the Pauli matrices. Wait, but in the problem statement, it's written as "the eigenvector of a quantum mechanical operator P", which is the operator itself. So P is the operator, which is a 2x2 matrix. The eigenvector is a 2-component vector. So the answer should be a 2-component vector, which matches options C and D.
+
+But according to our calculation, the eigenvector is [cos(θ/2), sin(θ/2)]^T, which is option C. However, looking back at the problem statement, the options are labeled with letters (A, B, C, D), and each option is written with components. For example, option C is "(\cos(\theta/2), \sin(\theta/2))". So this matches our result. Therefore, the correct answer should be option C.
+
+Wait, but I need to confirm once more. Let me check with θ=0. If θ=0, then the direction is along the z-axis. The eigenvalue equation should give the eigenstate along z. So for θ=0, the eigenvector should be along z. The operator P would be Pz, which is [[1,0],[0,-1]] multiplied by ħ/2. The eigenvalues are ħ/2 and -ħ/2. The eigenvector for eigenvalue +ħ/2 is [1,0]^T. Let's plug θ=0 into option C: cos(0/2) = cos(0)=1, sin(0/2)=0. So the eigenvector is [1,0]^T, which is correct. Similarly, if θ=π, then the direction is along -z. The eigenvector should be [1,0]^T again? Wait, no. If θ=π, the direction is along -z. The operator would be -Pz. The eigenvalue equation would be -Pz |v> = +ħ/2 |v>, which is equivalent to Pz |v> = -ħ/2 |v>. The eigenvector for Pz with eigenvalue -ħ/2 is [0,1]^T. Let's check option C with θ=π: cos(π/2)=0, sin(π/2)=1. So the eigenvector would be [0,1]^T, which is correct. Therefore, option C works for these cases. So it seems correct.
+
+Another test: θ=π/2. The direction is along the x-axis. The operator P would be Px. The eigenvalues of Px are ±ħ/2. The eigenvector for +ħ/2 is [1,1]^T normalized. Option C with θ=π/2: cos(π/4)=√2/2, sin(π/4)=√2/2. So the eigenvector is [√2/2, √2/2]^T, which is [1,1]^T normalized by 1/√2. So the components would be [1/√2, 1/√2]^T. Wait, but according to our calculation, the eigenvector should be [cos(θ/2), sin(θ/2)]^T. For θ=π/2, this is [cos(π/4), sin(π/4)]^T = [√2/2, √2/2]^T. So the normalized eigenvector is [1/√2, 1/√2]^T. But the standard eigenvector for Px is [1,1]^T. Wait, but [1,1]^T is proportional to [1/√2, 1/√2]^T. So they are the same up to normalization. Therefore, option C is correct.
+
+Therefore, the correct answer is option C.
+</think>
