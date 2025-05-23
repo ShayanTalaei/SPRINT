@@ -1,0 +1,350 @@
+Okay, so I need to find the degree of the polynomial p(x) given by this expression:
+
+p(x) = [(x - b)(x - c)] / [(a - b)(a - c)] + [(x - a)(x - c)] / [(b - a)(b - c)] + [(x - a)(x - b)] / [(c - a)(c - b)]
+
+Hmm, the question says a, b, and c are distinct real numbers, so the denominators won't be zero. That's good. The polynomial is a sum of three terms, each of which is a rational function. But since p(x) is supposed to be a polynomial, each of these terms must combine to cancel out the denominators, right? So maybe each term simplifies to something with x squared in the numerator?
+
+Wait, each term is a quadratic in the numerator divided by a constant. Let's check the degrees. Each term is of degree 2 in the numerator, divided by a constant, so each term is a quadratic polynomial. But when we add three quadratics together, the result could be a quadratic, a linear, or even a constant, depending on the coefficients. But since the problem states that a, b, c are distinct, maybe the coefficients are such that the higher degrees cancel out?
+
+Alternatively, maybe there's a clever way to recognize this polynomial. It looks familiar. Let me think. It resembles Lagrange interpolation. Because in Lagrange interpolation, you have basis polynomials that are 1 at a particular node and 0 at others. Wait, in this case, the terms might be Lagrange basis polynomials for three points a, b, c.
+
+Let me recall: The Lagrange interpolation formula for three points a, b, c would be L(x) = y_a * l_a(x) + y_b * l_b(x) + y_c * l_c(x), where each l_i(x) is the basis polynomial that's 1 at x_i and 0 at the others.
+
+In our case, the coefficients in the numerator are (x - b)(x - c), (x - a)(x - c), and (x - a)(x - b). The denominators are (a - b)(a - c), (b - a)(b - c), and (c - a)(c - b). So if we think of this as the Lagrange basis polynomials evaluated at some points, then maybe it's interpolating a constant function?
+
+Wait, suppose the function we are interpolating is a constant function, say f(x) = 1, then the Lagrange interpolating polynomial would be 1. So if p(x) is the Lagrange interpolation of f(x) = 1 at points a, b, c, then p(x) would be equal to 1 for all x. Let me check that.
+
+If f(x) = 1, then the Lagrange interpolation formula would be:
+
+p(x) = [ (x - b)(x - c) ] / [ (a - b)(a - c) ] + [ (x - a)(x - c) ] / [ (b - a)(b - c) ] + [ (x - a)(x - b) ] / [ (c - a)(c - b) ]
+
+Which is exactly the expression given. So if we are interpolating the constant function 1 at three distinct points, then the interpolating polynomial must be the constant polynomial 1. Therefore, p(x) = 1 for all x. Hence, the degree of p(x) is 0.
+
+Wait, but let me verify this. Let's test with specific values. Suppose a = 1, b = 2, c = 3. Then compute p(x):
+
+First term: (x - 2)(x - 3) / [(1 - 2)(1 - 3)] = (x² - 5x + 6) / [(-1)(-2)] = (x² -5x +6)/2
+
+Second term: (x - 1)(x - 3) / [(2 - 1)(2 - 3)] = (x² -4x +3) / [(1)(-1)] = - (x² -4x +3)
+
+Third term: (x - 1)(x - 2) / [(3 - 1)(3 - 2)] = (x² -3x +2) / [(2)(1)] = (x² -3x +2)/2
+
+Now sum them up:
+
+First term: (1/2)x² - (5/2)x + 3
+
+Second term: -x² +4x -3
+
+Third term: (1/2)x² - (3/2)x +1
+
+Adding them together:
+
+(1/2 -1 +1/2)x² + (-5/2 +4 -3/2)x + (3 -3 +1)
+
+Compute coefficients:
+
+For x²: (1/2 -1 +1/2) = (1/2 +1/2) -1 = 1 -1 = 0
+
+For x: (-5/2 +4 -3/2) = (-5/2 -3/2) +4 = (-8/2) +4 = -4 +4 = 0
+
+For constants: 3 -3 +1 = 1
+
+So p(x) = 0x² +0x +1 = 1. So in this case, p(x) is indeed 1, which is a constant. Therefore, the degree is 0.
+
+But let me check another example to be sure. Let a=0, b=1, c=2.
+
+First term: (x -1)(x -2)/[(0 -1)(0 -2)] = (x² -3x +2)/[(-1)(-2)] = (x² -3x +2)/2
+
+Second term: (x -0)(x -2)/[(1 -0)(1 -2)] = x(x -2)/[1*(-1)] = -x(x -2) = -x² +2x
+
+Third term: (x -0)(x -1)/[(2 -0)(2 -1)] = x(x -1)/[2*1] = (x² -x)/2
+
+Sum them up:
+
+First term: (1/2)x² - (3/2)x +1
+
+Second term: -x² +2x
+
+Third term: (1/2)x² - (1/2)x
+
+Adding them together:
+
+x² terms: 1/2 -1 +1/2 = (1/2 +1/2) -1 = 1 -1 = 0
+
+x terms: -3/2 +2 -1/2 = (-3/2 -1/2) +2 = -2 +2 = 0
+
+constants: 1
+
+So again, p(x) = 1. Therefore, regardless of the values of a, b, c, as long as they are distinct, p(x) is the constant polynomial 1. Therefore, the degree is 0.
+
+Alternatively, another approach: notice that each term is a quadratic, but when summed, the coefficients of x² and x cancel out, leaving a constant. Therefore, the degree is 0.
+
+Wait, but let me think again. Suppose we have a polynomial of degree 2 added three times. Each term is degree 2, but when combined, the x² terms might cancel out. So if the coefficients of x² in each term sum to zero, then the x² term is eliminated, same for x. Then the constant terms must sum to a non-zero constant.
+
+So let's compute the coefficient of x² in each term:
+
+First term: (x - b)(x - c) = x² - (b + c)x + bc. Divided by (a - b)(a - c). So the coefficient of x² is 1 / [(a - b)(a - c)].
+
+Second term: (x - a)(x - c) = x² - (a + c)x + ac. Divided by (b - a)(b - c). The coefficient of x² is 1 / [(b - a)(b - c)].
+
+Third term: (x - a)(x - b) = x² - (a + b)x + ab. Divided by (c - a)(c - b). The coefficient of x² is 1 / [(c - a)(c - b)].
+
+So total coefficient of x² in p(x):
+
+1 / [(a - b)(a - c)] + 1 / [(b - a)(b - c)] + 1 / [(c - a)(c - b)]
+
+Note that (b - a) = -(a - b), and (b - c) = -(c - b). So the second term becomes 1 / [-(a - b)(- (c - b))] = 1 / [(a - b)(c - b)]
+
+Similarly, the third term: (c - a) = -(a - c), and (c - b) = -(b - c). So the third term becomes 1 / [-(a - c)(- (b - c))] = 1 / [(a - c)(b - c)]
+
+Therefore, the coefficient of x² is:
+
+1 / [(a - b)(a - c)] + 1 / [(a - b)(c - b)] + 1 / [(a - c)(b - c)]
+
+Factor out 1/(a - b)(a - c)(b - c) from each term:
+
+First term: 1 / [(a - b)(a - c)] = (b - c) / [(a - b)(a - c)(b - c)]
+
+Second term: 1 / [(a - b)(c - b)] = (a - c) / [(a - b)(a - c)(b - c)]
+
+Third term: 1 / [(a - c)(b - c)] = (a - b) / [(a - b)(a - c)(b - c)]
+
+Therefore, adding them up:
+
+[ (b - c) + (a - c) + (a - b) ] / [(a - b)(a - c)(b - c)]
+
+Simplify numerator:
+
+(b - c) + (a - c) + (a - b) = (b - c + a - c + a - b) = (2a - 2c) = 2(a - c)
+
+Denominator: (a - b)(a - c)(b - c)
+
+Therefore, the coefficient of x² is 2(a - c) / [(a - b)(a - c)(b - c)] = 2 / [(a - b)(b - c)]
+
+Wait, but this is the coefficient of x². However, in our earlier examples, the coefficient of x² was zero. So there must be a mistake here. Wait, let me check the calculations again.
+
+Wait, when I factored out 1/(a - b)(a - c)(b - c), the first term was:
+
+1 / [(a - b)(a - c)] = 1 / [(a - b)(a - c)] = [1 * (b - c)] / [(a - b)(a - c)(b - c)]
+
+Similarly, the second term:
+
+1 / [(a - b)(c - b)] = 1 / [(a - b)(- (b - c))] = -1 / [(a - b)(b - c)] = [ - (a - c) ] / [(a - b)(a - c)(b - c)]
+
+Wait, maybe my earlier step was incorrect.
+
+Wait, let me re-express each term:
+
+First term: 1 / [(a - b)(a - c)] = (b - c) / [(a - b)(a - c)(b - c)]
+
+Second term: 1 / [(b - a)(b - c)] = 1 / [-(a - b)(b - c)] = -1 / [(a - b)(b - c)] = (a - c) / [(a - b)(a - c)(b - c)]
+
+Third term: 1 / [(c - a)(c - b)] = 1 / [-(a - c)(- (b - c))] = 1 / [(a - c)(b - c)] = (a - b) / [(a - b)(a - c)(b - c)]
+
+Therefore, adding them up:
+
+[ (b - c) + (a - c) + (a - b) ] / [(a - b)(a - c)(b - c)]
+
+Which is:
+
+(b - c + a - c + a - b) / denominator
+
+Simplify numerator:
+
+b - c + a - c + a - b = (b - b) + (a + a) + (-c - c) = 0 + 2a - 2c = 2(a - c)
+
+Therefore, the coefficient of x² is 2(a - c) / [(a - b)(a - c)(b - c)] = 2 / [(a - b)(b - c)]
+
+Wait, but in the example earlier, when a=1, b=2, c=3, this coefficient would be 2 / [(1 - 2)(2 - 3)] = 2 / [(-1)(-1)] = 2 / 1 = 2. But in the example, the coefficient of x² was 0. So there must be a mistake here.
+
+Wait, but in the example with a=1, b=2, c=3, the coefficient of x² in each term was 1/2, -1, and 1/2, so total 1/2 -1 +1/2 = -0, which is 0. But according to the formula above, it's 2 / [(1-2)(2-3)] = 2 / [(-1)(-1)] = 2. This is a contradiction. Therefore, my mistake must be in the calculation.
+
+Wait, let's recompute the coefficient of x² in the first example.
+
+First term: (x - 2)(x - 3)/( (1 - 2)(1 - 3) ) = (x² -5x +6)/ ( (-1)(-2) ) = (x² -5x +6)/2. So coefficient of x² is 1/2.
+
+Second term: (x -1)(x -3)/( (2 -1)(2 -3) ) = (x² -4x +3)/ (1*(-1)) = -x² +4x -3. Coefficient of x² is -1.
+
+Third term: (x -1)(x -2)/( (3 -1)(3 -2) ) = (x² -3x +2)/(2*1) = (x² -3x +2)/2. Coefficient of x² is 1/2.
+
+Total coefficient of x²: 1/2 -1 +1/2 = 0. Which matches the example. But according to the formula I derived earlier, it's 2 / [ (a - b)(b - c) ] = 2 / [ (1 - 2)(2 - 3) ] = 2 / [ (-1)(-1) ] = 2. Which is 2, but in reality it's 0. So my general formula is wrong.
+
+Therefore, my mistake is in the algebra when factoring out the terms. Let me try again.
+
+Let me denote:
+
+Term1: 1 / [(a - b)(a - c)]
+
+Term2: 1 / [(b - a)(b - c)] = -1 / [(a - b)(b - c)]
+
+Term3: 1 / [(c - a)(c - b)] = 1 / [ (a - c)(b - c) ]
+
+So then, the total coefficient is:
+
+Term1 + Term2 + Term3 = [1 / (a - b)(a - c)] - [1 / (a - b)(b - c)] + [1 / (a - c)(b - c)]
+
+Factor terms:
+
+First, note that (a - c) = -(c - a), (b - c) = -(c - b). So let's express all terms over a common denominator, which would be (a - b)(a - c)(b - c).
+
+So:
+
+Term1: 1 / [(a - b)(a - c)] = (b - c) / [(a - b)(a - c)(b - c)]
+
+Term2: -1 / [(a - b)(b - c)] = - (a - c) / [(a - b)(a - c)(b - c)]
+
+Term3: 1 / [(a - c)(b - c)] = (a - b) / [(a - b)(a - c)(b - c)]
+
+Therefore, adding them:
+
+[ (b - c) - (a - c) + (a - b) ] / [(a - b)(a - c)(b - c)]
+
+Simplify numerator:
+
+b - c - a + c + a - b = (b - c + c - a + a - b) = 0
+
+Wait, that's zero! So the coefficient of x² is zero. Therefore, the coefficient of x² is zero. That matches the examples. So my initial mistake was in the algebra when expanding the terms. So in fact, the coefficient of x² is zero. Therefore, the x² terms cancel out.
+
+Similarly, let's compute the coefficient of x.
+
+First term: (x - b)(x - c) = x² - (b + c)x + bc. Coefficient of x is -(b + c). Divided by (a - b)(a - c). So coefficient is -(b + c)/[(a - b)(a - c)].
+
+Second term: (x - a)(x - c) = x² - (a + c)x + ac. Coefficient of x is -(a + c). Divided by (b - a)(b - c). So coefficient is -(a + c)/[(b - a)(b - c)].
+
+Third term: (x - a)(x - b) = x² - (a + b)x + ab. Coefficient of x is -(a + b). Divided by (c - a)(c - b). So coefficient is -(a + b)/[(c - a)(c - b)].
+
+Total coefficient of x:
+
+- [ (b + c)/[(a - b)(a - c)] + (a + c)/[(b - a)(b - c)] + (a + b)/[(c - a)(c - b)] ]
+
+Again, let's express each term over a common denominator (a - b)(a - c)(b - c):
+
+First term: -(b + c) / [(a - b)(a - c)] = - (b + c)(b - c) / [(a - b)(a - c)(b - c)]
+
+Second term: -(a + c) / [(b - a)(b - c)] = - (a + c)(-1)(a - b) / [(a - b)(a - c)(b - c)] = (a + c)(a - b) / [(a - b)(a - c)(b - c)]
+
+Third term: -(a + b) / [(c - a)(c - b)] = - (a + b)(-1)(a - c)(-1)(b - c) / [(a - b)(a - c)(b - c)] Wait, perhaps better to factor each term.
+
+Wait, second term denominator: (b - a)(b - c) = -(a - b)(b - c). So:
+
+Second term: -(a + c)/[ -(a - b)(b - c) ] = (a + c)/[ (a - b)(b - c) ] = (a + c)(a - c) / [ (a - b)(a - c)(b - c) ]
+
+Third term denominator: (c - a)(c - b) = (a - c)(b - c). So:
+
+Third term: -(a + b)/[ (a - c)(b - c) ] = - (a + b)(a - b) / [ (a - b)(a - c)(b - c) ]
+
+Therefore, total coefficient of x:
+
+[ - (b + c)(b - c) + (a + c)(a - c) - (a + b)(a - b) ] / [ (a - b)(a - c)(b - c) ]
+
+Compute numerator:
+
+- (b + c)(b - c) + (a + c)(a - c) - (a + b)(a - b)
+
+First term: - (b² - c²)
+
+Second term: (a² - c²)
+
+Third term: - (a² - b²)
+
+So total:
+
+- b² + c² + a² - c² - a² + b² = 0
+
+Therefore, the coefficient of x is 0. So both x² and x terms cancel out. Then the constant term.
+
+Compute the constant terms:
+
+First term: bc / [(a - b)(a - c)]
+
+Second term: ac / [(b - a)(b - c)] = ac / [ - (a - b)(b - c) ] = -ac / [ (a - b)(b - c) ]
+
+Third term: ab / [ (c - a)(c - b) ] = ab / [ (a - c)(b - c) ] = ab / [ (a - c)(b - c) ]
+
+So total constant term:
+
+bc / [(a - b)(a - c)] - ac / [ (a - b)(b - c) ] + ab / [ (a - c)(b - c) ]
+
+Again, express over a common denominator (a - b)(a - c)(b - c):
+
+First term: bc(b - c) / [(a - b)(a - c)(b - c)]
+
+Second term: -ac(a - c) / [(a - b)(a - c)(b - c)]
+
+Third term: ab(a - b) / [(a - b)(a - c)(b - c)]
+
+So total numerator:
+
+bc(b - c) - ac(a - c) + ab(a - b)
+
+Let's expand each term:
+
+First term: bc(b - c) = b²c - bc²
+
+Second term: -ac(a - c) = -a²c + ac²
+
+Third term: ab(a - b) = a²b - ab²
+
+Combine all terms:
+
+b²c - bc² - a²c + ac² + a²b - ab²
+
+Let's group similar terms:
+
+- a²c + a²b = a²(b - c)
+
++ b²c - ab² = b²(c - a)
+
++ ac² - bc² = c²(a - b)
+
+So total:
+
+a²(b - c) + b²(c - a) + c²(a - b)
+
+This expression is known to be equal to (a - b)(b - c)(c - a). Let me verify:
+
+(a - b)(b - c)(c - a) = (a - b)(b - c)(- (a - c)) = - (a - b)(b - c)(a - c)
+
+But the numerator we have is a²(b - c) + b²(c - a) + c²(a - b). Let's check if this is equal to (a - b)(b - c)(c - a):
+
+Expand (a - b)(b - c):
+
+(a - b)(b - c) = ab - ac - b² + bc
+
+Multiply by (c - a):
+
+(ab - ac - b² + bc)(c - a)
+
+= ab(c - a) - ac(c - a) - b²(c - a) + bc(c - a)
+
+= abc - a²b - a c² + a²c - b²c + a b² + b c² - a b c
+
+Simplify:
+
+abc - a²b - a c² + a²c - b²c + a b² + b c² - a b c
+
+= (-a²b + a²c) + (-a c² + b c²) + (-b²c + a b²) + (abc - abc)
+
+= a²(c - b) + c²(b - a) + b²(a - c)
+
+Which is same as:
+
+a²(c - b) + b²(a - c) + c²(b - a)
+
+But our numerator is a²(b - c) + b²(c - a) + c²(a - b) = - [a²(c - b) + b²(a - c) + c²(b - a) ]
+
+Therefore, numerator = - (a - b)(b - c)(c - a) = (a - b)(b - c)(a - c)
+
+Therefore, constant term:
+
+[ (a - b)(b - c)(a - c) ] / [ (a - b)(a - c)(b - c) ] = 1
+
+Therefore, the constant term is 1. Therefore, p(x) = 0x² + 0x +1 =1. Therefore, the degree is 0.
+
+Therefore, the answer is \boxed{0}.
+
+Alternatively, since the polynomial is the Lagrange interpolation polynomial for the constant function 1 at three distinct points, the interpolating polynomial must be the constant polynomial 1. Therefore, the degree is 0.
+
+**Final Answer**
+\boxed{0}
+Therefore, the degree of the polynomial is $\boxed{0}$.
+</think>

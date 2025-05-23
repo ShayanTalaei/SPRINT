@@ -1,0 +1,53 @@
+Okay, so I need to compute the inverse of 997 modulo 1000. Hmm, let's see. The inverse of a number modulo n is another number such that when you multiply them together, the result is congruent to 1 modulo n. So, I need to find an integer x such that 997 * x ≡ 1 mod 1000. 
+
+First, I remember that an inverse modulo n exists if and only if the number and n are coprime. Let me check if 997 and 1000 are coprime. The prime factors of 1000 are 2^3 and 5^3. 997 is a prime number, I think. Let me confirm. 997 is a well-known prime number, right? Yeah, 997 is prime. So since 997 is prime and doesn't divide 2 or 5, they are coprime. Therefore, the inverse exists.
+
+Now, how do I find this inverse? The standard method is the Extended Euclidean Algorithm. Let me recall how that works. The Extended Euclidean Algorithm not only finds the greatest common divisor (gcd) of two numbers but also finds integers x and y such that ax + by = gcd(a, b). In this case, since gcd(997, 1000) is 1, we can find x and y such that 997x + 1000y = 1. Then x would be the inverse of 997 modulo 1000.
+
+So, let's apply the Extended Euclidean Algorithm to 997 and 1000. Let me write down the steps.
+
+First, divide 1000 by 997. 997 goes into 1000 once with a remainder of 3. So, 1000 = 1*997 + 3.
+
+Next, divide 997 by the remainder 3. 3 goes into 997 how many times? 3*332 = 996, so 997 = 332*3 + 1.
+
+Then, divide 3 by the remainder 1. 1 goes into 3 three times with a remainder of 0. So, 3 = 3*1 + 0.
+
+Since the remainder is now 0, the last non-zero remainder is 1, which is the gcd. Now, we can backtrack to express 1 as a combination of 997 and 1000.
+
+Starting from the second last step: 1 = 997 - 332*3.
+
+But 3 is equal to 1000 - 1*997 from the first step. Substitute that into the equation:
+
+1 = 997 - 332*(1000 - 1*997)
+1 = 997 - 332*1000 + 332*997
+1 = (1 + 332)*997 - 332*1000
+1 = 333*997 - 332*1000
+
+So, this shows that x = 333 is a solution since 997*333 ≡ 1 mod 1000. But wait, 333 is positive, so that's good. However, we need to make sure that 333 is within the range 0 to 999. Since 333 is less than 1000, that's fine. But let me check if this is correct.
+
+Let me compute 997*333. Hmm, 997*300 = 299,100. 997*33 = 32,901. So total is 299,100 + 32,901 = 332,001. Now, 332,001 divided by 1000 gives a remainder of 1. Yes, because 332,000 is divisible by 1000, so 332,001 mod 1000 is 1. So yes, that works. Therefore, 333 is the inverse.
+
+Wait, but let me check if there's a smaller positive inverse. Since 333 is already less than 1000, and the inverse is unique modulo 1000, so 333 is the answer.
+
+But just to be thorough, let me verify again. 997*333. Let's compute 997*333:
+
+First, 1000*333 = 333,000. Subtract 3*333 = 999. So, 333,000 - 999 = 332,001. The last three digits are 001, so modulo 1000, that's 1. Perfect.
+
+Alternatively, maybe there's another way to compute this inverse. Since 997 is equivalent to -3 modulo 1000. So, 997 ≡ -3 mod 1000. Therefore, the inverse of 997 modulo 1000 is the inverse of -3 modulo 1000. But the inverse of -3 is the same as the inverse of 3 multiplied by -1. So, if I can find the inverse of 3 modulo 1000, then multiply by -1 and take mod 1000.
+
+Finding the inverse of 3 modulo 1000. Let's see. What number x satisfies 3x ≡ 1 mod 1000. Let's solve 3x = 1 + 1000k. Trying small k's. Let's see, 3*667 = 2001. 2001 mod 1000 is 1. So, 667 is the inverse of 3. Therefore, inverse of -3 is -667 mod 1000. Which is 1000 - 667 = 333. So same result. So that's another way to get 333.
+
+Therefore, both methods confirm that 333 is the inverse. So, I think that's the answer.
+
+But just to recap, the key steps were:
+
+1. Recognize that 997 is prime and coprime with 1000, so inverse exists.
+2. Use Extended Euclidean Algorithm to find x such that 997x ≡ 1 mod 1000.
+3. Through the algorithm, found x = 333.
+4. Verified by alternative method by noting 997 ≡ -3 mod 1000, so inverse is -inverse(3) = -667 ≡ 333 mod 1000.
+5. Checked calculation by multiplying 997*333 to confirm the result.
+
+Therefore, the answer is 333.
+Final Answer
+The inverse of $997$ modulo $1000$ is $\boxed{333}$.
+</think>

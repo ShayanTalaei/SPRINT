@@ -1,0 +1,562 @@
+Okay, so I need to find the real roots of this equation:
+
+\[
+\frac{(x+1)(x-3)}{5(x+2)(x-4)} + \frac{(x+3)(x-5)}{9(x+4)(x-6)} - \frac{2(x+5)(x-7)}{13(x+6)(x-8)} = \frac{92}{585}
+\]
+
+Hmm, this looks pretty complicated. Let me start by understanding each part of the equation. Each term is a rational function, and the equation is set equal to 92/585. The denominators are all products of linear terms, so I need to be careful about the values of x that would make the denominators zero. Those would be x = -2, 4, -4, 6, -6, 8. So x cannot be any of those values. Otherwise, the function is defined.
+
+Now, the equation has three fractions with different denominators. To solve this, maybe I can combine them into a single fraction by finding a common denominator. The denominators are 5(x+2)(x-4), 9(x+4)(x-6), and 13(x+6)(x-8). The common denominator would be the product of all distinct linear factors in the denominators. Let's list them:
+
+From the first term: 5, (x+2), (x-4)
+Second term: 9, (x+4), (x-6)
+Third term: 13, (x+6), (x-8)
+
+So the common denominator would be 5*9*13*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8). That's a huge denominator! But maybe if I multiply both sides by this common denominator, the equation will simplify.
+
+Let me write that down. Multiply both sides by 5*9*13*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8). That would eliminate all denominators. Let me compute the left-hand side terms:
+
+First term: [ (x+1)(x-3) ] / [5(x+2)(x-4) ] multiplied by the common denominator becomes [ (x+1)(x-3) ] * 9*13*(x+4)(x-6)(x+6)(x-8)
+
+Similarly, the second term: [ (x+3)(x-5) ] / [9(x+4)(x-6) ] multiplied by the common denominator becomes [ (x+3)(x-5) ] * 5*13*(x+2)(x-4)(x+6)(x-8)
+
+Third term: [ 2(x+5)(x-7) ] / [13(x+6)(x-8) ] multiplied by the common denominator becomes [ 2(x+5)(x-7) ] * 5*9*(x+2)(x-4)(x+4)(x-6)
+
+And the right-hand side: 92/585 multiplied by the common denominator is 92/585 * 5*9*13*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8)
+
+Wait, but 5*9*13 is 585, so 92/585 * 585 is 92. Therefore, the right-hand side simplifies to 92*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8)
+
+So putting it all together, the equation becomes:
+
+[ (x+1)(x-3)*9*13*(x+4)(x-6)(x+6)(x-8) ] + [ (x+3)(x-5)*5*13*(x+2)(x-4)(x+6)(x-8) ] - [ 2(x+5)(x-7)*5*9*(x+2)(x-4)(x+4)(x-6) ] = 92*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8)
+
+Wow, this seems really messy. Expanding all of these terms would be tedious. Maybe there's a smarter way. Let me see if there's a pattern or a substitution that can simplify this.
+
+Looking at the denominators again, each term has a denominator that is a product of two linear factors, each separated by 2. For example, (x+2)(x-4) = (x+2)(x - (2+2)), (x+4)(x-6) = (x+4)(x - (4+2)), etc. So maybe there's some symmetry here.
+
+Alternatively, perhaps if I substitute y = x - something, but I don't see an obvious substitution. Alternatively, maybe note that the denominators are similar but shifted. Let me check.
+
+Wait, the numerators also have similar factors. For example, the first numerator is (x+1)(x-3), which is (x+1)(x - (3)). The second numerator is (x+3)(x-5), which is (x+3)(x -5). The third numerator is 2(x+5)(x-7). So each numerator is increasing by 2 in the constants. Similarly, the denominators for each term have factors that are also increasing by 2. For example, the first denominator is (x+2)(x-4), the second is (x+4)(x-6), the third is (x+6)(x-8). So the denominators are also shifted by 2 each time. Maybe this pattern can be exploited.
+
+Alternatively, maybe if I consider the entire equation as a function f(x) = left-hand side - right-hand side = 0, then f(x) is equal to zero. Since the equation is a rational function, the roots would be the solutions where the numerator equals zero after combining all terms. But expanding the numerator would be too tedious.
+
+Alternatively, maybe test some integer values of x that are not excluded (i.e., x ≠ -8, -6, -4, -2, 4, 6, 8) and see if they satisfy the equation. Since the equation might have integer roots, let's try plugging in some integer values.
+
+Let me list the possible integer roots. Since the equation is a rational function, the roots would be where the numerator equals zero. However, the numerator after combining all terms would be a polynomial, and the roots would be the solutions to that polynomial equation. But without expanding, it's hard to know.
+
+Alternatively, maybe try small integer values like x = 0, 1, 2, 3, 5, 7, etc., and see if they satisfy the equation.
+
+Let's try x = 0:
+
+First term: (0+1)(0-3)/(5*(0+2)(0-4)) = (1)(-3)/(5*2*(-4)) = (-3)/(5*2*(-4)) = (-3)/(-40) = 3/40
+
+Second term: (0+3)(0-5)/(9*(0+4)(0-6)) = (3)(-5)/(9*4*(-6)) = (-15)/(9*4*(-6)) = (-15)/(-216) = 5/72
+
+Third term: 2*(0+5)(0-7)/(13*(0+6)(0-8)) = 2*(5)(-7)/(13*6*(-8)) = 2*(-35)/(13*6*(-8)) = (-70)/( -624 ) = 70/624 = 35/312
+
+Right-hand side: 92/585 ≈ 0.1575
+
+Sum of left-hand side: 3/40 + 5/72 + 35/312
+
+Convert to common denominator, let's see 40, 72, 312. The LCM of 40, 72, 312. 40=8*5, 72=8*9, 312=8*39=8*3*13. So LCM is 8*5*9*13=4680.
+
+Convert each fraction:
+
+3/40 = (3*117)/4680 = 351/4680
+
+5/72 = (5*65)/4680 = 325/4680
+
+35/312 = (35*15)/4680 = 525/4680
+
+Total sum: 351 + 325 + 525 = 1201/4680 ≈ 0.257
+
+Which is not equal to 92/585 ≈ 0.1575. So x=0 is not a root.
+
+How about x=1:
+
+First term: (1+1)(1-3)/(5*(1+2)(1-4)) = (2)(-2)/(5*3*(-3)) = (-4)/( -45 ) = 4/45 ≈ 0.0889
+
+Second term: (1+3)(1-5)/(9*(1+4)(1-6)) = (4)(-4)/(9*5*(-5)) = (-16)/( -225 ) = 16/225 ≈ 0.0711
+
+Third term: 2*(1+5)(1-7)/(13*(1+6)(1-8)) = 2*(6)(-6)/(13*7*(-7)) = 2*(-36)/( -637 ) = (-72)/(-637) ≈ 0.113
+
+Sum: 0.0889 + 0.0711 + 0.113 ≈ 0.273, which is higher than 0.1575. So x=1 is not a root.
+
+x=2:
+
+First term: (2+1)(2-3)/(5*(2+2)(2-4)) = (3)(-1)/(5*4*(-2)) = (-3)/( -40 ) = 3/40 ≈ 0.075
+
+Second term: (2+3)(2-5)/(9*(2+4)(2-6)) = (5)(-3)/(9*6*(-4)) = (-15)/( -216 ) = 15/216 ≈ 0.0694
+
+Third term: 2*(2+5)(2-7)/(13*(2+6)(2-8)) = 2*(7)(-5)/(13*8*(-6)) = 2*(-35)/( -624 ) = (-70)/(-624) ≈ 0.112
+
+Sum: 0.075 + 0.0694 + 0.112 ≈ 0.256, still higher than 0.1575.
+
+x=3:
+
+First term: (3+1)(3-3)/(5*(3+2)(3-4)) = (4)(0)/(5*5*(-1)) = 0/(-25) = 0
+
+Second term: (3+3)(3-5)/(9*(3+4)(3-6)) = (6)(-2)/(9*7*(-3)) = (-12)/( -189 ) = 12/189 ≈ 0.0635
+
+Third term: 2*(3+5)(3-7)/(13*(3+6)(3-8)) = 2*(8)(-4)/(13*9*(-5)) = 2*(-32)/( -585 ) = (-64)/(-585) ≈ 0.1094
+
+Sum: 0 + 0.0635 + 0.1094 ≈ 0.1729, which is still higher than 0.1575.
+
+x=4 is excluded because denominator is zero.
+
+x=5:
+
+First term: (5+1)(5-3)/(5*(5+2)(5-4)) = (6)(2)/(5*7*1) = 12/35 ≈ 0.3429
+
+Second term: (5+3)(5-5)/(9*(5+4)(5-6)) = (8)(0)/(9*9*(-1)) = 0/(-81) = 0
+
+Third term: 2*(5+5)(5-7)/(13*(5+6)(5-8)) = 2*(10)(-2)/(13*11*(-3)) = 2*(-20)/( -429 ) = (-40)/(-429) ≈ 0.0932
+
+Sum: 0.3429 + 0 + 0.0932 ≈ 0.4361, which is way higher.
+
+x=6 is excluded.
+
+x=7:
+
+First term: (7+1)(7-3)/(5*(7+2)(7-4)) = (8)(4)/(5*9*3) = 32/135 ≈ 0.237
+
+Second term: (7+3)(7-5)/(9*(7+4)(7-6)) = (10)(2)/(9*11*1) = 20/99 ≈ 0.202
+
+Third term: 2*(7+5)(7-7)/(13*(7+6)(7-8)) = 2*(12)(0)/(13*13*(-1)) = 0/(-169) = 0
+
+Sum: 0.237 + 0.202 + 0 ≈ 0.439, which is higher.
+
+x=8 is excluded.
+
+How about x= -1:
+
+First term: (-1+1)(-1-3)/(5*(-1+2)(-1-4)) = (0)(-4)/(5*1*(-5)) = 0/( -25 ) = 0
+
+Second term: (-1+3)(-1-5)/(9*(-1+4)(-1-6)) = (2)(-6)/(9*3*(-7)) = (-12)/( -189 ) = 12/189 ≈ 0.0635
+
+Third term: 2*(-1+5)(-1-7)/(13*(-1+6)(-1-8)) = 2*(4)(-8)/(13*5*(-9)) = 2*(-32)/( -585 ) = (-64)/(-585) ≈ 0.1094
+
+Sum: 0 + 0.0635 + 0.1094 ≈ 0.1729, same as x=3.
+
+x= -2 is excluded.
+
+x= -3:
+
+First term: (-3+1)(-3-3)/(5*(-3+2)(-3-4)) = (-2)(-6)/(5*(-1)(-7)) = 12/35 ≈ 0.3429
+
+Second term: (-3+3)(-3-5)/(9*(-3+4)(-3-6)) = (0)(-8)/(9*1*(-9)) = 0/(-81) = 0
+
+Third term: 2*(-3+5)(-3-7)/(13*(-3+6)(-3-8)) = 2*(2)(-10)/(13*3*(-11)) = 2*(-20)/( -429 ) = (-40)/(-429) ≈ 0.0932
+
+Sum: 0.3429 + 0 + 0.0932 ≈ 0.4361
+
+x= -4 is excluded.
+
+x= -5:
+
+First term: (-5+1)(-5-3)/(5*(-5+2)(-5-4)) = (-4)(-8)/(5*(-3)(-9)) = 32/135 ≈ 0.237
+
+Second term: (-5+3)(-5-5)/(9*(-5+4)(-5-6)) = (-2)(-10)/(9*(-1)(-11)) = 20/99 ≈ 0.202
+
+Third term: 2*(-5+5)(-5-7)/(13*(-5+6)(-5-8)) = 2*(0)(-12)/(13*1*(-13)) = 0/(-169) = 0
+
+Sum: 0.237 + 0.202 + 0 ≈ 0.439
+
+x= -6 is excluded.
+
+x= -7:
+
+First term: (-7+1)(-7-3)/(5*(-7+2)(-7-4)) = (-6)(-10)/(5*(-5)(-11)) = 60/275 = 12/55 ≈ 0.218
+
+Second term: (-7+3)(-7-5)/(9*(-7+4)(-7-6)) = (-4)(-12)/(9*(-3)(-13)) = 48/351 ≈ 0.1366
+
+Third term: 2*(-7+5)(-7-7)/(13*(-7+6)(-7-8)) = 2*(-2)(-14)/(13*(-1)(-15)) = 2*28/(195) ≈ 56/195 ≈ 0.2877
+
+Sum: 0.218 + 0.1366 + 0.2877 ≈ 0.6423, which is way higher.
+
+x= -8 is excluded.
+
+Hmm, none of these integer values seem to satisfy the equation. Maybe the roots are not integers. Maybe I need to consider another approach.
+
+Alternatively, perhaps I can set the entire equation equal to zero and combine the terms:
+
+Let me denote:
+
+A = (x+1)(x-3)/[5(x+2)(x-4)]
+
+B = (x+3)(x-5)/[9(x+4)(x-6)]
+
+C = 2(x+5)(x-7)/[13(x+6)(x-8)]
+
+So the equation is A + B - C = 92/585.
+
+Maybe compute A + B - C - 92/585 = 0.
+
+Alternatively, to combine all terms into a single fraction, which is what I was trying earlier. But that's going to be a huge polynomial. Let me see if there's a smarter way.
+
+Alternatively, notice that the denominators are similar. Let me check if multiplying each term by the common denominator will result in a polynomial equation that can be solved.
+
+But since the denominators are all different, the common denominator is the product of all denominators. Let me attempt to compute the numerator.
+
+So, when we multiply both sides by 5*9*13*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8), which is 585*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8), we get:
+
+First term numerator: (x+1)(x-3)*9*13*(x+4)(x-6)(x+6)(x-8)
+
+Second term numerator: (x+3)(x-5)*5*13*(x+2)(x-4)(x+6)(x-8)
+
+Third term numerator: -2(x+5)(x-7)*5*9*(x+2)(x-4)(x+6)(x-8)
+
+Set equal to 92/585 * common denominator, which is 92*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8)
+
+So bringing everything to one side:
+
+First term + second term - third term - 92*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8) = 0
+
+Let me denote this as:
+
+Numerator = [ (x+1)(x-3)*9*13*(x+4)(x-6)(x+6)(x-8) + (x+3)(x-5)*5*13*(x+2)(x-4)(x+6)(x-8) - 2(x+5)(x-7)*5*9*(x+2)(x-4)(x+6)(x-8) - 92*(x+2)(x-4)(x+4)(x-6)(x+6)(x-8) ] = 0
+
+This is a polynomial equation of degree 6, which seems very difficult to solve directly. However, maybe there's a way to factor this polynomial or find roots through substitution.
+
+Alternatively, perhaps notice that the equation can be transformed by substituting y = x + something. Let me check the symmetry.
+
+Looking at the original equation, the denominators and numerators have a sort of symmetry with shifts of 2. For example, the denominators are (x+2)(x-4), (x+4)(x-6), (x+6)(x-8). Each denominator is (x + 2k)(x - (2k + 2)) for k=1,2,3. Similarly, the numerators are (x + (2k -1))(x - (2k +1)) for k=1,2,3.
+
+This suggests that there might be a substitution that can simplify the equation. Let me consider substituting z = x + 4. Then x = z - 4. Let's see how the terms transform.
+
+First term:
+
+(x+1)(x-3) = (z - 4 +1)(z -4 -3) = (z -3)(z -7)
+
+Denominator: 5(x+2)(x-4) = 5(z -4 +2)(z -4 -4) = 5(z -2)(z -8)
+
+Second term:
+
+(x+3)(x-5) = (z -4 +3)(z -4 -5) = (z -1)(z -9)
+
+Denominator: 9(x+4)(x-6) = 9(z -4 +4)(z -4 -6) = 9(z)(z -10)
+
+Third term:
+
+2(x+5)(x-7) = 2(z -4 +5)(z -4 -7) = 2(z +1)(z -11)
+
+Denominator:13(x+6)(x-8) =13(z -4 +6)(z -4 -8) =13(z +2)(z -12)
+
+Right-hand side: 92/585
+
+So substituting z = x +4, the equation becomes:
+
+[ (z -3)(z -7) / [5(z -2)(z -8) ] ] + [ (z -1)(z -9) / [9z(z -10) ] ] - [ 2(z +1)(z -11) / [13(z +2)(z -12) ] ] = 92/585
+
+Hmm, not sure if this helps. Let me check the denominators:
+
+First term denominator: 5(z -2)(z -8)
+
+Second term denominator: 9z(z -10)
+
+Third term denominator:13(z +2)(z -12)
+
+Still complex. Maybe another substitution? Alternatively, perhaps shifting z again. Let me try substituting w = z - something. Maybe shift to center around zero.
+
+Alternatively, perhaps note that the terms are similar but shifted. Let me see the expressions:
+
+First term: (z -3)(z -7) / [5(z -2)(z -8) ]
+
+Second term: (z -1)(z -9) / [9z(z -10) ]
+
+Third term: 2(z +1)(z -11) / [13(z +2)(z -12) ]
+
+Notice that the first term's numerator is (z -3)(z -7), and denominator is (z -2)(z -8). Similarly, the second term's numerator is (z -1)(z -9), denominator (z)(z -10). Third term is 2*(z +1)(z -11) over (z +2)(z -12).
+
+Wait, if we look at the first term, numerator is (z -3)(z -7), denominator is (z -2)(z -8). If we factor these, it's close to (z - (3))(z - (7)) over (z - (2))(z - (8)). Similarly, the second term is (z -1)(z -9) over z(z -10). Third term is (z +1)(z -11) over (z +2)(z -12).
+
+Hmm, each numerator is (z - a)(z - (a +4)) and denominator is (z - b)(z - (b +6)), where a and b are constants. Maybe there's a pattern here.
+
+Alternatively, perhaps the substitution t = z - 5? Let's try that.
+
+Let t = z -5, so z = t +5. Then:
+
+First term numerator: (t +5 -3)(t +5 -7) = (t +2)(t -2)
+
+First term denominator: (t +5 -2)(t +5 -8) = (t +3)(t -3)
+
+Second term numerator: (t +5 -1)(t +5 -9) = (t +4)(t -4)
+
+Second term denominator: (t +5)(t +5 -10) = (t +5)(t -5)
+
+Third term numerator: 2(t +5 +1)(t +5 -11) = 2(t +6)(t -6)
+
+Third term denominator:13(t +5 +2)(t +5 -12) =13(t +7)(t -7)
+
+So substituting t = z -5, the equation becomes:
+
+[ (t +2)(t -2) / [5(t +3)(t -3) ] ] + [ (t +4)(t -4) / [9(t +5)(t -5) ] ] - [ 2(t +6)(t -6) / [13(t +7)(t -7) ] ] = 92/585
+
+Hmm, this looks symmetric. Let's note that the first term is (t^2 -4)/[5(t^2 -9)], the second term is (t^2 -16)/[9(t^2 -25)], the third term is 2(t^2 -36)/[13(t^2 -49)], and the right-hand side is 92/585.
+
+So the equation is:
+
+[ (t^2 -4)/(5(t^2 -9)) ] + [ (t^2 -16)/(9(t^2 -25)) ] - [ 2(t^2 -36)/(13(t^2 -49)) ] = 92/585
+
+This seems more manageable. Let me denote u = t^2. Then, the equation becomes:
+
+[ (u -4)/(5(u -9)) ] + [ (u -16)/(9(u -25)) ] - [ 2(u -36)/(13(u -49)) ] = 92/585
+
+This is a rational equation in u. Let me write it as:
+
+A + B - C = D, where:
+
+A = (u -4)/(5(u -9))
+
+B = (u -16)/(9(u -25))
+
+C = 2(u -36)/(13(u -49))
+
+D = 92/585
+
+Let me combine terms:
+
+A + B - C - D = 0
+
+So:
+
+(u -4)/(5(u -9)) + (u -16)/(9(u -25)) - 2(u -36)/(13(u -49)) - 92/585 = 0
+
+To combine these terms, we need a common denominator. The denominators are 5(u -9), 9(u -25), 13(u -49), and 585. Note that 585 = 5*9*13, so the common denominator is 585(u -9)(u -25)(u -49).
+
+Multiply each term by the common denominator:
+
+First term: (u -4)*9*13*(u -25)(u -49)
+
+Second term: (u -16)*5*13*(u -9)(u -49)
+
+Third term: -2(u -36)*5*9*(u -9)(u -25)
+
+Fourth term: -92/585 * 585(u -9)(u -25)(u -49) = -92(u -9)(u -25)(u -49)
+
+So the equation becomes:
+
+First term + Second term + Third term + Fourth term = 0
+
+Let me compute each term:
+
+First term: 9*13*(u -4)*(u -25)*(u -49) = 117*(u -4)(u^2 -74u + 1225)
+
+Second term: 5*13*(u -16)*(u -9)*(u -49) = 65*(u -16)(u^2 -58u + 441)
+
+Third term: -2*5*9*(u -36)*(u -9)*(u -25) = -90*(u -36)(u^2 -34u + 225)
+
+Fourth term: -92*(u -9)(u -25)(u -49)
+
+So expanding each term:
+
+First term:
+
+117*(u -4)(u^2 -74u +1225)
+
+= 117*[u*(u^2 -74u +1225) -4*(u^2 -74u +1225)]
+
+= 117*[u^3 -74u^2 +1225u -4u^2 +296u -4900]
+
+= 117*u^3 -117*78u^2 +117*(1225 +296)u -117*4900
+
+Wait, let me compute each part step by step.
+
+First, expand (u -4)(u^2 -74u +1225):
+
+= u*(u^2 -74u +1225) -4*(u^2 -74u +1225)
+
+= u^3 -74u^2 +1225u -4u^2 +296u -4900
+
+= u^3 -78u^2 +1521u -4900
+
+Multiply by 117:
+
+117u^3 -78*117u^2 +1521*117u -4900*117
+
+Compute coefficients:
+
+78*117: 70*117=8190, 8*117=936, total 8190+936=9126
+
+1521*117: Let's compute 1500*117=175,500, 21*117=2,457, total 175,500 +2,457=177,957
+
+4900*117=4900*100 +4900*17=490,000 +83,300=573,300
+
+So first term expanded:
+
+117u^3 -9126u^2 +177,957u -573,300
+
+Second term:
+
+65*(u -16)(u^2 -58u +441)
+
+First, expand (u -16)(u^2 -58u +441):
+
+= u*(u^2 -58u +441) -16*(u^2 -58u +441)
+
+= u^3 -58u^2 +441u -16u^2 +928u -7056
+
+= u^3 -74u^2 +1369u -7056
+
+Multiply by 65:
+
+65u^3 -74*65u^2 +1369*65u -7056*65
+
+Calculate coefficients:
+
+74*65=4,810
+
+1369*65: 1300*65=84,500, 69*65=4,485, total 84,500 +4,485=88,985
+
+7056*65: 7000*65=455,000, 56*65=3,640, total 455,000 +3,640=458,640
+
+So second term expanded:
+
+65u^3 -4,810u^2 +88,985u -458,640
+
+Third term:
+
+-90*(u -36)(u^2 -34u +225)
+
+First, expand (u -36)(u^2 -34u +225):
+
+= u*(u^2 -34u +225) -36*(u^2 -34u +225)
+
+= u^3 -34u^2 +225u -36u^2 +1,224u -8,100
+
+= u^3 -70u^2 +1,449u -8,100
+
+Multiply by -90:
+
+-90u^3 +70*90u^2 -1,449*90u +8,100*90
+
+Calculate coefficients:
+
+70*90=6,300
+
+1,449*90=130,410
+
+8,100*90=729,000
+
+So third term expanded:
+
+-90u^3 +6,300u^2 -130,410u +729,000
+
+Fourth term:
+
+-92*(u -9)(u -25)(u -49)
+
+First, expand (u -9)(u -25)(u -49). Let's do this step by step.
+
+First, multiply (u -9)(u -25):
+
+= u^2 -25u -9u +225 = u^2 -34u +225
+
+Then multiply by (u -49):
+
+= (u^2 -34u +225)(u -49)
+
+= u^3 -49u^2 -34u^2 +1,666u +225u -11,025
+
+= u^3 -83u^2 +1,891u -11,025
+
+Multiply by -92:
+
+-92u^3 +83*92u^2 -1,891*92u +11,025*92
+
+Calculate coefficients:
+
+83*92=7,636
+
+1,891*92: 1,800*92=165,600, 91*92=8,372, total 165,600 +8,372=173,972
+
+11,025*92: 10,000*92=920,000, 1,025*92=94,300, total 920,000 +94,300=1,014,300
+
+So fourth term expanded:
+
+-92u^3 +7,636u^2 -173,972u +1,014,300
+
+Now, combining all four terms:
+
+First term: 117u^3 -9126u^2 +177,957u -573,300
+
+Second term: 65u^3 -4,810u^2 +88,985u -458,640
+
+Third term: -90u^3 +6,300u^2 -130,410u +729,000
+
+Fourth term: -92u^3 +7,636u^2 -173,972u +1,014,300
+
+Combine like terms:
+
+u^3: 117 +65 -90 -92 = 117+65=182; 182 -90=92; 92 -92=0
+
+u^2: -9126 -4,810 +6,300 +7,636
+
+= (-9126 -4,810) + (6,300 +7,636)
+
+= (-13,936) +13,936 = 0
+
+u terms: 177,957 +88,985 -130,410 -173,972
+
+= (177,957 +88,985) - (130,410 +173,972)
+
+= 266,942 -304,382 = -37,440
+
+Constant terms: -573,300 -458,640 +729,000 +1,014,300
+
+= (-573,300 -458,640) + (729,000 +1,014,300)
+
+= (-1,031,940) +1,743,300 = 711,360
+
+So overall, combining all terms:
+
+0u^3 +0u^2 -37,440u +711,360 = 0
+
+Simplify:
+
+-37,440u +711,360 = 0
+
+Solve for u:
+
+-37,440u = -711,360
+
+u = (-711,360)/(-37,440) = 711,360 /37,440
+
+Divide numerator and denominator by 480: 711,360 ÷480=1,482; 37,440 ÷480=78
+
+So 1,482 /78 = 19
+
+Therefore, u =19.
+
+Recall that u = t^2, and t = z -5.
+
+So:
+
+t^2 =19 => t = sqrt(19) or t = -sqrt(19)
+
+t = z -5, so z = t +5
+
+Therefore:
+
+z =5 + sqrt(19) or z=5 - sqrt(19)
+
+But z =x +4, so x = z -4
+
+Thus:
+
+x =5 + sqrt(19) -4 =1 + sqrt(19)
+
+or
+
+x=5 - sqrt(19) -4 =1 - sqrt(19)
+
+Therefore, the real roots are x=1 + sqrt(19) and x=1 - sqrt(19)
+
+Let me verify if these are valid solutions, i.e., they are not excluded values (which were x=-8,-6,-4,-2,4,6,8). Since sqrt(19) is approximately 4.358, so 1 + sqrt(19) ≈5.358, and 1 - sqrt(19)≈-3.358. Neither of these is excluded, so they are valid solutions.
+
+Therefore, the real roots are x=1 + sqrt(19) and x=1 - sqrt(19).
+
+**Final Answer**
+The real roots are \boxed{1 + \sqrt{19}} and \boxed{1 - \sqrt{19}}.
+Therefore, the real roots of the given equation are $\boxed{1 + \sqrt{19}}$ and $\boxed{1 - \sqrt{19}}$.
+</think>

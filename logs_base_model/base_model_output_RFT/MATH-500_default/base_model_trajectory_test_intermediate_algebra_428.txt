@@ -1,0 +1,227 @@
+Okay, so I need to find the roots of the equation \((x - 3)^3 + (x - 7)^3 = (2x - 10)^3\). Let me start by trying to understand the equation and see if there's a way to simplify it. 
+
+First, I notice that the left side is the sum of two cubes, and the right side is another cube. Maybe there's a formula or identity that relates the sum of cubes to a single cube. Wait, there's the identity \(a^3 + b^3 = (a + b)(a^2 - ab + b^2)\), but on the right side, we have a cube, not a sum. Maybe if I can express the right side as a cube of a binomial and see if there's a relationship.
+
+Let me compute the right-hand side first. The right side is \((2x - 10)^3\). Let me expand that. The cube of a binomial \((a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3\). So applying that here:
+
+\((2x - 10)^3 = (2x)^3 - 3*(2x)^2*10 + 3*(2x)*(10)^2 - (10)^3\)
+
+Calculating each term:
+
+First term: \(8x^3\)
+
+Second term: \(3*(4x^2)*10 = 120x^2\), but with a negative sign: -120x^2
+
+Third term: \(3*(2x)*100 = 600x\)
+
+Fourth term: -1000
+
+So combining these: \(8x^3 - 120x^2 + 600x - 1000\)
+
+Now, the left side is \((x - 3)^3 + (x - 7)^3\). Let me expand each cube separately.
+
+First cube: \((x - 3)^3 = x^3 - 9x^2 + 27x - 27\)
+
+Second cube: \((x - 7)^3 = x^3 - 21x^2 + 147x - 343\)
+
+Adding these two together:
+
+Left side: \(x^3 - 9x^2 + 27x - 27 + x^3 - 21x^2 + 147x - 343\)
+
+Combine like terms:
+
+x^3 + x^3 = 2x^3
+
+-9x^2 -21x^2 = -30x^2
+
+27x + 147x = 174x
+
+-27 -343 = -370
+
+So left side simplifies to: \(2x^3 - 30x^2 + 174x - 370\)
+
+Now, the equation becomes:
+
+\(2x^3 - 30x^2 + 174x - 370 = 8x^3 - 120x^2 + 600x - 1000\)
+
+Let me bring all terms to one side. Subtract the left side from both sides:
+
+\(0 = 8x^3 - 120x^2 + 600x - 1000 - (2x^3 - 30x^2 + 174x - 370)\)
+
+Calculate each term:
+
+8x^3 - 2x^3 = 6x^3
+
+-120x^2 + 30x^2 = -90x^2
+
+600x - 174x = 426x
+
+-1000 + 370 = -630
+
+So the equation simplifies to:
+
+\(6x^3 - 90x^2 + 426x - 630 = 0\)
+
+We can factor out a 6:
+
+6(x^3 - 15x^2 + 71x - 105) = 0
+
+Divide both sides by 6:
+
+\(x^3 - 15x^2 + 71x - 105 = 0\)
+
+Now, we need to solve the cubic equation \(x^3 - 15x^2 + 71x - 105 = 0\).
+
+To find the roots of a cubic, one method is to use the Rational Root Theorem, which states that any possible rational root, p/q, is a factor of the constant term divided by a factor of the leading coefficient. Here, the constant term is -105, and the leading coefficient is 1, so possible rational roots are ±1, ±3, ±5, ±7, ±15, ±21, ±35, ±105.
+
+Let me test these possible roots by substituting them into the equation.
+
+First, try x = 1:
+
+1 - 15 + 71 - 105 = 1 -15 = -14; -14 +71 = 57; 57 -105 = -48 ≠ 0
+
+Not a root.
+
+x = 3:
+
+27 - 135 + 213 -105 = 27 -135 = -108; -108 +213 = 105; 105 -105 = 0. Oh, x=3 is a root!
+
+Great, so (x - 3) is a factor. Now, let's perform polynomial division or use synthetic division to factor out (x - 3) from the cubic.
+
+Using synthetic division:
+
+Coefficients: 1 | -15 | 71 | -105
+
+Divide by x = 3:
+
+Bring down 1.
+
+Multiply 1 by 3: 3. Add to -15: -12.
+
+Multiply -12 by 3: -36. Add to 71: 35.
+
+Multiply 35 by 3: 105. Add to -105: 0. Perfect.
+
+So the cubic factors as (x - 3)(x^2 - 12x + 35)
+
+Now, factor the quadratic: x^2 -12x +35.
+
+Looking for two numbers that multiply to 35 and add to -12. Those numbers are -5 and -7.
+
+So quadratic factors as (x - 5)(x - 7)
+
+Therefore, the cubic factors completely as (x - 3)(x -5)(x -7) = 0
+
+Thus, the roots are x = 3, x =5, x=7.
+
+Wait a second, but let me verify if these are indeed roots of the original equation.
+
+Original equation: \((x -3)^3 + (x -7)^3 = (2x -10)^3\)
+
+Let me check x=3:
+
+Left side: (0)^3 + (-4)^3 = 0 + (-64) = -64
+
+Right side: (6 -10)^3 = (-4)^3 = -64. So yes, x=3 is a root.
+
+x=5:
+
+Left side: (2)^3 + (-2)^3 = 8 + (-8) = 0
+
+Right side: (10 -10)^3 = 0^3 = 0. So x=5 is a root.
+
+x=7:
+
+Left side: (4)^3 + (0)^3 = 64 + 0 =64
+
+Right side: (14 -10)^3 =4^3=64. So x=7 is a root.
+
+All three roots satisfy the equation. Therefore, the solutions are x=3,5,7.
+
+But wait, the original equation is a cubic, so it should have three roots. But when we simplified it, we went through steps that might have introduced extraneous roots or perhaps lost some solutions. However, here all three roots are valid.
+
+Alternatively, maybe there's another approach to solve the original equation without expanding everything. Let's think.
+
+Original equation: \((x -3)^3 + (x -7)^3 = (2x -10)^3\)
+
+Notice that 2x -10 is equal to 2(x -5). Also, x -3 and x -7 can be written as (x -5) + 2 and (x -5) -2 respectively. Let me set y = x -5. Then:
+
+(x -3) = y + 2
+
+(x -7) = y -2
+
+(2x -10) = 2y
+
+So substituting into the equation:
+
+(y + 2)^3 + (y -2)^3 = (2y)^3
+
+Let me compute the left side:
+
+(y + 2)^3 + (y -2)^3
+
+Using the identity a^3 + b^3 = (a + b)(a^2 - ab + b^2). Here, a = y +2, b = y -2.
+
+So (a + b) = (y +2 + y -2) = 2y
+
+(a^2 - ab + b^2) = (y^2 +4y +4) - (y +2)(y -2) + (y^2 -4y +4)
+
+Compute each term:
+
+a^2 = y^2 +4y +4
+
+b^2 = y^2 -4y +4
+
+ab = (y +2)(y -2) = y^2 -4
+
+So a^2 -ab + b^2 = (y^2 +4y +4) - (y^2 -4) + (y^2 -4y +4)
+
+Combine terms:
+
+y^2 +4y +4 - y^2 +4 + y^2 -4y +4
+
+= (y^2 - y^2 + y^2) + (4y -4y) + (4 +4 +4)
+
+= y^2 + 0y +12
+
+Therefore, the left side becomes (2y)(y^2 +12) = 2y^3 +24y
+
+The right side is (2y)^3 =8y^3
+
+So equation becomes:
+
+2y^3 +24y =8y^3
+
+Bring all terms to one side:
+
+2y^3 +24y -8y^3 =0
+
+-6y^3 +24y =0
+
+Factor out -6y:
+
+-6y(y^2 -4)=0
+
+Set each factor to zero:
+
+-6y=0 => y=0
+
+y^2 -4=0 => y=±2
+
+Thus, y=0, y=2, y=-2
+
+But y =x -5, so:
+
+x -5=0 =>x=5
+
+x -5=2 =>x=7
+
+x -5=-2 =>x=3
+
+Therefore, the roots are x=5,7,3. Which matches the previous result.
+
+This method seems more straightforward and avoids expanding all the terms. So instead of expanding the cubes and solving a cubic equation, making a substitution simplifies the problem significantly.
+
+Therefore, the roots are 3,5,7. Since the original equation is a cubic, these are all the roots, and they are all real numbers.
+Therefore, the roots of the equation \((x - 3)^3 + (x -7)^3 = (2x - 10)^3\) are $\boxed{3}$, $\boxed{5}$, and $\boxed{7}$.
+</think>

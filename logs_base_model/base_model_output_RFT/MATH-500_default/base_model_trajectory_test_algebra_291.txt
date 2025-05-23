@@ -1,0 +1,79 @@
+Okay, let's see. So Alice and Bob are playing this game where they take turns flipping coins. Alice goes first. If she flips heads, she wins. If not, then Bob gets a turn. Bob flips tails to win, otherwise it goes back to Alice. I need to find the probability that Alice wins the game. Hmm.
+
+First, maybe I should model this as a probability problem. Let me think. Each turn is a Bernoulli trial with certain probabilities. Alice's chance to win on her turn is 0.5 (since coin is fair), and Bob's chance to win on his turn is also 0.5. The key here is that each time they don't win, the turn goes back to the other player.
+
+So the game can be represented as a series of rounds. Each round starts with Alice flipping, then Bob if needed. The game continues until someone wins. The probability that Alice wins can be calculated by summing the probabilities of her winning on the first turn, third turn, fifth turn, etc.
+
+Let me break it down:
+
+- Probability Alice wins on her first flip: 1/2.
+- If she doesn't win (1/2 chance), then Bob gets a turn. Bob can either win (1/2 chance) or not (1/2). If Bob doesn't win, the game goes back to Alice. So the probability of the game returning to Alice after both fail is (1/2)*(1/2) = 1/4. Then the situation is the same as the beginning, so the probability of Alice winning from there is the same as the original probability.
+
+Wait, that seems recursive. Let me denote P as the probability that Alice wins the game. Then:
+
+P = probability Alice wins on first flip + probability Alice doesn't win and Bob doesn't win * probability Alice wins from there.
+
+So mathematically:
+
+P = (1/2) + (1/2)*(1/2)*P
+
+Because Alice has 1/2 chance to win, if she doesn't (1/2), then Bob has 1/2 chance to win. If Bob also doesn't win (which is another 1/2), then it's Alice's turn again, and the probability of her winning from there is P.
+
+So solving for P:
+
+P = 1/2 + (1/4)P
+
+Subtract (1/4)P from both sides:
+
+P - (1/4)P = 1/2
+
+(3/4)P = 1/2
+
+Multiply both sides by (4/3):
+
+P = (1/2)*(4/3) = 2/3
+
+Wait, so the probability is 2/3? Let me verify this.
+
+Alternatively, think about the game as an infinite series. The probability that Alice wins on the first turn is 1/2. The probability that Alice wins on the third turn (i.e., both Alice and Bob failed once) is (1/2)*(1/2)*(1/2) = (1/2)^3. Similarly, the probability for the fifth turn is (1/2)^5, and so on.
+
+So the total probability P is the sum of this infinite geometric series:
+
+P = (1/2) + (1/2)^3 + (1/2)^5 + (1/2)^7 + ... 
+
+This is a geometric series with first term a = 1/2 and common ratio r = (1/2)^2 = 1/4.
+
+The sum of an infinite geometric series is a / (1 - r). So:
+
+P = (1/2) / (1 - 1/4) = (1/2) / (3/4) = (1/2)*(4/3) = 2/3.
+
+Same result. So that seems to confirm the answer is 2/3. Let me check again.
+
+Another approach: Let's consider the turns. Alice has the first chance, then Bob, then Alice, etc. The probability that Alice wins on her nth turn is (probability that both Alice and Bob have failed n-1 times) multiplied by Alice's success on her nth turn.
+
+So, for the first turn: (1/2).
+
+Second turn (third overall): (1/2)*(1/2)*(1/2) = (1/2)^3.
+
+Third turn: (1/2)^5, etc.
+
+So the series is indeed 1/2 + 1/8 + 1/32 + ... which sums to 2/3.
+
+Alternatively, think in terms of expected outcomes. The game can end on any turn with probability 1/2 (if Alice wins) or 1/2 (if Bob wins). If neither wins, the game resets. Let me model this with states.
+
+Let P be the probability Alice wins. On the first turn, she can win with 1/2, or the game moves to Bob with 1/2. If it moves to Bob, he can win with 1/2, or the game goes back to Alice with 1/2. So:
+
+P = 1/2 + (1/2)*(1/2)*P
+
+Which is the same equation as before. Solving gives P = 2/3.
+
+Alternatively, think of the probability that Bob wins. Let Q be the probability Bob wins. Then since either Alice or Bob wins, P + Q = 1. But from the first approach, if P = 2/3, then Q = 1/3. Let's verify this.
+
+Q is the probability that Bob wins. For Bob to win, Alice must fail (1/2), then Bob must win (1/2). If Bob fails (1/2), then Alice gets another turn. So:
+
+Q = (1/2)*(1/2) + (1/2)*(1/2)*(1/2)*(1/2) + ... 
+
+Which is a geometric series with first term (1/2)^2 = 1/4 and ratio (1/2)^2 = 1/4. So sum is (1/4)/(1 - 1/4) = (1/4)/(3/4) = 1/3. Therefore, P = 1 - Q = 1 - 1/3 = 2/3. So that checks out.
+
+Therefore, the probability that Alice wins is 2/3.
+</think>

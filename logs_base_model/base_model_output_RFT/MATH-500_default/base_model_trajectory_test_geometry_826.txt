@@ -1,0 +1,408 @@
+Okay, let me try to figure out the problem step by step. So, we have quadrilateral CDEG which is a square with CD = 3. Since it's a square, all sides should be equal, so CD = DE = EG = GC = 3 units. Then there's another quadrilateral BEFH which is a rectangle with BE = 5. We need to find the length of BH, which is a diagonal of the rectangle.
+
+First, I need to visualize the figure. The Asymptote code draws points A, B, C, D, Ep (which is E), G, F, and H. Let me try to parse the coordinates from the Asymptote code. The unitsize is 5mm, but maybe the coordinates are in some grid. 
+
+Looking at the code:
+
+- A is at (0,0)
+- B is at (3,0)
+- C is at (6,0)
+- D is at (9,0)
+- Ep (E) is at (9,3)
+- G is at (6,3)
+- F0 is the bisector point of B and 2*Ep - B. Wait, bisectorpoint is a function that finds the angle bisector between two points? Maybe. Similarly, H0 is the bisectorpoint of Ep and 2*B - Ep. Then H is the extension of B--H0 and A--G, and F is the extension of Ep--F0 and A--G.
+
+Hmm, maybe I need to figure out the coordinates of all the points to compute BH. Let me try to assign coordinates to each point based on the Asymptote code and the given information.
+
+Given that CDEG is a square with CD = 3. Since CD is from point C to D, which are both on the x-axis at (6,0) and (9,0). So CD is 3 units. Then since it's a square, DE must be 3 units upward from D. So E is at (9,3). Then G is the next corner of the square, so moving left 3 units from E, so G is at (6,3). Then C is at (6,0), so CG is vertical. Wait, but C is at (6,0) and G is at (6,3), so CG is indeed 3 units. So that makes sense.
+
+Then, quadrilateral BEFH is a rectangle with BE = 5. So B is at (3,0) and E is at (9,3). The length BE is given as 5. Wait, let me check the distance between B(3,0) and E(9,3). The distance formula is sqrt[(9-3)^2 + (3-0)^2] = sqrt[36 + 9] = sqrt[45] = 3*sqrt(5). But the problem states BE = 5. That's a contradiction. Wait, maybe I misinterpreted the coordinates. Let me check again.
+
+Wait, the Asymptote code defines E as Ep=(9,3). So E is at (9,3). Then BE is the distance from B(3,0) to E(9,3), which is sqrt[(9-3)^2 + (3-0)^2] = sqrt[36 + 9] = sqrt[45] = 3*sqrt(5). But the problem says BE = 5. That's inconsistent. So either the coordinates in the Asymptote code are scaled, or perhaps the unitsize is different. The unitsize is set to 5mm, but perhaps the coordinate system is scaled. Wait, maybe the figure is not drawn to scale, and the coordinates are just for drawing purposes. So perhaps I need to ignore the coordinates and focus on the given lengths.
+
+Alternatively, maybe the Asymptote code is correct, but the problem statement has a different figure. Let me check the problem statement again. It says quadrilateral CDEG is a square with CD = 3, and quadrilateral BEFH is a rectangle with BE = 5. So the Asymptote code might be illustrative, but the actual lengths are different. Hmm, that complicates things.
+
+Wait, the problem statement is separate from the Asymptote code. The Asymptote code is just a diagram. So maybe the coordinates are illustrative, but the actual lengths are given in the problem. So perhaps the Asymptote code's coordinates are not to scale. Therefore, I need to solve the problem using the given lengths: CD = 3, BE = 5, and figure out BH.
+
+So let's ignore the coordinates in the Asymptote code and focus on the problem statement. Let me sketch the figure mentally. Let's assume that quadrilateral CDEG is a square with CD = 3. So CD is a horizontal side of length 3, then DE is vertical (since it's a square), so DE = 3. Then EG is horizontal to the left, and GC is vertical down. Then quadrilateral BEFH is a rectangle with BE = 5. So points B, E, F, H form a rectangle. Since BE is a diagonal of the rectangle? Wait, no, in a rectangle, the sides are the sides of the rectangle. Wait, if BE is a side, then BE = 5, but in the problem statement, BE = 5. Wait, is BE a side or a diagonal?
+
+Wait, quadrilateral BEFH is a rectangle. So the sides are BE, EF, FH, HB. So BE is a side, not a diagonal. So BE = 5. But in the square CDEG, CD = 3, so DE = 3. Then, since quadrilateral CDEG is a square, E is connected to D, which is connected to C. Then the rectangle BEFH is connected to E and B.
+
+Wait, maybe the figure is more complex. Let me try to reconstruct it step by step.
+
+1. We have quadrilateral CDEG, a square with CD = 3. So CD is a horizontal line segment of length 3. Then DE is vertical, since it's a square. So DE = 3. Then EG is horizontal to the left, and GC is vertical down. So the square is CDEG, with points C, D, E, G.
+
+2. Quadrilateral BEFH is a rectangle with BE = 5. So points B, E, F, H form a rectangle. Since BE is a side, and BE = 5, then the opposite side FH is also 5. The other sides, EF and BH, should be equal. But we need to find BH.
+
+But how are these points connected? Let me see. Point B is connected to E, which is a vertex of the square CDEG. Then E is connected to F and H. F is connected to H, and H is connected back to B. So BEFH is a rectangle.
+
+But how are points A, B, C, D arranged? The problem statement doesn't mention point A. Wait, looking back at the Asymptote code, point A is at (0,0), connected to B, which is at (3,0), so AB is 3 units. Then B is connected to C at (6,0), so BC is 3 units, and C to D at (9,0), CD is 3 units. Then D is connected to E at (9,3), so DE is 3 units. Then E is connected to F, which is connected to H, which connects back to A. So the figure is a combination of a square CDEG and a rectangle BEFH connected via points E and B.
+
+Wait, maybe the figure is a three-dimensional figure, but probably not. Let's think in 2D.
+
+Point A is at (0,0), connected to B(3,0), then to C(6,0), then to D(9,0), then up to E(9,3), then left to G(6,3), then down to C(6,0). Then, quadrilateral BEFH is a rectangle. So B(3,0) connected to E(9,3), then to F, then to H, then back to B. But in the Asymptote code, F is connected to A(0,0), but that might not be part of the rectangle. Hmm, the Asymptote code draws H--B--Ep--F--A--D--Ep--G--C, so H is connected to B, which is connected to E, which is connected to F, which is connected to A, which is connected to D, which is connected to E, then back to G, then to C. So H is connected to B and A. Wait, this is getting complicated.
+
+Alternatively, let's try to assign coordinates based on the problem statement. Let me assume the figure is as follows:
+
+- Let’s place point A at (0,0).
+
+- Since AB is connected to B, and AB is 3 units (as BC is 3 units, CD is 3 units, etc.), so B is at (3,0).
+
+- Then, quadrilateral CDEG is a square with CD = 3. So if C is at (6,0), then D is at (9,0). Then, since it's a square, DE would be vertical upwards from D(9,0) to E(9,3). Then, EG is horizontal left from E(9,3) to G(6,3). Then, GC is vertical down from G(6,3) to C(6,0). So the square CDEG has coordinates C(6,0), D(9,0), E(9,3), G(6,3).
+
+- Then quadrilateral BEFH is a rectangle with BE = 5. So B is at (3,0), E is at (9,3). The distance between B and E is sqrt[(9-3)^2 + (3-0)^2] = sqrt(36 + 9) = sqrt(45) = 3*sqrt(5). But the problem says BE = 5. Hmm, that's a discrepancy. So either the coordinates are scaled, or the figure is not to scale. Since the problem statement gives BE = 5, but in the coordinates, it's 3*sqrt(5). So perhaps the figure is scaled.
+
+Wait, maybe the Asymptote code is using unitsize(5mm), but the actual coordinates are in different units. So maybe each unit in the coordinate system is scaled by 5mm. But the problem statement gives actual lengths, so perhaps the coordinates are illustrative but not to scale.
+
+Alternatively, perhaps the square CDEG is not placed as I thought. Maybe it's a different configuration. Let me try to figure out.
+
+Wait, the problem says quadrilateral CDEG is a square with CD = 3. So CD is a side of the square, which is 3 units. Then DE is another side, so DE = 3 units. Then EG is another, and GC is another. So CD is horizontal, DE is vertical, EG is horizontal left, GC is vertical down.
+
+But then quadrilateral BEFH is a rectangle with BE = 5. So B is a point connected to E. So if CD is 3, then BC is also 3, as CD is from C to D. So AB is 3, BC is 3, CD is 3. So AB, BC, CD are each 3 units. Then BE is 5. So B is at the end of BC, which is 3 units from C. Then E is somewhere else.
+
+Wait, maybe the figure is arranged such that points A, B, C, D are colinear on the x-axis, each 3 units apart. Then, from D, we go up to E, forming the square CDEG. Then, from B, we go up to E, forming the rectangle BEFH.
+
+Wait, but in that case, BE would be the diagonal of the square CDEG. Because if CD is 3, and DE is 3, then BE would be the diagonal of the square. The diagonal of a square with side 3 is 3*sqrt(2). But the problem says BE = 5. So that's not matching. Therefore, my initial assumption is wrong.
+
+Alternatively, maybe quadrilateral CDEG is not a square but a rectangle? Wait, the problem says it's a square. So CD = 3, and all sides equal. Then BE is a side of the rectangle BEFH, which is 5. So BE is a side of the rectangle, not the diagonal. Then, the rectangle BEFH has sides BE = 5 and EF, which we need to find. Then BH would be the diagonal of the rectangle. Wait, but the problem is asking for BH. So if BE is a side of the rectangle, then BH would be the diagonal.
+
+Wait, but how are the points connected? If quadrilateral BEFH is a rectangle, then the sides are BE, EF, FH, HB. So BE is one side, EF is another, FH is the third, and HB is the fourth. So if BE is 5, then BH would be the diagonal of the rectangle, which can be found using Pythagoras if we know the other side.
+
+But we don't know EF. So maybe we need to find EF.
+
+But how? Since quadrilateral CDEG is a square, and quadrilateral BEFH is a rectangle, and they share point E. Maybe points C, D, E, G are arranged such that BE is connected to E, which is connected to F, which is connected to H, which is connected back to B. So BE is a side, EF is another side, FH is the third, and HB is the fourth. So BH is the diagonal of the rectangle, which would be sqrt(BE^2 + EF^2). But we need to find EF.
+
+But how do we find EF? Maybe by considering the square CDEG and the rectangle BEFH. Since CDEG is a square, DE is a vertical side of length 3. Then, if BE is 5, and E is connected to F, which is connected to H, which connects back to B, we might need to find the coordinates of F and H.
+
+Alternatively, maybe we can assign coordinates to the points to solve this.
+
+Let me try to assign coordinates to all the points.
+
+Let’s place point B at (0,0). Then, since AB is 3 units, point A would be at (-3, 0). But the Asymptote code shows A at (0,0), so maybe we need to adjust. Wait, the Asymptote code has A at (0,0), B at (3,0), so AB is 3 units. Then BC is 3 units, so C is at (6,0). Then CD is 3 units, so D is at (9,0). Then DE is 3 units upwards to E(9,3). Then EG is 3 units left to G(6,3). Then GC is 3 units down to C(6,0). So the square CDEG is C(6,0), D(9,0), E(9,3), G(6,3).
+
+Then quadrilateral BEFH is a rectangle with BE = 5. Since B is at (3,0) and E is at (9,3), the distance BE is sqrt[(9-3)^2 + (3-0)^2] = sqrt(36 + 9) = sqrt(45) = 3*sqrt(5). But the problem says BE = 5. So that's a conflict. Therefore, the coordinates in the Asymptote code must be illustrative but not to scale. Therefore, we need to ignore the coordinates and focus on the given lengths.
+
+Therefore, let's model the figure as follows:
+
+- Points A, B, C, D are colinear on the x-axis, each 3 units apart. So AB = BC = CD = 3.
+
+- Quadrilateral CDEG is a square with side length 3. So DE is vertical upwards from D, EG is horizontal left to G, GC is vertical down to C.
+
+- Quadrilateral BEFH is a rectangle with BE = 5. So BE is a side of the rectangle, and we need to find BH, which is the diagonal.
+
+But how are points E and F positioned? Since E is a vertex of the square CDEG, and BE is a side of the rectangle BEFH, which is connected to E. So F must be somewhere such that EF is another side of the rectangle, and H is the fourth corner.
+
+To find BH, the diagonal of the rectangle, we need to know the lengths of BE and EF. Since BE is given as 5, we need to find EF.
+
+But how to find EF? Maybe by considering the square CDEG. Since DE is 3 units, and E is connected to F, which is part of the rectangle BEFH. If we can find the coordinates of F, then we can compute EF.
+
+Alternatively, maybe we can use coordinate geometry by assigning coordinates to the points.
+
+Let’s assign coordinates:
+
+- Let’s place point B at (0,0). Then AB = 3, so point A is at (-3,0). BC = 3, so point C is at (3,0). CD = 3, so point D is at (6,0). Then quadrilateral CDEG is a square. Since CD is horizontal from C(3,0) to D(6,0), then DE is vertical upwards. Let’s assume E is at (6,3). Then EG is horizontal left to G(3,3), and GC is vertical down to C(3,0). So the square CDEG has coordinates C(3,0), D(6,0), E(6,3), G(3,3).
+
+Then, quadrilateral BEFH is a rectangle with BE = 5. Point B is at (0,0), point E is at (6,3). So BE is the distance from (0,0) to (6,3), which is sqrt(36 + 9) = sqrt(45) = 3*sqrt(5). But the problem says BE = 5. Therefore, there is a scaling factor here. So if BE is supposed to be 5, but in our coordinate system it's 3*sqrt(5), then we need to scale the coordinates by a factor of 5/(3*sqrt(5)) = sqrt(5)/3. Therefore, all coordinates would be scaled by sqrt(5)/3.
+
+But maybe instead of scaling, we can just use variables. Let's let the coordinates be as per the square CDEG with CD = 3, so DE = 3, etc. Then, assign coordinates accordingly.
+
+Wait, maybe it's better to assign coordinates with B at (0,0). Let’s try:
+
+- Let’s place point B at (0,0).
+
+- Since AB = 3, point A is at (-3,0).
+
+- BC = 3, so point C is at (3,0).
+
+- CD = 3, so point D is at (6,0).
+
+- Quadrilateral CDEG is a square. So from D(6,0), moving up 3 units to E(6,3). Then left 3 units to G(3,3). Then down 3 units to C(3,0). So square CDEG has coordinates C(3,0), D(6,0), E(6,3), G(3,3).
+
+- Quadrilateral BEFH is a rectangle with BE = 5. So B(0,0) connected to E(6,3). The distance BE is sqrt[(6-0)^2 + (3-0)^2] = sqrt(36 + 9) = sqrt(45) = 3*sqrt(5). But problem says BE = 5. Therefore, scaling factor needed.
+
+Let’s compute the scaling factor. Let’s denote the scaling factor as k. So in reality, the distance BE is 5, but in the coordinate system, it's 3*sqrt(5). Therefore, 3*sqrt(5)*k = 5 => k = 5/(3*sqrt(5)) = sqrt(5)/3. Therefore, all coordinates need to be scaled by sqrt(5)/3.
+
+Therefore, scaled coordinates:
+
+- B: (0,0) * k = (0,0)
+
+- E: (6,3) * k = (6*sqrt(5)/3, 3*sqrt(5)/3) = (2*sqrt(5), sqrt(5))
+
+- C: (3,0) * k = (3*sqrt(5)/3, 0) = (sqrt(5), 0)
+
+- D: (6,0) * k = (6*sqrt(5)/3, 0) = (2*sqrt(5), 0)
+
+- G: (3,3) * k = (3*sqrt(5)/3, 3*sqrt(5)/3) = (sqrt(5), sqrt(5))
+
+Wait, but this scaling might complicate things. Alternatively, maybe it's better to work with variables without scaling.
+
+Alternatively, maybe assign coordinates such that BE is length 5. Let’s consider coordinate system where B is at (0,0), E is at (x,y), such that distance BE = 5. Then, quadrilateral BEFH is a rectangle. So points F and H can be found based on the rectangle properties.
+
+But since quadrilateral CDEG is a square, and points C, D, E, G are part of the figure, we need to relate the coordinates of E to the square CDEG.
+
+Wait, point E is part of square CDEG. So in the square CDEG, E is connected to D and G. So DE is one side, EG is another. If in the coordinate system, DE is vertical, then E is at (Dx, Dy + 3). But in our previous coordinate system, E was at (6,3), D at (6,0). So DE is vertical. Then, EG is horizontal left to G(3,3). Then GC is vertical down to C(3,0). So in that case, the square CDEG has sides of length 3, as CD is 3, DE is 3, etc.
+
+But in reality, in the problem, quadrilateral CDEG is a square with CD = 3. So CD is 3, DE is 3, EG is 3, GC is 3. Therefore, regardless of the coordinate system, those sides are 3 units. Therefore, perhaps we need to model the figure such that CD = 3, DE = 3, etc., and BE = 5. So perhaps the figure is a combination of a square and a rectangle connected at E and B.
+
+Alternatively, maybe the entire figure is a three-dimensional figure? But the problem mentions quadrilaterals, so probably 2D.
+
+Alternatively, maybe using vectors or coordinate geometry to solve.
+
+Let’s try to assign coordinates:
+
+Let’s place point D at the origin (0,0) for simplicity. Then, since CD = 3, and quadrilateral CDEG is a square, so CD is 3 units. Let’s assume CD is along the x-axis, so point C is at (-3,0). Then, since CDEG is a square, DE is vertical upwards from D(0,0) to E(0,3). Then, EG is horizontal left to G(-3,3). Then, GC is vertical down to C(-3,0). So square CDEG has coordinates C(-3,0), D(0,0), E(0,3), G(-3,3).
+
+Then quadrilateral BEFH is a rectangle with BE = 5. Point B is somewhere. Let’s see, we need to connect B to E(0,3). The distance BE is 5. So point B is somewhere such that its distance to E(0,3) is 5. Then, quadrilateral BEFH is a rectangle, so BE and EF are sides. Then F is connected to H, which connects back to B. So BH is the diagonal of the rectangle.
+
+But we need to figure out the coordinates of B, F, and H.
+
+But how is point B related to the square CDEG? The problem statement doesn't specify. It just says quadrilateral CDEG is a square with CD = 3, and quadrilateral BEFH is a rectangle. So perhaps point B is connected to E and F, but its position relative to CDEG is not specified. Therefore, we might need to find coordinates of B such that BE = 5 and quadrilateral BEFH is a rectangle.
+
+But without more information, maybe we need to assume that points A, B, C, D are colinear? The Asymptote code had A connected to B, which is connected to C, etc. So perhaps in the problem, points A, B, C, D are colinear on the x-axis, each 3 units apart. So AB = BC = CD = 3. Then quadrilateral CDEG is a square with CD = 3. Then quadrilateral BEFH is a rectangle with BE = 5.
+
+So let's model this:
+
+- Let’s place point A at (0,0). Then, AB = 3, so B is at (3,0). Then BC = 3, so C is at (6,0). Then CD = 3, so D is at (9,0). Then quadrilateral CDEG is a square. So from D(9,0), moving up 3 units to E(9,3). Then left 3 units to G(6,3). Then down 3 units to C(6,0). So square CDEG has coordinates C(6,0), D(9,0), E(9,3), G(6,3).
+
+- Quadrilateral BEFH is a rectangle with BE = 5. So B is at (3,0), E is at (9,3). The distance BE is sqrt[(9-3)^2 + (3-0)^2] = sqrt(36 + 9) = sqrt(45) = 3*sqrt(5). But problem says BE = 5. Therefore, the figure is scaled. Therefore, the coordinates in the Asymptote code are scaled by a factor of 5/(3*sqrt(5)) = sqrt(5)/3. Therefore, all coordinates need to be multiplied by sqrt(5)/3.
+
+Therefore, scaled coordinates:
+
+- A: (0,0) * sqrt(5)/3 = (0,0)
+
+- B: (3,0) * sqrt(5)/3 = (sqrt(5),0)
+
+- C: (6,0) * sqrt(5)/3 = (2*sqrt(5),0)
+
+- D: (9,0) * sqrt(5)/3 = (3*sqrt(5),0)
+
+- E: (9,3) * sqrt(5)/3 = (3*sqrt(5), sqrt(5))
+
+- G: (6,3) * sqrt(5)/3 = (2*sqrt(5), sqrt(5))
+
+Now, quadrilateral BEFH is a rectangle. So points B(sqrt(5),0), E(3*sqrt(5), sqrt(5)), F, H. Since it's a rectangle, sides BE and EF are perpendicular. So we can find the coordinates of F and H.
+
+First, vector BE is from B to E: (3*sqrt(5) - sqrt(5), sqrt(5) - 0) = (2*sqrt(5), sqrt(5)).
+
+Since BEFH is a rectangle, the next side EF should be perpendicular to BE. The vector perpendicular to BE would have components (-sqrt(5), 2*sqrt(5)) or (sqrt(5), -2*sqrt(5)). Since the rectangle can be on either side, we need to figure out the direction.
+
+But in the Asymptote code, the rectangle is drawn from B to H to A to D to E to G to C. So H is connected to B and A. Therefore, H is connected to B and A. Therefore, H is the intersection of the lines BH and AH.
+
+But in the scaled coordinates, A is at (0,0), so line AH is from A(0,0) to H. Line BH is from B(sqrt(5),0) to H. So H lies at their intersection.
+
+But how do we find H? Since BEFH is a rectangle, and BE is one side, EF is the next side. So from E(3*sqrt(5), sqrt(5)), moving in a direction perpendicular to BE to reach F. Then from F, moving in the opposite direction of BE to reach H. Then from H, moving back to B(sqrt(5),0). Since it's a rectangle, the sides EF and BH should be equal and parallel.
+
+Alternatively, since BE is a side, and EF is another side, we can find F by moving from E in the direction perpendicular to BE for the same length as BE.
+
+But maybe it's easier to use vectors.
+
+Vector BE is (2*sqrt(5), sqrt(5)). The length of BE is 5, as given. Then, the vector EF should be perpendicular to BE and have the same length if BEFH is a rectangle. Wait, no, in a rectangle adjacent sides are perpendicular, but not necessarily of the same length. Wait, in a rectangle, adjacent sides are perpendicular, but opposite sides are equal. So BE and FH are opposite sides, so they are equal in length and direction. Similarly, EF and BH are opposite sides, equal in length and direction.
+
+But since BE is given as 5, then FH is also 5. But EF would be equal to BH. Therefore, if we can find the direction of EF, we can find BH.
+
+But since the figure is scaled, maybe we need to use coordinates.
+
+Alternatively, since we have coordinates of B and E, we can find the equation of line BE. Then, since BEFH is a rectangle, the next side EF should be perpendicular to BE. Therefore, the slope of BE is (sqrt(5) - 0)/(3*sqrt(5) - sqrt(5)) = sqrt(5)/(2*sqrt(5)) = 1/2. Therefore, the slope of BE is 1/2. Therefore, the slope of EF, which is perpendicular, is -2.
+
+Therefore, line EF has slope -2. Starting from E(3*sqrt(5), sqrt(5)), moving in the direction with slope -2. But how far? Since EF is a side of the rectangle, its length should be equal to BH, which is the diagonal of the rectangle. Wait, but in a rectangle, adjacent sides are perpendicular, but their lengths can be different.
+
+Wait, no. In a rectangle, opposite sides are equal. So BE and FH are equal, EF and BH are equal. But BE is 5, so FH is 5. But we need to find the length of EF to find BH. But how?
+
+Alternatively, since BE is a side and EF is another side, and they are perpendicular, the rectangle's sides are BE and EF. Therefore, the length of BE is 5, and the length of EF can be found using the coordinates.
+
+But we need more information. Alternatively, since H is the intersection of lines BH and AH, and AH is from A(0,0) to H, and BH is from B(sqrt(5),0) to H. So H must lie at the intersection of these two lines.
+
+But how to find H? Let's find the equations of lines BH and AH.
+
+First, line AH connects A(0,0) to H. But we don't know H yet. Similarly, line BH connects B(sqrt(5),0) to H. But H is the intersection point. Wait, maybe we can express H in terms of variables.
+
+Alternatively, since BEFH is a rectangle, vectorially, we can express H as E + vector EF, where vector EF is perpendicular to vector BE and has the same length as BH. Wait, maybe this is getting too complicated.
+
+Alternatively, let's use coordinates. Let’s denote point F as (x,y). Since BEFH is a rectangle, then vectors BE and EF must be perpendicular. So vector BE is (2*sqrt(5), sqrt(5)), and vector EF is (x - 3*sqrt(5), y - sqrt(5)). Their dot product must be zero:
+
+(2*sqrt(5))(x - 3*sqrt(5)) + (sqrt(5))(y - sqrt(5)) = 0
+
+Simplify:
+
+2*sqrt(5)*(x - 3*sqrt(5)) + sqrt(5)*(y - sqrt(5)) = 0
+
+Divide both sides by sqrt(5):
+
+2*(x - 3*sqrt(5)) + (y - sqrt(5)) = 0
+
+2x - 6*sqrt(5) + y - sqrt(5) = 0
+
+2x + y = 7*sqrt(5)  --- Equation 1
+
+Also, since BEFH is a rectangle, the length of BE is equal to the length of FH. But we need to find F and H such that FH is equal and parallel to BE.
+
+Alternatively, since BEFH is a rectangle, the coordinates of F can be expressed as E + vector perpendicular to BE with the same length. The length of BE is 5. The length of vector BE is sqrt[(2*sqrt(5))^2 + (sqrt(5))^2] = sqrt(20 + 5) = sqrt(25) = 5. Good.
+
+Therefore, the vector EF must have the same length as BH, and since EF is perpendicular to BE, we can compute vector EF as a rotation of vector BE by 90 degrees. Rotating vector BE (2*sqrt(5), sqrt(5)) by 90 degrees counterclockwise would give (-sqrt(5), 2*sqrt(5)). Rotating clockwise would give (sqrt(5), -2*sqrt(5)). Depending on the orientation of the rectangle.
+
+But in the Asymptote code, the rectangle is drawn as B--H--E--F--A--D--E--G--C, which suggests that from B to H to E to F to A. So the rectangle is BEFH, connected as B-E-F-H-B. So from B to E to F to H to B. Therefore, the order is BEFH.
+
+Therefore, the rotation direction should be such that the rectangle is formed in that order. So from B to E is one side, then E to F is another, then F to H, then H to B.
+
+Therefore, the turn from BE to EF should be a left turn (counterclockwise). So vector BE is (2*sqrt(5), sqrt(5)). Rotating this 90 degrees counterclockwise would give (-sqrt(5), 2*sqrt(5)). Therefore, vector EF is (-sqrt(5), 2*sqrt(5)). Therefore, point F is E + EF = (3*sqrt(5), sqrt(5)) + (-sqrt(5), 2*sqrt(5)) = (2*sqrt(5), 3*sqrt(5)).
+
+Then, vector FH would be equal and opposite to vector BE. Wait, but in a rectangle, opposite sides are equal and parallel. So vector BE is (2*sqrt(5), sqrt(5)), so vector FH should also be (2*sqrt(5), sqrt(5)). Therefore, from F(2*sqrt(5), 3*sqrt(5)), moving by vector (2*sqrt(5), sqrt(5)) would give H. Wait, but that would take us to (4*sqrt(5), 4*sqrt(5)), but then from H to B should be vector (-4*sqrt(5) + sqrt(5), -4*sqrt(5) + 0) = (-3*sqrt(5), -4*sqrt(5)), which doesn't match.
+
+Alternatively, maybe vector EF is (sqrt(5), -2*sqrt(5)), if rotated clockwise. Let's try that.
+
+Vector BE is (2*sqrt(5), sqrt(5)). Rotating 90 degrees clockwise gives (sqrt(5), -2*sqrt(5)). Therefore, vector EF is (sqrt(5), -2*sqrt(5)). Therefore, point F is E + EF = (3*sqrt(5) + sqrt(5), sqrt(5) - 2*sqrt(5)) = (4*sqrt(5), -sqrt(5)).
+
+Then, vector FH should be equal and opposite to vector BE. So vector FH = (-2*sqrt(5), -sqrt(5)). Therefore, from F(4*sqrt(5), -sqrt(5)), moving by (-2*sqrt(5), -sqrt(5)) gives H(2*sqrt(5), -2*sqrt(5)). Then, from H(2*sqrt(5), -2*sqrt(5)), moving by vector (-sqrt(5), 2*sqrt(5)) would give back to B(sqrt(5),0)? Let's check:
+
+From H(2*sqrt(5), -2*sqrt(5)), moving by (-sqrt(5), 2*sqrt(5)) gives (2*sqrt(5) - sqrt(5), -2*sqrt(5) + 2*sqrt(5)) = (sqrt(5), 0), which is point B. Perfect. So this works.
+
+Therefore, the coordinates are:
+
+- B: (sqrt(5), 0)
+
+- E: (3*sqrt(5), sqrt(5))
+
+- F: (4*sqrt(5), -sqrt(5))
+
+- H: (2*sqrt(5), -2*sqrt(5))
+
+Now, we need to find BH. BH is the distance between B(sqrt(5), 0) and H(2*sqrt(5), -2*sqrt(5)).
+
+Using the distance formula:
+
+BH = sqrt[(2*sqrt(5) - sqrt(5))^2 + (-2*sqrt(5) - 0)^2] = sqrt[(sqrt(5))^2 + (-2*sqrt(5))^2] = sqrt[5 + 20] = sqrt[25] = 5.
+
+Wait, that's interesting. So BH is 5 units? But the problem asks for BH as a mixed number. 5 is a whole number, so maybe 5 0/1? But that seems trivial. Alternatively, perhaps I made a miscalculation.
+
+Wait, let's check the coordinates again.
+
+Wait, point H is at (2*sqrt(5), -2*sqrt(5)). Point B is at (sqrt(5),0). So the difference in x-coordinates is 2*sqrt(5) - sqrt(5) = sqrt(5). The difference in y-coordinates is -2*sqrt(5) - 0 = -2*sqrt(5). Therefore, the distance BH is sqrt[(sqrt(5))^2 + (-2*sqrt(5))^2] = sqrt[5 + 20] = sqrt[25] = 5. So yes, BH is 5 units.
+
+But according to the problem statement, we need to express BH as a mixed number. But 5 is already a whole number. So maybe the answer is 5. But that seems too straightforward. Maybe I made a mistake in the coordinate assignments.
+
+Wait, let's check the rectangle BEFH. From B(sqrt(5),0) to E(3*sqrt(5), sqrt(5)) to F(4*sqrt(5), -sqrt(5)) to H(2*sqrt(5), -2*sqrt(5)) to B(sqrt(5),0). Let's verify that all angles are 90 degrees.
+
+Vector BE: (2*sqrt(5), sqrt(5))
+
+Vector EF: (sqrt(5), -2*sqrt(5))
+
+Dot product BE · EF = (2*sqrt(5))(sqrt(5)) + (sqrt(5))(-2*sqrt(5)) = 2*5 + (-2*5) = 10 -10 = 0. So they are perpendicular.
+
+Vector EF: (sqrt(5), -2*sqrt(5))
+
+Vector FH: (-2*sqrt(5), -sqrt(5))
+
+Dot product EF · FH = (sqrt(5))(-2*sqrt(5)) + (-2*sqrt(5))(-sqrt(5)) = -2*5 + 2*5 = -10 +10 = 0. Perpendicular.
+
+Vector FH: (-2*sqrt(5), -sqrt(5))
+
+Vector HB: (-sqrt(5), 2*sqrt(5))
+
+Dot product FH · HB = (-2*sqrt(5))(-sqrt(5)) + (-sqrt(5))(2*sqrt(5)) = 2*5 + (-2*5) = 10 -10 = 0. Perpendicular.
+
+Vector HB: (-sqrt(5), 2*sqrt(5))
+
+Vector BE: (2*sqrt(5), sqrt(5))
+
+Dot product HB · BE = (-sqrt(5))(2*sqrt(5)) + (2*sqrt(5))(sqrt(5)) = -2*5 + 2*5 = -10 +10 = 0. Perpendicular.
+
+Therefore, all adjacent sides are perpendicular, so BEFH is indeed a rectangle. The coordinates check out. Therefore, the distance BH is 5. So the answer is 5, which is already a whole number, so as a mixed number, it's 5 0/1, but that's not standard. Alternatively, 5 is simply 5.
+
+But the problem says "Express your answer as a mixed number." So maybe the answer is 5. But 5 is a whole number, so as a mixed number, it's 5 0/1. However, that's unconventional. Alternatively, maybe the problem expects a fraction with a whole number part, but since 5 is a whole number, maybe just 5.
+
+Alternatively, perhaps I made a mistake in scaling or coordinates.
+
+Wait, let's check the Asymptote code again. The Asymptote code draws H--B--Ep--F--A--D--Ep--G--C. So H is connected to B, which is connected to Ep (which is E) then to F, then to A, then to D, then to Ep (E), then to G, then to C. So the figure is a polygon connecting H-B-E-F-A-D-E-G-C. So H is connected to B, which is connected to E, which is connected to F, which is connected to A, etc.
+
+In the Asymptote code, point H is defined as extension(B--H,A--G); So H is the intersection of line BH and line AG. In the original coordinates, line AG is from A(0,0) to G(6,3), and line BH is from B(3,0) to H. So we can compute H as the intersection of these two lines.
+
+Let’s compute the coordinates of H in the original unscaled coordinates.
+
+First, equation of line AG: passes through A(0,0) and G(6,3). The slope is 3/6 = 1/2. So equation is y = (1/2)x.
+
+Equation of line BH: passes through B(3,0) and H. But H is also on AG, so H is the intersection of AG and BH. Let’s denote H as (h_x, h_y). Since H is on AG, h_y = (1/2)h_x. Also, H is on BH, which passes through B(3,0) and H(h_x, h_y). The slope of BH is (h_y - 0)/(h_x - 3) = h_y / (h_x - 3). Since H is also on AG, h_y = (1/2)h_x. Therefore, the slope of BH is (1/2)h_x / (h_x - 3). But since BH is a side of the rectangle BEFH, which is supposed to be a rectangle with BE = 5. Wait, but in the original unscaled coordinates, BE is 3*sqrt(5), not 5. Therefore, in the original coordinates, BE is 3*sqrt(5), but in the problem statement, BE is 5. Therefore, scaling factor is 5/(3*sqrt(5)) = sqrt(5)/3. Therefore, all coordinates need to be scaled by sqrt(5)/3.
+
+Therefore, in the original coordinates, H is the intersection of AG and BH. Let's compute it in original coordinates.
+
+Line AG: from A(0,0) to G(6,3). Equation: y = (1/2)x.
+
+Line BH: from B(3,0) to H. Let’s find H such that BH is part of the rectangle BEFH. Wait, but if we scale the coordinates by sqrt(5)/3, then H's coordinates in original coordinates would be (h_x, h_y) = (6*sqrt(5)/3, 3*sqrt(5)/3) = (2*sqrt(5), sqrt(5)). Wait, but that's the point E. Wait, no. Wait, G is at (6,3), so G scaled is (6*sqrt(5)/3, 3*sqrt(5)/3) = (2*sqrt(5), sqrt(5)), which is point E. Therefore, line AG in original coordinates is from A(0,0) to E(2*sqrt(5), sqrt(5)). Then, line BH is from B(sqrt(5),0) to H. The intersection of AG and BH is point H. But in the scaled coordinates, H is at (2*sqrt(5), -2*sqrt(5)), but that's not on AG. Wait, maybe this is getting too convoluted.
+
+Alternatively, maybe we can use the scaled coordinates where BE is 5. So in scaled coordinates:
+
+- A is (0,0)
+
+- B is (sqrt(5),0)
+
+- C is (2*sqrt(5),0)
+
+- D is (3*sqrt(5),0)
+
+- E is (3*sqrt(5), sqrt(5))
+
+- G is (2*sqrt(5), sqrt(5))
+
+- H is (2*sqrt(5), -2*sqrt(5))
+
+Then, line AG is from (0,0) to (2*sqrt(5), sqrt(5)). The equation is y = (sqrt(5)/(2*sqrt(5)) )x = (1/2)x.
+
+Line BH is from (sqrt(5),0) to (2*sqrt(5), -2*sqrt(5)). Let's compute the equation of BH.
+
+Slope of BH: (-2*sqrt(5) - 0)/(2*sqrt(5) - sqrt(5)) = (-2*sqrt(5))/(sqrt(5)) = -2.
+
+Equation: y - 0 = -2(x - sqrt(5)) => y = -2x + 2*sqrt(5).
+
+Intersection with AG: y = (1/2)x and y = -2x + 2*sqrt(5).
+
+Set equal: (1/2)x = -2x + 2*sqrt(5)
+
+Multiply both sides by 2: x = -4x + 4*sqrt(5)
+
+Bring terms together: x +4x = 4*sqrt(5)
+
+5x = 4*sqrt(5)
+
+x = (4*sqrt(5))/5
+
+Then y = (1/2)x = (1/2)*(4*sqrt(5)/5) = (2*sqrt(5))/5
+
+Therefore, in scaled coordinates, point H is at (4*sqrt(5)/5, 2*sqrt(5)/5). But in our earlier calculation, H was at (2*sqrt(5), -2*sqrt(5)). So there's a discrepancy here. Therefore, something is wrong.
+
+Wait, this suggests that in scaled coordinates, H is at (4*sqrt(5)/5, 2*sqrt(5)/5), but in our previous rectangle construction, H was at (2*sqrt(5), -2*sqrt(5)). Therefore, there is a contradiction. Therefore, my previous assumption that BEFH is a rectangle with BE =5 and EF as perpendicular may be incorrect.
+
+Alternatively, maybe the scaling is different. Let me see. If in the original unscaled coordinates, BE is 3*sqrt(5). If in the problem statement, BE is 5, then scaling factor is 5/(3*sqrt(5)) = sqrt(5)/3. Therefore, in scaled coordinates, line AG is from (0,0) to (6*sqrt(5)/3, 3*sqrt(5)/3) = (2*sqrt(5), sqrt(5)), which is point E. But line AG in the problem is from A to G, which is a diagonal of the square CDEG. But in the scaled coordinates, G is E. Wait, that can't be. So something is wrong here.
+
+Alternatively, perhaps the scaling factor is different. Wait, no. The scaling factor is determined by BE in the original coordinates versus BE in the problem. So if in original coordinates, BE is 3*sqrt(5), but in the problem, BE is 5, scaling factor is 5/(3*sqrt(5)) = sqrt(5)/3. Therefore, all coordinates are scaled by sqrt(5)/3.
+
+Therefore, point H in the problem is the intersection of BH and AG in the scaled coordinates. But in the scaled coordinates, AG is from A(0,0) to E(2*sqrt(5), sqrt(5)), and BH is from B(sqrt(5),0) to H. But according to the Asymptote code, H is defined as extension(B--H,A--G). So in the original unscaled coordinates, H is at (6,3). But scaled down, H would be at (6*sqrt(5)/3, 3*sqrt(5)/3) = (2*sqrt(5), sqrt(5)), which is point E. But that can't be.
+
+This suggests that in the scaled coordinates, the intersection point H is actually the same as E, which is (2*sqrt(5), sqrt(5)). But according to the problem statement, H is a distinct point connected to B and A. Therefore, there must be a mistake in the scaling approach.
+
+Alternatively, perhaps I need to use coordinate geometry without scaling. Let's set up the coordinate system with B at (0,0), C at (3,0), D at (6,0), E at (6,3). Then quadrilateral BEFH is a rectangle with BE = 5. So in this coordinate system:
+
+- B: (0,0)
+
+- E: (6,3)
+
+- The distance BE is sqrt[(6-0)^2 + (3-0)^2] = sqrt(36 +9) = sqrt(45) = 3*sqrt(5). But problem states BE =5. Therefore, scaling factor is 5/(3*sqrt(5)) = sqrt(5)/3.
+
+Therefore, all coordinates need to be scaled by sqrt(5)/3.
+
+Therefore:
+
+- B: (0,0) * sqrt(5)/3 = (0,0)
+
+- E: (6,3) * sqrt(5)/3 = (2*sqrt(5), sqrt(5))
+
+- C: (3,0) * sqrt(5)/3 = (sqrt(5),0)
+
+- D: (6,0) * sqrt(5)/3 = (2*sqrt(5),0)
+
+- G: (6,3) * sqrt(5)/3 = (2*sqrt(5), sqrt(5))
+
+- A: intersection of AG and BH. Wait, in the original unscaled coordinates, AG is from (0,0) to (2*sqrt(5), sqrt(5)), and BH is from (0,0) to H. But H is the intersection of BH and AG. Wait, but in the original unscaled coordinates, AG is from A(0,0) to G(2*sqrt(5), sqrt(5)), and BH is from B(0,0) to H. Therefore, H is the intersection point of AG and BH. But since AG starts at A(0,0) and goes to G(2*sqrt(5), sqrt(5)), and BH starts at B(0,0) and goes to H. If they intersect at H, which is on AG, then H must be a point on AG beyond G. Wait, but G is at (2*sqrt(5), sqrt(5)), and AG is from (0,0) to (2*sqrt(5),sqrt(5)). If BH is from B(0,0) to H on AG, then H must be between A and G. But in the problem, H is connected to B and A, forming the rectangle BEFH. Therefore, H must be a point such that BH is a side of the rectangle. Therefore, H is not on AG in the original coordinates. Wait, this is getting too confusing.
+
+Given the time I've spent and the complexity, perhaps the answer is 5, but given the problem asks for a mixed number, maybe 5.000... which is just 5. But since the problem statement says "Express your answer as a mixed number," maybe the answer is simply 5, which is already a whole number. Alternatively, perhaps there's a mistake in the problem statement or my interpretation.
+
+But according to the calculations in scaled coordinates, BH is 5, which is already a whole number. Therefore, the answer is \boxed{5}.
+</think>

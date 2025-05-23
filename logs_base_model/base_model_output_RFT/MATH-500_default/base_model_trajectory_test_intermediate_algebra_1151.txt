@@ -1,0 +1,224 @@
+Okay, let me try to figure out how to find the maximum value of this function f(x, y) = x√(1 - y²) + y√(1 - x²) where both x and y are between -1 and 1. Hmm, this looks a bit tricky, but maybe I can use some calculus here. Let me start by recalling how to find maxima and minima for functions of two variables. 
+
+First, I remember that to find the extrema of a function, we can use the method of partial derivatives. So, I need to compute the partial derivatives of f with respect to x and y, set them equal to zero, and solve the resulting equations. That should give me the critical points. Then, I can check those points along with the boundaries of the domain to find the maximum value.
+
+Let me write down the function again:
+
+f(x, y) = x√(1 - y²) + y√(1 - x²)
+
+Alright, let's compute the partial derivative with respect to x first. For the first term, x√(1 - y²), the derivative with respect to x is √(1 - y²). For the second term, y√(1 - x²), the derivative with respect to x is y * (1/2)(-2x)/√(1 - x²) = -xy / √(1 - x²). So putting it together, the partial derivative with respect to x, which I'll call f_x, is:
+
+f_x = √(1 - y²) - (xy)/√(1 - x²)
+
+Similarly, the partial derivative with respect to y, f_y, would be:
+
+For the first term, x√(1 - y²), the derivative with respect to y is x * (1/2)(-2y)/√(1 - y²) = -xy / √(1 - y²)
+
+For the second term, y√(1 - x²), the derivative with respect to y is √(1 - x²). So:
+
+f_y = √(1 - x²) - (xy)/√(1 - y²)
+
+So now, to find the critical points, we set f_x = 0 and f_y = 0. That gives us the system of equations:
+
+1. √(1 - y²) - (xy)/√(1 - x²) = 0
+2. √(1 - x²) - (xy)/√(1 - y²) = 0
+
+Hmm, these equations look symmetric. Maybe there's a symmetric solution where x = y? Let me test that. Let's assume x = y = t, where t is some number between -1 and 1. Then, substituting into the first equation:
+
+√(1 - t²) - (t²)/√(1 - t²) = 0
+
+Multiply both sides by √(1 - t²):
+
+(1 - t²) - t² = 0
+
+Simplify:
+
+1 - t² - t² = 1 - 2t² = 0
+
+So, 2t² = 1 => t² = 1/2 => t = ±√(1/2) = ±√2/2 ≈ ±0.707
+
+Since x and y are between -1 and 1, both √2/2 and -√2/2 are valid. Let's check if these points satisfy both equations. Let's take t = √2/2 first.
+
+Then, substituting into the first equation:
+
+√(1 - t²) = √(1 - 1/2) = √(1/2) = √2/2
+
+And (xy)/√(1 - x²) = (t²)/√(1 - t²) = (1/2)/ (√2/2) = (1/2) * (2/√2) = 1/√2 = √2/2
+
+So, √(1 - t²) - (xy)/√(1 - x²) = √2/2 - √2/2 = 0, which works.
+
+Similarly, the second equation would give the same result since x and y are the same. So, t = √2/2 is a critical point, and similarly, t = -√2/2 is another critical point. But since the function f(x, y) is symmetric in x and y, and the square roots are even functions, the value at t = √2/2 and t = -√2/2 might be the same or different. Let's compute f(√2/2, √2/2):
+
+f(√2/2, √2/2) = (√2/2) * √(1 - (√2/2)²) + (√2/2) * √(1 - (√2/2)²)
+
+First, compute 1 - (√2/2)² = 1 - (2/4) = 1 - 1/2 = 1/2. So √(1/2) = √2/2.
+
+Therefore, each term is (√2/2)*(√2/2) = (2/4) = 1/2. So the sum is 1/2 + 1/2 = 1.
+
+Similarly, f(-√2/2, -√2/2) = (-√2/2)*√(1 - ( (-√2/2)^2 )) + (-√2/2)*√(1 - ( (-√2/2)^2 )). Since the square terms are positive, the square roots are still √(1/2) = √2/2. So each term is (-√2/2)*(√2/2) = -1/2. The sum is -1/2 + (-1/2) = -1. So the minimum value is -1, but we are looking for the maximum. So maybe the maximum occurs at the critical point (√2/2, √2/2) with value 1? But let me check other possibilities.
+
+Wait, but maybe there are other critical points where x ≠ y. Let's consider solving the system of equations without assuming x = y. Let's write the two equations again:
+
+1. √(1 - y²) = (xy)/√(1 - x²)
+2. √(1 - x²) = (xy)/√(1 - y²)
+
+Let me denote equation 1 as A and equation 2 as B.
+
+From equation A: √(1 - y²) = (xy)/√(1 - x²)
+
+From equation B: √(1 - x²) = (xy)/√(1 - y²)
+
+Let me multiply equation A and equation B together:
+
+√(1 - y²) * √(1 - x²) = (xy)/√(1 - x²) * (xy)/√(1 - y²)
+
+Left side: √[(1 - x²)(1 - y²)]
+
+Right side: (x² y²)/(√(1 - x²) √(1 - y²)) = (x² y²)/√[(1 - x²)(1 - y²)]
+
+So, we have:
+
+√[(1 - x²)(1 - y²)] = (x² y²)/√[(1 - x²)(1 - y²)]
+
+Multiply both sides by √[(1 - x²)(1 - y²)]:
+
+(1 - x²)(1 - y²) = x² y²
+
+Expand the left side:
+
+(1 - x² - y² + x² y²) = x² y²
+
+Subtract x² y² from both sides:
+
+1 - x² - y² = 0
+
+So, 1 = x² + y²
+
+Interesting. So, the critical points must lie on the circle x² + y² = 1. That's a useful condition. So, not all critical points, but if they are critical points, then x² + y² = 1. So, that's a helpful constraint.
+
+Therefore, any critical point must satisfy x² + y² = 1. So, now, we can substitute this into the original equations. Let me see.
+
+We have x² + y² = 1. Let me express y² = 1 - x². Then, substitute into equation A:
+
+√(1 - y²) = (x y)/√(1 - x²)
+
+But 1 - y² = 1 - (1 - x²) = x². So, √(x²) = |x|. Since x is between -1 and 1, √(1 - y²) = |x|.
+
+But the left side of equation A is |x|, and the right side is (x y)/√(1 - x²). So:
+
+|x| = (x y)/√(1 - x²)
+
+Similarly, from equation B:
+
+√(1 - x²) = (x y)/√(1 - y²)
+
+But 1 - x² = y², so √(1 - x²) = |y|. So:
+
+|y| = (x y)/√(1 - y²) = (x y)/|x|
+
+Wait, because √(1 - y²) = √(x²) = |x|.
+
+So equation B becomes:
+
+|y| = (x y)/|x|
+
+But |x| is either x or -x. Let me consider cases.
+
+Case 1: x > 0. Then |x| = x. So equation A becomes:
+
+x = (x y)/x => x = y
+
+Similarly, equation B becomes:
+
+|y| = (x y)/x = y
+
+But since x > 0, and we are in case x > 0. Then, from equation A, x = y. Then, from the circle equation x² + y² = 1, since x = y, 2x² = 1 => x² = 1/2 => x = √(1/2) = √2/2. So y = √2/2. So this is the critical point we already found earlier.
+
+Case 2: x < 0. Then |x| = -x. Equation A becomes:
+
+|x| = (x y)/|x| => -x = (x y)/(-x) => -x = -y => y = x
+
+But x < 0, so y = x < 0. Then, from x² + y² = 1, since x = y, 2x² = 1 => x = -√2/2. So y = -√2/2. Which is the other critical point we found earlier.
+
+Case 3: x = 0. Then, from equation A: |0| = (0 * y)/√(1 - 0) => 0 = 0, which is always true. From equation B: √(1 - 0) = (0 * y)/√(1 - y²) => 1 = 0, which is impossible. So x = 0 is not a solution.
+
+Similarly, if y = 0, similar contradiction. So the only critical points are (√2/2, √2/2) and (-√2/2, -√2/2). So, as before.
+
+But we need to check if these are maxima. Let's compute the function value at these points. As before, f(√2/2, √2/2) = 1, and f(-√2/2, -√2/2) = -1. So, since we are looking for the maximum, 1 is a candidate.
+
+But we need to check the boundaries of the domain as well because the maximum might occur there. The domain is a square with x and y ranging from -1 to 1. So, the boundaries are when x = ±1 or y = ±1.
+
+Let's check the boundaries.
+
+First, consider x = 1. Then, f(1, y) = 1 * √(1 - y²) + y * √(1 - 1²) = √(1 - y²) + y * 0 = √(1 - y²). The maximum of √(1 - y²) occurs when y² is minimized, i.e., y = 0. Then, √(1 - 0) = 1. So f(1, 0) = 1.
+
+Similarly, if x = -1, then f(-1, y) = (-1)√(1 - y²) + y√(1 - (-1)^2) = -√(1 - y²) + y*0 = -√(1 - y²). The maximum here would be when y = 0, which gives -1. So the maximum on x = -1 is -1, which is the minimum.
+
+Now, consider y = 1. Then, f(x, 1) = x√(1 - 1²) + 1 * √(1 - x²) = 0 + √(1 - x²). The maximum of √(1 - x²) occurs at x = 0, giving 1. So f(0, 1) = 1.
+
+Similarly, y = -1: f(x, -1) = x√(1 - (-1)^2) + (-1)√(1 - x²) = x*0 + (-1)√(1 - x²) = -√(1 - x²). The maximum here is at x = 0, which is -1.
+
+So on the boundaries, the maximum value is 1, achieved at (1, 0), (0, 1), (-1, 0), (0, -1). But wait, f(1, 0) is 1, f(0, 1) is 1, same for the others. So the maximum on the boundary is 1. But in the interior, the critical point gives us 1 as well. So the maximum is 1. But wait, when we checked the critical points, (√2/2, √2/2) gives 1. So that's the same as the boundary points. So is 1 the maximum?
+
+But hold on, maybe there are other points where the function is higher. Let me check another point. Suppose x = y. Then, f(x, x) = x√(1 - x²) + x√(1 - x²) = 2x√(1 - x²). Let's see what's the maximum of this function. Let me compute the derivative with respect to x:
+
+d/dx [2x√(1 - x²)] = 2√(1 - x²) + 2x * (1/2)(-2x)/√(1 - x²) = 2√(1 - x²) - (2x²)/√(1 - x²)
+
+Set this equal to zero:
+
+2√(1 - x²) - (2x²)/√(1 - x²) = 0
+
+Multiply both sides by √(1 - x²):
+
+2(1 - x²) - 2x² = 0 => 2 - 2x² - 2x² = 2 - 4x² = 0 => 4x² = 2 => x² = 1/2 => x = ±√(1/2) = ±√2/2. So, same as before. So, when x = y = √2/2, f(x, y) = 1, which is the same as the boundary points. So, in this case, the maximum is 1.
+
+But let me check another point. Suppose x = 1/2, y = 1/2. Then f(1/2, 1/2) = (1/2)√(1 - 1/4) + (1/2)√(1 - 1/4) = (1/2)(√3/2) + (1/2)(√3/2) = (√3)/4 + (√3)/4 = √3/2 ≈ 0.866, which is less than 1.
+
+Another point: x = √(2)/2 ≈ 0.707, y = √(2)/2 ≈ 0.707. As before, f(x, y) = 1. So that's the same as the critical point.
+
+Wait, but maybe there's a point where x ≠ y but still gives a higher value. Let me try x = 1, y = 1. Then f(1, 1) = 1*0 + 1*0 = 0. That's worse. How about x = 1, y = 0. Then f(1, 0) = 1*1 + 0*√1 = 1 + 0 = 1. Similarly, x=0, y=1 gives 0 + 1*1 = 1. So those are the same as the critical points.
+
+But let's think about the function. Since the function is symmetric in x and y, and the maximum occurs at (1, 0), (0, 1), etc., and also at (√2/2, √2/2), which gives 1, the maximum is indeed 1.
+
+But wait, let me confirm that. Suppose we have x = a, y = b. Then, f(a, b) = a√(1 - b²) + b√(1 - a²). Let's suppose that a and b are both positive. Then, to maximize this, maybe we can use trigonometric substitution. Let me try that.
+
+Let’s set x = sinθ and y = sinφ, where θ and φ are angles between -π/2 and π/2. Then, √(1 - x²) = cosθ and √(1 - y²) = cosφ. Then, the function becomes:
+
+f(θ, φ) = sinθ cosφ + sinφ cosθ = sin(θ + φ)
+
+So, f(x, y) = sin(θ + φ). The maximum value of sin(θ + φ) is 1, which occurs when θ + φ = π/2. Therefore, the maximum value of f(x, y) is 1. That's a neat approach. So regardless of x and y, the maximum value is 1. So that's consistent with the previous result.
+
+But wait, is this substitution valid? Let me check. If x = sinθ, then θ is between -π/2 and π/2, so x is between -1 and 1. Similarly for y. Then, sin(θ + φ) is between -1 and 1, so the maximum is 1. Therefore, the maximum of f(x, y) is indeed 1. This method seems more straightforward. So, maybe I should have thought of that earlier.
+
+But since I didn't think of it initially, I had to go through the calculus approach. But the trigonometric substitution is a clever trick here. It's a common technique to use when you have square roots of 1 - x², which often relate to sin and cos functions. So, by substituting x = sinθ and y = sinφ, the function simplifies to sin(θ + φ), which has a maximum of 1.
+
+Therefore, the maximum value is 1, achieved when θ + φ = π/2. Translating back to x and y, since x = sinθ and y = sinφ, we have θ = π/4, φ = π/4, so x = y = sin(π/4) = √2/2. Alternatively, when θ + φ = π/2, if one is 0, the other is π/2, so x = 0 and y = 1, or x = 1 and y = 0. Hence, the maximum of 1 is achieved at (√2/2, √2/2), (1, 0), and (0, 1), etc.
+
+Therefore, the maximum value is 1. So, the answer is 1.
+
+But let me verify this once again. If we use the trigonometric substitution, and since sin(θ + φ) ≤ 1, then the maximum is indeed 1. Also, by the AM-GM inequality or Cauchy-Schwarz, maybe?
+
+Wait, let's try using Cauchy-Schwarz. Let me consider the two terms in the function:
+
+a√(1 - b²) + b√(1 - a²)
+
+Let me think of vectors (a, b) and (√(1 - b²), √(1 - a²)). Then, by Cauchy-Schwarz inequality:
+
+(a√(1 - b²) + b√(1 - a²)) ≤ √(a² + b²) * √( (1 - b²) + (1 - a²) )
+
+But √(a² + b²) is the magnitude of the vector (a, b), and √(2 - a² - b²) is the magnitude of the vector (√(1 - b²), √(1 - a²)). Let's compute the product:
+
+√(a² + b²) * √(2 - a² - b²)
+
+Let me denote s = a² + b². Then the product becomes √s * √(2 - s) = √[s(2 - s)]. To maximize √[s(2 - s)], we need to maximize s(2 - s). This is a quadratic in s: -s² + 2s. The maximum occurs at s = -b/(2a) = -2/(2*(-1)) = 1. So maximum value is -1 + 2(1) = 1, so the maximum of s(2 - s) is 1. Therefore, √[s(2 - s)] ≤ 1. Therefore, the product √s * √(2 - s) ≤ 1. Hence, by Cauchy-Schwarz, the original expression is ≤ 1. Therefore, the maximum is 1.
+
+Wow, that's another way to see it. So, regardless of the approach, the maximum is 1. So, the answer is 1.
+
+But just to be thorough, let's check another point. Suppose x = 0.5 and y = √(3)/2 ≈ 0.866. Then, f(0.5, √3/2) = 0.5 * √(1 - 3/4) + (√3/2) * √(1 - 0.25) = 0.5 * √(1/4) + (√3/2) * √(3/4) = 0.5*(1/2) + (√3/2)*(√3/2) = 0.25 + (3/4) = 1. So, that point also gives 1. Wait, so here, x = 0.5, y = √3/2 ≈ 0.866. Then, x² + y² = 0.25 + 3/4 = 1. So, this is another critical point where x² + y² = 1. Wait, but earlier, when we substituted x = sinθ and y = sinφ, we had θ + φ = π/2. So, if θ = π/6, then φ = π/3. Then, x = sin(π/6) = 0.5, y = sin(π/3) = √3/2. So, that's another point where the maximum is achieved. So, there are multiple points where the maximum is achieved, as expected.
+
+Therefore, the maximum value is indeed 1. So, the answer is 1.
+
+**Final Answer**
+\boxed{1}
+Therefore, the maximum value of the function is $\boxed{1}$.
+</think>

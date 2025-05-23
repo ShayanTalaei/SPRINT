@@ -1,0 +1,110 @@
+Okay, let's try to figure out how to solve this problem. So, we have a monic polynomial p(x) of degree 4, and three of its roots are 1, 2, and 3. We need to find p(0) + p(4). Hmm, monic means the leading coefficient is 1, right? So, a monic polynomial of degree 4 would look like x⁴ + something x³ + something x² + something x + something. Since it's degree 4, there are four roots, but three of them are given: 1, 2, and 3. So, there must be a fourth root, let's call it r. Then, the polynomial can be written as (x - 1)(x - 2)(x - 3)(x - r). Since it's monic, that's the expanded form. 
+
+Wait, so p(x) = (x - 1)(x - 2)(x - 3)(x - r). Then, to find p(0) and p(4), we can plug in x = 0 and x = 4 into this polynomial. Let's see. 
+
+First, let's expand the polynomial. Maybe expanding it will help us find the coefficients, but I'm not sure if we need that. Alternatively, since we need p(0) and p(4), perhaps there's a smarter way without expanding everything. Let me think. 
+
+P(0) is the product of (-1)(-2)(-3)(-r). Because when x=0, each term becomes (0 - root) = -root. So, p(0) = (-1)(-2)(-3)(-r) = (-1)^4 * (1*2*3*r) = 1*6*r = 6r. Wait, is that right? Let me check. 
+
+Each (0 - root) is -root, so multiplying four terms: (-1)(-2)(-3)(-r) = (-1)^4 * (1*2*3*r) = 1 * 6r = 6r. Yes, that seems correct. So p(0) = 6r. 
+
+Similarly, p(4) is (4 - 1)(4 - 2)(4 - 3)(4 - r). Let's compute each term: (4 -1)=3, (4 -2)=2, (4 -3)=1, and (4 - r). So, p(4) = 3*2*1*(4 - r) = 6*(4 - r) = 24 - 6r. 
+
+Therefore, p(0) + p(4) = 6r + (24 - 6r) = 24. Wait, that's interesting! The r terms cancel out. So, regardless of the value of r, the sum p(0) + p(4) is 24. Is that possible? Let me verify again. 
+
+For p(0): (-1)(-2)(-3)(-r) = 6r. Correct. For p(4): (3)(2)(1)(4 - r) = 6*(4 - r) = 24 - 6r. So adding them: 6r + 24 - 6r = 24. Yes, that's right. So, the answer is 24. 
+
+But wait, why is the fourth root r not affecting the sum? That seems counterintuitive at first, but when we look at the terms, the p(0) has +6r and p(4) has -6r, so they cancel each other. Therefore, the sum is independent of r. That's a neat result. 
+
+So, even though we don't know the fourth root, the sum p(0) + p(4) is always 24. Therefore, the answer is 24. 
+
+I think that's the solution. Let me check if there's another way to approach this. Maybe using Vieta's formula? Let's see. 
+
+Vieta's formula relates the sum and products of roots to the coefficients of the polynomial. For a quartic polynomial x⁴ + a x³ + b x² + c x + d, the sum of roots is -a, the sum of products of roots two at a time is b, the sum of products three at a time is -c, and the product of roots is d. 
+
+Since p(x) is monic and degree 4, the polynomial is x⁴ + a x³ + b x² + c x + d. The roots are 1, 2, 3, and r. Then, sum of roots is 1 + 2 + 3 + r = 6 + r = -a. 
+
+Sum of products two at a time: (1*2) + (1*3) + (1*r) + (2*3) + (2*r) + (3*r) = 2 + 3 + r + 6 + 2r + 3r = 11 + 6r = b. 
+
+Sum of products three at a time: (1*2*3) + (1*2*r) + (1*3*r) + (2*3*r) = 6 + 2r + 3r + 6r = 6 + 11r = -c. 
+
+Product of roots: 1*2*3*r = 6r = d. 
+
+But how does this help us? Well, we need to compute p(0) + p(4). 
+
+Wait, p(0) is the constant term of the polynomial, which is d = 6r. 
+
+p(4) is 4⁴ + a*4³ + b*4² + c*4 + d. Let me compute that: 
+
+4⁴ = 256, 4³ = 64, 4² = 16, so:
+
+p(4) = 256 + a*64 + b*16 + c*4 + d. 
+
+But we know d = 6r. 
+
+Now, let's express everything in terms of r. 
+
+From Vieta's formula, we have a = -(sum of roots) = -(6 + r). So, a = -6 - r. 
+
+Similarly, b = 11 + 6r. 
+
+c = -(sum of products three at a time) = -(6 + 11r). So, c = -6 -11r. 
+
+Therefore, p(4) = 256 + (-6 - r)*64 + (11 + 6r)*16 + (-6 -11r)*4 + 6r. 
+
+Let me compute each term step by step:
+
+First term: 256. 
+
+Second term: (-6 - r)*64 = (-6*64) + (-r*64) = -384 -64r. 
+
+Third term: (11 + 6r)*16 = 11*16 + 6r*16 = 176 + 96r. 
+
+Fourth term: (-6 -11r)*4 = -6*4 + (-11r)*4 = -24 -44r. 
+
+Fifth term: 6r. 
+
+Now, adding all these up:
+
+256 -384 -64r +176 +96r -24 -44r +6r. 
+
+Combine like terms:
+
+Constants: 256 -384 +176 -24. 
+
+Let's compute that:
+
+256 -384 = -128
+
+-128 +176 = 48
+
+48 -24 = 24
+
+Variables: -64r +96r -44r +6r. 
+
+Compute coefficients:
+
+-64 +96 = 32
+
+32 -44 = -12
+
+-12 +6 = -6
+
+So, variables term is -6r.
+
+Therefore, p(4) = 24 -6r.
+
+Therefore, p(4) = 24 -6r.
+
+Earlier, we found p(0) =6r. Therefore, p(0) + p(4) =6r +24 -6r =24. 
+
+So, same result. Therefore, regardless of the value of r, the sum is 24. 
+
+So, the answer is 24. 
+
+Therefore, the final answer is \boxed{24}. 
+
+**Final Answer**
+\boxed{24}
+Therefore, the value of $p(0) + p(4)$ is $\boxed{24}$.
+</think>

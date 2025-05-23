@@ -1,0 +1,83 @@
+Okay, so I need to convert the decimal number 999 into base six. Hmm, how do I do that again? I remember that converting from base 10 to another base involves dividing the number by the base and keeping track of the remainders. Let me think through the steps carefully.
+
+First, I should recall the general method for converting a decimal number to another base. The process involves dividing the number by the target base (which is 6 in this case) and noting the quotient and the remainder. Then, you take the quotient and repeat the division by the base, collecting remainders each time. This continues until the quotient becomes zero. The base-six equivalent is then the sequence of remainders read from the last to the first.
+
+Let me try applying this step by step. Starting with 999 divided by 6. Let me calculate that. 6 times 166 is 996, right? Because 6*100=600, 6*160=960, so 6*166=996. So 999 divided by 6 is 166 with a remainder of 3. So the first remainder is 3.
+
+Now take the quotient, which is 166, and divide that by 6. Let me compute 166 ÷ 6. 6*27=162, so the remainder is 4. So the next remainder is 4. Now the quotient is 27.
+
+Next, divide 27 by 6. 6*4=24, so the remainder is 3. So remainder is 3. Quotient is 4.
+
+Then divide 4 by 6. Here, since 4 is less than 6, the quotient is 0 and the remainder is 4. So now the quotient is 0, which means we stop the process.
+
+Now, the remainders we collected were 3, 4, 3, 4. But when writing the number in base six, we need to read the remainders from the last division to the first. So the last remainder is 4, then 3, then 4, then 3. Wait, let me check that again. Let me list them in order of collection:
+
+First division: 999 ÷ 6 = 166, remainder 3 — so first remainder is 3.
+
+Second division: 166 ÷ 6 = 27, remainder 4 — second remainder is 4.
+
+Third division: 27 ÷ 6 = 4, remainder 3 — third remainder is 3.
+
+Fourth division: 4 ÷ 6 = 0, remainder 4 — fourth remainder is 4.
+
+So the remainders collected in order are 3, 4, 3, 4. But when converting, we read them from the last division to the first. So the last division gave a remainder of 4, then 3, then 4, then 3. Wait, that's not right. Wait, let me think. The first remainder is the least significant digit (rightmost), and the last remainder is the most significant digit (leftmost). So the order should be reversed.
+
+So the remainders are collected as 3 (LSB), 4, 3, 4 (MSB). Therefore, the base-six number should be 4 3 4 3. Let me check that. Let me verify by converting 4343 base 6 back to decimal to see if it equals 999.
+
+Calculating 4*6^3 + 3*6^2 + 4*6^1 + 3*6^0.
+
+Compute each term:
+
+4*216 = 864
+
+3*36 = 108
+
+4*6 = 24
+
+3*1 = 3
+
+Add them up: 864 + 108 = 972; 972 +24 = 996; 996 +3=999. Perfect, that's correct.
+
+So the base-six equivalent of 999 in decimal is 4343 base six.
+
+Wait, but let me double-check the conversion steps again to be sure. Maybe I made a mistake in the order of the remainders. Let me recount the divisions:
+
+First division: 999 ÷6=166 rem 3.
+
+Second division:166 ÷6=27 rem 4.
+
+Third division:27 ÷6=4 rem 3.
+
+Fourth division:4 ÷6=0 rem 4.
+
+So the remainders are 3,4,3,4. So when writing the number, from highest power to lowest, it's 4 (from the last division), then 3, then 4, then 3. So 4343. Yep, that's correct.
+
+Alternatively, maybe I can use another method, like subtracting the highest power of 6. Let me try that approach to verify.
+
+First, find the highest power of 6 that is less than or equal to 999. Let's compute powers of 6:
+
+6^0 =1
+
+6^1=6
+
+6^2=36
+
+6^3=216
+
+6^4=1296
+
+So 6^4 is 1296 which is greater than 999, so the highest power is 6^3=216.
+
+Now, how many times does 216 go into 999? Let's divide 999 by 216. 216*4=864, 216*5=1080 which is too much. So 4 times. So the coefficient for 6^3 is 4. Subtract 4*216=864 from 999: 999-864=135.
+
+Now, move to the next lower power, which is 6^2=36. How many times does 36 go into 135? 36*3=108, 36*4=144 which is too much. So 3 times. Coefficient for 6^2 is 3. Subtract 108 from 135: 135-108=27.
+
+Next power is 6^1=6. How many times does 6 go into 27? 6*4=24, 6*5=30 too much. So 4 times. Coefficient for 6^1 is 4. Subtract 24: 27-24=3.
+
+Finally, the last power is 6^0=1. How many times does 1 go into 3? 3 times. Coefficient for 6^0 is 3. Subtract 3: 3-3=0.
+
+So the coefficients are 4 (for 6^3), 3 (for 6^2), 4 (for 6^1), 3 (for 6^0). So the number is 4 3 4 3 in base six, which matches the previous result. So that confirms it.
+
+Therefore, the base-six equivalent of 999 in decimal is 4343.
+Therefore, the base six equivalent of $999_{10}$ is $\boxed{4343_6}$.
+</think>

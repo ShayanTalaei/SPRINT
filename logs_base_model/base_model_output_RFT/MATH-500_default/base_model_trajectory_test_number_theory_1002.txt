@@ -1,0 +1,131 @@
+Okay, let's try to solve this problem step by step. The question is asking for the largest integer less than 2010 that satisfies three conditions: when divided by 7, the remainder is 5; when divided by 11, the remainder is 10; and when divided by 13, the remainder is 10. So, we need to find a number N such that:
+
+1. N ≡ 5 mod 7
+2. N ≡ 10 mod 11
+3. N ≡ 10 mod 13
+
+And N is the largest such number less than 2010.
+
+First, I recall that this is a problem that can be approached using the Chinese Remainder Theorem (CRT). The CRT states that if the moduli are pairwise coprime, then there exists a unique solution modulo the product of the moduli. However, in this case, the moduli are 7, 11, and 13. Let me check if they are pairwise coprime. Since 7, 11, and 13 are all prime numbers, they are pairwise coprime. That means CRT applies here, so there should be a unique solution modulo 7×11×13 = 1001. Therefore, the solutions will repeat every 1001 numbers. So, the largest number less than 2010 will be either 2010 minus some remainder or the solution in the previous cycle.
+
+But let's not get ahead of ourselves. Let's first try to find the smallest positive solution and then see how to extend it to numbers less than 2010.
+
+First, let's tackle the congruences one by one. We have N ≡ 10 mod 11 and N ≡ 10 mod 13. Wait, both mod 11 and mod 13 have the same remainder, 10. That might be a clue. Maybe we can combine these two congruences first.
+
+So, N ≡ 10 mod 11 and N ≡ 10 mod 13. Since 11 and 13 are coprime, by CRT, there exists a unique solution modulo 11×13 = 143. Let's compute that.
+
+We can write N = 11k + 10 for some integer k. Then substituting into the second congruence:
+
+11k + 10 ≡ 10 mod 13
+
+Subtract 10 from both sides:
+
+11k ≡ 0 mod 13
+
+So, 11k must be a multiple of 13. Since 11 and 13 are coprime, this implies that k must be a multiple of 13. Let k = 13m for some integer m. Then, substituting back into N:
+
+N = 11*(13m) + 10 = 143m + 10
+
+So, the solutions to the two congruences N ≡ 10 mod 11 and N ≡ 10 mod 13 are numbers of the form N = 143m + 10.
+
+Now, we need to find such an N that also satisfies N ≡ 5 mod 7. Let's substitute N = 143m + 10 into this congruence:
+
+143m + 10 ≡ 5 mod 7
+
+First, let's compute 143 mod 7. Since 7×20 = 140, so 143 - 140 = 3. Therefore, 143 ≡ 3 mod 7. So:
+
+3m + 10 ≡ 5 mod 7
+
+Subtract 10 from both sides:
+
+3m ≡ 5 - 10 mod 7
+
+5 - 10 = -5, so:
+
+3m ≡ -5 mod 7
+
+But -5 mod 7 is the same as 2 mod 7 (since 7 - 5 = 2). Therefore:
+
+3m ≡ 2 mod 7
+
+We need to solve for m here. To solve 3m ≡ 2 mod 7, we can find the multiplicative inverse of 3 mod 7. The inverse of 3 mod 7 is a number x such that 3x ≡ 1 mod 7. Testing x=5: 3×5=15≡1 mod 7. So, inverse of 3 is 5. Therefore, multiply both sides by 5:
+
+m ≡ 2×5 mod 7
+
+m ≡ 10 mod 7
+
+10 mod 7 is 3. Therefore, m ≡ 3 mod 7.
+
+Thus, m can be written as m = 7n + 3 for some integer n. Substituting back into N:
+
+N = 143*(7n + 3) + 10 = 143×7n + 143×3 + 10
+
+Calculate 143×7: 143×7 = 1001. So:
+
+N = 1001n + 429 + 10 = 1001n + 439
+
+Therefore, the general solution is N = 1001n + 439. Now, we need the largest N less than 2010. Let's find the maximum integer n such that 1001n + 439 < 2010.
+
+Subtract 439 from both sides:
+
+1001n < 2010 - 439 = 1571
+
+Divide both sides by 1001:
+
+n < 1571 / 1001 ≈ 1.569
+
+Since n must be an integer, the largest possible n is 1. Therefore, the solution is N = 1001×1 + 439 = 1440.
+
+Wait, but let's check if 1440 is indeed less than 2010. Yes, 1440 is less than 2010. But wait, maybe there is a larger N? Let's check n=2: 1001×2 + 439 = 2002 + 439 = 2441, which is more than 2010. So n=2 is too big. Therefore, the largest N is 1440.
+
+But let's verify this solution to make sure. Let's check the three conditions:
+
+1. 1440 divided by 7: 7×205 = 1435, 1440 - 1435 = 5. So remainder 5. Good.
+2. 1440 divided by 11: 11×130 = 1430, 1440 - 1430 = 10. Remainder 10. Good.
+3. 1440 divided by 13: 13×110 = 1430, 1440 - 1430 = 10. Remainder 10. Good.
+
+All three conditions are satisfied. So 1440 is a valid solution. But wait, the problem asks for the largest integer less than 2010. But 1440 is less than 2010, but maybe there is a larger number less than 2010 that also satisfies the conditions. Since the solutions are periodic with period 1001, the next solution after 1440 would be 1440 + 1001 = 2441, which is over 2010. Therefore, 1440 is indeed the largest solution less than 2010. So the answer is 1440.
+
+But wait, let me check again. Let's compute 1001n + 439 < 2010. For n=1, 1001 + 439 = 1440. For n=2, 2002 + 439 = 2441, which is over 2010. So yes, 1440 is the largest. But wait, maybe if we take n=1 and add 1001, but that's over. Alternatively, perhaps there's a mistake in the calculation of the general solution. Let me check the steps again.
+
+We started with N = 143m + 10. Then substituted into N ≡5 mod7. 143 mod7 is 3, so 3m +10 ≡5 mod7. Then 3m ≡-5 mod7, which is 2 mod7. Then m ≡3 mod7. So m=7n+3. Then N=143*(7n+3)+10=1001n +429 +10=1001n +439. So that's correct. Then N=1001n +439. So for n=0, N=439. For n=1, 1440. For n=2, 2441. So yes, 1440 is the largest less than 2010.
+
+But wait, let me check if there is another solution between 1440 and 2010. Since the modulus is 1001, the next solution after 1440 is 1440 +1001=2441, which is too big. Therefore, 1440 is indeed the correct answer.
+
+But just to be thorough, let's check if there's a number between 1440 and 2010 that satisfies all three conditions. Suppose there is a number N = 1001n +439 where n=2 would give 2441, which is over. But maybe for some n between 1 and 2, but n must be integer. Therefore, no. So 1440 is correct.
+
+Alternatively, perhaps there's a mistake in the way we combined the congruences. Let me verify the steps again.
+
+First, combining N ≡10 mod11 and N≡10 mod13. Since 11 and 13 are coprime, we can use CRT. So N ≡10 mod143. That's correct. Then substituting into N ≡5 mod7. So N=143m +10. Then 143m +10 ≡5 mod7. As 143 mod7=3, so 3m +10 ≡5 mod7. Then 3m ≡-5 mod7, which is 2 mod7. Then m ≡3 mod7. So m=7n+3. Therefore, N=143*(7n+3)+10=1001n +429 +10=1001n +439. So that's correct. Therefore, the solutions are N=439, 1440, 2441, etc. So the largest less than 2010 is 1440. Therefore, the answer is 1440.
+
+But just to check, let's compute 1440 +1001=2441, which is over 2010. So 1440 is the correct answer. Therefore, the final answer is 1440.
+
+Wait, but let me check with another approach. Let's list numbers ≡10 mod143 and see which one is ≡5 mod7. The numbers are 10, 153 (10+143), 296 (153+143), 439 (296+143), 582, 725, 868, 1011, 1154, 1297, 1440, 1583, 1726, 1869, 2012, etc. Now, check which of these are ≡5 mod7.
+
+Compute 10 mod7: 3. Not 5.
+153 mod7: 153 ÷7=21*7=147, remainder 6. 6≠5.
+296 mod7: 296 ÷7=42*7=294, remainder 2. 2≠5.
+439 mod7: 439 ÷7=62*7=434, remainder 5. Bingo. So 439 is a solution.
+Next, 582 mod7: 582 - 83*7=582-581=1. 1≠5.
+725 mod7: 725 -103*7=725-721=4. 4≠5.
+868 mod7: 868 ÷7=124, exactly. 0≠5.
+1011 mod7: 1011 ÷7=144*7=1008, remainder 3. 3≠5.
+1154 mod7: 1154 -164*7=1154-1148=6. 6≠5.
+1297 mod7: 1297 ÷7=185*7=1295, remainder 2. 2≠5.
+1440 mod7: 1440 ÷7=205*7=1435, remainder 5. Bingo. So 1440 is the next solution.
+1583 mod7: 1583 -226*7=1583-1582=1. 1≠5.
+1726 mod7: 1726 -246*7=1726-1722=4. 4≠5.
+1869 mod7: 1869 ÷7=267, exactly. 0≠5.
+2012 mod7: 2012 -287*7=2012-2009=3. 3≠5.
+
+So the next solution after 1440 is 2012, which is over 2010. Therefore, 1440 is indeed the largest number less than 2010 that satisfies all three conditions. Therefore, the answer is 1440. So I think this confirms it.
+
+But just to be absolutely thorough, let's check 1440 in all three conditions again:
+
+1440 ÷7: 7×205=1435, 1440-1435=5. Correct.
+1440 ÷11: 11×130=1430, 1440-1430=10. Correct.
+1440 ÷13: 13×110=1430, 1440-1430=10. Correct.
+
+All three conditions are satisfied. Therefore, the answer is 1440. I think this is correct. So the final answer is 1440.
+Therefore, the largest integer less than $2010$ that satisfies all three conditions is $\boxed{1440}$.
+</think>

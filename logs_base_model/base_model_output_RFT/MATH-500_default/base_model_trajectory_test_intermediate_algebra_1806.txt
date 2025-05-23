@@ -1,0 +1,197 @@
+Okay, so I need to find the maximum value of the expression |1 + z| + |1 - z + z²| where z is a complex number with |z| = 1. Hmm, let me start by recalling some properties of complex numbers on the unit circle. Since |z| = 1, z can be represented as e^{iθ} where θ is the argument of z. That might make it easier to work with trigonometric functions.
+
+Let me write z as e^{iθ}. Then, |1 + z| becomes |1 + e^{iθ}|. I remember that the modulus of a complex number a + ib is √(a² + b²), so maybe I can compute this. For |1 + e^{iθ}|, expanding it gives |e^{i0} + e^{iθ}|. Using the formula for the modulus of the sum of two complex numbers, this is √[(1 + cosθ)² + (sinθ)^2]. Let me compute that:
+
+(1 + cosθ)^2 + sin²θ = 1 + 2cosθ + cos²θ + sin²θ = 2 + 2cosθ, since cos²θ + sin²θ = 1. So |1 + z| = √(2 + 2cosθ) = √(4cos²(θ/2)) = 2|cos(θ/2)|. Since θ is an angle between 0 and 2π, cos(θ/2) can be positive or negative, but the modulus is always non-negative. So |1 + z| = 2|cos(θ/2)|. But since we're looking for the maximum value, maybe we can just consider when cos(θ/2) is positive, so |1 + z| = 2cos(θ/2) for θ in [0, π], and 2|cos(θ/2)| for θ in [π, 2π]. But perhaps it's easier to keep it as 2|cos(θ/2)|.
+
+Similarly, let's compute the second term |1 - z + z²|. Let's substitute z = e^{iθ} into this expression. Then, 1 - z + z² = 1 - e^{iθ} + e^{i2θ}. Let me write this in terms of cos and sin. Let's compute the real and imaginary parts.
+
+First, 1 is just 1 + 0i. Then, -e^{iθ} is -cosθ - i sinθ. Then, e^{i2θ} is cos2θ + i sin2θ. Adding these together:
+
+Real part: 1 - cosθ + cos2θ
+
+Imaginary part: -sinθ + sin2θ
+
+So the modulus squared is [1 - cosθ + cos2θ]^2 + [ -sinθ + sin2θ ]^2. Let me compute this step by step.
+
+First, let's compute the real part:
+
+1 - cosθ + cos2θ. I know that cos2θ = 2cos²θ - 1. So substituting that in:
+
+1 - cosθ + 2cos²θ - 1 = -cosθ + 2cos²θ = 2cos²θ - cosθ.
+
+Similarly, the imaginary part:
+
+-sinθ + sin2θ. And sin2θ = 2sinθ cosθ. So substituting:
+
+-sinθ + 2sinθ cosθ = sinθ(-1 + 2cosθ).
+
+So the modulus squared is [2cos²θ - cosθ]^2 + [sinθ(-1 + 2cosθ)]^2.
+
+Let me compute each term:
+
+First term: [2cos²θ - cosθ]^2 = [cosθ(2cosθ - 1)]^2 = cos²θ(2cosθ - 1)^2.
+
+Second term: [sinθ(-1 + 2cosθ)]^2 = sin²θ(2cosθ - 1)^2.
+
+So the modulus squared becomes cos²θ(2cosθ - 1)^2 + sin²θ(2cosθ - 1)^2 = (cos²θ + sin²θ)(2cosθ - 1)^2 = (1)(2cosθ - 1)^2 = (2cosθ - 1)^2.
+
+Therefore, the modulus |1 - z + z²| is |2cosθ - 1|. Since modulus is non-negative, it's the absolute value. So |2cosθ - 1|.
+
+Therefore, putting it all together, the expression we need to maximize is |1 + z| + |1 - z + z²| = 2|cos(θ/2)| + |2cosθ - 1|.
+
+Now, the problem reduces to finding the maximum of 2|cos(θ/2)| + |2cosθ - 1| for θ in [0, 2π). Let me denote x = cosθ. Then, since θ is in [0, 2π), x ranges from -1 to 1. Also, cos(θ/2) can be expressed in terms of x. Let's recall that cos(θ/2) = sqrt[(1 + cosθ)/2] = sqrt[(1 + x)/2]. But since θ/2 is in [0, π), cos(θ/2) is non-negative, so |cos(θ/2)| = cos(θ/2) = sqrt[(1 + x)/2]. Therefore, 2|cos(θ/2)| = 2*sqrt[(1 + x)/2] = sqrt(2(1 + x)).
+
+So now, the expression becomes sqrt(2(1 + x)) + |2x - 1|, where x ∈ [-1, 1].
+
+Therefore, the problem reduces to maximizing sqrt(2(1 + x)) + |2x - 1| over x ∈ [-1, 1]. Let's denote this function as f(x) = sqrt(2(1 + x)) + |2x - 1|.
+
+To find the maximum of f(x), we can consider the critical points by breaking into cases based on the absolute value term. The term |2x - 1| changes its expression depending on whether 2x - 1 is non-negative or negative. Let's find the point where 2x - 1 = 0, which is x = 1/2. So we can split the interval [-1, 1] into two parts: x ∈ [-1, 1/2] and x ∈ [1/2, 1]. On each interval, |2x - 1| is equal to -(2x - 1) and (2x - 1), respectively.
+
+Case 1: x ∈ [-1, 1/2]
+
+Here, |2x - 1| = -(2x - 1) = 1 - 2x.
+
+So f(x) = sqrt(2(1 + x)) + 1 - 2x.
+
+Case 2: x ∈ [1/2, 1]
+
+Here, |2x - 1| = 2x - 1.
+
+So f(x) = sqrt(2(1 + x)) + 2x - 1.
+
+Now, let's analyze each case separately.
+
+Starting with Case 1: x ∈ [-1, 1/2]
+
+Compute f(x) = sqrt(2(1 + x)) + 1 - 2x.
+
+To find the maximum, we can take the derivative of f(x) with respect to x, set it to zero, and solve for x.
+
+First, find f'(x):
+
+d/dx [sqrt(2(1 + x))] = (1/(2*sqrt(2(1 + x)))) * 2 = 1/sqrt(2(1 + x)).
+
+d/dx [1 - 2x] = -2.
+
+So f'(x) = 1/sqrt(2(1 + x)) - 2.
+
+Set f'(x) = 0:
+
+1/sqrt(2(1 + x)) - 2 = 0 => 1/sqrt(2(1 + x)) = 2 => sqrt(2(1 + x)) = 1/2 => 2(1 + x) = 1/4 => 1 + x = 1/8 => x = 1/8 - 1 = -7/8.
+
+Check if x = -7/8 is in [-1, 1/2]. Yes, since -7/8 ≈ -0.875, which is between -1 and 0.5. So this is a critical point.
+
+Therefore, in Case 1, the maximum occurs either at x = -7/8, x = -1, or x = 1/2.
+
+Compute f(-7/8):
+
+First, 1 + x = 1 - 7/8 = 1/8. So sqrt(2*(1/8)) = sqrt(1/4) = 1/2.
+
+Then, 1 - 2x = 1 - 2*(-7/8) = 1 + 14/8 = 1 + 1.75 = 2.75.
+
+So f(-7/8) = 1/2 + 2.75 = 3.25.
+
+Compute f(-1):
+
+1 + x = 0, so sqrt(0) = 0. Then, 1 - 2*(-1) = 1 + 2 = 3. So f(-1) = 0 + 3 = 3.
+
+Compute f(1/2):
+
+Here, x = 1/2. But in Case 1, we are approaching x = 1/2 from the left. However, we need to check the limit as x approaches 1/2 from the left.
+
+1 + x = 3/2, so sqrt(2*(3/2)) = sqrt(3) ≈ 1.732. Then, 1 - 2*(1/2) = 1 - 1 = 0. So f(1/2^-) ≈ 1.732 + 0 ≈ 1.732.
+
+Therefore, in Case 1, the maximum is 3.25 at x = -7/8.
+
+Now, moving to Case 2: x ∈ [1/2, 1]
+
+Here, f(x) = sqrt(2(1 + x)) + 2x - 1.
+
+Again, take the derivative:
+
+f'(x) = d/dx [sqrt(2(1 + x))] + d/dx [2x - 1] = 1/sqrt(2(1 + x)) + 2.
+
+Set f'(x) = 0:
+
+1/sqrt(2(1 + x)) + 2 = 0.
+
+But since sqrt(2(1 + x)) is positive, 1/sqrt(2(1 + x)) is positive. Adding 2, which is positive, gives a positive result. Therefore, f'(x) > 0 for all x in [1/2, 1]. Therefore, f(x) is increasing on [1/2, 1]. Therefore, the maximum occurs at x = 1.
+
+Compute f(1):
+
+sqrt(2*(1 + 1)) + 2*1 - 1 = sqrt(4) + 2 - 1 = 2 + 1 = 3.
+
+Compute f(1/2):
+
+sqrt(2*(1 + 1/2)) + 2*(1/2) - 1 = sqrt(3) + 1 - 1 = sqrt(3) ≈ 1.732.
+
+So in Case 2, the maximum is 3 at x = 1.
+
+Therefore, combining both cases, the maximum of f(x) is 3.25 at x = -7/8. But we need to check if this x corresponds to a valid θ. Since x = cosθ = -7/8, which is valid because -7/8 is between -1 and 1. So θ = arccos(-7/8). Let me check if this θ is possible. Yes, arccos(-7/8) is in [π/2, π], which is fine.
+
+Therefore, the maximum value of the original expression is 3.25, which is 13/4. Wait, 3.25 is 13/4? Wait, 3.25 is 13/4? Let me check: 13 divided by 4 is 3.25. Yes. So 13/4.
+
+But wait, let me confirm the calculation at x = -7/8. Let me compute f(-7/8) again.
+
+x = -7/8. Then, 1 + x = 1 - 7/8 = 1/8. So sqrt(2*(1/8)) = sqrt(1/4) = 1/2. Then, 1 - 2x = 1 - 2*(-7/8) = 1 + 14/8 = 1 + 1.75 = 2.75. So 1/2 + 2.75 = 3.25, which is indeed 13/4. So 13/4 is 3.25. Therefore, 13/4 is the maximum value.
+
+But hold on, let me check if there might be a mistake here. Because when we considered Case 1, the critical point at x = -7/8 gives 3.25, but maybe the maximum is actually higher when considering other points. Let me verify the calculations once again.
+
+Wait, in Case 1, the function is f(x) = sqrt(2(1 + x)) + 1 - 2x. The derivative is 1/sqrt(2(1 + x)) - 2. Setting derivative to zero gives 1/sqrt(2(1 + x)) = 2, so sqrt(2(1 + x)) = 1/2, so 2(1 + x) = 1/4, so 1 + x = 1/8, so x = -7/8. That seems correct.
+
+Then, f(-7/8) = sqrt(2*(1 - 7/8)) + 1 - 2*(-7/8) = sqrt(2*(1/8)) + 1 + 14/8 = sqrt(1/4) + 1 + 1.75 = 0.5 + 2.75 = 3.25. Correct.
+
+Similarly, in Case 2, the maximum at x = 1 is 3, which is less than 3.25. Hence, the overall maximum is indeed 13/4.
+
+But let me confirm if there's any other critical point or if the function could be higher elsewhere. For example, at x = -1, f(-1) = 0 + 3 = 3, which is less than 3.25. At x = 1/2, in Case 1, the limit from the left gives 1.732, which is less than 3.25. So 13/4 is the maximum.
+
+Therefore, the maximum value is 13/4, which is 3.25. But let me check if there's an alternative approach to verify this result.
+
+Alternative approach: Let's use the fact that z is on the unit circle, so we can write z = e^{iθ}, and express the given expression in terms of θ. Then, as we did earlier, it reduces to 2|cos(θ/2)| + |2cosθ - 1|. Then, since we found that the maximum occurs at x = -7/8, which corresponds to cosθ = -7/8, so θ = arccos(-7/8). Let's compute the original expression with z = e^{iθ} where cosθ = -7/8.
+
+Compute |1 + z| + |1 - z + z²|.
+
+First, |1 + z| = 2|cos(θ/2)|. Since cosθ = -7/8, we can find cos(θ/2). Let me recall that cosθ = 2cos²(θ/2) - 1. Therefore, -7/8 = 2cos²(θ/2) - 1 => 2cos²(θ/2) = 1 - 7/8 = 1/8 => cos²(θ/2) = 1/16 => |cos(θ/2)| = 1/4. But since θ is in [π/2, π], θ/2 is in [π/4, π/2], where cosine is positive. Therefore, cos(θ/2) = 1/4. Therefore, |1 + z| = 2*(1/4) = 1/2.
+
+Then, |1 - z + z²| = |2cosθ - 1|. Since cosθ = -7/8, 2cosθ - 1 = 2*(-7/8) - 1 = -14/8 - 1 = -14/8 - 8/8 = -22/8 = -11/4. The modulus is 11/4. Therefore, the total expression is 1/2 + 11/4 = 13/4, which confirms our previous result.
+
+Therefore, the maximum value is indeed 13/4. So the answer should be \boxed{\dfrac{13}{4}}.
+
+But wait, let me check if there's any other angle θ where the expression could be larger. For example, suppose θ = 2π/3. Then cosθ = cos(2π/3) = -1/2. Then, |1 + z| = 2|cos(π/3)| = 2*(1/2) = 1. |1 - z + z²| = |2cos(2π/3) - 1| = |2*(-1/2) - 1| = |-1 - 1| = 2. So total expression is 1 + 2 = 3, which is less than 13/4. Similarly, θ = π/3, cosθ = 1/2. Then, |1 + z| = 2|cos(π/6)| = 2*(√3/2) = √3 ≈ 1.732. |1 - z + z²| = |2*(1/2) - 1| = |1 - 1| = 0. So total expression is √3 + 0 ≈ 1.732, less than 13/4.
+
+Another check: θ = arccos(-7/8). Let me compute cosθ = -7/8, so θ ≈ arccos(-0.875). arccos(-0.875) is approximately 151 degrees. Then, cos(θ/2) = 1/4, so θ/2 ≈ arccos(0.25) ≈ 75.5 degrees. Then, 1 + z is a complex number with modulus 1/2, and 1 - z + z² is a complex number with modulus 11/4. So total is 13/4. All checks out.
+
+Therefore, I think the answer is indeed 13/4. However, let me check once more if there's a possible mistake in the trigonometric identities or in the modulus calculations.
+
+Wait, when I computed |1 - z + z²|, I got it to be |2cosθ - 1|. Let me verify this again. Starting with z = e^{iθ}, then 1 - z + z² = 1 - e^{iθ} + e^{i2θ}. Let me compute this as:
+
+1 - e^{iθ} + e^{i2θ} = e^{i0} - e^{iθ} + e^{i2θ}.
+
+Expressed in terms of cosine and sine:
+
+= (1 - cosθ + cos2θ) + i*(-sinθ + sin2θ).
+
+Then, the modulus squared is (1 - cosθ + cos2θ)^2 + (-sinθ + sin2θ)^2.
+
+As before, cos2θ = 2cos²θ - 1, so substituting:
+
+1 - cosθ + 2cos²θ - 1 = -cosθ + 2cos²θ.
+
+Similarly, sin2θ = 2sinθcosθ, so -sinθ + 2sinθcosθ = sinθ(-1 + 2cosθ).
+
+Therefore, modulus squared is (-cosθ + 2cos²θ)^2 + (sinθ(-1 + 2cosθ))^2.
+
+Factor out ( -1 + 2cosθ )^2 from both terms:
+
+= ( -1 + 2cosθ )^2 (cos²θ + sin²θ ) = (2cosθ - 1)^2.
+
+Therefore, modulus is |2cosθ - 1|, which is correct. So that part is correct.
+
+Therefore, the expression is indeed |1 + z| + |1 - z + z²| = 2|cos(θ/2)| + |2cosθ - 1|, which we converted into f(x) = sqrt(2(1 + x)) + |2x - 1|, and found the maximum at x = -7/8, leading to 13/4.
+
+Therefore, I think the answer is 13/4. But let me check once again if 13/4 is the maximum. Suppose we take another value of x between -1 and 1/2. Let's say x = -1/2. Then, f(-1/2) = sqrt(2*(1 - 1/2)) + 1 - 2*(-1/2) = sqrt(1) + 1 +1 = 1 + 2 = 3. Which is less than 13/4. Similarly, x = 0: f(0) = sqrt(2*1) + 1 - 0 = sqrt(2) + 1 ≈ 1.414 + 1 ≈ 2.414, less than 13/4. So yes, 13/4 is indeed the maximum.
+
+Therefore, the maximum value of the given expression is 13/4. So the answer is \boxed{\dfrac{13}{4}}.
+Therefore, the maximum value of $|1 + z| + |1 - z + z^2|$ is $\boxed{\dfrac{13}{4}}$.
+</think>

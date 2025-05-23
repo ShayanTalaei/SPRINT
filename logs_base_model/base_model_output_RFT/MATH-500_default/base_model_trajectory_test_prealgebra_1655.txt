@@ -1,0 +1,42 @@
+Okay, let's try to figure out the probability that a randomly selected integer from 1 to 100 is divisible by 2 but not by 3. Hmm, probability problems can sometimes be tricky, but I think if I break it down step by step, it'll make sense.
+
+First, probability is generally the number of favorable outcomes divided by the total number of possible outcomes. In this case, the total number of possible outcomes is 100 because we're selecting from the set {1, 2, 3, ..., 100}. So the denominator of our probability will be 100.
+
+Now, the numerator needs to be the number of integers between 1 and 100 that are divisible by 2 but not by 3. Let me think about how to calculate that.
+
+Divisible by 2 means the number is even. So first, let's find how many numbers between 1 and 100 are divisible by 2. Since every second number is even, that would be 100 divided by 2, which is 50. So there are 50 numbers divisible by 2.
+
+But we don't want numbers that are divisible by both 2 and 3. Because the problem says "divisible by 2 and not divisible by 3." So we need to subtract those numbers that are divisible by both 2 and 3. Numbers divisible by both 2 and 3 are the numbers divisible by their least common multiple, which is 6. So we need to find how many numbers between 1 and 100 are divisible by 6.
+
+Again, that's 100 divided by 6. Let me calculate that. 6 times 16 is 96, so there are 16 full multiples of 6 in 100 (6, 12, 18, ..., 96). Wait, 6*16=96, so the next multiple would be 6*17=102, which is over 100. So there are 16 numbers divisible by 6.
+
+Therefore, the number of numbers divisible by 2 but not by 3 is 50 (divisible by 2) minus 16 (divisible by 6), which is 34. So there are 34 favorable numbers.
+
+Therefore, the probability is 34/100. But we can simplify that fraction. Both numerator and denominator are divisible by 2. Dividing numerator and denominator by 2 gives 17/50. Let me check if 17 and 50 have any common factors. 17 is a prime number, and 50 is 2*5^2, so no common factors other than 1. So the simplified fraction is 17/50.
+
+Wait, let me verify my steps again to make sure I didn't make a mistake.
+
+1. Total numbers: 100. Correct.
+2. Numbers divisible by 2: 100/2=50. Correct.
+3. Numbers divisible by 6: 100/6≈16.666, so 16 numbers. Correct, since 6*16=96 and 6*17=102>100.
+4. Subtracting: 50-16=34. Correct.
+5. Probability: 34/100=17/50. Simplified. Correct.
+
+Hmm, seems solid. Let me think if there's another way to approach this problem to confirm.
+
+Alternatively, we can use inclusion-exclusion. The number of numbers divisible by 2 or 3 is equal to the number divisible by 2 plus the number divisible by 3 minus the number divisible by both. But wait, we actually need the numbers divisible by 2 but not by 3. So that's the same as numbers divisible by 2 minus numbers divisible by both 2 and 3. Which is exactly what I did before. So same result.
+
+Alternatively, maybe using probability rules. The probability of being divisible by 2 is 1/2. The probability of being divisible by 3 is 1/3. The probability of being divisible by both 2 and 3 is 1/6. So the probability of being divisible by 2 but not by 3 is 1/2 - 1/6 = 1/3. But wait, 1/2 is 50/100, 1/6 is 16.666/100, so 50/100 - 16.666/100 = 33.333/100, which is 1/3. But wait, 34/100 is 0.34, which is approximately 1/3 (which is about 0.3333). Hmm, that discrepancy is because 100 isn't a multiple of 6. So the exact counts are 50 and 16, leading to 34. So the exact probability is 34/100, which is 17/50. So 17/50 is 0.34, which is exact. The 1/3 is an approximation.
+
+Therefore, the exact answer is 17/50. So that should be the correct answer.
+
+Alternatively, maybe use the formula for the number of integers divisible by k between 1 and n: floor(n/k). So for divisible by 2: floor(100/2)=50. Divisible by 6: floor(100/6)=16. So 50-16=34. So 34/100=17/50. Yep, same result.
+
+Another way: list out numbers divisible by 2 and mark those divisible by 3. But that's tedious. But maybe for a smaller set, like 1-10, to check.
+
+Numbers 1-10: numbers divisible by 2: 2,4,6,8,10 (5 numbers). Numbers among these divisible by 3: 6. So numbers divisible by 2 but not 3: 2,4,8,10 (4 numbers). So 4/10=2/5. Alternatively, using the formula: floor(10/2)=5, floor(10/6)=1. 5-1=4. 4/10=2/5. Correct.
+
+So same formula applies here. So 100/2=50, 100/6=16.666, floor to 16. 50-16=34. 34/100=17/50. So that works.
+
+Therefore, I think the answer is 17/50.
+</think>

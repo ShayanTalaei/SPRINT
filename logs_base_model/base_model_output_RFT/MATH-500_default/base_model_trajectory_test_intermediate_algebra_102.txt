@@ -1,0 +1,206 @@
+Okay, let's see. I need to compute the infinite sum \(\sum_{n = 1}^\infty \frac{F_{n + 1}}{F_n F_{n + 2}}\), where \(F_n\) is the nth Fibonacci number. Hmm, Fibonacci numbers... right, they start with \(F_0 = 0\), \(F_1 = 1\), and each subsequent term is the sum of the two previous ones. So the sequence goes 0, 1, 1, 2, 3, 5, 8, 13, 21, and so on. 
+
+First, I should write down the first few terms of the series to see if there's a pattern or something that can help me telescope the sum. Let's compute the terms for n=1, 2, 3, etc., and see if there's a telescoping behavior.
+
+For n=1: \(\frac{F_{2}}{F_1 F_3}\). Let's compute each Fibonacci number:
+- \(F_1 = 1\)
+- \(F_2 = 1\)
+- \(F_3 = 2\)
+So the first term is \(1/(1*2) = 1/2\).
+
+For n=2: \(\frac{F_{3}}{F_2 F_4}\)
+- \(F_3 = 2\)
+- \(F_4 = 3\)
+Thus, the second term is \(2/(1*3) = 2/3\).
+
+Wait, hold on, but the sum is from n=1 to infinity, so maybe I need to check more terms to see if there's a telescoping effect.
+
+Wait, maybe I can manipulate the general term \(\frac{F_{n + 1}}{F_n F_{n + 2}}\) algebraically. Let's see if we can express this fraction in terms of some difference of reciprocals or something similar, which would allow the series to telescope.
+
+Let me recall that in telescoping series, terms cancel out sequentially. So if I can write each term as \(a_n - a_{n+1}\), then summing over n would result in most terms canceling, leaving only the first term minus the limit of \(a_n\) as n approaches infinity.
+
+So the key is to find such an expression. Let's try to manipulate the term \(\frac{F_{n + 1}}{F_n F_{n + 2}}\).
+
+First, note that \(F_{n + 2} = F_{n + 1} + F_n\). Maybe that can help. Let's substitute that into the denominator:
+
+\[
+\frac{F_{n + 1}}{F_n F_{n + 2}} = \frac{F_{n + 1}}{F_n (F_{n + 1} + F_n)}
+\]
+
+Hmm, not sure if that helps directly. Maybe I can factor out \(F_{n + 1}\) from the denominator? Let's try:
+
+\[
+\frac{F_{n + 1}}{F_n (F_{n + 1} + F_n)} = \frac{1}{F_n} \cdot \frac{F_{n + 1}}{F_{n + 1} + F_n}
+\]
+
+Alternatively, maybe write it as:
+
+\[
+\frac{1}{F_n} \cdot \frac{1}{1 + F_n / F_{n + 1}}}
+\]
+
+But not sure if that's helpful. Alternatively, maybe express the fraction as a difference of two terms. Let's try to find constants \(A_n\) and \(B_n\) such that:
+
+\[
+\frac{F_{n + 1}}{F_n F_{n + 2}} = \frac{A_n}{F_n} - \frac{B_n}{F_{n + 1}}
+\]
+
+Wait, but Fibonacci numbers have the property that \(F_{n + 2} = F_{n + 1} + F_n\). Let's see if we can use that identity. Maybe express the term as a difference.
+
+Alternatively, let's consider writing the term as:
+
+\[
+\frac{F_{n + 1}}{F_n F_{n + 2}} = \frac{1}{F_n} \cdot \frac{F_{n + 1}}{F_{n + 2}} = \frac{1}{F_n} \cdot \frac{F_{n + 1}}{F_{n + 2}}
+\]
+
+Hmm, but \(\frac{F_{n + 1}}{F_{n + 2}} = \frac{F_{n + 1}}{F_{n + 1} + F_n}\). Let's write that as:
+
+\[
+\frac{F_{n + 1}}{F_{n + 1} + F_n} = \frac{1}{1 + \frac{F_n}{F_{n + 1}}}
+\]
+
+Which is similar to the reciprocal of (1 + r), where r is the ratio of consecutive Fibonacci numbers. But Fibonacci numbers grow exponentially (approximately), so the ratio \(F_{n + 1}/F_n\) approaches the golden ratio \(\phi = (1 + \sqrt{5})/2\). But maybe that's not directly helpful here.
+
+Alternatively, maybe use the identity that relates Fibonacci numbers to their reciprocals. Wait, perhaps consider the reciprocal of the Fibonacci numbers.
+
+Alternatively, let's look for a telescoping pattern. Let's suppose that the term \(\frac{F_{n + 1}}{F_n F_{n + 2}}\) can be written as \(\frac{1}{F_n} - \frac{1}{F_{n + 2}}\) or some multiple of that. Let's test this idea.
+
+Suppose we have:
+
+\[
+\frac{1}{F_n} - \frac{1}{F_{n + 2}} = \frac{F_{n + 2} - F_n}{F_n F_{n + 2}}
+\]
+
+But \(F_{n + 2} - F_n = F_{n + 1} + F_n - F_n = F_{n + 1}\). Therefore:
+
+\[
+\frac{F_{n + 1}}{F_n F_{n + 2}} = \frac{1}{F_n} - \frac{1}{F_{n + 2}}
+\]
+
+Wait, that's exactly the expression we had! So that means:
+
+\[
+\frac{F_{n + 1}}{F_n F_{n + 2}} = \frac{1}{F_n} - \frac{1}{F_{n + 2}}
+\]
+
+Wow, that's a key step. So each term in the series can be written as the difference of reciprocals of consecutive Fibonacci numbers. Therefore, the original sum becomes a telescoping series:
+
+\[
+\sum_{n = 1}^\infty \left( \frac{1}{F_n} - \frac{1}{F_{n + 2}} \right )
+\]
+
+When we expand this sum, most terms should cancel out. Let's write out the first few terms:
+
+For n=1: \(\frac{1}{F_1} - \frac{1}{F_3}\)
+For n=2: \(\frac{1}{F_2} - \frac{1}{F_4}\)
+For n=3: \(\frac{1}{F_3} - \frac{1}{F_5}\)
+For n=4: \(\frac{1}{F_4} - \frac{1}{F_6}\)
+And so on.
+
+So when we add these up:
+
+\[
+\left( \frac{1}{F_1} - \frac{1}{F_3} \right ) + \left( \frac{1}{F_2} - \frac{1}{F_4} \right ) + \left( \frac{1}{F_3} - \frac{1}{F_5} \right ) + \left( \frac{1}{F_4} - \frac{1}{F_6} \right ) + \cdots
+\]
+
+Notice that \(-\frac{1}{F_3}\) cancels with \(+\frac{1}{F_3}\), \(-\frac{1}{F_4}\) cancels with \(+\frac{1}{F_4}\), etc. So all intermediate terms cancel, and we're left with the sum of the first few terms that don't get canceled. Specifically, the terms that don't have counterparts to cancel them are the first two positive terms and the limit of the negative terms as n approaches infinity.
+
+So the partial sum up to N terms is:
+
+\[
+\frac{1}{F_1} + \frac{1}{F_2} - \frac{1}{F_{N + 1}} - \frac{1}{F_{N + 2}}
+\]
+
+Therefore, the infinite sum is the limit as N approaches infinity of this expression:
+
+\[
+\lim_{N \to \infty} \left( \frac{1}{F_1} + \frac{1}{F_2} - \frac{1}{F_{N + 1}} - \frac{1}{F_{N + 2}} \right )
+\]
+
+We know that as n increases, the Fibonacci numbers grow exponentially, so \(F_{n}\) approaches infinity as n approaches infinity. Therefore, the terms \(\frac{1}{F_{N + 1}}\) and \(\frac{1}{F_{N + 2}}\) approach zero. So the sum simplifies to:
+
+\[
+\frac{1}{F_1} + \frac{1}{F_2}
+\]
+
+Given that \(F_1 = 1\) and \(F_2 = 1\), this becomes:
+
+\[
+\frac{1}{1} + \frac{1}{1} = 1 + 1 = 2
+\]
+
+Wait, but hold on. Let me verify this. Because when I expanded the partial sum, I had \(\frac{1}{F_1} + \frac{1}{F_2} - \frac{1}{F_{N + 1}} - \frac{1}{F_{N + 2}}\). So when N approaches infinity, the last two terms go to zero, leaving \(\frac{1}{F_1} + \frac{1}{F_2}\). Since \(F_1 = 1\) and \(F_2 = 1\), each of those terms is 1. So 1 + 1 = 2. But let's check this with the first few terms we computed earlier.
+
+Wait, when n=1, the term was 1/2. When n=2, it was 2/3. If we add more terms, say n=3: \(F_4 = 3\), so term is \(F_4/(F_3 F_5) = 3/(2*5) = 3/10\). Then n=4: \(F_5=5\), term is 5/(3*8)=5/24. Let's compute the partial sum up to n=4:
+
+1/2 + 2/3 + 3/10 + 5/24. Let's compute this:
+
+Convert to common denominator, which is 120.
+
+1/2 = 60/120
+
+2/3 = 80/120
+
+3/10 = 36/120
+
+5/24 = 25/120
+
+Adding up: 60 + 80 + 36 + 25 = 201. So 201/120 = 1.675.
+
+But according to the telescoping sum, the partial sum up to N=4 would be:
+
+1/F1 + 1/F2 - 1/F5 - 1/F6 = 1/1 + 1/1 - 1/5 - 1/8 = 2 - 1/5 - 1/8 = 2 - 0.2 - 0.125 = 1.675. Which matches the actual sum. So the formula works for the partial sum. Therefore, as N approaches infinity, the sum approaches 2. Therefore, the infinite series converges to 2.
+
+But wait, let me check with n=1 term: 1/2, n=2: 2/3, n=3: 3/10, n=4: 5/24. Adding them up gives 1/2 + 2/3 = 7/6 ≈ 1.1667, plus 3/10 = 0.3, total ≈ 1.4667, plus 5/24 ≈ 0.2083, total ≈ 1.675. Then n=5 term would be F6/(F5 F7) = 8/(5*13) = 8/65 ≈ 0.123. Adding that gives ≈ 1.798. The partial sum is approaching 2, but slowly. So the telescoping works, and the limit is indeed 2.
+
+Therefore, the sum converges to 2. Wait, but let me check n=5 and n=6 terms to see:
+
+n=5: F6=8, F5=5, F7=13. So term is 8/(5*13) = 8/65 ≈ 0.123.
+
+n=6: F7=13, F6=8, F8=21. Term is 13/(8*21) = 13/168 ≈ 0.07738.
+
+Adding n=5 and n=6: 0.123 + 0.07738 ≈ 0.20038. So partial sum up to n=6: ≈1.798 + 0.20038 ≈ 2.0, which is already 2.0. Wait, is that possible? Let me compute the partial sum up to n=6:
+
+Original terms:
+
+n=1: 1/2 = 0.5
+
+n=2: 2/3 ≈ 0.6667
+
+n=3: 3/10 = 0.3
+
+n=4: 5/24 ≈ 0.2083
+
+n=5: 8/65 ≈ 0.1231
+
+n=6: 13/168 ≈ 0.07738
+
+Adding them up:
+
+0.5 + 0.6667 = 1.1667
+
++0.3 = 1.4667
+
++0.2083 ≈ 1.675
+
++0.1231 ≈ 1.7981
+
++0.07738 ≈ 1.8755
+
+Wait, that's only up to n=6. Hmm, but according to the telescoping formula, the partial sum should be 1/F1 + 1/F2 - 1/F7 - 1/F8.
+
+Wait, n=6 corresponds to N=6 in the telescoping sum. So:
+
+Partial sum up to N=6 is 1/F1 + 1/F2 - 1/F7 - 1/F8 = 1 + 1 - 1/13 - 1/21 ≈ 2 - 0.0769 - 0.0476 ≈ 2 - 0.1245 ≈ 1.8755, which matches the manual addition. So the partial sum approaches 2, but very slowly. Each term adds less and less, approaching 2 but never exceeding it. So the infinite sum converges to 2.
+
+Therefore, the answer should be 2. But let me check once again for any possible mistake.
+
+Wait, when we wrote the telescoping sum, we had:
+
+Sum_{n=1}^\infty [1/F_n - 1/F_{n+2}] = [1/F1 + 1/F2] - [lim_{N->infty} (1/F_{N+1} + 1/F_{N+2})] = 1 + 1 - 0 - 0 = 2.
+
+Yes, that seems correct. So the sum is indeed 2.
+
+Therefore, the answer is \(\boxed{2}\).
+Therefore, the value of the infinite series is $\boxed{2}$.
+</think>

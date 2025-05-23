@@ -1,0 +1,147 @@
+Okay, so I need to find the sum of the reciprocals of the products of each pair of complex conjugate roots for the equation \(x^{10} + (13x - 1)^{10} = 0\). The roots are given as \(r_1, \overline{r}_1, r_2, \overline{r}_2, \dots, r_5, \overline{r}_5\). Each reciprocal term is \(\frac{1}{r_k \overline{r}_k}\) for \(k = 1\) to \(5\). Since \(r_k \overline{r}_k\) is the modulus squared of \(r_k\), which is a positive real number, each term is positive. The sum we need is the sum of these reciprocals.
+
+First, let me recall that for a polynomial equation, the product of the roots can be related to the coefficients. But since this is a degree 10 polynomial, with roots coming in conjugate pairs, maybe I can find a way to express the required sum in terms of the coefficients of the polynomial.
+
+But first, let me write the given equation in standard polynomial form. The equation is:
+
+\[x^{10} + (13x - 1)^{10} = 0\]
+
+Let me expand \((13x - 1)^{10}\). But expanding this directly might be tedious. Alternatively, maybe I can consider substituting \(y = 13x - 1\), but not sure if that helps. Alternatively, perhaps consider that the equation is \(x^{10} = - (13x - 1)^{10}\). Taking 10th roots, but that might complicate with complex numbers.
+
+Alternatively, maybe we can write this as:
+
+\[(x)^{10} + (13x - 1)^{10} = 0\]
+
+Which can be rearranged as:
+
+\[(13x - 1)^{10} = -x^{10}\]
+
+Taking both sides to the power of 1/10, but since we're dealing with complex numbers, that might not directly help. However, if we let \(z = 13x - 1\), then \(z^{10} = -x^{10}\), so \(z = \omega x\), where \(\omega\) is a 10th root of \(-1\). That is, \(\omega = e^{i\pi(2k + 1)/10}\) for \(k = 0, 1, \dots, 9\). Then, substituting back:
+
+\(13x - 1 = \omega x\)
+
+So,
+
+\(13x - \omega x = 1\)
+
+\(x(13 - \omega) = 1\)
+
+\(x = \frac{1}{13 - \omega}\)
+
+Therefore, the roots \(r_k\) are given by \(x = \frac{1}{13 - \omega}\), where \(\omega\) is each of the 10th roots of \(-1\). Since there are 10 roots, each corresponding to a different \(\omega\), which are the 10th roots of \(-1\).
+
+But since \(\omega\) runs through all 10th roots of \(-1\), which are \(e^{i\pi(2k + 1)/10}\) for \(k = 0\) to \(9\), then the roots \(x\) are \(1/(13 - \omega)\), each corresponding to a unique \(\omega\). So perhaps each root \(r_k\) is \(1/(13 - \omega)\), and since complex roots come in conjugate pairs, the roots \(r_k\) and \(\overline{r}_k\) correspond to \(\omega\) and \(\overline{\omega}\), since \(\omega\) and \(\overline{\omega}\) are conjugates.
+
+Therefore, the product \(r_k \overline{r}_k\) is:
+
+\[\left|\frac{1}{13 - \omega}\right|^2 = \frac{1}{|13 - \omega|^2}\]
+
+Therefore, the reciprocal of this is \(|13 - \omega|^2\). Therefore, the sum we need is:
+
+\[\sum_{k=1}^{5} |13 - \omega_k|^2\]
+
+where \(\omega_k\) are the roots of \(\omega^{10} = -1\), which are the 10th roots of \(-1\). Since \(\omega\) runs through all 10th roots of \(-1\), but since they come in conjugate pairs, each pair \(\omega\) and \(\overline{\omega}\) corresponds to the same \(|13 - \omega|^2\) and \(|13 - \overline{\omega}|^2\) which are equal. Therefore, the sum over all 10 roots would be twice the sum over the first 5 roots. Wait, but the original problem says there are 10 roots, grouped into 5 pairs of conjugates. So maybe each pair contributes the same amount.
+
+But wait, actually, in the problem statement, the roots are given as \(r_1, \overline{r}_1, r_2, \overline{r}_2, \dots\), so each pair corresponds to a \(\omega\) and its conjugate. Therefore, each reciprocal term \(1/(r_k \overline{r}_k)\) is \(|13 - \omega|^2\), and since there are 5 such pairs, the total sum is the sum over 5 distinct pairs. Wait, but the 10 roots come in 5 conjugate pairs, each contributing \(|13 - \omega|^2 + |13 - \overline{\omega}|^2\), which is equal to \(2|13 - \omega|^2\) if \(\omega\) is not real. But wait, \(\omega\) is a 10th root of \(-1\), which are all complex except possibly if the root is real. But \(-1\) has real roots only if the root is real. However, the 10th roots of \(-1\) are all complex, except when the exponent is even? Wait, no. Wait, \(-1\) has roots on the unit circle at angles \(\pi/10 + k\pi/5\). So none of them are real, except maybe when angle is 0 or \(\pi\), but since we have angles \(\pi(2k + 1)/10\), so when k = 0, angle is \(\pi/10\); k=1, angle 3\pi/10; up to k=9, angle 19\pi/10. So none of these are 0 or \pi, so all \(\omega\) are non-real. Therefore, each pair \(\omega\) and \(\overline{\omega}\) contributes \(2|13 - \omega|^2\). Therefore, the total sum over all 10 roots would be 5 times \(2|13 - \omega|^2\), but since the problem only sums over 5 terms, each term being the reciprocal of the product for each pair, which is \(|13 - \omega|^2 + |13 - \overline{\omega}|^2 = 2|13 - \omega|^2\). Therefore, the sum we need is:
+
+\[\sum_{k=1}^{5} |13 - \omega_k|^2 + |13 - \overline{\omega}_k|^2 = \sum_{k=1}^{5} 2|13 - \omega_k|^2\]
+
+But wait, maybe I need to clarify. The problem states that the roots are \(r_1, \overline{r}_1, r_2, \overline{r}_2, \dots\), so each pair is \(r_k, \overline{r}_k\), and the reciprocal term for each pair is \(1/(r_k \overline{r}_k) = |r_k|^2\), which is \(1/|13 - \omega_k|^2\) since \(r_k = 1/(13 - \omega_k)\). Wait, no. Wait, \(r_k \overline{r}_k = |r_k|^2\), which is \(1/|13 - \omega_k|^2\). Therefore, the reciprocal is \(|13 - \omega_k|^2\). Therefore, the sum we need is:
+
+\[\sum_{k=1}^{5} |13 - \omega_k|^2 + |13 - \overline{\omega}_k|^2\]
+
+But since \(|13 - \omega|^2 = |13 - \overline{\omega}|^2\), because modulus squared is the same for a complex number and its conjugate. Therefore, each pair contributes twice \(|13 - \omega_k|^2\). However, since we have 5 pairs, each with two roots, but the sum is over 5 terms, each being the reciprocal of the product of a conjugate pair. So actually, the sum is:
+
+\[\sum_{k=1}^{5} \frac{1}{r_k \overline{r}_k} = \sum_{k=1}^{5} |13 - \omega_k|^2\]
+
+Wait, no. Wait, if each term is \(1/(r_k \overline{r}_k) = |13 - \omega_k|^2\), then since each \(r_k\) corresponds to a unique \(\omega_k\), the sum is over 5 terms, each being \(|13 - \omega_k|^2\) where \(\omega_k\) are the 5 distinct roots? Wait, no. Wait, the original equation has degree 10, so there are 10 roots. Each conjugate pair contributes two roots, so 5 pairs. Each reciprocal term is \(1/(r_k \overline{r}_k)\), which is \(|13 - \omega_k|^2\), so the sum is:
+
+\[\sum_{k=1}^{5} |13 - \omega_k|^2 + |13 - \overline{\omega}_k|^2\]?
+
+Wait, no. Wait, hold on. Let me think again. Each pair \(r_k, \overline{r}_k\) corresponds to a root \(\omega_k\) and its conjugate \(\overline{\omega}_k\) of the equation \(\omega^{10} = -1\). Therefore, for each pair, the reciprocal term is \(1/(r_k \overline{r}_k) = |13 - \omega_k|^2\). Wait, but if \(r_k = 1/(13 - \omega_k)\), then \(|r_k|^2 = |1/(13 - \omega_k)|^2 = 1/|13 - \omega_k|^2\). Therefore, the reciprocal is \(|13 - \omega_k|^2\). Therefore, the term \(1/(r_k \overline{r}_k)\) is \(|13 - \omega_k|^2\). Therefore, the sum we need is the sum over all 5 pairs of \(|13 - \omega_k|^2\), where each \(\omega_k\) is a root of \(\omega^{10} = -1\). Wait, but there are 10 roots, so maybe each pair corresponds to a unique \(\omega\) and \(\overline{\omega}\), so each reciprocal term is \(|13 - \omega|^2 + |13 - \overline{\omega}|^2\) for each pair. Therefore, the total sum is:
+
+\[\sum_{k=1}^{5} (|13 - \omega_k|^2 + |13 - \overline{\omega}_k|^2)\]
+
+But since \(|13 - \omega|^2 = |13 - \overline{\omega}|^2\), each pair contributes twice \(|13 - \omega_k|^2\). However, since the original problem's sum is over 5 terms, each reciprocal term is \(1/(r_k \overline{r}_k)\), which is \(|13 - \omega_k|^2\). Wait, maybe I'm confusing the correspondence.
+
+Alternatively, perhaps it's better to consider the original equation. Let me write the equation as:
+
+\[x^{10} + (13x - 1)^{10} = 0\]
+
+Divide both sides by \(x^{10}\):
+
+\[1 + \left(13 - \frac{1}{x}\right)^{10} = 0\]
+
+Let \(y = 13 - \frac{1}{x}\), then the equation becomes:
+
+\[1 + y^{10} = 0 \implies y^{10} = -1\]
+
+Therefore, the solutions for \(y\) are the 10th roots of \(-1\), i.e., \(y = e^{i\pi(2k + 1)/10}\) for \(k = 0, 1, \dots, 9\). Therefore, each solution \(y\) corresponds to a solution \(x\) via:
+
+\(y = 13 - \frac{1}{x}\)
+
+Therefore,
+
+\(\frac{1}{x} = 13 - y \implies x = \frac{1}{13 - y}\)
+
+Therefore, each root \(x\) is \(1/(13 - y)\), where \(y\) is a 10th root of \(-1\). Therefore, the roots of the original equation are \(x = 1/(13 - y)\), where \(y^{10} = -1\). Therefore, each root \(x\) is determined by a \(y\), and since \(y\) comes in conjugate pairs (because coefficients are real), the roots \(x\) also come in conjugate pairs. Therefore, the product \(r_k \overline{r}_k\) is \(|x|^2 = |1/(13 - y)|^2 = 1/|13 - y|^2\). Therefore, the reciprocal is \(|13 - y|^2\). Therefore, the sum we need is the sum over all 5 pairs of \(|13 - y|^2\), since each pair contributes two roots, but the reciprocal is the same for each pair. Wait, no. Wait, each pair \(r_k, \overline{r}_k\) corresponds to a pair \(y, \overline{y}\). Therefore, the reciprocal term for each pair is \(1/(r_k \overline{r}_k) = |13 - y|^2 + |13 - \overline{y}|^2\), but since \(|13 - y|^2 = |13 - \overline{y}|^2\), each pair contributes twice \(|13 - y|^2\). However, since the original problem's sum is over 5 terms, each being the reciprocal of the product of a pair, which is \(|13 - y|^2 + |13 - \overline{y}|^2\), but that seems conflicting. Wait, perhaps I need to re-examine.
+
+Alternatively, maybe each reciprocal term \(1/(r_k \overline{r}_k)\) is equal to \(|13 - y|^2\), where \(y\) is the corresponding root of \(-1\). Therefore, the sum over all 5 reciprocal terms is the sum over 5 distinct \(|13 - y|^2\), but since there are 10 roots (5 pairs), each pair contributing two \(y\)s (a root and its conjugate). Therefore, the sum over all 10 roots would be the sum over 5 pairs of \(2|13 - y|^2\), but since the original problem's sum is over 5 reciprocal terms, each being \(|13 - y|^2\), perhaps the total sum is just the sum over all 10 reciprocal terms divided by 2? Wait, no. Wait, the original equation has 10 roots, grouped into 5 conjugate pairs. Each conjugate pair contributes \(1/(r_k \overline{r}_k)\), which is \(|13 - y|^2\), where \(y\) is a root of \(-1\). Therefore, the sum is the sum over 5 terms, each \(|13 - y_k|^2\), where \(y_k\) are the 5 distinct roots of the equation \(y^{10} = -1\), considering each pair. Wait, no. Wait, actually, the equation \(y^{10} = -1\) has 10 roots, all distinct, and they come in 5 conjugate pairs. Therefore, the sum over all 10 reciprocal terms would be the sum over all 10 \(|13 - y|^2\). But since each pair contributes twice \(|13 - y|^2\) (once for \(y\), once for \(\overline{y}\)), the total sum over all 10 roots is twice the sum over the 5 distinct pairs. However, the problem wants the sum over the 5 reciprocal terms, each being the reciprocal of the product of a pair, which is \(|13 - y|^2\) for each pair. Therefore, the sum is the sum over 5 terms, each \(|13 - y|^2\), where \(y\) are the 5 distinct roots (but actually, each pair contributes two roots, but the reciprocal term is the same for each pair). Wait, no. Wait, each reciprocal term is \(1/(r_k \overline{r}_k) = |13 - y|^2\), where \(y\) is a root of \(-1\). Therefore, since the original equation's roots are \(x = 1/(13 - y)\), with \(y^{10} = -1\), the 10 roots correspond to the 10 \(y\)s. Therefore, the sum over all 10 reciprocal terms would be the sum over all 10 \(|13 - y|^2\), which is:
+
+\[\sum_{y^{10} = -1} |13 - y|^2\]
+
+But since the problem only requires the sum over 5 terms, each reciprocal term being \(|13 - y|^2\), but since the original problem's sum is over 5 reciprocal terms (each reciprocal term being the product of a pair), which is exactly the same as the sum over 5 distinct \(|13 - y|^2\), but considering that each pair contributes twice \(|13 - y|^2\). Wait, this is getting confusing.
+
+Alternatively, perhaps it's better to consider that the original equation can be transformed into a polynomial whose roots are \(y = 13 - 1/x\). Then, since \(x\) satisfies the original equation, \(y = 13 - 1/x\) satisfies \(y^{10} = -1\). Therefore, \(y\) must be a 10th root of \(-1\). Therefore, the equation in terms of \(y\) is \(y^{10} + 1 = 0\). Therefore, the roots \(y\) are the 10th roots of \(-1\). Therefore, the equation in \(x\) is \( (13 - 1/x)^{10} = -1 \), which can be rewritten as \(x^{10} + (13x - 1)^{10} = 0\), which matches the original equation. Therefore, the roots \(x\) are related to the roots \(y\) by \(x = 1/(13 - y)\). Therefore, the sum we need is:
+
+\[\sum_{k=1}^{5} \frac{1}{r_k \overline{r}_k} = \sum_{k=1}^{5} |13 - y_k|^2\]
+
+where \(y_k\) are the roots of \(y^{10} = -1\) corresponding to each pair. However, since each pair \(y, \overline{y}\) contributes \(|13 - y|^2 + |13 - \overline{y}|^2 = 2|13 - y|^2\), the total sum over all 10 roots would be twice the sum over the 5 distinct pairs. However, the problem only wants the sum over 5 reciprocal terms, each being the reciprocal of the product of a pair. Therefore, each reciprocal term is \(|13 - y|^2 + |13 - \overline{y}|^2\) divided by 2? Wait, no. Wait, for each pair, the reciprocal term is \(|13 - y|^2\) for one root and \(|13 - \overline{y}|^2\) for the other. But since they are conjugates, \(|13 - y|^2 = |13 - \overline{y}|^2\), so each pair contributes \(2|13 - y|^2\) to the total sum. However, the problem's sum is over 5 reciprocal terms, each being the reciprocal of the product of a pair. Therefore, each reciprocal term is \(|13 - y|^2\), so the total sum is \(\sum_{k=1}^{5} |13 - y_k|^2\), where \(y_k\) are 5 distinct roots of \(y^{10} = -1\). But since the equation \(y^{10} = -1\) has 10 roots, 5 pairs of complex conjugates. Therefore, the sum over all 10 \(|13 - y|^2\) is twice the sum over 5 distinct pairs. Therefore, the sum we need is half of the total sum over all 10 \(|13 - y|^2\). Therefore, if we compute the total sum over all 10 \(|13 - y|^2\), which is the sum over all roots of \(y^{10} = -1\) of \(|13 - y|^2\), then divide by 2, we get the desired sum. Therefore, if I can compute the sum over all roots \(y\) of \(y^{10} = -1\) of \(|13 - y|^2\), then divide by 2, that would give the answer.
+
+Therefore, let me rephrase the problem: compute the sum over all roots \(y\) of the equation \(y^{10} + 1 = 0\) of \(|13 - y|^2\), then divide by 2. So, the sum we need is:
+
+\[\frac{1}{2} \sum_{y^{10} = -1} |13 - y|^2\]
+
+Therefore, let's compute \(\sum_{y^{10} = -1} |13 - y|^2\).
+
+First, note that for any complex number \(y\), \(|13 - y|^2 = (13 - y)(13 - \overline{y}) = 13^2 - 13y - 13\overline{y} + |y|^2\).
+
+Therefore, the sum over all roots \(y\) of \(y^{10} = -1\) of \(|13 - y|^2\) is equal to:
+
+\[\sum_{y^{10} = -1} (169 - 13y - 13\overline{y} + |y|^2)\]
+
+Which can be separated into three sums:
+
+1. \(\sum_{y} 169\)
+2. \(-13 \sum_{y} y\)
+3. \(-13 \sum_{y} \overline{y}\)
+4. \(\sum_{y} |y|^2\)
+
+Therefore, the total sum is:
+
+\[169 \cdot N - 13 \sum_{y} y - 13 \sum_{y} \overline{y} + \sum_{y} |y|^2\]
+
+where \(N\) is the number of roots, which is 10.
+
+Now, let's compute each part:
+
+1. \(169 \cdot 10 = 1690\)
+
+2. \(-13 \sum_{y} y\): Since the roots \(y\) are the solutions to \(y^{10} = -1\), which is a polynomial equation. The sum of the roots of a polynomial \(y^{10} + 1 = 0\) is given by the coefficient of \(y^9\) divided by the coefficient of \(y^{10}\), but since the polynomial is \(y^{10} + 1\), the coefficient of \(y^9\) is 0. Therefore, the sum of the roots is 0. Similarly, the sum of the roots \(\sum_{y} y = 0\).
+
+3. Similarly, \(-13 \sum_{y} \overline{y}\): The sum of the conjugates of the roots is the conjugate of the sum of the roots. Since the sum of the roots is 0, the sum of the conjugates is also 0. Therefore, this term is 0.
+
+4. \(\sum_{y} |y|^2\): For each root \(y\), \(|y|^2 = y \overline{y}\). Therefore, the sum \(\sum_{y} |y|^2 = \sum_{y} y \overline{y}\). However, since \(y\) satisfies \(y^{10} = -1\), we can note that \(|y| = 1\) because \(|y|^{10} = |y^{10}| = | -1 | = 1\), so \(|y| = 1\). Therefore, \(|y|^2 = 1\). Therefore, the sum \(\sum_{y} |y|^2 = 10 \cdot 1 = 10\).
+
+Therefore, putting it all together:
+
+Total sum = \(1690 - 13 \cdot 0 - 13 \cdot 0 + 10 = 1690 + 10 = 1700\).
+
+Therefore, the sum over all 10 roots of \(|13 - y|^2\) is 1700. Therefore, the sum over the 5 reciprocal terms is \(1700 / 2 = 850\).
+
+Therefore, the final answer is \(\boxed{850}\).
+
+**Final Answer**
+\boxed{850}
+Therefore, the required value is $\boxed{850}$.
+</think>

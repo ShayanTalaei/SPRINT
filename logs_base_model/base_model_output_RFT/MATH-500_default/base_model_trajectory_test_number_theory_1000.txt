@@ -1,0 +1,67 @@
+Okay, so I need to compute the inverse of 17 modulo 83. Hmm, let's think. The inverse of a number modulo n is another number such that when you multiply them together, the result is congruent to 1 mod n. So, I need to find an integer x such that 17x ≡ 1 mod 83. 
+
+The user mentioned that 17*5=85. Wait, 85 is 83 + 2, so 85 ≡ 2 mod 83. That might be useful. Maybe I can use that to help find the inverse. Let me write that down:
+
+17*5 ≡ 2 mod 83.
+
+So, 17*5 = 85 ≡ 2 mod 83. That means 17*5 ≡ 2. If I can find a multiple of 2 that gives 1 mod 83, then I can multiply both sides by that multiple to get 17*5*something ≡ 1. But I need to find the inverse of 2 mod 83 first.
+
+Alternatively, maybe I can use the Extended Euclidean Algorithm here. Let me recall how that works. The algorithm finds integers x and y such that ax + by = gcd(a, b). Since 17 and 83 are coprime (because 83 is a prime number and 17 is less than 83 and not a multiple of it), their gcd is 1. So, there exist integers x and y such that 17x + 83y = 1. The x here would be the inverse of 17 mod 83.
+
+Let me set up the algorithm steps. The Euclidean algorithm for gcd(83,17):
+
+83 divided by 17 is 4 with a remainder of 83 - 17*4 = 83 - 68 = 15. So,
+
+83 = 17*4 + 15.
+
+Then, 17 divided by 15 is 1 with a remainder of 17 - 15*1 = 2. So,
+
+17 = 15*1 + 2.
+
+15 divided by 2 is 7 with a remainder of 15 - 2*7 = 1. So,
+
+15 = 2*7 + 1.
+
+2 divided by 1 is 2 with a remainder of 0. So,
+
+2 = 1*2 + 0.
+
+The gcd is 1. Now, we need to backtrack to express 1 as a linear combination of 17 and 83.
+
+Starting from the last non-zero remainder, which is 1:
+
+1 = 15 - 2*7.
+
+But 2 is equal to 17 - 15*1, from the previous step. So substitute that in:
+
+1 = 15 - (17 - 15*1)*7 = 15 - 17*7 + 15*7 = 15*8 - 17*7.
+
+Now, 15 is equal to 83 - 17*4. Substitute that into the equation:
+
+1 = (83 - 17*4)*8 - 17*7 = 83*8 - 17*32 - 17*7 = 83*8 - 17*39.
+
+Therefore, 1 = 83*8 + 17*(-39). So, the coefficient for 17 is -39, which is the inverse. But we need a positive residue between 0 and 82. So, take -39 mod 83. Let's compute that.
+
+83 - 39 = 44. So, -39 ≡ 44 mod 83. Therefore, 44 is the inverse of 17 mod 83. Let me check if that's correct.
+
+Compute 17*44: 17*40=680, 17*4=68, so 680+68=748. Now, divide 748 by 83. 83*9=747, so 748-747=1. Therefore, 17*44=748≡1 mod 83. Yes, that works. So the inverse is 44.
+
+Alternatively, the user mentioned that 17*5=85≡2 mod 83. So, 17*5≡2 mod83. Therefore, (17*5)*x ≡2x≡1 mod83. So, 2x≡1 mod83. Then x≡(1/2) mod83. So, if I can find the inverse of 2 mod83, then multiply by 5. Let's try that approach.
+
+Find the inverse of 2 mod83. We need to find y such that 2y≡1 mod83. Again, using the Extended Euclidean Algorithm:
+
+gcd(83,2):
+
+83 divided by 2 is 41 with remainder 1. So,
+
+83 = 2*41 +1.
+
+Then, 2 =1*2 +0. So, gcd is 1. Backtracking:
+
+1=83 -2*41.
+
+Thus, 1= -2*41 +83*1. Therefore, the coefficient for 2 is -41. So, inverse of 2 mod83 is -41. Taking modulo83: -41 +83=42. So, inverse of 2 is 42. Therefore, x=42. Then, original equation: x=42. So, 17*5*42=17*(5*42)=17*210. Let's compute 210 mod83. 83*2=166, 210-166=44. So, 210≡44 mod83. Therefore, 17*44≡1 mod83. Same result. So, 44 is the inverse. 
+
+So, both methods confirm that the inverse is 44. Therefore, the answer is 44.
+Therefore, the inverse of $17$ modulo $83$ is $\boxed{44}$.
+</think>

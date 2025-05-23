@@ -1,0 +1,52 @@
+Okay, so I need to figure out what happens when I rotate the complex number 7 + 2i by 90 degrees counter-clockwise around the origin. Hmm, let me think. I remember that complex numbers can be represented in the complex plane, where the horizontal axis is the real part and the vertical axis is the imaginary part. So 7 + 2i would be a point at (7, 2) in this plane.
+
+Now, rotation in the complex plane... I think multiplying by a complex number can represent a rotation. Specifically, I recall that multiplying by e^(iθ) gives a rotation by θ radians. Since we're dealing with degrees here, 90 degrees is π/2 radians. So e^(iπ/2) is equal to cos(π/2) + i sin(π/2). Cos(π/2) is 0 and sin(π/2) is 1, so e^(iπ/2) is 0 + i*1, which is just i. Therefore, multiplying the complex number by i should rotate it 90 degrees counter-clockwise.
+
+Let me verify that. If I take a simple example, like the complex number 1 (which is (1,0) in the plane). Multiplying by i gives i, which is (0,1), so that's a 90-degree rotation. Similarly, multiplying i by i gives -1, which is a 180-degree rotation. So that seems right.
+
+So applying this to 7 + 2i, the rotated number should be (7 + 2i) * i. Let me compute that. Let's distribute the multiplication:
+
+(7 + 2i) * i = 7*i + 2i*i = 7i + 2i²
+
+But i² is equal to -1, so this becomes 7i + 2*(-1) = 7i - 2. Which is the same as -2 + 7i. So the resulting complex number is -2 + 7i.
+
+Wait, but let me check if there's another way to approach this. Maybe using the rotation matrix? I remember that a rotation by θ degrees can be represented by the matrix:
+
+[cosθ  -sinθ]
+[sinθ   cosθ]
+
+So, if I apply this matrix to the vector (7, 2), I should get the rotated coordinates. Let's try that. For θ = 90 degrees, cosθ is 0 and sinθ is 1. So the matrix becomes:
+
+[0  -1]
+[1   0]
+
+Multiplying this matrix by the vector (7, 2):
+
+First component: 0*7 + (-1)*2 = -2
+Second component: 1*7 + 0*2 = 7
+
+So the resulting vector is (-2, 7), which corresponds to the complex number -2 + 7i. That matches the previous result. So that's a good check.
+
+Alternatively, maybe I can think geometrically. The original point is (7, 2). Rotating 90 degrees counter-clockwise would move the point to a new position. The formula for rotating a point (x, y) 90 degrees counter-clockwise around the origin is (-y, x). Let's apply that:
+
+Original coordinates: (7, 2)
+After rotation: (-2, 7)
+
+Which again gives the complex number -2 + 7i. So all three methods—complex multiplication, rotation matrix, and geometric formula—give the same answer. That gives me confidence that the result is correct.
+
+Is there any chance I messed up the signs? Let me double-check the multiplication. (7 + 2i) * i:
+
+First, 7*i = 7i. Then 2i*i = 2i² = 2*(-1) = -2. So adding those together: 7i - 2, which is -2 + 7i. Yes, that's correct. The real part is -2 and the imaginary part is 7.
+
+Alternatively, if I were to use a different rotation direction or angle, but in this case, it's 90 degrees counter-clockwise, so the formulas are standard. So I don't think there's a mistake here.
+
+Another way to think about it: the complex number 7 + 2i has a magnitude of sqrt(7² + 2²) = sqrt(49 + 4) = sqrt(53). The rotation should preserve the magnitude, so the resulting number should also have magnitude sqrt(53). Let's check |-2 + 7i|: sqrt((-2)² + 7²) = sqrt(4 + 49) = sqrt(53). Yeah, that's the same. So the magnitude is preserved, which is a good sign.
+
+Also, the angle of the original complex number is arctan(2/7) ≈ 15.95 degrees. Rotating 90 degrees counter-clockwise adds 90 degrees, so the new angle is approximately 105.95 degrees. The original number was in the first quadrant (both real and imaginary parts positive). After rotation, it should be in the second quadrant (real part negative, imaginary part positive). The result -2 + 7i is indeed in the second quadrant, so that makes sense.
+
+So all these checks line up. Therefore, I think the answer is definitely -2 + 7i.
+
+**Final Answer**
+The resulting complex number is \boxed{-2 + 7i}.
+Therefore, the resulting complex number after a $90^\circ$ rotation around the origin in the counter-clockwise direction applied to $7 + 2i$ is $\boxed{-2 + 7i}$.
+</think>

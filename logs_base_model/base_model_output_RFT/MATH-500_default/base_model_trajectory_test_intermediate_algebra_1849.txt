@@ -1,0 +1,301 @@
+Okay, so I need to find the number of integer values of k between -500 and 500 inclusive such that the equation log(kx) = 2 log(x + 2) has exactly one real solution. Let me start by understanding the problem step by step.
+
+First, let's recall that logarithmic equations can sometimes be tricky because of the domains and the properties of logarithms. The equation given is log(kx) = 2 log(x + 2). Since log functions are only defined for positive arguments, I need to consider the domains of both sides.
+
+Starting with the left side, log(kx) is defined when kx > 0. That depends on the value of k. If k is positive, then x must be positive. If k is negative, then x must be negative. Similarly, the right side, 2 log(x + 2), requires that x + 2 > 0, so x > -2.
+
+So, combining these domain restrictions, for log(kx) to be defined, we have either:
+
+1. k > 0 and x > 0, or
+2. k < 0 and x < 0 (since kx would then be positive if k and x are both negative).
+
+But we also need x + 2 > 0, so x > -2. Therefore, if k is positive, x must be in (0, ∞), but considering x > -2, that's automatically satisfied for positive x. If k is negative, x must be in (-2, 0) since x has to be less than 0 (to make kx positive) and greater than -2. 
+
+So, the domain of the equation log(kx) = 2 log(x + 2) is either x ∈ (0, ∞) if k > 0 or x ∈ (-2, 0) if k < 0.
+
+Now, the equation itself: log(kx) = 2 log(x + 2). Let's try to solve for x. 
+
+First, apply the logarithm power rule to the right side: 2 log(x + 2) = log((x + 2)^2). So the equation becomes:
+
+log(kx) = log((x + 2)^2).
+
+Since the logarithm function is injective (one-to-one) when the base is positive and not equal to 1, we can equate the arguments:
+
+kx = (x + 2)^2.
+
+So, expanding the right side:
+
+kx = x^2 + 4x + 4.
+
+Bring all terms to one side:
+
+x^2 + 4x + 4 - kx = 0.
+
+Combine like terms:
+
+x^2 + (4 - k)x + 4 = 0.
+
+So, we have a quadratic equation in x: x^2 + (4 - k)x + 4 = 0.
+
+The original equation log(kx) = 2 log(x + 2) will have real solutions only if the solutions to this quadratic satisfy the domain restrictions. So, even if the quadratic has real roots, they must lie within the appropriate interval (either (0, ∞) if k > 0 or (-2, 0) if k < 0). Additionally, the quadratic might have two solutions, but only one of them lies in the domain, or perhaps there's a repeated root.
+
+But the problem states that the equation has exactly one real solution. So, we need to find the values of k where the quadratic equation x^2 + (4 - k)x + 4 = 0 has exactly one solution in the domain (0, ∞) if k > 0 or exactly one solution in (-2, 0) if k < 0.
+
+Wait, but quadratics can have 0, 1, or 2 real solutions. So, for the equation to have exactly one real solution in the domain, there are two possibilities:
+
+1. The quadratic has exactly one real root (i.e., discriminant zero) and that root lies within the domain.
+
+2. The quadratic has two real roots, but only one of them lies within the domain, and the other is outside.
+
+Therefore, we need to consider both cases for each k.
+
+But before that, let's note that the quadratic equation is x^2 + (4 - k)x + 4 = 0. Let's compute its discriminant:
+
+D = (4 - k)^2 - 4 * 1 * 4 = (16 - 8k + k^2) - 16 = k^2 - 8k.
+
+So, discriminant D = k(k - 8).
+
+So, discriminant is positive when k < 0 or k > 8, zero when k = 0 or k = 8, and negative when 0 < k < 8.
+
+But since k is an integer in [-500, 500], except for k = 0 and k = 8, discriminant is positive for k < 0 or k > 8, negative for 0 < k < 8, and zero at k = 0 and k = 8.
+
+But wait, when k = 0, the original equation becomes log(0) which is undefined, so k = 0 is not allowed. Similarly, when k = 8, discriminant is zero, so quadratic has a repeated root. Let's check k = 8.
+
+If k = 8, the quadratic becomes x^2 + (4 - 8)x + 4 = x^2 - 4x + 4 = (x - 2)^2 = 0, so x = 2. Then we need to check if x = 2 is in the domain. Since k = 8 > 0, the domain is x > 0, so x = 2 is valid. So, when k = 8, there's exactly one solution. So k = 8 is a candidate.
+
+Similarly, when k = 0, the equation is undefined, so we can ignore that.
+
+So, discriminant D = k(k - 8). So, for k < 0 or k > 8, D > 0, so quadratic has two distinct real roots. For 0 < k < 8, D < 0, so quadratic has no real roots. For k = 8, D = 0, quadratic has one real root.
+
+But wait, when k = 8, as we saw, x = 2 is a solution. But also, we need to check whether this solution satisfies the original equation.
+
+Original equation: log(8x) = 2 log(x + 2). For x = 2, left side: log(16), right side: 2 log(4) = log(16). So, yes, it works. So k = 8 is valid.
+
+Similarly, when k < 0, discriminant D = k(k - 8). Since k is negative, and k - 8 is also negative (since k < 0 < 8), so D is positive (negative times negative is positive). So quadratic has two real roots. Now, these roots need to be checked whether they lie in the domain x ∈ (-2, 0) when k < 0.
+
+Similarly, for k > 8, discriminant D = k(k - 8) is positive as k > 8, so two real roots. These roots need to lie in x > 0.
+
+So, the plan is:
+
+1. For k > 8: quadratic has two real roots. Need to check if exactly one of them is in (0, ∞). If so, then k is valid.
+
+2. For k = 8: quadratic has one real root (x = 2), which is in (0, ∞), so valid.
+
+3. For 0 < k < 8: quadratic has no real roots, so equation has no solution. So these k's are invalid.
+
+4. For k = 0: equation undefined. Invalid.
+
+5. For k < 0: quadratic has two real roots. Need to check if exactly one of them is in (-2, 0). If so, k is valid.
+
+But before that, let's check for k < 0: quadratic equation is x^2 + (4 - k)x + 4 = 0. Let's denote the roots as x1 and x2.
+
+Sum of roots: x1 + x2 = -(4 - k) = k - 4.
+
+Product of roots: x1 * x2 = 4.
+
+Since product is positive, both roots have the same sign. Since k < 0, sum of roots is k - 4, which is negative (since k is negative, k - 4 < -4). So both roots are negative. Therefore, if k < 0, both roots are negative. Therefore, in the domain x ∈ (-2, 0), we need to check if exactly one root is in (-2, 0), and the other is outside. But since both roots are negative, we need to check if one root is in (-2, 0) and the other is less than or equal to -2.
+
+Wait, but if both roots are negative, and we need exactly one solution in (-2, 0). So, we need that one root is in (-2, 0) and the other is less than or equal to -2.
+
+Alternatively, if both roots are in (-2, 0), then the equation would have two solutions, which is not desired. If both roots are less than or equal to -2, then the equation would have zero solutions in (-2, 0). So, we need exactly one root in (-2, 0). So, how can that happen?
+
+Since both roots are negative, and their product is 4 (positive). So, if one root is less than or equal to -2, and the other is between -2 and 0, then their product is 4. Let's see:
+
+Suppose x1 ≤ -2 and x2 ∈ (-2, 0). Then x1 * x2 = 4. But x1 ≤ -2 and x2 ∈ (-2, 0). So x1 is negative, x2 is negative. The product is positive. Let's check if x1 * x2 can be 4.
+
+If x2 is in (-2, 0), then x2 ∈ (-2, 0), say x2 = -a where 0 < a < 2. Then x1 = 4 / x2 = 4 / (-a) = -4 / a. Since a ∈ (0, 2), -4 / a ∈ (-∞, -2). So x1 ≤ -2. So yes, if x2 ∈ (-2, 0), x1 = -4 / x2 ≤ -2. So, exactly one root in (-2, 0) if and only if the roots are such that one is in (-2, 0) and the other is ≤ -2. But how does this relate to the quadratic?
+
+Alternatively, we can use the quadratic formula to find the roots and then check their positions.
+
+Quadratic equation: x^2 + (4 - k)x + 4 = 0.
+
+Solutions:
+
+x = [-(4 - k) ± sqrt(D)] / 2 = [k - 4 ± sqrt(k(k - 8))]/2.
+
+So, x1 = [k - 4 + sqrt(k(k - 8))]/2
+
+x2 = [k - 4 - sqrt(k(k - 8))]/2
+
+Since k < 0, sqrt(k(k - 8)) is sqrt(negative * negative) = sqrt(positive). So sqrt(k(k - 8)) is real and positive.
+
+Therefore, x1 and x2 are both real numbers. Since k < 0, let's compute x1 and x2:
+
+Let’s take k = -m where m > 0.
+
+Then, sqrt(k(k - 8)) = sqrt(-m(-m - 8)) = sqrt(m(m + 8)).
+
+So, x1 = [ -m - 4 + sqrt(m(m + 8)) ] / 2
+
+x2 = [ -m - 4 - sqrt(m(m + 8)) ] / 2
+
+Let’s compute these:
+
+First, note that sqrt(m(m + 8)) is positive.
+
+So, x1 is [ (-m - 4) + sqrt(m(m + 8)) ] / 2
+
+x2 is [ (-m - 4) - sqrt(m(m + 8)) ] / 2
+
+Since m > 0, sqrt(m(m + 8)) > sqrt(8) ≈ 2.828.
+
+So, let's analyze x1 and x2:
+
+x1: numerator is (-m -4) + sqrt(m(m + 8)). Since sqrt(m(m +8)) > sqrt(8) ≈ 2.828. So, if m is large, sqrt(m(m +8)) is approximately m + 4 (since sqrt(m^2 +8m) ≈ m + 4 for large m). So, (-m -4) + (m +4) = 0. But exact value?
+
+Wait, let's take m as positive, so sqrt(m(m +8)) = sqrt(m^2 + 8m). Let's see:
+
+sqrt(m^2 + 8m) = sqrt((m + 4)^2 - 16). So, sqrt((m + 4)^2 - 16). So, this is less than m +4, since we subtract 16 from (m +4)^2.
+
+Therefore, sqrt(m(m +8)) = sqrt((m +4)^2 - 16) < m +4.
+
+Therefore, (-m -4) + sqrt(m(m +8)) = (-m -4) + (something less than m +4) = negative number.
+
+But how negative?
+
+Similarly, x1 = [ (-m -4) + sqrt(m(m +8)) ] / 2
+
+Since sqrt(m(m +8)) < m +4, then (-m -4) + sqrt(m(m +8)) < (-m -4) + (m +4) = 0. So x1 < 0.
+
+Similarly, x2 = [ (-m -4) - sqrt(m(m +8)) ] / 2. Since sqrt(m(m +8)) is positive, (-m -4) - sqrt(m(m +8)) is even more negative. So x2 < x1 < 0.
+
+Therefore, both roots are negative. So, for k < 0, both roots are negative. Now, we need to check how many of them lie in (-2, 0).
+
+So, we need to find when exactly one of the roots is in (-2, 0). Since both roots are negative, if one is in (-2, 0) and the other is ≤ -2, then the equation has exactly one solution in (-2, 0). So, we need to find the values of k < 0 such that one root is in (-2, 0) and the other is ≤ -2.
+
+Alternatively, we can use the fact that if one root is in (-2, 0) and the other is outside, then the quadratic must cross the x-axis once in (-2, 0) and once outside. So, we can use the Intermediate Value Theorem or check the sign of the quadratic at x = -2 and x = 0.
+
+But since the quadratic is x^2 + (4 - k)x + 4, let's evaluate it at x = -2 and x = 0.
+
+At x = -2: (-2)^2 + (4 - k)(-2) + 4 = 4 + (-8 + 2k) + 4 = (4 -8 +4) + 2k = 0 + 2k = 2k.
+
+At x = 0: 0 + 0 + 4 = 4.
+
+So, at x = -2, the value is 2k. Since k < 0, 2k < 0. At x = 0, the value is 4 > 0. So, the quadratic goes from negative at x = -2 to positive at x = 0, so by Intermediate Value Theorem, there's at least one root in (-2, 0). But since quadratic tends to infinity as x approaches infinity, and we already have two roots, which are both negative. Wait, but if both roots are negative, and the quadratic is positive at x = 0, then the quadratic must cross the x-axis twice in (-∞, 0). But x = 0 is positive, so the quadratic crosses from negative at x = -2 to positive at x = 0, so exactly one root in (-2, 0). The other root is less than or equal to -2.
+
+Wait, but if the quadratic crosses from negative at x = -2 to positive at x = 0, and since both roots are negative, then the quadratic must cross x-axis once in (-2, 0) and once in (-∞, -2). Therefore, for k < 0, there will always be exactly one root in (-2, 0). Wait, but that contradicts our earlier analysis where we saw that when k approaches 0 from the negative side, the quadratic might have roots?
+
+Wait, let's take a specific example. Let’s pick k = -1.
+
+Then quadratic equation: x^2 + (4 - (-1))x + 4 = x^2 + 5x + 4 = 0.
+
+Roots: x = [-5 ± sqrt(25 - 16)] / 2 = [-5 ± 3]/2. So x = (-5 +3)/2 = -1, and x = (-5 -3)/2 = -4. So roots at x = -1 and x = -4. So, x = -1 is in (-2, 0), and x = -4 is in (-∞, -2). So, exactly one root in (-2, 0). So, k = -1 is valid.
+
+Another example: k = -8.
+
+Quadratic equation: x^2 + (4 - (-8))x + 4 = x^2 + 12x + 4 = 0.
+
+Discriminant D = 144 - 16 = 128.
+
+Roots: [-12 ± sqrt(128)] / 2 = [-12 ± 8*sqrt(2)] / 2 = -6 ± 4*sqrt(2). Approximately, sqrt(2) ≈ 1.414, so 4*sqrt(2) ≈ 5.656.
+
+Thus, roots are approximately -6 + 5.656 ≈ -0.344 and -6 -5.656 ≈ -11.656. So, one root is approximately -0.344, which is in (-2, 0), and the other is approximately -11.656, which is less than -2. So, exactly one solution in (-2, 0). So, k = -8 is valid.
+
+Another example: k = -16.
+
+Quadratic equation: x^2 + (4 - (-16))x + 4 = x^2 + 20x + 4 = 0.
+
+Discriminant D = 400 - 16 = 384.
+
+Roots: [-20 ± sqrt(384)] / 2 = [-20 ± 8*sqrt(6)] / 2 = -10 ± 4*sqrt(6). Approximately sqrt(6) ≈ 2.45, so 4*sqrt(6) ≈ 9.8.
+
+Thus, roots are approximately -10 + 9.8 ≈ -0.2 and -10 -9.8 ≈ -19.8. So, again, one root in (-2, 0), the other in (-∞, -2). So, exactly one solution. So, k = -16 is valid.
+
+Wait, so according to these examples, for any k < 0, the quadratic equation x^2 + (4 - k)x + 4 = 0 will have exactly two real roots, one in (-2, 0) and the other ≤ -2. Therefore, for all k < 0, the equation has exactly one real solution in (-2, 0). Therefore, all integers k < 0 in [-500, 500] would be valid. But wait, hold on.
+
+But wait, when k approaches a certain value, maybe the roots coincide? For example, when the discriminant is zero, which is when k = 0 or k = 8. But since k < 0, the discriminant is positive, so two distinct real roots. So, as long as k < 0, there are two real roots, one in (-2, 0), the other ≤ -2. So, exactly one solution in (-2, 0). Therefore, all integers k in [-500, -1] are valid. So, number of integers from -500 to -1 inclusive. That's 500 integers.
+
+But wait, hold on. Wait, when k approaches 0 from the negative side, say k = -ε where ε is a small positive number, the quadratic equation becomes x^2 + (4 + ε)x + 4 = 0. The roots are [-(4 + ε) ± sqrt((4 + ε)^2 - 16)] / 2. Let's compute sqrt((4 + ε)^2 - 16) = sqrt(16 + 8ε + ε² -16) = sqrt(8ε + ε²) ≈ sqrt(8ε). So, the roots are approximately [-(4 + ε) ± sqrt(8ε)] / 2. The larger root is [-(4 + ε) + sqrt(8ε)] / 2. Let's see if this is in (-2, 0).
+
+Let’s take ε approaching 0. Then sqrt(8ε) approaches 0. So, the larger root is approximately (-4)/2 = -2. The smaller root is [-(4 + ε) - sqrt(8ε)] / 2 ≈ (-4 - 0)/2 = -2. So, as ε approaches 0, the two roots approach -2 from both sides. But since ε is positive, the larger root is slightly less than -2, and the smaller root is slightly more than -2? Wait, but as ε approaches 0, sqrt(8ε) is positive and small. So:
+
+Larger root: [ -4 - ε + sqrt(8ε) ] / 2. Let's take ε approaching 0:
+
+Approximately (-4 - 0 + 0)/2 = -2. But since ε is positive and sqrt(8ε) is positive, actually:
+
+Wait, let's compute:
+
+If ε is very small, say ε = 0.0001. Then sqrt(8*0.0001) = sqrt(0.0008) ≈ 0.028.
+
+Then larger root: [ -4.0001 + 0.028 ] / 2 ≈ (-3.972)/2 ≈ -1.986, which is in (-2, 0). The smaller root: [ -4.0001 - 0.028 ] / 2 ≈ (-4.028)/2 ≈ -2.014, which is less than -2. So, as ε approaches 0, the larger root approaches -2 from above (i.e., slightly greater than -2), but since it has to be greater than -2, it's in (-2, 0). The smaller root approaches -2 from below (i.e., slightly less than -2), so it's less than -2. Therefore, for any k < 0, even when k approaches 0 from the negative side, the larger root is still in (-2, 0), and the smaller root is less than -2.
+
+Therefore, for all k < 0, the equation has exactly one solution in (-2, 0). So, all integers k from -500 up to -1 inclusive would be valid. So, that's 500 integers.
+
+But hold on, let's check when k = -1000. Wait, but k is in [-500,500]. So, k can be as low as -500. Let's check k = -500.
+
+Quadratic equation: x^2 + (4 - (-500))x + 4 = x^2 + 504x + 4 = 0.
+
+Compute roots: [-504 ± sqrt(504^2 - 16)] / 2. 504^2 is 254016, so sqrt(254016 -16) = sqrt(254000) ≈ 503.98. So, roots are (-504 ± 503.98)/2. The larger root is approximately (-504 + 503.98)/2 ≈ (-0.02)/2 ≈ -0.01, which is in (-2, 0). The smaller root is (-504 -503.98)/2 ≈ (-1007.98)/2 ≈ -503.99, which is less than -2. So, exactly one solution in (-2, 0). So, k = -500 is valid.
+
+Therefore, all integers k from -500 to -1 inclusive are valid. So, that's 500 integers.
+
+Now, combining the cases:
+
+1. For k < 0: 500 integers (from -500 to -1 inclusive).
+
+2. For k = 8: 1 integer (k = 8).
+
+3. For k > 8: need to check if the quadratic has exactly one solution in (0, ∞).
+
+So, now we need to analyze k > 8.
+
+For k > 8, discriminant D = k(k - 8) > 0, so two distinct real roots. The quadratic is x^2 + (4 - k)x + 4 = 0.
+
+Sum of roots: x1 + x2 = k - 4.
+
+Product of roots: x1 * x2 = 4.
+
+Since product is positive, both roots have the same sign. Sum is k - 4. Since k > 8, sum is positive. Therefore, both roots are positive. So, both roots are in (0, ∞). Therefore, the equation would have two solutions in (0, ∞), unless one of the roots is exactly at x = 0, but x = 0 would make log(kx) undefined. Therefore, for k > 8, the quadratic has two positive roots, so equation has two solutions in (0, ∞), which is not desired. So, these k's are invalid.
+
+Wait, but wait, maybe one of the roots is at x = 0? But log(kx) is undefined at x = 0, so x = 0 is not in the domain. Therefore, even if one root is exactly at x = 0, which would require 0^2 + (4 - k)*0 + 4 = 4 ≠ 0, so x = 0 is not a root. Therefore, for k > 8, quadratic has two positive roots, so two solutions. Therefore, k > 8 are invalid.
+
+But wait, let me check with a specific example. Take k = 9.
+
+Quadratic equation: x^2 + (4 - 9)x + 4 = x^2 -5x +4 = 0.
+
+Roots: x = [5 ± sqrt(25 - 16)] / 2 = [5 ± 3]/2. So x = 4 and x = 1. Both positive, so two solutions. Therefore, equation has two solutions. So k = 9 is invalid.
+
+Similarly, k = 10: quadratic equation x^2 + (4 -10)x +4 = x^2 -6x +4 = 0. Roots: [6 ± sqrt(36 -16)] / 2 = [6 ± sqrt(20)] / 2 = [6 ± 2*sqrt(5)] / 2 = 3 ± sqrt(5). Approximately 3 ± 2.236. So, x ≈ 5.236 and x ≈ 0.764. Both positive. So, two solutions. So, k = 10 is invalid.
+
+Therefore, for k > 8, quadratic has two positive roots, so equation has two solutions. Therefore, these k's are invalid.
+
+Therefore, the only valid k's are:
+
+1. All integers k from -500 to -1 inclusive (500 integers).
+
+2. The integer k = 8.
+
+So, total valid k's: 500 + 1 = 501.
+
+But wait, let me confirm for k = 8: equation log(8x) = 2 log(x + 2). The solution is x = 2, which is in (0, ∞). So, only one solution. So, k = 8 is valid.
+
+Therefore, total number of integers is 500 (from -500 to -1) plus 1 (k = 8), totaling 501.
+
+But wait, hold on. Let me check another possible case. When k = 0, the equation is undefined. So, k = 0 is excluded. For k = 8, valid. For k > 8, two solutions. For k < 0, one solution. So, seems correct.
+
+But let's check another example. Suppose k = -1, which is valid. x ≈ -0.344 and x ≈ -11.656. Only x ≈ -0.344 is in (-2, 0). So, exactly one solution. So, valid.
+
+Another example: k = 8. x = 2. Exactly one solution. Valid.
+
+Another example: k = 9. Two solutions. Invalid.
+
+Therefore, the total number is 500 + 1 = 501.
+
+But wait, the question is to find the number of integer values of k in [-500,500]. So, integers from -500 to 500 inclusive. So, total 1001 integers. But valid k's are from -500 to -1 (500 integers) and k = 8. So, total 501.
+
+But let me check if there are any other possible k's that could result in exactly one solution.
+
+Wait, suppose k = 8 is the only k > 0 that works, and all k < 0 work. So, 500 + 1 = 501.
+
+But let me check if k = 4, which is between 0 and 8. For k = 4, discriminant is 4(4 - 8) = -16, so no real roots. So, equation has no solution. So, k = 4 is invalid.
+
+Thus, only k = 8 and k < 0 are valid. So, the answer is 501.
+
+But let me check if there's a possible k where the equation has exactly one solution. For example, when the quadratic has a repeated root in the domain. But for k < 0, discriminant is positive, so two distinct roots. For k = 8, discriminant is zero, so one root. For k > 8, discriminant positive, two roots. For k = 0, undefined. For 0 < k < 8, discriminant negative, no roots. So, only k = 8 and all k < 0 give exactly one solution.
+
+Therefore, the number of integers is 500 + 1 = 501.
+
+But let me confirm once again. For k < 0, the quadratic has two real roots, one in (-2, 0), one ≤ -2. So, exactly one solution. For k = 8, exactly one solution. For k > 8, two solutions. For 0 < k < 8, no solutions. For k = 0, undefined. So, yes, total 501.
+
+Therefore, the final answer is \boxed{501}.
+</think>

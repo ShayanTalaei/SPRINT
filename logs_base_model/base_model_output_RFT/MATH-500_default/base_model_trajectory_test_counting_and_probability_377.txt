@@ -1,0 +1,114 @@
+Okay, so I need to find the probability that exactly 4 out of 7 islands have treasure, with each island having a 1/5 chance of having treasure. Let me think step by step about how to approach this.
+
+First, this seems like a probability problem involving multiple trials, each with two possible outcomes: treasure or no treasure. Since each island is an independent trial, this might be a binomial probability situation. The binomial formula is typically used when there are a fixed number of independent trials, each with two possible outcomes (success or failure), and the probability of success is the same for each trial. In this case, each island is a trial, "success" would be finding treasure, with probability 1/5, and "failure" would be not finding treasure, with probability 4/5. We want exactly 4 successes out of 7 trials. So, yes, binomial probability seems applicable here.
+
+The binomial probability formula is:
+
+P(k) = C(n, k) * p^k * (1-p)^(n-k)
+
+Where:
+- P(k) is the probability of exactly k successes,
+- C(n, k) is the combination of n things taken k at a time,
+- p is the probability of success on a single trial,
+- n is the total number of trials.
+
+Plugging in the numbers from the problem:
+- n = 7 (since there are 7 islands),
+- k = 4 (exactly 4 islands with treasure),
+- p = 1/5 (probability of treasure on a single island).
+
+First, I need to calculate the combination C(7, 4). That's the number of ways to choose 4 successes out of 7 trials. The formula for combinations is C(n, k) = n! / (k! * (n - k)!).
+
+Calculating C(7, 4):
+7! / (4! * (7 - 4)!) = 7! / (4! * 3!) 
+
+Calculating factorials:
+7! = 7*6*5*4*3*2*1 = 5040
+4! = 4*3*2*1 = 24
+3! = 3*2*1 = 6
+
+So, 5040 / (24 * 6) = 5040 / 144. Let's divide 5040 by 144.
+
+144*35 = 5040, because 144*30=4320, 144*5=720, 4320+720=5040. So 5040 /144 =35. Therefore, C(7,4)=35.
+
+Next, calculate p^k, which is (1/5)^4. Let's compute that.
+
+(1/5)^4 = 1/(5^4) = 1/625. Because 5*5=25, 25*5=125, 125*5=625. So 1/625.
+
+Then, (1-p)^(n - k) is (4/5)^(7-4) = (4/5)^3. Let's compute that.
+
+4/5 cubed: (4/5)*(4/5)*(4/5). 4*4=16, 16*4=64. Denominator: 5*5=25, 25*5=125. So 64/125.
+
+Now, multiply all three components together: C(7,4) * (1/5)^4 * (4/5)^3 = 35 * (1/625) * (64/125).
+
+Let me compute this step by step.
+
+First, multiply 35 and 1/625. 35/625. Let's simplify that. Both numerator and denominator can be divided by 5: 35 ÷5=7, 625 ÷5=125. So 7/125.
+
+Then, multiply 7/125 by 64/125. Multiply the numerators: 7*64=448. Multiply the denominators: 125*125=15625. So the result is 448/15625.
+
+Let me check if this fraction can be simplified. 448 and 15625. Let's see if they have any common factors. 448 is 64*7, which is 2^6*7. 15625 is 5^6. So no common factors besides 1. Therefore, 448/15625 is the simplified form.
+
+To express this as a decimal, I can divide 448 by 15625. Let's compute that.
+
+15625 goes into 448 zero times. Add a decimal point and a zero: 4480. 15625 goes into 4480 zero times. Add another zero: 44800. 15625*2=31250. Subtract that from 44800: 44800-31250=13550. Bring down a zero: 135500. 15625*8=125000. Subtract: 135500-125000=10500. Bring down a zero: 105000. 15625*6=93750. Subtract: 105000-93750=11250. Bring down a zero: 112500. 15625*7=109375. Subtract: 112500-109375=3125. Bring down a zero: 31250. 15625*2=31250. Subtract: 0. So the decimal is 0.028448.
+
+Wait, let me verify that division again. Maybe I miscalculated.
+
+Wait, 448 divided by 15625. Let me do it step by step.
+
+15625 x 0.028 = 15625 x 0.02 + 15625 x 0.008 = 312.5 + 125 = 437.5. So 0.028 gives 437.5. Subtract that from 448: 448 - 437.5 = 10.5. So 0.028 + (10.5 /15625). 10.5 /15625 = 0.000672. So total is 0.028 + 0.000672 = 0.028672. But wait, when I did the long division earlier, I ended up with 0.028448. Hmm, maybe my initial division was wrong. Let me check using another method.
+
+Alternatively, since 1/15625 is 0.000064. Because 1/100000 is 0.00001, so 1/15625 is 1/(100000 / 6.4) = 6.4/100000 = 0.000064. Therefore, 448 * 0.000064 = ?
+
+Calculate 448 * 0.000064:
+
+First, 448 * 64 = 28,672 (since 400*64=25,600; 48*64=3,072; total 25,600 + 3,072 = 28,672). Then, 28,672 * 0.0001 = 2.8672. But since we multiplied by 64 instead of 0.000064, we need to adjust. Wait, maybe another way.
+
+Wait, 0.000064 is 64 * 10^-6. So 448 * 64 = 28,672. Then, 28,672 * 10^-6 = 0.028672. So 448/15625 = 0.028672. So the decimal is approximately 0.028672, which is 2.8672%.
+
+But when I did the long division earlier, I thought I got 0.028448. Hmm, which one is correct? Let me check with another method.
+
+Alternatively, 1/5^4 * 4^3 /5^3 = 4^3 /5^7. Wait, 4^3 is 64, 5^7 is 78125. Wait, 5^7 is 5*5=25, 25*5=125, 125*5=625, 625*5=3125, 3125*5=15625, 15625*5=78125. Wait, so 4^3 /5^7 is 64/78125. Wait, but earlier I had 35*(1/625)*(64/125) = 35*64/(625*125) = 35*64/78125. But 35*64=2240, so 2240/78125. Let me compute that.
+
+2240 divided by 78125. Let's see. 78125 x 0.028 = 2187.5. 2240 - 2187.5 = 52.5. 52.5 /78125 = 0.000672. So total is 0.028 + 0.000672 = 0.028672. So 0.028672. So the decimal is 0.028672. So approximately 2.8672%.
+
+Therefore, the probability is 448/15625, which is approximately 2.867%.
+
+Wait, but let me check again. The combination is 35, then (1/5)^4 is 1/625, and (4/5)^3 is 64/125. Multiplying all together: 35*(1/625)*(64/125). Let's compute 35*64 first. 35*60=2100, 35*4=140, so 2100+140=2240. Then, 2240 divided by (625*125). 625*125. Let's compute 625*100=62,500; 625*25=15,625. So 62,500 +15,625=78,125. So denominator is 78,125. Therefore, 2240/78125. Let me divide 2240 by 78125.
+
+Divide numerator and denominator by 5: 2240 ÷5=448; 78125 ÷5=15,625. So 448/15,625. Which is the same as before. So 448 divided by 15,625. Which we already calculated as 0.028672.
+
+So the exact probability is 448/15,625, which is approximately 2.8672%.
+
+But let me verify once more. Maybe there's a mistake in the combination calculation? Let's check C(7,4) again. C(7,4) is 35, correct. Because 7 choose 4 is the same as 7 choose 3, which is 35. So that's right.
+
+(1/5)^4 is 1/625, correct. (4/5)^3 is 64/125, correct. Multiplying all together: 35 * (1/625) * (64/125). Let's compute step by step.
+
+35 * (1/625) = 35/625 = 7/125. Then, 7/125 * 64/125 = (7*64)/(125*125) = 448/15,625. So that's correct.
+
+Therefore, the probability is 448/15,625, or approximately 2.8672%. To express this as a decimal, it's approximately 0.028672. If we need to round it to, say, four decimal places, it's 0.0287 or 2.87%.
+
+But the question asks for the probability, so it's better to present the exact fractional form, which is 448/15,625. Alternatively, we can write it in the simplified form if possible, but 448 and 15,625 have no common factors besides 1, as established earlier.
+
+Alternatively, we can also write it as a reduced fraction. Let's check if 448 and 15,625 have any common divisors. 448 is 64 *7, which is 2^6 *7. 15,625 is 5^6. So no common prime factors, so the fraction is already in simplest terms.
+
+Therefore, the exact probability is 448/15,625, which is approximately 2.8672%.
+
+Wait, but let me check if 448/15,625 can be simplified further. Let's check the GCD of 448 and 15,625. The prime factors of 448 are 2^6 *7. The prime factors of 15,625 are 5^6. There are no common prime factors, so GCD is 1. Therefore, the fraction is already simplified.
+
+Therefore, the final answer is 448/15,625. If they want it as a decimal, approximately 0.028672, or 2.8672%.
+
+But the question says "what is the probability", and in probability questions, often fractions are acceptable, especially if they can be simplified. However, 448/15,625 is the exact value. Alternatively, if they want it in a decimal, we can write it as approximately 0.0287 or 2.87%.
+
+But since the problem doesn't specify the form, but in math problems, fractions are usually preferred unless otherwise stated. So I think 448/15,625 is the appropriate exact answer.
+
+Wait, but let me check once again. Maybe I made a mistake in the combination calculation. 7 choose 4 is 35. Let's compute 7!/(4!3!) = 5040/(24*6)=5040/144=35. Correct.
+
+Alternatively, 7*6*5*4/(4*3*2*1)= (7*6*5*4)/24 = (7*6*5)/6=7*5=35. Yes, that's another way. So 7 choose 4 is indeed 35. So that's correct.
+
+Therefore, the calculation seems correct. So the probability is 448/15,625. If I want to write it as a reduced fraction, but since it's already reduced, that's the answer.
+
+Alternatively, maybe the question expects the answer in a different form, but I think 448/15,625 is the exact probability. So I think that's the answer.
+Therefore, the probability that exactly 4 of the islands have treasure is $\boxed{\frac{448}{15625}}$.
+</think>

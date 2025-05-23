@@ -1,0 +1,49 @@
+Okay, so Pat needs to select six cookies from a tray that has chocolate chip, oatmeal, and peanut butter cookies. There are at least six of each type, and the cookies of the same type are indistinguishable. The question is asking how many different assortments of six cookies can be selected. Hmm, alright, let's break this down.
+
+First, since the cookies are indistinct except for their type, this is a problem about combinations with repetition. In other words, we need to find the number of non-negative integer solutions to the equation x + y + z = 6, where x, y, z represent the number of chocolate chip, oatmeal, and peanut butter cookies respectively. Each of x, y, z can be zero or more, but their sum must be six. 
+
+Wait, but the problem states there are at least six of each type, so even if someone tried to take all six of one type, there's enough available. So we don't have to worry about constraints here. The problem allows any number from 0 to 6 for each type, as long as the total is six. 
+
+So, the formula for combinations with repetition is C(n + k - 1, k - 1), where n is the number of items to choose (6 cookies) and k is the number of types (3 cookies). Plugging in the numbers, that would be C(6 + 3 - 1, 3 - 1) = C(8, 2). Let me check that formula again. Yes, combinations with repetition formula is (n + k - 1 choose k - 1), so (6 + 3 - 1 choose 3 - 1) = (8 choose 2). 
+
+Calculating (8 choose 2) is 8*7/2 = 28. So is the answer 28? Wait, but let me verify. Let me think of another way. Suppose we list all possible combinations. 
+
+For example, if all six are chocolate chip: (6,0,0). Then five chocolate chip and one oatmeal: (5,1,0). Then five chocolate chip and one peanut butter: (5,0,1). Then four chocolate chip and two oatmeal: (4,2,0), four chocolate chip and one oatmeal and one peanut butter: (4,1,1), four chocolate chip and two peanut butter: (4,0,2). Then three chocolate chip and three oatmeal: (3,3,0), three chocolate chip and two oatmeal and one peanut butter: (3,2,1), three chocolate chip and one oatmeal and two peanut butter: (3,1,2), three chocolate chip and three peanut butter: (3,0,3). Then two chocolate chip and four oatmeal: (2,4,0), two chocolate chip and three oatmeal and one peanut butter: (2,3,1), two chocolate chip and two oatmeal and two peanut butter: (2,2,2), two chocolate chip and one oatmeal and three peanut butter: (2,1,3), two chocolate chip and four peanut butter: (2,0,4). Then one chocolate chip and five oatmeal: (1,5,0), one chocolate chip and four oatmeal and one peanut butter: (1,4,1), one chocolate chip and three oatmeal and two peanut butter: (1,3,2), one chocolate chip and two oatmeal and three peanut butter: (1,2,3), one chocolate chip and one oatmeal and four peanut butter: (1,1,4), one chocolate chip and five peanut butter: (1,0,5). Then all cookies are oatmeal: (0,6,0), oatmeal and peanut butter: (0,5,1), (0,4,2), (0,3,3), (0,2,4), (0,1,5), (0,0,6). 
+
+Wait, let's count these. Starting with six chocolate chip: 1. Then five chocolate chip and one of the other two: 2. Then four chocolate chip and two of the others: 3. Three chocolate chip and three of the others: 4. Then three chocolate chip and two of one and one of another: 5. Wait, maybe my way of counting is getting confusing. Let me try to list them systematically.
+
+Number of cookies of each type:
+
+Let’s think of all possible triples (x, y, z) where x + y + z = 6, x, y, z ≥ 0.
+
+This is equivalent to the number of non-negative integer solutions to the equation. The formula gives 28, but let's see if that's accurate by enumerating them.
+
+Alternatively, use stars and bars. Imagine 6 stars (cookies) and 2 bars (dividers between the types). The number of ways is C(6 + 3 -1, 3 -1) = C(8,2) = 28. So that's 28. 
+
+But when I tried to list them manually, I might have missed some or counted incorrectly. Let me try again. Let's fix the number of chocolate chip cookies and then count the possible combinations for the other two types.
+
+Case 1: x = 0. Then y + z = 6. The number of non-negative integer solutions is 7 (from y=0,z=6 up to y=6,z=0).
+
+Case 2: x = 1. Then y + z = 5. Solutions: 6.
+
+Case 3: x = 2. y + z = 4. Solutions: 5.
+
+Case 4: x = 3. y + z = 3. Solutions: 4.
+
+Case 5: x = 4. y + z = 2. Solutions: 3.
+
+Case 6: x = 5. y + z = 1. Solutions: 2.
+
+Case 7: x = 6. y + z = 0. Solutions: 1.
+
+Adding them up: 7 + 6 + 5 + 4 + 3 + 2 + 1 = 28. 
+
+Yes, that adds up to 28. So that confirms the formula. Therefore, the answer is 28. 
+
+But wait, let me check again. If x is from 0 to 6, and for each x, the number of solutions is (6 - x + 1). For x=0, 7; x=1, 6; ... x=6, 1. Sum from k=1 to 7 of k is 7*8/2 = 28. Correct. So that's consistent. 
+
+Therefore, the number of different assortments is 28. 
+
+I think that's solid. The key was recognizing that this is a combinations with repetition problem, applying the formula, and then verifying by enumerating the cases. The stars and bars approach also confirmed the answer. So I'm confident the answer is 28.
+Therefore, the number of different assortments of six cookies that can be selected is $\boxed{28}$.
+</think>

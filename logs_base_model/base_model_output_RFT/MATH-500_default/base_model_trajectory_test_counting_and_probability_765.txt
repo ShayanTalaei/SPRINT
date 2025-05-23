@@ -1,0 +1,264 @@
+Okay, so I need to figure out how many students take physics in the school. Let me start by listing all the given information and see how I can organize it. 
+
+First, the total number of students is 360. Out of these, 15 take all three subjects: calculus, physics, and chemistry. Then, 15 students don't take any of these three subjects. So, the number of students taking at least one of the three subjects must be 360 minus 15, which is 345. 
+
+Next, 180 students take calculus. The problem also states that twice as many students take chemistry as take physics. Hmm, so if I let the number of students taking physics be P, then the number taking chemistry would be 2P. 
+
+Then, there are some overlaps. 75 students take both calculus and chemistry. Also, 75 take both physics and chemistry. But only 30 take both physics and calculus. 
+
+Wait, so I need to use the principle of inclusion-exclusion here to find the total number of students taking at least one subject. The formula for three sets is:
+
+Total = C + P + Ch - (C∩P) - (C∩Ch) - (P∩Ch) + (C∩P∩Ch)
+
+Where C is calculus, P is physics, and Ch is chemistry. 
+
+We know Total = 345 (since 15 don't take any), C = 180, P is what we need to find, Ch = 2P. The intersections: C∩P is 30, C∩Ch is 75, P∩Ch is 75, and C∩P∩Ch is 15. 
+
+Plugging these into the formula:
+
+345 = 180 + P + 2P - 30 - 75 - 75 + 15
+
+Let me compute the right side step by step. 
+
+First, combine the terms:
+
+180 + P + 2P = 180 + 3P
+
+Then subtract the intersections: 30 + 75 + 75 = 180
+
+Add the triple overlap: +15
+
+So the equation becomes:
+
+345 = 180 + 3P - 180 + 15
+
+Simplify the right side:
+
+180 - 180 cancels out, so 3P + 15
+
+So:
+
+345 = 3P + 15
+
+Subtract 15 from both sides:
+
+330 = 3P
+
+Divide both sides by 3:
+
+P = 110
+
+Wait, so the number of students taking physics is 110? Let me check this again to make sure I didn't make a mistake.
+
+So, substituting back into the equation:
+
+345 = 180 + 3P - 180 + 15
+
+Yes, 180 cancels with -180, leaving 3P +15. 345 -15 = 330, so 3P=330, P=110. That seems right.
+
+But let me verify with another approach. Let's use the inclusion-exclusion formula again but check each part.
+
+Total = C + P + Ch - (C∩P) - (C∩Ch) - (P∩Ch) + (C∩P∩Ch)
+
+Plugging in:
+
+Total = 180 + P + 2P - 30 -75 -75 +15
+
+Combine like terms:
+
+180 + 3P - 180 +15
+
+Again, same result. So 3P +15 = 345, so 3P=330, P=110. 
+
+But let's also check if the individual overlaps make sense. For example, the number of students taking both calculus and chemistry is 75, and since 15 of them are taking all three, the number taking only calculus and chemistry is 75 -15 =60. Similarly, physics and chemistry is 75 -15=60, and physics and calculus is 30 -15=15. 
+
+Then, the number of students taking only calculus would be total calculus (180) minus those taking calculus and physics (15), calculus and chemistry (75), and all three (15). So 180 -15 -75 -15=65. 
+
+Similarly, the number taking only physics would be total physics (110) minus those taking physics and calculus (15), physics and chemistry (60), and all three (15). So 110 -15 -60 -15=20. 
+
+And the number taking only chemistry would be total chemistry (220) minus those taking chemistry and calculus (75), chemistry and physics (60), and all three (15). So 220 -75 -60 -15=70. 
+
+Now, adding all these up:
+
+Only calculus:65
+
+Only physics:20
+
+Only chemistry:70
+
+Calculus and physics only:15 -15=0? Wait, no. Wait, wait. Wait, the number taking both calculus and physics is 30, but 15 of those are taking all three. So those taking only calculus and physics would be 30 -15=15. Similarly for the others.
+
+So:
+
+Only calculus:65
+
+Only physics:20
+
+Only chemistry:70
+
+Calculus and physics only:15
+
+Calculus and chemistry only:60
+
+Physics and chemistry only:60
+
+All three:15
+
+Total:65+20+70+15+60+60+15=65+20=85; 85+70=155; 155+15=170; 170+60=230; 230+60=290; 290+15=305. Wait, but the total is supposed to be 345. Hmm, that's a discrepancy. 
+
+Wait, 305 is way less than 345. So something's wrong here. 
+
+Wait, maybe my calculation is wrong. Let me recalculate:
+
+Only calculus:65
+
+Only physics:20
+
+Only chemistry:70
+
+Calculus and physics only:15
+
+Calculus and chemistry only:60
+
+Physics and chemistry only:60
+
+All three:15
+
+Adding these up: 65+20=85; +70=155; +15=170; +60=230; +60=290; +15=305. 
+
+But total should be 345. So missing 40. 
+
+Hmm, that means my initial calculation is wrong. Where did I go wrong?
+
+Wait, maybe the way I set up the inclusion-exclusion formula is incorrect. Let me check again.
+
+The inclusion-exclusion formula is:
+
+Total = C + P + Ch - (C∩P) - (C∩Ch) - (P∩Ch) + (C∩P∩Ch)
+
+But when I plug in the numbers:
+
+Total = 180 + P + 2P - 30 -75 -75 +15
+
+Which simplifies to 180 +3P -180 +15=3P +15=345
+
+So 3P=330, P=110.
+
+But when I break it down into individual regions, the total comes to 305, which is 40 less than 345. So there's a mistake here. 
+
+Wait, perhaps the problem is in the way I calculated the individual regions. Let me check again.
+
+Total students taking at least one subject:345.
+
+If P=110, then Ch=220.
+
+Calculus:180
+
+Physics:110
+
+Chemistry:220
+
+Intersections:
+
+C∩P=30 (including those in all three)
+
+C∩Ch=75 (including all three)
+
+P∩Ch=75 (including all three)
+
+All three:15
+
+So, the regions are:
+
+Only C: C - (C∩P) - (C∩Ch) + (C∩P∩Ch) =180 -30 -75 +15=180-105+15=90
+
+Only P: P - (C∩P) - (P∩Ch) + (C∩P∩Ch)=110 -30 -75 +15=110-105+15=20
+
+Only Ch: Ch - (C∩Ch) - (P∩Ch) + (C∩P∩Ch)=220 -75 -75 +15=220-150+15=85
+
+C∩P only: (C∩P) - (C∩P∩Ch)=30-15=15
+
+C∩Ch only:75-15=60
+
+P∩Ch only:75-15=60
+
+All three:15
+
+Adding all these up:
+
+Only C:90
+
+Only P:20
+
+Only Ch:85
+
+C∩P only:15
+
+C∩Ch only:60
+
+P∩Ch only:60
+
+All three:15
+
+Total:90+20=110; 110+85=195; 195+15=210; 210+60=270; 270+60=330; 330+15=345. 
+
+Ah, okay, that adds up to 345. So where did I go wrong earlier? 
+
+Wait, earlier when I thought only calculus was 65, that was a mistake. Let me recalculate that. 
+
+Only calculus is C minus those in C∩P, C∩Ch, and adding back those in all three (since they were subtracted twice). So:
+
+Only C: C - (C∩P) - (C∩Ch) + (C∩P∩Ch) =180 -30 -75 +15=90. 
+
+Similarly, Only P: P - (C∩P) - (P∩Ch) + (C∩P∩Ch)=110 -30 -75 +15=20. 
+
+Only Ch: Ch - (C∩Ch) - (P∩Ch) + (C∩P∩Ch)=220 -75 -75 +15=85. 
+
+So the breakdown is correct. Earlier, I made a mistake in calculating Only C as 65 instead of 90. That's why the total didn't add up. So with P=110, the numbers check out. 
+
+Therefore, the number of students taking physics is 110. 
+
+But let me check once more. If P=110, then Ch=220. Then:
+
+Total students taking at least one subject:
+
+Only C:90
+
+Only P:20
+
+Only Ch:85
+
+C∩P only:15
+
+C∩Ch only:60
+
+P∩Ch only:60
+
+All three:15
+
+Total:90+20+85+15+60+60+15=90+20=110; 110+85=195; 195+15=210; 210+60=270; 270+60=330; 330+15=345. Correct.
+
+So, yes, the answer is 110. 
+
+I think that's correct. Let me just verify the problem statement again to make sure I didn't misinterpret anything.
+
+The problem states:
+
+15 take calculus, physics, and chemistry (so C∩P∩Ch=15)
+
+15 don't take any.
+
+180 take calculus.
+
+Twice as many take chemistry as take physics (Ch=2P)
+
+75 take both calculus and chemistry (C∩Ch=75)
+
+75 take both physics and chemistry (P∩Ch=75)
+
+Only 30 take both physics and calculus (C∩P=30)
+
+So, yes, all these numbers are correctly used in the calculation. 
+
+Therefore, the answer is 110.
+</think>

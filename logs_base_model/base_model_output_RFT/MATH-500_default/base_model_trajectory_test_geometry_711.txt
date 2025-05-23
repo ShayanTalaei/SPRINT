@@ -1,0 +1,476 @@
+Okay, so I need to find the surface area of one of the pieces created when a plane parallel to edges AB and CD cuts the regular tetrahedron ABCD halfway between them. Let me start by understanding the problem step by step.
+
+First, a regular tetrahedron has all edges equal, so each edge is length 2. The plane is parallel to both AB and CD and lies halfway between them. This plane will intersect the tetrahedron, dividing it into two parts. I need to figure out the shape of these two parts and then compute the surface area of one of them.
+
+Let me visualize the tetrahedron. A regular tetrahedron has four triangular faces, all equilateral triangles. Each face is an equilateral triangle with side length 2. The edges AB and CD are skew lines in the tetrahedron, meaning they don't intersect and aren't parallel. However, the plane we're considering is parallel to both of these edges. Since the plane is halfway between them, it should intersect the tetrahedron in such a way that the portion between AB and the plane is a smaller polyhedron, and the portion between the plane and CD is another polyhedron.
+
+Wait, but since the plane is parallel to both AB and CD, and halfway between them, the intersection should create similar sections. Maybe the plane cuts the other edges of the tetrahedron, creating a smaller tetrahedron and another figure. But I need to be precise here.
+
+Let me consider the coordinates of the tetrahedron to better understand where the plane intersects. Let's assign coordinates to the vertices. For a regular tetrahedron, one possible coordinate system is:
+
+Let’s place vertex A at (0, 0, 0). Then, since all edges are length 2, we can place B at (2, 0, 0). For the other two vertices C and D, we need to ensure that all edges are length 2. Let me recall that in a regular tetrahedron, the coordinates can be set such that the base is an equilateral triangle in the xy-plane, and the apex is above it. So, let's define:
+
+- A = (0, 0, 0)
+- B = (2, 0, 0)
+- C = (1, √3, 0)
+- D = (1, √3/3, h)
+
+Where h is the height from the base to the apex D. Since the edge length is 2, we can compute h. The distance from D to A should be 2. Let's compute h.
+
+The coordinates of D are (1, √3/3, h). The distance from D to A is sqrt[(1-0)^2 + (√3/3 - 0)^2 + (h - 0)^2] = sqrt[1 + (1/3) + h^2] = sqrt[(4/3) + h^2] = 2.
+
+Therefore, sqrt[(4/3) + h^2] = 2 => (4/3) + h^2 = 4 => h^2 = 4 - 4/3 = 8/3 => h = 2√(2/3) = (2√6)/3.
+
+So, coordinates of D are (1, √3/3, 2√6/3).
+
+Now, edges AB is from (0,0,0) to (2,0,0), and edge CD is from (1, √3, 0) to (1, √3/3, 2√6/3). The plane is parallel to both AB and CD and halfway between them.
+
+Since the plane is parallel to both AB and CD, and halfway between them, it must be equidistant from AB and CD. Let me find the equations of the lines AB and CD to determine the plane.
+
+First, parametrize AB. AB is from A(0,0,0) to B(2,0,0). So, direction vector AB is (2,0,0). Parametric equations: x = 2t, y = 0, z = 0, where t ∈ [0,1].
+
+Similarly, parametrize CD. CD is from C(1, √3, 0) to D(1, √3/3, 2√6/3). Direction vector CD is (0, -2√3/3, 2√6/3). Parametric equations: x = 1, y = √3 - (2√3/3)s, z = 0 + (2√6/3)s, where s ∈ [0,1].
+
+Now, the plane is parallel to both AB and CD. Therefore, the normal vector of the plane should be perpendicular to both direction vectors of AB and CD. Let's compute the normal vector.
+
+Direction vector of AB: **v** = (2, 0, 0)
+Direction vector of CD: **w** = (0, -2√3/3, 2√6/3)
+
+The normal vector **n** to the plane is the cross product of **v** and **w**:
+
+**n** = **v** × **w** = |i   j   k|
+                     |2   0   0|
+                     |0 -2√3/3 2√6/3|
+
+Calculating determinant:
+
+i*(0*2√6/3 - 0*(-2√3/3)) - j*(2*2√6/3 - 0*0) + k*(2*(-2√3/3) - 0*0)
+
+Simplify:
+
+i*(0) - j*(4√6/3) + k*(-4√3/3)
+
+So, **n** = (0, -4√6/3, -4√3/3)
+
+We can simplify this by dividing by common factors. Let's factor out -4/3:
+
+**n** = (-4/3)(0, √6, √3)
+
+So, a normal vector is (0, √6, √3). Let's use this for the plane equation.
+
+Now, the plane is halfway between AB and CD. To find the equation of the plane, we need a point on the plane and the normal vector. Since the plane is halfway between AB and CD, perhaps the midpoint of some segment connecting AB and CD?
+
+Wait, but AB and CD are skew lines. So, the concept of halfway between skew lines is a bit tricky. However, since the plane is parallel to both AB and CD, it must be equidistant from both lines.
+
+Alternatively, maybe we can find two points, one on AB and one on CD, such that the line segment connecting them is perpendicular to both AB and CD and has length equal to the distance between AB and CD, then the midpoint of this segment lies on the plane.
+
+But since the plane is parallel to both AB and CD, and lies halfway between them, the plane should contain all points that are midpoints of segments connecting AB and CD with direction perpendicular to both AB and CD.
+
+Alternatively, perhaps the plane can be found by translating one of the lines (AB or CD) along a vector perpendicular to both, by half the distance between them.
+
+But maybe a better approach is to parameterize the plane. Let's consider the parametric equations of AB and CD.
+
+For AB: (2t, 0, 0)
+For CD: (1, √3 - (2√3/3)s, (2√6/3)s)
+
+We need to find points on AB and CD such that the vector connecting them is parallel to the normal vector of the plane. Wait, but the plane is parallel to AB and CD, so the normal vector is perpendicular to both direction vectors of AB and CD. Therefore, the connecting vector between AB and CD should be in the plane. Hmm, maybe this is getting complicated.
+
+Alternatively, perhaps the distance between AB and CD can be calculated, and then the plane is placed at half that distance from each.
+
+But how do we compute the distance between two skew lines AB and CD?
+
+The formula for the distance between two skew lines is |(**a** - **b**) • (**v** × **w**)| / |**v** × **w**|, where **a** and **b** are points on the two lines, and **v** and **w** are their direction vectors.
+
+Let me use points A and C for the two lines. So, **a** = A = (0,0,0), **b** = C = (1, √3, 0). The direction vectors are **v** = AB = (2,0,0) and **w** = CD = (0, -2√3/3, 2√6/3).
+
+Compute **a** - **b** = (-1, -√3, 0)
+
+Compute **v** × **w** = (0, -4√6/3, -4√3/3) as before.
+
+Then, (**a** - **b**) • (**v** × **w**) = (-1)(0) + (-√3)(-4√6/3) + (0)(-4√3/3) = 0 + (√3 * 4√6)/3 + 0 = (4√18)/3 = (4*3√2)/3 = 4√2.
+
+The magnitude of **v** × **w** is sqrt[(0)^2 + (-4√6/3)^2 + (-4√3/3)^2] = sqrt[(16*6)/9 + (16*3)/9] = sqrt[(96 + 48)/9] = sqrt[144/9] = sqrt[16] = 4.
+
+Therefore, the distance between AB and CD is |4√2| / 4 = √2.
+
+So, the plane is halfway between them, so the distance from AB to the plane is √2 / 2 = √2 / 2.
+
+Now, since the plane is parallel to both AB and CD, and lies halfway between them, the plane's equation can be determined by moving from AB along the direction perpendicular to both AB and CD by half the distance between AB and CD.
+
+But since we already have the normal vector **n** = (0, √6, √3), the plane equation can be written as 0(x - x0) + √6(y - y0) + √3(z - z0) = 0. To find x0, y0, z0, we need a point on the plane.
+
+Since the plane is halfway between AB and CD, perhaps we can find a point on the plane by moving from a point on AB along the direction perpendicular to AB and CD by half the distance.
+
+But maybe a better approach is to find a point on the plane. Let's take a point on AB and a point on CD, find the midpoint of the segment connecting them that is perpendicular to both AB and CD.
+
+Wait, but the connecting segment between AB and CD is perpendicular to both AB and CD. So, if we can find such a segment, then the midpoint would lie on the plane.
+
+Let me try to find such points. Let's take a general point on AB: P = (2t, 0, 0). A general point on CD: Q = (1, √3 - (2√3/3)s, (2√6/3)s).
+
+The vector PQ = Q - P = (1 - 2t, √3 - (2√3/3)s - 0, (2√6/3)s - 0) = (1 - 2t, √3 - (2√3/3)s, (2√6/3)s).
+
+This vector PQ should be perpendicular to both AB and CD. So, PQ • **v** = 0 and PQ • **w** = 0.
+
+Compute PQ • **v** = (1 - 2t)*2 + (√3 - (2√3/3)s)*0 + ((2√6/3)s)*0 = 2(1 - 2t) = 0 => 1 - 2t = 0 => t = 1/2.
+
+Similarly, PQ • **w** = (1 - 2t)*0 + (√3 - (2√3/3)s)*(-2√3/3) + ((2√6/3)s)*(2√6/3) = 0.
+
+Plug t = 1/2 into PQ:
+
+PQ = (1 - 2*(1/2), √3 - (2√3/3)s, (2√6/3)s) = (0, √3 - (2√3/3)s, (2√6/3)s).
+
+Then, PQ • **w** = 0*0 + (√3 - (2√3/3)s)*(-2√3/3) + ((2√6/3)s)*(2√6/3) = 0.
+
+Compute each term:
+
+First term: (√3)(-2√3/3) = (-2*3)/3 = -2
+
+Second term: (- (2√3/3)s)(-2√3/3) = (4*3/9)s = (12/9)s = (4/3)s
+
+Third term: (2√6/3)s*(2√6/3) = (4*6)/9 s = (24/9)s = (8/3)s
+
+So, total equation:
+
+-2 + (4/3)s + (8/3)s = 0 => -2 + (12/3)s = -2 + 4s = 0 => 4s = 2 => s = 1/2.
+
+Therefore, points P and Q are:
+
+P = (2*(1/2), 0, 0) = (1, 0, 0)
+
+Q = (1, √3 - (2√3/3)*(1/2), (2√6/3)*(1/2)) = (1, √3 - (√3/3), √6/3) = (1, (2√3)/3, √6/3)
+
+So, the vector PQ is from P(1,0,0) to Q(1, 2√3/3, √6/3). The midpoint of PQ is ((1+1)/2, (0 + 2√3/3)/2, (0 + √6/3)/2) = (1, √3/3, √6/6).
+
+Therefore, the plane passes through this midpoint and is parallel to AB and CD. Since the normal vector of the plane is (0, √6, √3), the equation of the plane can be written as:
+
+0(x - 1) + √6(y - √3/3) + √3(z - √6/6) = 0
+
+Simplify:
+
+√6(y - √3/3) + √3(z - √6/6) = 0
+
+Let's expand this:
+
+√6 y - (√6 * √3)/3 + √3 z - (√3 * √6)/6 = 0
+
+Simplify terms:
+
+√6 y - (√18)/3 + √3 z - (√18)/6 = 0
+
+√18 = 3√2, so:
+
+√6 y - (3√2)/3 + √3 z - (3√2)/6 = 0
+
+Simplify:
+
+√6 y - √2 + √3 z - (√2)/2 = 0
+
+Combine constants:
+
+-√2 - (√2)/2 = -(3√2)/2
+
+So:
+
+√6 y + √3 z - (3√2)/2 = 0
+
+Multiply both sides by 2 to eliminate the denominator:
+
+2√6 y + 2√3 z - 3√2 = 0
+
+That's the equation of the plane. Now, I need to find the intersection of this plane with the tetrahedron ABCD. The surface area of one of the two resulting pieces will be the sum of the areas of the new face created by the plane and the areas of the original faces that are now part of the piece.
+
+But first, let's find the intersection polygon of the plane with the tetrahedron. The plane intersects the tetrahedron in a polygon, which in this case, since the plane is parallel to two edges and cuts halfway, it's likely a quadrilateral. Each edge of the tetrahedron is either intersected or not. Let's check which edges of the tetrahedron are intersected by the plane.
+
+The tetrahedron has edges AB, AC, AD, BC, BD, CD.
+
+We already know that the plane is cutting between AB and CD, so it should intersect edges AC, AD, BC, BD. Let's verify.
+
+For each edge, check if the plane intersects it.
+
+Edge AB: from A(0,0,0) to B(2,0,0). The plane equation is 2√6 y + 2√3 z - 3√2 = 0. Let's parametrize AB as (2t, 0, 0). Plug into the plane equation:
+
+2√6*0 + 2√3*0 - 3√2 = -3√2 ≠ 0. So, AB does not intersect the plane.
+
+Edge AC: from A(0,0,0) to C(1, √3, 0). Parametrize AC as (t, √3 t, 0), t ∈ [0,1]. Plug into plane equation:
+
+2√6*(√3 t) + 2√3*0 - 3√2 = 2√6*√3 t - 3√2 = 2*√18 t - 3√2 = 2*3√2 t - 3√2 = 6√2 t - 3√2. Set equal to 0:
+
+6√2 t - 3√2 = 0 => 6t - 3 = 0 => t = 3/6 = 1/2.
+
+So, the plane intersects edge AC at t = 1/2, which is the midpoint (0.5, √3/2, 0).
+
+Edge AD: from A(0,0,0) to D(1, √3/3, 2√6/3). Parametrize AD as (t, √3 t/3, 2√6 t/3), t ∈ [0,1]. Plug into plane equation:
+
+2√6*(√3 t/3) + 2√3*(2√6 t/3) - 3√2 = 2√6*√3 t/3 + 4√18 t/3 - 3√2
+
+Simplify:
+
+√6*√3 = √18 = 3√2. So:
+
+2*(3√2)t/3 + 4*(3√2)t/3 - 3√2 = (6√2 t)/3 + (12√2 t)/3 - 3√2 = 2√2 t + 4√2 t - 3√2 = 6√2 t - 3√2. Set equal to 0:
+
+6√2 t - 3√2 = 0 => t = 3/6 = 1/2.
+
+Thus, the plane intersects edge AD at t = 1/2, which is (0.5, (√3)/6, √6/3).
+
+Edge BC: from B(2,0,0) to C(1, √3, 0). Parametrize BC as (2 - t, 0 + √3 t, 0), t ∈ [0,1]. Plug into plane equation:
+
+2√6*(√3 t) + 2√3*0 - 3√2 = 2√6*√3 t - 3√2 = 2*√18 t - 3√2 = 6√2 t - 3√2. Set equal to 0:
+
+6√2 t - 3√2 = 0 => t = 1/2.
+
+Thus, the plane intersects edge BC at t = 1/2, which is (2 - 1/2, √3*1/2, 0) = (1.5, √3/2, 0).
+
+Edge BD: from B(2,0,0) to D(1, √3/3, 2√6/3). Parametrize BD as (2 - t, 0 + √3 t/3, 0 + 2√6 t/3), t ∈ [0,1]. Plug into plane equation:
+
+2√6*(√3 t/3) + 2√3*(2√6 t/3) - 3√2 = 2√6*√3 t/3 + 4√18 t/3 - 3√2
+
+Simplify:
+
+√6*√3 = 3√2, so:
+
+2*(3√2)t/3 + 4*(3√2)t/3 - 3√2 = 2√2 t + 4√2 t - 3√2 = 6√2 t - 3√2. Set equal to 0:
+
+6√2 t - 3√2 = 0 => t = 1/2.
+
+Thus, the plane intersects edge BD at t = 1/2, which is (2 - 1/2, (√3)/6, √6/3) = (1.5, √3/6, √6/3).
+
+So, the plane intersects edges AC, AD, BC, BD each at their midpoints. Therefore, the intersection polygon is a quadrilateral with vertices at the midpoints of these edges.
+
+Therefore, the intersection points are:
+
+1. Midpoint of AC: (0.5, √3/2, 0)
+2. Midpoint of AD: (0.5, √3/6, √6/3)
+3. Midpoint of BD: (1.5, √3/6, √6/3)
+4. Midpoint of BC: (1.5, √3/2, 0)
+
+Connecting these points in order forms a quadrilateral. Let me label these points as follows:
+
+- Point M1: (0.5, √3/2, 0) [Midpoint of AC]
+- Point M2: (0.5, √3/6, √6/3) [Midpoint of AD]
+- Point M3: (1.5, √3/6, √6/3) [Midpoint of BD]
+- Point M4: (1.5, √3/2, 0) [Midpoint of BC]
+
+So, the quadrilateral M1-M2-M3-M4 is the intersection polygon. The piece of the tetrahedron that lies below the plane (assuming the normal vector points in a certain direction) will have this quadrilateral as its new face, along with parts of the original faces.
+
+But to compute the surface area of one of the pieces, I need to consider all the faces that are part of that piece. Each face of the original tetrahedron either is entirely part of the piece, is intersected by the plane (resulting in a new edge), or is entirely separated. However, since the plane cuts through four edges, each of the four faces of the tetrahedron that are adjacent to these edges will be cut, creating new edges and thus new faces on both pieces.
+
+Wait, let's think about the original tetrahedron. Each face is a triangle. The plane intersects four edges, so each face that contains one of these edges will be split by the plane. Since each face has three edges, but the plane intersects only certain edges. Let's see which faces are affected.
+
+Original tetrahedron faces:
+
+1. Face ABC: contains edges AB, BC, AC
+2. Face ABD: contains edges AB, BD, AD
+3. Face ACD: contains edges AC, CD, AD
+4. Face BCD: contains edges BC, CD, BD
+
+The plane intersects edges AC, BC, AD, BD. Therefore, the plane intersects four edges: AC, BC, AD, BD. Therefore, the faces that contain these edges are:
+
+- Face ABC (contains AC and BC)
+- Face ABD (contains AD and BD)
+- Face ACD (contains AC and AD)
+- Face BCD (contains BC and BD)
+
+Therefore, each of these four faces is intersected by the plane, cutting each into two parts. However, the original faces are triangles, so cutting them once (along a line) would split them into two smaller polygons. However, in our case, the plane is cutting through four edges, so each of these four faces is intersected once, resulting in each face being split into two triangles and a quadrilateral? Wait, no. Wait, each face is a triangle. If you cut a triangle once with a line, you get two smaller triangles. However, in our case, the plane is cutting through two edges of each face, which would mean that each face is being split into a smaller triangle and a quadrilateral? Wait, that doesn't make sense. Wait, no, if the plane cuts through two edges of a triangular face, it would create a smaller triangle and a quadrilateral? But a triangular face can't have four edges.
+
+Wait, maybe I need to think differently. Each face is a triangle, and the plane intersects two edges of each face. For example, face ABC has edges AB, BC, AC. The plane intersects AC and BC. So, the intersection points are M1 on AC and M4 on BC. Therefore, cutting face ABC along the line M1-M4, which is a side of the quadrilateral.
+
+Similarly, face ABD has edges AB, BD, AD. The plane intersects AD and BD at M2 and M3. So, cutting face ABD along the line M2-M3.
+
+Similarly, face ACD has edges AC, CD, AD. The plane intersects AC and AD at M1 and M2. So, cutting face ACD along M1-M2.
+
+Face BCD has edges BC, CD, BD. The plane intersects BC and BD at M4 and M3. So, cutting face BCD along M4-M3.
+
+Therefore, each of the four faces is split into two smaller triangles. For example, face ABC is split into triangle AM1M4 and triangle BM1M4. Wait, no. Wait, the plane cuts through AC at M1 and BC at M4. So, the line M1-M4 is cutting the face ABC into two parts: triangle AM1M4 and quadrilateral BM1M4C? Wait, no, because the original face ABC is a triangle. If you cut it along M1-M4, which is a line connecting two points on edges AC and BC, then you get two smaller triangles: AM1M4 and BM1M4. Wait, but M1 is on AC and M4 is on BC, so the line M1-M4 is inside the face ABC, creating a smaller triangle AM1M4 and another triangle BM1M4. Similarly for the other faces.
+
+Wait, but in reality, the intersection of the plane with the tetrahedron creates a quadrilateral cross-section, which is the intersection polygon. Each original face that is intersected by the plane is split into two smaller polygons. Since each face is a triangle, cutting it once with a line will split it into two triangles. Therefore, each of the four faces adjacent to the intersected edges is split into two triangles, resulting in eight smaller triangles. But since the original tetrahedron has four triangular faces, each split into two, we have eight triangles. However, the cross-section is a quadrilateral, which is a four-sided figure, so there must be a connection here.
+
+Wait, perhaps the cross-section is a quadrilateral, and the original tetrahedron is split into two parts: one part is a smaller tetrahedron and a frustum-like shape. Wait, but since the plane is cutting four edges, the resulting shape is a smaller polyhedron with a quadrilateral face and some triangular faces.
+
+Alternatively, perhaps the two resulting pieces are a smaller tetrahedron and a pentahedron (five-faced polyhedron). Wait, not sure. Let's think again.
+
+The original tetrahedron has four triangular faces. The plane cuts four edges, each of which is shared by two faces. Therefore, each cut affects two faces. So, each of the four faces is split into two smaller triangles. Therefore, the original four faces become eight smaller triangles. However, the cross-section is a quadrilateral, which is a new face. Therefore, the two resulting pieces each have this quadrilateral as a face, along with some of the original triangles.
+
+Wait, maybe each piece will have the quadrilateral face and some of the original triangular faces. Let's think:
+
+The original tetrahedron is split by the plane into two parts. Each part will have the quadrilateral as a new face, and some of the original triangular faces. For example, one part will have the quadrilateral M1-M2-M3-M4 and the original triangles that are entirely on one side of the plane. The other part will have the same quadrilateral and the other original triangles.
+
+But how many original triangles are on each side? Let's see.
+
+Looking at the original tetrahedron, the four faces are:
+
+1. ABC: contains AB, BC, AC
+2. ABD: contains AB, BD, AD
+3. ACD: contains AC, CD, AD
+4. BCD: contains BC, CD, BD
+
+The plane intersects edges AC, BC, AD, BD. Therefore, face ABC is split into two triangles: AM1M4 and BM1M4. Similarly, face ABD is split into two triangles: AM2M3 and BM2M3. Face ACD is split into two triangles: AM1M2 and CM1M2. Face BCD is split into two triangles: BM4M3 and CM4M3.
+
+But since the plane is cutting through four edges, the cross-section is a quadrilateral, which is the intersection. Therefore, the two resulting pieces each have the quadrilateral as a face, and each of them also has some of the original triangles.
+
+Wait, but each original face is split into two, so the total number of faces for each resulting piece would be:
+
+- One quadrilateral face (the cross-section)
+- Some of the original triangular faces
+
+But how many original triangular faces does each piece have?
+
+Looking at the original tetrahedron, it's a convex polyhedron. The cross-section is a quadrilateral, so each piece will have the quadrilateral plus some original triangular faces. Let's try to visualize.
+
+The plane cuts through four edges: AC, BC, AD, BD. Therefore, each of the four original faces is split into two. The piece that includes vertex A and D will have the original face ACD split into AM1M2 and CM1M2. The face ABD split into AM2M3 and BM2M3. The face ABC split into AM1M4 and BM1M4. The face BCD split into BM4M3 and CM4M3.
+
+But how do these triangles combine to form the two pieces?
+
+The piece containing vertex A will have the following faces:
+
+- The quadrilateral cross-section M1-M2-M3-M4
+- The triangle AM1M2 (from face ACD)
+- The triangle AM2M3 (from face ABD)
+- The triangle AM1M4 (from face ABC)
+
+Wait, but that's four faces. But a polyhedron must have at least four faces if it's a tetrahedron. Wait, but the cross-section is a quadrilateral, so the resulting shape has five faces: the quadrilateral and four triangles. But that would make it a pentahedron.
+
+Alternatively, perhaps the two resulting pieces each have the quadrilateral face and some original triangles. Wait, maybe the two pieces are a four-faced pyramid and a five-faced pyramid? Not sure. Let me think again.
+
+Alternatively, perhaps the cross-section is a quadrilateral, and the two pieces are both pyramids with the quadrilateral as the base. However, the original tetrahedron is convex, so the cross-section is a convex quadrilateral, and each piece is a convex polyhedron.
+
+But how many faces does each piece have?
+
+Each original face is split into two, so each piece will have some of these split faces. The cross-section is shared between both pieces. So, each piece will have the quadrilateral and some of the original triangles.
+
+For example, the piece containing vertex A will have:
+
+- The quadrilateral M1-M2-M3-M4
+- The triangle AM1M2 (from face ACD)
+- The triangle AM2M3 (from face ABD)
+- The triangle AM1M4 (from face ABC)
+
+Similarly, the piece containing vertex B will have:
+
+- The quadrilateral M1-M2-M3-M4
+- The triangle BM1M4 (from face ABC)
+- The triangle BM2M3 (from face ABD)
+- The triangle BM4M3 (from face BCD)
+
+Therefore, each piece has four triangular faces and one quadrilateral face. Wait, but a polyhedron must have at least four faces if it's a tetrahedron, but here each piece has five faces. Wait, but each piece is a pentahedron (five-faced polyhedron). However, the original tetrahedron had four faces, and the cross-section adds one face to each piece. But since the cross-section is shared, each piece gets the quadrilateral once. So, each piece has the quadrilateral plus some of the original faces.
+
+But according to the split, each piece has four triangular faces from the original tetrahedron and one quadrilateral face, making a total of five faces. Therefore, each resulting piece is a pentahedron. However, the problem states that the plane cuts the tetrahedron into two pieces. The surface area of one of these pieces is required.
+
+But let's think again. The cross-section is a quadrilateral, which is a new face for each piece. The original faces are split into two parts. However, for the surface area, we need to consider all the faces that are part of the piece, including the original faces that are entirely within the piece and the new cross-section.
+
+But actually, no. When we cut the tetrahedron with a plane, the two resulting pieces each have the cross-section as a new face, and the parts of the original faces that are on one side of the plane. However, the original faces that are split by the plane are divided into two parts, each belonging to one of the pieces. Therefore, each original face is entirely part of one piece or the other. Wait, no. If you cut a face with a plane, the face is split into two parts, each part belonging to the respective piece. Therefore, each piece will have half of each original face that was intersected by the plane.
+
+But since the original tetrahedron is convex, and the plane intersects four edges, each original face is intersected once or not. Wait, original faces ABC, ABD, ACD, BCD. Each is intersected once by the plane, as the plane intersects four edges, each edge being part of two faces, but each face has three edges. Wait, perhaps each original face is intersected once. Wait, no, each face is a triangle. The plane can intersect a face at most once if it's a straight line cutting through the triangle. But since the plane intersects four edges, each face can be intersected at most once if the edges are all on different faces.
+
+Wait, but each face has three edges, and the plane intersects four edges. So, some faces must be intersected twice. For example, the plane intersects edges AC, BC, AD, BD. So, face ABC has edges AB, BC, AC. The plane intersects BC and AC. So, face ABC is intersected twice. Similarly, face ABD has edges AB, BD, AD. The plane intersects BD and AD. So, face ABD is intersected twice. Face ACD has edges AC, CD, AD. The plane intersects AC and AD. So, face ACD is intersected twice. Face BCD has edges BC, CD, BD. The plane intersects BC and BD. So, face BCD is intersected twice. Therefore, each original face is intersected twice by the plane. Therefore, each original face is split into two parts by the plane, each part belonging to one of the two pieces.
+
+Therefore, each piece will have half of each original face. But since each original face is a triangle, splitting it once with a line divides it into two smaller triangles. Therefore, each piece will have two original triangular faces (each half of two original faces) plus the quadrilateral cross-section. Wait, but if each original face is split into two, then each piece will have half of four original faces, but the original tetrahedron has four faces, so each piece will have half of each face? Not sure.
+
+Wait, maybe it's better to think that each original face is split into two, so each piece will have two original triangular faces (each half of two original faces) plus the quadrilateral. Therefore, each piece has three faces: two original triangles and one quadrilateral. Wait, but that would make three faces, but a polyhedron must have at least four faces if it's a tetrahedron. Hmm, this is getting confusing.
+
+Alternatively, perhaps the two resulting pieces each have four faces: three original triangles and the quadrilateral. Wait, no, if each original face is split into two, then each piece will have half of four original faces, but since each face is split into two, each piece will have two original faces (each half) plus the quadrilateral. So, each piece would have three faces: two original triangles and one quadrilateral. But that would be three faces, which is impossible for a polyhedron. Therefore, my previous reasoning must be flawed.
+
+Wait, no, if you have four original faces, each split into two, you get eight smaller triangular faces. However, the cross-section is a quadrilateral, which is a new face. Therefore, the two resulting pieces each have four of these smaller triangular faces plus the quadrilateral. But that would make five faces each, which is a pentahedron. But each original face is split into two, so each original face contributes two triangular faces. Since there are four original faces, that's eight triangular faces. The cross-section is a quadrilateral, so total nine faces? But the two pieces must share the cross-section. Therefore, each piece has half of the cross-section? No, the cross-section is a single face.
+
+Wait, maybe the cross-section is a single face shared by both pieces? Wait, no. The cross-section is the intersection of the plane and the tetrahedron, which is a single polygon. Therefore, each piece has this polygon as a face. The other faces of each piece are the parts of the original faces that are on one side of the plane. However, since each original face is split by the plane, each piece will have half of each original face. But since each original face is a triangle, the split would be a triangle split into two smaller triangles. Therefore, each piece would have parts of four original faces, but each split into two. Wait, this is getting too tangled. Let me approach it differently.
+
+Let me consider that the cross-section is a quadrilateral. The two resulting pieces each have this quadrilateral as a face. Additionally, each piece will have some of the original triangular faces. However, the original faces are split by the plane, so each original face is divided into two parts: one part on each piece. Therefore, each piece will have half of each original face. But since there are four original faces, each split into two, each piece will have four triangular faces (half of each original face) plus the quadrilateral. Therefore, each piece has five faces: four triangles and one quadrilateral. Therefore, the surface area of each piece is the sum of the areas of the four triangles and the quadrilateral.
+
+But to compute this, I need to find the areas of these triangles and the quadrilateral. However, this is complicated. Alternatively, perhaps the two pieces are congruent, so their surface areas are equal. Therefore, the surface area of one piece is half of the total surface area of the original tetrahedron plus the surface area of the cross-section.
+
+Wait, that's an interesting approach. Let me see. The original tetrahedron has four triangular faces, each with area (√3)/4*(2)^2 = √3. So, total surface area is 4*√3 = 4√3.
+
+If the two pieces are congruent, then each would have half of the original surface area plus the area of the cross-section. But wait, the original surface area is 4√3. If the cross-section is a new face, its area must be added to one of the pieces. But since the cross-section is shared by both pieces, each piece has the cross-section as a face. Therefore, the total surface area of both pieces would be 4√3 (original faces) + 2*(area of cross-section). Therefore, the surface area of one piece would be (4√3)/2 + area of cross-section = 2√3 + area of cross-section.
+
+But is that correct? Wait, let's think. The original surface area is 4√3. When we cut the tetrahedron with a plane, we create two new faces (the cross-sections) each with area equal to the area of the cross-section. Therefore, the total surface area of both pieces is 4√3 + 2*(area of cross-section). Therefore, each piece has half of the original surface area plus the cross-section. Therefore, surface area of one piece is (4√3)/2 + area of cross-section. So, 2√3 + area of cross-section.
+
+But is this accurate? Let me check. The original surface area is 4√3. When we cut the tetrahedron, we add two new faces (the cross-sections), each of area equal to the cross-section. Therefore, total surface area becomes 4√3 + 2*(cross-section area). Therefore, each piece has half of the original surface area (2√3) plus the cross-section area. So, yes, the surface area of each piece is 2√3 + cross-section area.
+
+But the problem states: "the surface area of one of these pieces." Therefore, we can compute the cross-section area and add it to 2√3. However, is this correct?
+
+Wait, let's verify. Suppose we have a solid object, and we cut it with a plane. The total surface area of the two resulting pieces is equal to the original surface area plus twice the area of the cross-section. Because the cross-section is a new face on each piece. Therefore, yes, the total surface area of both pieces is original surface area + 2*(cross-section area). Therefore, each piece has (original surface area)/2 + cross-section area. Therefore, the surface area of one piece is 2√3 + cross-section area.
+
+Therefore, if I can compute the area of the cross-section, which is the quadrilateral M1-M2-M3-M4, then the surface area of the piece is 2√3 + [area of M1-M2-M3-M4].
+
+Alternatively, maybe the cross-section is a square? Wait, in a regular tetrahedron, the intersection of a plane halfway between two skew edges might form a square. Let me check.
+
+Wait, if the cross-section is a square, then the area would be (edge length of square)^2. But let's compute the coordinates of the cross-section.
+
+We have the four points:
+
+M1: (0.5, √3/2, 0)
+M2: (0.5, √3/6, √6/3)
+M3: (1.5, √3/6, √6/3)
+M4: (1.5, √3/2, 0)
+
+Wait, let's compute the distances between consecutive points to check if it's a square.
+
+Compute distance M1-M2:
+
+M1 = (0.5, √3/2, 0)
+M2 = (0.5, √3/6, √6/3)
+
+Difference in coordinates: (0, √3/6 - √3/2, √6/3 - 0) = (0, -√3/3, √6/3)
+
+Distance squared: 0 + ( (√3/3)^2 ) + ( (√6/3)^2 ) = (3/9) + (6/9) = 9/9 = 1
+
+Distance: 1
+
+Similarly, distance M2-M3:
+
+M2 = (0.5, √3/6, √6/3)
+M3 = (1.5, √3/6, √6/3)
+
+Difference: (1, 0, 0)
+
+Distance squared: 1^2 + 0 + 0 = 1
+
+Distance: 1
+
+Distance M3-M4:
+
+M3 = (1.5, √3/6, √6/3)
+M4 = (1.5, √3/2, 0)
+
+Difference: (0, √3/2 - √3/6, 0 - √6/3) = (0, √3/3, -√6/3)
+
+Distance squared: 0 + ( (√3/3)^2 ) + ( (√6/3)^2 ) = 3/9 + 6/9 = 1
+
+Distance: 1
+
+Distance M4-M1:
+
+M4 = (1.5, √3/2, 0)
+M1 = (0.5, √3/2, 0)
+
+Difference: (-1, 0, 0)
+
+Distance squared: (-1)^2 + 0 + 0 = 1
+
+Distance: 1
+
+Therefore, all sides of the quadrilateral are of length 1. So, it's a rhombus. Now, check if the angles are right angles. Compute vectors of adjacent sides:
+
+From M1 to M2: (0, -√3/3, √6/3)
+From M2 to M3: (1, 0, 0)
+Dot product: 0*1 + (-√3/3)*0 + (√6/3)*0 = 0. So, adjacent sides are perpendicular. Therefore, the cross-section is a square?
+
+Wait, adjacent sides are perpendicular and of equal length (1). Therefore, the cross-section is a square with side length 1. Therefore, the area of the cross-section is 1^2 = 1.
+
+Wait, that seems too easy. Let me confirm the coordinates again.
+
+Wait, M1 is (0.5, √3/2, 0), M2 is (0.5, √3/6, √6/3). The distance between M1 and M2 is 1. Similarly, M2 to M3 is 1, M3 to M4 is 1, M4 to M1 is 1. Also, the sides are perpendicular. So, indeed, the cross-section is a square with side length 1, area 1.
+
+Therefore, the cross-section has area 1. Therefore, the surface area of one piece is 2√3 + 1.
+
+But wait, let me check again. The original surface area is 4√3. The two pieces each have half the original surface area plus the cross-section. Therefore, 4√3 / 2 + 1 = 2√3 + 1. Therefore, the surface area of one piece is 2√3 + 1.
+
+But let me verify this. The original surface area is 4√3. After cutting, each piece has half of the original surface area (2√3) plus the cross-section area (1). So, total surface area is 2√3 + 1. But since there are two pieces, total surface area is 2*(2√3 + 1) = 4√3 + 2. But according to the earlier logic, the total surface area should be 4√3 + 2*(1) = 4√3 + 2. Which matches. Therefore, yes, each piece has surface area 2√3 + 1. So, the answer is 2√3 + 1, which can be written as 1 + 2√3.
+
+But let me confirm once again. The cross-section is a square with side length 1, area 1. Each piece has half the original surface area (4√3 / 2 = 2√3) plus the cross-section area (1). Therefore, 2√3 + 1. Yes, that seems correct.
+
+Therefore, the surface area of one of these pieces is 2√3 + 1.
+
+**Final Answer**
+\boxed{1 + 2\sqrt{3}}
+</think>

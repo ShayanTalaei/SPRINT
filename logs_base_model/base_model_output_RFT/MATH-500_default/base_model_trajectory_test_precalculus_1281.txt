@@ -1,0 +1,492 @@
+Okay, let's tackle this problem step by step. First, I need to understand what's given and what's being asked. The problem states that triangle ABC is isosceles with AB = AC and has an altitude AM = 11. There's a point D on AM such that AD = 10 and angle BDC is three times angle BAC. We need to find the perimeter of triangle ABC.
+
+Let me start by visualizing the triangle. Since ABC is isosceles with AB = AC, the altitude AM from A to BC must split the base BC into two equal parts, so BM = MC. The altitude AM is given as 11 units. Point D is on AM, 10 units away from A, so DM must be 1 unit because AM is 11. So, D is very close to M.
+
+Given that angle BDC is three times angle BAC. Let's denote angle BAC as θ. Then angle BDC is 3θ. The goal is to relate these angles to find the lengths of the sides of triangle ABC, particularly BC and AB (which equals AC), so we can compute the perimeter.
+
+First, let's recall some properties of isosceles triangles. In triangle ABC, since AB = AC, the base angles at B and C are equal. Let's denote those angles as α each. Therefore, θ + 2α = 180°, since the sum of angles in a triangle is 180°. So, α = (180° - θ)/2.
+
+But maybe instead of angles, we can use coordinates to model the problem. Let's place the triangle in a coordinate system. Let me set point A at (0, 11), point M at (0, 0), since AM is the altitude. Then, points B and C will be symmetric about the y-axis. Let's say B is at (-x, 0) and C is at (x, 0). Then BC is the base with length 2x.
+
+Point D is on AM, 10 units from A. Since AM is 11 units long, D is at (0, 1), because from A at (0,11) moving down 10 units along the y-axis gets us to (0,1).
+
+Now, points B, D, and C are at (-x, 0), (0,1), and (x, 0) respectively. We need to find angle BDC and relate it to angle BAC.
+
+First, let's find angle BAC. In triangle ABC, since it's isosceles with AB = AC and base BC, angle BAC is θ. Using coordinates, we can compute θ using trigonometry. The length of AB is sqrt(x² + 11²), since from (0,11) to (-x,0). Similarly, AC is sqrt(x² + 11²). The base BC is 2x.
+
+Using the Law of Cosines in triangle ABC:
+
+AB² + AC² - 2*AB*AC*cosθ = BC²
+
+But since AB = AC, this simplifies to:
+
+2*AB² - 2*AB²*cosθ = BC²
+
+Which can be written as:
+
+2*AB²*(1 - cosθ) = BC²
+
+We know AB² = x² + 121, and BC = 2x, so BC² = 4x². Therefore:
+
+2*(x² + 121)*(1 - cosθ) = 4x²
+
+Divide both sides by 2:
+
+(x² + 121)*(1 - cosθ) = 2x²
+
+So,
+
+1 - cosθ = (2x²)/(x² + 121)
+
+Therefore,
+
+cosθ = 1 - (2x²)/(x² + 121) = (x² + 121 - 2x²)/(x² + 121) = (121 - x²)/(x² + 121)
+
+So, angle θ is arccos[(121 - x²)/(x² + 121)]
+
+Alternatively, we can express cosθ as (121 - x²)/(121 + x²)
+
+Now, moving on to angle BDC. We need to find angle BDC, which is 3θ. Let's compute angle BDC using coordinates.
+
+Points B(-x,0), D(0,1), and C(x,0). We can compute vectors DB and DC to find angle BDC.
+
+First, vector DB is from D(0,1) to B(-x,0): (-x, -1)
+
+Vector DC is from D(0,1) to C(x,0): (x, -1)
+
+The angle between vectors DB and DC is angle BDC, which is 3θ.
+
+The formula for the angle between two vectors u and v is:
+
+cos(angle) = (u • v)/(|u| |v|)
+
+Compute the dot product of DB and DC:
+
+(-x)(x) + (-1)(-1) = -x² + 1
+
+The magnitude of DB is sqrt(x² + 1)
+
+The magnitude of DC is sqrt(x² + 1)
+
+Therefore,
+
+cos(angle BDC) = (-x² + 1)/(sqrt(x² + 1) * sqrt(x² + 1)) = (-x² + 1)/(x² + 1)
+
+Thus, angle BDC has cosine equal to (1 - x²)/(1 + x²)
+
+But angle BDC is given as 3θ. Therefore, cos(3θ) = (1 - x²)/(1 + x²)
+
+But we already have cosθ = (121 - x²)/(121 + x²). So, we need to relate cos(3θ) to cosθ.
+
+Recall the triple-angle formula for cosine:
+
+cos(3θ) = 4cos³θ - 3cosθ
+
+Therefore,
+
+4cos³θ - 3cosθ = (1 - x²)/(1 + x²)
+
+But we know cosθ = (121 - x²)/(121 + x²). Let's substitute that into the equation:
+
+4[(121 - x²)/(121 + x²)]³ - 3[(121 - x²)/(121 + x²)] = (1 - x²)/(1 + x²)
+
+This seems like a complicated equation, but perhaps we can let t = x² to make it easier. Let t = x². Then:
+
+cosθ = (121 - t)/(121 + t)
+
+So the equation becomes:
+
+4[(121 - t)/(121 + t)]³ - 3[(121 - t)/(121 + t)] = (1 - t)/(1 + t)
+
+Let me denote y = (121 - t)/(121 + t). Then the left side is 4y³ - 3y, and the right side is (1 - t)/(1 + t). So:
+
+4y³ - 3y = (1 - t)/(1 + t)
+
+But we need to express (1 - t)/(1 + t) in terms of y.
+
+From y = (121 - t)/(121 + t), solve for t:
+
+Multiply both sides by (121 + t):
+
+y(121 + t) = 121 - t
+
+121y + yt = 121 - t
+
+Bring all terms to one side:
+
+121y + yt + t - 121 = 0
+
+Factor t:
+
+121y - 121 + t(y + 1) = 0
+
+t(y + 1) = 121(1 - y)
+
+Therefore,
+
+t = [121(1 - y)]/(y + 1)
+
+So, (1 - t)/(1 + t) can be expressed in terms of y:
+
+Let me compute (1 - t)/(1 + t):
+
+1 - t = 1 - [121(1 - y)/(y + 1)] = [ (y + 1) - 121(1 - y) ] / (y + 1 )
+
+= [ y + 1 - 121 + 121y ] / (y + 1 )
+
+= [ (y + 121y) + (1 - 121) ] / (y + 1 )
+
+= [ 122y - 120 ] / (y + 1 )
+
+Similarly, 1 + t = 1 + [121(1 - y)/(y + 1)] = [ (y + 1) + 121(1 - y) ] / (y + 1 )
+
+= [ y + 1 + 121 - 121y ] / (y + 1 )
+
+= [ (y - 121y) + (1 + 121) ] / (y + 1 )
+
+= [ -120y + 122 ] / (y + 1 )
+
+Therefore,
+
+(1 - t)/(1 + t) = [122y - 120]/[ -120y + 122 ]
+
+Simplify numerator and denominator:
+
+Numerator: 122y - 120 = 2(61y - 60)
+
+Denominator: -120y + 122 = 2(-60y + 61)
+
+So,
+
+(1 - t)/(1 + t) = [2(61y - 60)]/[2(-60y + 61)] = (61y - 60)/(-60y + 61) = (61y - 60)/(61 - 60y)
+
+Therefore, our equation becomes:
+
+4y³ - 3y = (61y - 60)/(61 - 60y)
+
+Multiply both sides by (61 - 60y) to eliminate the denominator:
+
+(4y³ - 3y)(61 - 60y) = 61y - 60
+
+Expand the left side:
+
+4y³*61 - 4y³*60y - 3y*61 + 3y*60y = 61y - 60
+
+Compute each term:
+
+4y³*61 = 244y³
+
+4y³*60y = 240y⁴
+
+-3y*61 = -183y
+
+3y*60y = 180y²
+
+So, putting it all together:
+
+244y³ - 240y⁴ - 183y + 180y² = 61y - 60
+
+Bring all terms to the left side:
+
+244y³ - 240y⁴ - 183y + 180y² - 61y + 60 = 0
+
+Combine like terms:
+
+-240y⁴ + 244y³ + 180y² - (183y + 61y) + 60 = 0
+
+-240y⁴ + 244y³ + 180y² - 244y + 60 = 0
+
+Multiply both sides by -1 to make the leading coefficient positive:
+
+240y⁴ - 244y³ - 180y² + 244y - 60 = 0
+
+Now, we have a quartic equation in y: 240y⁴ - 244y³ - 180y² + 244y - 60 = 0
+
+This seems quite complicated. Maybe we can factor out common terms or use rational root theorem.
+
+First, let's factor out a common factor. All coefficients are divisible by 4? Let's check:
+
+240 ÷ 4 = 60
+
+244 ÷ 4 = 61
+
+180 ÷ 4 = 45
+
+244 ÷ 4 = 61
+
+60 ÷ 4 = 15
+
+So, factor out 4:
+
+4(60y⁴ - 61y³ - 45y² + 61y - 15) = 0
+
+So, 60y⁴ - 61y³ - 45y² + 61y - 15 = 0
+
+Now, try rational roots. The possible rational roots are factors of 15 over factors of 60. Possible candidates: ±1, ±3, ±5, ±15, ±1/2, ±3/2, etc. Let's test y=1:
+
+60(1)^4 -61(1)^3 -45(1)^2 +61(1) -15 = 60 -61 -45 +61 -15 = (60-61) + (-45+61) -15 = (-1) + (16) -15 = 0. So y=1 is a root.
+
+Therefore, (y - 1) is a factor. Let's perform polynomial division or use synthetic division.
+
+Divide the quartic by (y - 1). Let's use synthetic division:
+
+Coefficients: 60, -61, -45, 61, -15
+
+Bring down 60
+
+Multiply by 1: 60
+
+Add to next coefficient: -61 + 60 = -1
+
+Multiply by 1: -1
+
+Add to next coefficient: -45 + (-1) = -46
+
+Multiply by 1: -46
+
+Add to next coefficient: 61 + (-46) = 15
+
+Multiply by 1: 15
+
+Add to last coefficient: -15 +15 = 0
+
+So, the quartic factors as (y - 1)(60y³ - y² -46y +15) = 0
+
+Now, set the cubic equal to zero: 60y³ - y² -46y +15 = 0
+
+Again, try rational roots. Possible roots: ±1, ±3, ±5, ±15, ±1/2, etc.
+
+Test y=1:
+
+60 -1 -46 +15 = (60-1) + (-46+15) = 59 -31 = 28 ≠ 0
+
+y=3: 60*27 -9 -46*3 +15 = 1620 -9 -138 +15 = 1620 -9=1611, 1611-138=1473, 1473+15=1488 ≠0
+
+y=1/2: 60*(1/8) - (1/4) -46*(1/2) +15 = 7.5 -0.25 -23 +15 = (7.5 -0.25) + (-23 +15) = 7.25 -8 = -0.75 ≠0
+
+y=1/3: 60*(1/27) - (1/9) -46*(1/3) +15 ≈ 2.222 -0.111 -15.333 +15 ≈ (2.222 -0.111) + (-15.333 +15) ≈ 2.111 -0.333 ≈ 1.778 ≠0
+
+y=5: 60*125 -25 -46*5 +15 = 7500 -25 -230 +15 = 7500-25=7475, 7475-230=7245, 7245+15=7260≠0
+
+y= -1: -60 -1 +46 +15= (-60-1)+(46+15)= -61 +61=0. So y=-1 is a root.
+
+Therefore, factor out (y +1):
+
+Divide 60y³ - y² -46y +15 by (y +1). Using synthetic division:
+
+Coefficients: 60, -1, -46, 15
+
+Root: y = -1
+
+Bring down 60
+
+Multiply by -1: -60
+
+Add to next coefficient: -1 + (-60) = -61
+
+Multiply by -1: 61
+
+Add to next coefficient: -46 +61 =15
+
+Multiply by -1: -15
+
+Add to last coefficient:15 + (-15)=0
+
+Therefore, the cubic factors as (y +1)(60y² -61y +15)=0
+
+So, the quartic factors as (y -1)(y +1)(60y² -61y +15)=0
+
+Now, set the quadratic equal to zero:60y² -61y +15=0
+
+Use quadratic formula: y = [61 ± sqrt(61² -4*60*15)]/(2*60)
+
+Compute discriminant: 3721 - 3600 = 121
+
+sqrt(121)=11
+
+Therefore, y=(61 ±11)/120
+
+So,
+
+y=(61+11)/120=72/120=3/5=0.6
+
+y=(61-11)/120=50/120=5/12≈0.4167
+
+Therefore, the roots of the quartic equation are y=1, y=-1, y=3/5, y=5/12
+
+But y was defined as y=(121 - t)/(121 + t), and t = x². Since t is a squared length, t must be positive. Therefore, y must be less than 1 because (121 - t)/(121 + t). If t=0, y=1. As t increases, y decreases. So y must be between 0 and 1. Therefore, y=1 and y=-1 are invalid because y=-1 would imply (121 - t)/(121 + t) = -1, which would mean 121 - t = -121 - t, leading to 121 = -121, which is impossible. Therefore, y=1 is possible only if t=0, but t=x²=0 would mean x=0, which would collapse the triangle to a line. Hence, y=1 is invalid. Therefore, the valid roots are y=3/5 and y=5/12.
+
+Therefore, we have two possible solutions: y=3/5 and y=5/12.
+
+Now, recall that y = cosθ = (121 - t)/(121 + t)
+
+So, for each y, we can solve for t:
+
+Case 1: y = 3/5
+
+Then,
+
+3/5 = (121 - t)/(121 + t)
+
+Multiply both sides by (121 + t):
+
+3/5*(121 + t) = 121 - t
+
+Multiply both sides by 5:
+
+3*(121 + t) = 5*(121 - t)
+
+363 + 3t = 605 -5t
+
+Bring terms with t to left, constants to right:
+
+3t +5t =605 -363
+
+8t=242
+
+t=242/8=121/4=30.25
+
+Therefore, t = x²=30.25, so x=√30.25=5.5
+
+Case 2: y=5/12
+
+Then,
+
+5/12=(121 - t)/(121 + t)
+
+Multiply both sides by (121 + t):
+
+5/12*(121 + t) =121 - t
+
+Multiply both sides by 12:
+
+5*(121 + t)=12*(121 - t)
+
+605 +5t=1452 -12t
+
+Bring terms with t to left, constants to right:
+
+5t +12t=1452 -605
+
+17t=847
+
+t=847/17=49.8235... Wait, 17*49=833, 847-833=14, so 49 +14/17 ≈49.8235
+
+But t must be x², which is positive. However, we need to check if this gives a valid triangle.
+
+But let's check if these solutions make sense. Let's check case 2:
+
+t=847/17≈49.8235, so x=√(847/17)=√(49.8235)≈7.06
+
+But then, in the triangle ABC, AM=11, which is the altitude. If x≈7.06, then BC=2x≈14.12. Then AB=AC=√(x² +121)=√(49.8235 +121)=√170.8235≈13.07. Then, the triangle would have sides ~13.07, ~13.07, ~14.12. The perimeter would be approximately 13.07*2 +14.12≈26.14 +14.12≈40.26.
+
+But let's check angle BDC. If y=5/12, then cos(angle BDC)=5/12, so angle BDC≈cos⁻¹(5/12)≈65.38 degrees. Then angle BAC=θ, where cosθ=(121 - t)/(121 + t)=5/12. So, θ=cos⁻¹(5/12)≈65.38 degrees. Then angle BDC=3θ≈196.14 degrees, which is impossible because in triangle BDC, the sum of angles must be 180°, but angle BDC is already 196°, which is more than 180°. Therefore, this solution is invalid. Therefore, case 2 is extraneous and must be discarded.
+
+Therefore, the only valid solution is case 1: y=3/5, t=30.25, x=5.5
+
+Therefore, x=5.5, so BC=2x=11. Then, AB=AC=√(x² +121)=√(30.25 +121)=√151.25=√(605/4)= (√605)/2≈12.3288
+
+Therefore, sides are AB=AC≈12.3288, BC=11. Then perimeter is 2*12.3288 +11≈24.6576 +11≈35.6576. But let's compute exact value.
+
+Since x²=30.25=121/4, so x=11/2. Therefore, BC=11. AB=AC=√( (121/4) +121 )=√( (121/4) + (484/4) )=√(605/4)=√605 /2. Therefore, perimeter is 2*(√605 /2) +11=√605 +11.
+
+But √605 can be simplified. 605=5*121=5*11², so √605=11√5. Therefore, perimeter is 11√5 +11=11(√5 +1)
+
+So, the perimeter is 11(√5 +1). Wait, but let me check again.
+
+Wait, x²=30.25=121/4, so x=11/2. Then BC=2x=11. AB=AC=√(x² +11²)=√(121/4 +121)=√(121/4 +484/4)=√(605/4)=√605 /2. Therefore, perimeter is AB + AC + BC=2*(√605 /2) +11=√605 +11. Since √605=√(121*5)=11√5. Therefore, perimeter is 11√5 +11=11(√5 +1). So, 11 times (√5 +1). Therefore, the perimeter is 11(√5 +1). Let me confirm this once more.
+
+Alternatively, since x=11/2, BC=11, AB=AC=√( (11/2)^2 +11^2 )=√(121/4 +121)=√( (121 + 484)/4 )=√(605/4)=√605 /2. So perimeter is 2*(√605 /2) +11=√605 +11=11√5 +11=11(√5 +1). Yes, that's correct.
+
+Therefore, the perimeter is 11(√5 +1). To express it as a numerical value, it's approximately 11*3.236 +11≈35.6 +11≈46.6, but the exact value is 11(√5 +1). However, the problem asks for the perimeter in boxed notation. Since they didn't specify the form, but the original problem has an altitude of 11, which is exact. So, 11(√5 +1) is exact. Alternatively, perhaps factor 11 out. Alternatively, check if the problem expects a different form. But since the answer is to be boxed as numerical, but the problem might accept an exact form. However, in the original problem statement, the answer is to be boxed as \\boxed{} with the final answer. Since the problem didn't specify the form, but given that the altitude is 11, which is an integer, but the perimeter involves √5, so the exact form is 11(1 +√5). Alternatively, if we compute 11√5 +11, which is the same.
+
+But let me check once again.
+
+Given that x=11/2, BC=11, AB=AC=√( (11/2)^2 +11^2 )=√(121/4 +121)=√(121/4 +484/4)=√(605/4)=√605 /2. So, perimeter is AB + AC + BC=2*(√605 /2) +11=√605 +11. Since 605=121*5, √605=11√5. Therefore, perimeter is 11√5 +11=11(√5 +1). So, that's the exact perimeter. So, 11(√5 +1) is the exact value. So, that's the answer.
+
+But let me verify once again if there are any miscalculations.
+
+Wait, in the coordinate system, point D is at (0,1). So, BD is the distance from (-5.5,0) to (0,1): sqrt(5.5² +1²)=sqrt(30.25 +1)=sqrt(31.25)=sqrt(125/4)=5√5/2. Similarly, DC is the same. Then angle BDC with BD=DC=5√5/2, and BC=11. Then, using Law of Cosines: BC²=2*(BD²) - 2*BD²*cos(angle BDC). Therefore, 121=2*(31.25) - 2*(31.25)*cos(3θ). So, 121=62.5 -62.5cos(3θ). Therefore, 62.5cos(3θ)=62.5 -121= -58.5. Therefore, cos(3θ)= -58.5/62.5= -1.14. Wait, that can't be. Cosine can't be less than -1. Wait, this suggests a problem. Did I make a mistake here?
+
+Wait, hold on. Wait, in the coordinate system, BD and DC are both 5√5/2. So, BD²= (5√5/2)^2=25*5/4=125/4=31.25. Then, according to the Law of Cosines:
+
+BC² = BD² + DC² - 2*BD*DC*cos(angle BDC)
+
+121 = 31.25 +31.25 - 2*31.25*cos(angle BDC)
+
+121 =62.5 -62.5cos(angle BDC)
+
+Therefore,
+
+62.5cos(angle BDC)=62.5 -121= -58.5
+
+Therefore,
+
+cos(angle BDC)= -58.5/62.5= -1.14
+
+But cosine cannot be less than -1. This is a contradiction. Therefore, there must be an error in my calculations.
+
+Wait, so this suggests that the solution y=3/5 leading to t=30.25 is invalid because it results in a contradiction. But earlier, we saw that y=5/12 leads to a triangle where angle BDC would be 3θ=3*angle BAC. However, when y=5/12, angle BDC=3θ≈196°, which is impossible. Therefore, both roots lead to contradictions?
+
+Wait, but earlier when I solved the quartic equation, we had two roots y=3/5 and y=5/12. But when y=3/5, we get angle BDC with cosine 3/5, which is 53.13°, so 3θ=53.13°, so θ≈17.71°, but in the triangle ABC, angle BAC=θ≈17.71°, and angles at B and C would be (180 -17.71)/2≈81.14°, which is possible. Then, angle BDC=3θ≈53.13°, which is less than 180°, which is possible. But when I tried to compute using Law of Cosines with coordinates, I got a contradiction. Hmmm.
+
+Wait, perhaps my assumption about the coordinates is wrong. Let me check.
+
+In the coordinate system, point D is at (0,1). Points B(-5.5,0), D(0,1), C(5.5,0). Then BD= distance from (-5.5,0) to (0,1)=sqrt(5.5² +1²)=sqrt(30.25 +1)=sqrt(31.25)=5√5/2≈5.59. Similarly, DC is 5√5/2. BC=11. Then angle BDC is angle at D between points B and C.
+
+But according to the Law of Cosines in triangle BDC:
+
+BD² + DC² - 2*BD*DC*cos(angle BDC) = BC²
+
+So, 2*(31.25) - 2*(31.25)*cos(angle BDC) =121
+
+62.5 -62.5cos(angle BDC)=121
+
+-62.5cos(angle BDC)=121 -62.5=58.5
+
+cos(angle BDC)= -58.5/62.5≈-0.936
+
+But wait, earlier, we had angle BDC with cos(angle BDC)=y=3/5=0.6. But according to coordinate calculation, it's -0.936. So, this is a contradiction. Therefore, the solution y=3/5 is invalid. Therefore, the previous assumption must be wrong.
+
+But earlier, when we set up the problem, we had angle BDC=3θ, and we computed cos(angle BDC)=(1 -x²)/(1 +x²). Then, setting that equal to cos(3θ)=4cos³θ -3cosθ, which was equal to (1 -x²)/(1 +x²). Then, substituting cosθ=(121 -x²)/(121 +x²), and so on. But according to coordinate system, cos(angle BDC)= -0.936. Therefore, we must reconcile these two results.
+
+Wait, perhaps there was a miscalculation in the coordinate system. Wait, in the coordinate system, angle BDC is the angle at D, which is (0,1). The vectors DB and DC are (-5.5, -1) and (5.5, -1). The angle between them is angle BDC. The cosine of that angle is the dot product divided by the product of magnitudes:
+
+Dot product = (-5.5)(5.5) + (-1)(-1) = -30.25 +1= -29.25
+
+Magnitudes of DB and DC are both sqrt(5.5² +1²)=sqrt(30.25 +1)=sqrt(31.25)=5√5/2≈5.59
+
+Therefore, cos(angle BDC)= (-29.25)/( (5√5/2)^2 )= (-29.25)/31.25= -29.25/31.25= -0.936, which matches the earlier calculation. Therefore, angle BDC≈arccos(-0.936)=157.38 degrees.
+
+But according to our earlier relation, angle BDC=3θ. Therefore, 3θ≈157.38°, so θ≈52.46°. Then, angle BAC≈52.46°, angles at B and C≈(180 -52.46)/2≈63.77°. Then, in triangle ABC, AB=AC=√(x² +121)=√(5.5² +11²)=√(30.25 +121)=√151.25≈12.30. Then, the perimeter would be 2*12.30 +11≈35.6, but according to the previous exact calculation, perimeter is 11(√5 +1)=11*3.236≈35.6, which matches. However, according to the coordinate system, angle BDC≈157.38°, which is 3θ≈157.38°, so θ≈52.46°, which is different from our earlier calculation where we had θ≈17.71°. So, this suggests that the solution with y=3/5 is invalid because it doesn't satisfy the Law of Cosines in the coordinate system.
+
+Therefore, our conclusion that y=3/5 is invalid because it leads to a contradiction. Therefore, the only possible solution is y=5/12, but that led to angle BDC=3θ≈196°, which is impossible. So, this is a problem. Therefore, perhaps there is an error in the setup.
+
+Wait, going back to the problem statement: There is a point D on AM with AD=10 and DM=1. So, AM=11. Then, angle BDC=3 angle BAC.
+
+But in our coordinate system, when we computed angle BDC using coordinates, we found it to be≈157.38°, which is 3θ≈157.38°, leading to θ≈52.46°, but according to the previous relation, θ=arccos[(121 -x²)/(121 +x²)].
+
+But in our previous calculation, we had cosθ=(121 -x²)/(121 +x²). If x²=30.25, then cosθ=(121 -30.25)/(121 +30.25)=90.75/151.25≈0.599, so θ≈53.13°, which is close to 52.46°. The slight discrepancy is due to approximate calculations. Therefore, angle BAC≈53.13°, angle BDC≈159.39°, which is 3*53.13≈159.39°. Therefore, this matches. Therefore, the correct perimeter is 11(√5 +1). But in the coordinate system, we calculated angle BDC≈157.38°, which is approximately 3*52.46°, which is inconsistent. Wait, but if x²=30.25, x=5.5, then coordinates of B(-5.5,0), D(0,1), C(5.5,0). Then, angle BDC≈157.38°, which is 3θ≈157.38°, so θ≈52.46°, but according to our previous calculation, cosθ=(121 -30.25)/(121 +30.25)=90.75/151.25≈0.599, which would correspond to θ≈53.13°. So, there's a discrepancy here. Therefore, perhaps the error is in the coordinate system.
+
+Wait, maybe the angle BDC is not 3θ, but rather angle BDC=3θ. But in reality, according to the coordinate system, angle BDC≈157.38°, and θ≈53.13°, so 3θ≈159.39°, which is close to 157.38°, but not exact. This suggests that there is a slight approximation. However, in reality, with exact values, if x²=30.25, then cosθ=90.75/151.25= (90.75*4)/(151.25*4)=363/605=3/5. Therefore, cosθ=3/5, θ=arccos(3/5)≈53.13°, then 3θ≈159.39°, which is more than 157.38°, so there's a difference. Therefore, this suggests that the exact solution leads to angle BDC=3θ≈159.39°, but in the coordinate system, we computed angle BDC≈157.38°, which is less. Therefore, there must be a mistake in the coordinate system.
+
+Wait, perhaps the coordinate system is not accurate because when we set D at (0,1), the calculation of angle BDC is done with coordinates, but if AD=10 and DM=1, then AM=11. But in the coordinate system, point D is at (0,1), so AD is the distance from A(0,11) to D(0,1), which is 10, and DM is the distance from D(0,1) to M(0,0), which is 1. So that's correct. So, coordinates are correct. However, when we compute angle BDC, using coordinates, we get angle≈157.38°, but according to the trigonometric relation, angle BDC=3θ≈159.39°. The difference is about 2°, which is small but indicates an inconsistency.
+
+Wait, perhaps the issue is that the Law of Cosines in the coordinate system is not matching the trigonometric relation. Therefore, there must be a mistake in the trigonometric approach. Let me re-examine the trigonometric steps.
+
+We had angle BDC=3θ, so cos(angle BDC)=cos(3θ). We expressed cos(3θ) in terms of cosθ, which is cos(3θ)=4cos³θ -3cosθ. Then, cosθ was expressed as (121 -t)/(121 +t), where t=x². Then, we set up the equation:
+
+4[(121 -t)/(121 +t)]³ -3[(121 -t)/(121 +t)] = (1 -t)/(1 +t)
+
+This led to a quartic equation, which was solved to give t=30.25 and t≈49.8235. Then, t=30.25 was valid, t≈49.8235 invalid. But when t=30.25, cosθ=3/5, so angle BAC= arccos(3/5)=53.13°, angle BDC=3*53.13≈159.39°, but in coordinate system, angle BDC≈157.38°, which is a discrepancy. Therefore, this suggests that my trigonometric approach is missing something.
+
+Wait, perhaps the angle BDC is not exactly 3θ, but in reality, angle BDC is 3θ, but the coordinate system is giving a different angle. Wait, no. If angle BAC=θ, then angle BDC=3θ. So, if θ=53.13°, angle BDC=159.39°, but in coordinate system, angle BDC≈157.38°. The difference is about 2°, which is significant. Therefore, there must be an error in the setup.
+
+Wait, perhaps the coordinate system is not accurate because point D is not necessarily at (0,1). Wait, in the problem statement, AM=11, and D is on AM with AD=10. So, D is 10 units from A along AM, which is 11 units long. So, yes, D is 1 unit below M on AM. Therefore, in the coordinate system, A is at (0,11), M is at (0,0), D is at (0,1). Therefore, coordinates are correct. Then, points B(-x,0), C(x,0). Therefore, the angle BDC is calculated as per coordinates. Therefore, if the coordinate system gives angle BDC≈157.38°, which is 3θ≈157.38°, then θ≈52.46°, but according to our formula, cosθ=(121 -x²)/(121 +x²). If x²=30.25, then cosθ= (121 -30.25)/(121 +30.25)=90.75/151.25≈0.599, which is arccos(0.599)≈53.13°, which is close to 52.46°, but not exact. The difference is due to approximate calculations. Therefore, exact values would match. Therefore, with x²=30.25, exact cosθ=3/5=0.6, so θ=arccos(3/5)=53.13°, then angle BDC=3*53.13≈159.39°, but in coordinate system, angle BDC≈157.38°, which is about 2° less. Therefore, this suggests that the coordinate system calculation is slightly off due to rounding errors, but in reality, with exact values, they would match. Therefore, the solution is correct.
+
+Therefore, the exact perimeter is 11(√5 +1). Therefore, the answer is \boxed{11(\sqrt{5} +1)}.
+Therefore, after analyzing the problem using coordinate geometry and trigonometric identities, the perimeter of triangle \(ABC\) is found to be \(\boxed{11(\sqrt{5} + 1)}\).
+
+**Final Answer**
+The perimeter of triangle \(ABC\) is \boxed{11(\sqrt{5} + 1)}.
+</think>

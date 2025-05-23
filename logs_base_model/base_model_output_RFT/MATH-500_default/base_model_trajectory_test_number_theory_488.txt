@@ -1,0 +1,121 @@
+Okay, let's tackle this problem step by step. So, we need to find three consecutive positive integers whose sum is a three-digit palindrome less than 220, and we want the largest number in this set to be as big as possible. Hmm, palindromes... Those are numbers that read the same forwards and backwards, like 121 or 343. Since the sum is a three-digit palindrome, it must be between 100 and 999, but since it's less than 220, the sum has to be between 100 and 219. 
+
+First, let's represent the three consecutive integers. Let's call the smallest one 'n', then the next two would be 'n+1' and 'n+2'. So the sum of these three numbers would be n + (n+1) + (n+2) = 3n + 3. So the sum is 3n + 3, which needs to be a three-digit palindrome less than 220. 
+
+So, 3n + 3 < 220. Let's solve for n. Subtract 3 from both sides: 3n < 217. Then divide by 3: n < 72.333... Since n has to be a positive integer, the maximum possible n is 72. But wait, we need the sum to be a palindrome. So 3n + 3 must be a palindrome between 100 and 219. 
+
+Let's list all three-digit palindromes less than 220. A three-digit palindrome has the form ABA, where A is the first and third digit, and B is the middle digit. The first digit A can be 1 or 2 (since the number is less than 220). 
+
+If A is 1, then the palindrome can be 101, 111, 121, 131, ..., 191. If A is 2, then the palindrome can be 202, 212. Because 222 is 222, which is less than 220? Wait, 222 is actually 222, which is greater than 220. So the maximum palindrome starting with 2 would be 212. So possible palindromes are 101, 111, 121, 131, 141, 151, 161, 171, 181, 191, 202, 212. 
+
+Now, each of these palindromes is equal to 3n + 3. So we can write 3n + 3 = palindrome. Then, n = (palindrome - 3)/3. Since n has to be an integer, (palindrome - 3) must be divisible by 3. So let's check each palindrome:
+
+Starting from the largest possible palindrome less than 220, which is 212. Let's check 212: 212 - 3 = 209. 209 divided by 3 is approximately 69.666..., not an integer. So 212 is not a possible sum. 
+
+Next, 202: 202 - 3 = 199. 199 divided by 3 is about 66.333..., not an integer. 
+
+Next, 191: 191 - 3 = 188. 188 divided by 3 is 62.666..., not integer. 
+
+181: 181 - 3 = 178. 178 /3 ≈59.333... Not integer. 
+
+171: 171 -3 = 168. 168 /3 = 56. So n =56. That's an integer. So the sum is 171. Then the three numbers would be 56, 57, 58. The largest is 58. 
+
+But wait, maybe there's a larger palindrome that works. Let's check the next one down. 
+
+161: 161 -3 =158. 158 /3 ≈52.666... Not integer. 
+
+151: 151 -3=148. 148/3≈49.333... Not integer. 
+
+141: 141-3=138. 138/3=46. So n=46. Then numbers are 46,47,48. Largest is 48. 
+
+131: 131-3=128. 128/3≈42.666... Not integer. 
+
+121: 121-3=118. 118/3≈39.333... Not integer. 
+
+111: 111-3=108. 108/3=36. So n=36. Numbers 36,37,38. Largest is 38. 
+
+101: 101-3=98. 98/3≈32.666... Not integer. 
+
+So the largest possible palindrome that works is 171, with n=56, largest number 58. But let's check if there's a palindrome between 171 and 212 that might also work. Wait, we've already checked all the three-digit palindromes starting with 1 and 2. The next one after 171 is 181, which didn't work. So 171 is the largest that gives an integer n. 
+
+But wait, 212 didn't work, 202 didn't, 191 didn't, 181 didn't, 171 worked. So 171 is the largest possible sum that is a palindrome and less than 220, leading to the largest number being 58. 
+
+But let me double-check. Let's take the next palindrome after 171 which is 181. As before, 181-3=178, which is not divisible by 3. Then 191: 191-3=188, not divisible by 3. 202-3=199, not divisible. 212-3=209, not divisible. So indeed, 171 is the largest possible sum. 
+
+Therefore, the largest integer in the set is 58. 
+
+But wait, let's confirm that 56,57,58 sum to 171. 56+57=113, 113+58=171. Yes. 171 is a palindrome. And 171 is less than 220. So that's correct. 
+
+Is there a possibility that a higher sum palindrome, say 212, could have a lower n but still the largest integer is higher? Wait, no. Because if the sum is higher, but the numbers are consecutive, the largest number would be higher. But since 212 is not a valid sum (as n would not be integer), the next possible is 171. 
+
+Alternatively, maybe there's another palindrome between 171 and 212 that we missed. Let's list all three-digit palindromes starting with 1 and 2:
+
+Starting with 1: 101,111,121,131,141,151,161,171,181,191.
+
+Starting with 2: 202,212.
+
+That's all. So 171 is the largest possible. 
+
+Therefore, the answer should be 58. 
+
+But wait, let's check another approach. Maybe using algebra. Let the three numbers be n, n+1, n+2. Their sum is 3n + 3 = palindrome. Let the palindrome be 100a + 10b + a = 101a +10b. So 3n +3 =101a +10b. Then, 3n =101a +10b -3. So n=(101a +10b -3)/3. Since n must be an integer, (101a +10b -3) must be divisible by 3. 
+
+So 101a +10b ≡3 mod 3. 101 mod3 is 101/3=33*3 +2, so 101≡2 mod3. 10b mod3 is equivalent to (10 mod3)*b=1*b=b mod3. So 2a + b ≡3 mod3. Which is equivalent to 2a +b ≡0 mod3. 
+
+So 2a +b must be divisible by 3. 
+
+Given that the palindrome is less than 220, so a can be 1 or 2. If a=2, then the palindrome is between 200 and 299, but since sum is less than 220, the palindrome must be 202 or 212. 
+
+For a=2: Let's check if 2a +b is divisible by 3. 
+
+For 202: a=2, b=0. 2*2 +0=4. 4 mod3=1≠0. So not divisible. 
+
+For 212: a=2, b=1. 2*2 +1=5. 5 mod3=2≠0. Not divisible. So no solutions for a=2. 
+
+Therefore, a must be 1. Then the palindrome is 101, 111, ..., 191. 
+
+For a=1, 2a +b =2 +b must be divisible by3. So 2 +b ≡0 mod3 → b≡1 mod3. So possible b=1,4,7. 
+
+So the palindromes when a=1 and b=1,4,7 are 111,141,171. 
+
+Wait, but earlier I listed 101,111,121,...191. But according to this, only 111,141,171 are the ones where 2a +b is divisible by3. 
+
+Wait, let's check. For a=1, b can be 1,4,7. So palindromes would be 111,141,171. 
+
+But earlier when I checked 121, 131, etc., they didn't satisfy 2a +b ≡0 mod3. Let's confirm:
+
+For 121: a=1, b=2. 2*1 +2=4≡1 mod3≠0. So not divisible. 
+
+131: a=1, b=3. 2+3=5≡2 mod3≠0. Not divisible. 
+
+141: a=1, b=4. 2+4=6≡0 mod3. Divisible. 
+
+151: a=1, b=5. 2+5=7≡1 mod3. Not divisible. 
+
+161: a=1, b=6. 2+6=8≡2 mod3. Not divisible. 
+
+171: a=1, b=7. 2+7=9≡0 mod3. Divisible. 
+
+181: a=1, b=8. 2+8=10≡1 mod3. Not divisible. 
+
+191: a=1, b=9. 2+9=11≡2 mod3. Not divisible. 
+
+So only 111,141,171 are the palindromes with a=1 that satisfy the divisibility condition. 
+
+Therefore, the possible sums are 111,141,171. 
+
+For 111: n=(111 -3)/3=108/3=36. So numbers 36,37,38. Largest 38. 
+
+141: n=(141-3)/3=138/3=46. Numbers 46,47,48. Largest 48. 
+
+171: n=56. Numbers 56,57,58. Largest 58. 
+
+So indeed, 171 is the largest possible sum palindrome, leading to the largest integer being 58. 
+
+Therefore, the answer is 58. 
+
+But let me check once more. Let's verify if there's any palindrome between 171 and 220 that I missed. The next palindrome after 171 is 181, which we saw doesn't work. Then 191, which also doesn't work. Then 202, which doesn't work. 212, which doesn't work. So no palindromes between 171 and 220 work. Therefore, 171 is indeed the largest. 
+
+Hence, the greatest possible value for the largest of the three integers is 58.
+Therefore, the greatest possible value for the largest of the three integers in the set is $\boxed{58}$.
+</think>

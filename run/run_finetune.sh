@@ -5,7 +5,7 @@ NPROC_PER_NODE=$nproc_per_node \
 swift sft \
     --model deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
     --train_type full \
-    --dataset anonym-submit-paper/OpenThoughts-correct \
+    --dataset anonym-submit-paper/Finetuning-Trajectories-Math \
     --use_hf true \
     --torch_dtype bfloat16 \
     --num_train_epochs 5 \

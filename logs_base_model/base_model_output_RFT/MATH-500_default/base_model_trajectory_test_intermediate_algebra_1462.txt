@@ -1,0 +1,220 @@
+Okay, so I have this problem where I need to find the sum of f(1) + f(2) + ... + f(1985), given that f(n + 1) = (-1)^{n + 1} * n - 2f(n) for n ≥ 1, and f(1) = f(1986). Hmm, let's see. I need to figure out a way to compute this sum. 
+
+First, maybe I should try to find a pattern or a recurrence relation that can help me express f(n) in terms of previous terms. The given recurrence is f(n + 1) = (-1)^{n + 1} * n - 2f(n). Let me write that down again to make sure I have it right:
+
+f(n + 1) = (-1)^{n + 1} * n - 2f(n)
+
+So for each n starting at 1, the next term is this expression. Also, the problem tells me that f(1) = f(1986). That seems important. Since the recurrence relates f(n + 1) to f(n), and the function is periodic at the end (f(1) = f(1986)), maybe there's a way to use this periodicity to find the sum.
+
+Let me consider writing out the first few terms to see if a pattern emerges. Let's start with n = 1:
+
+For n = 1:
+f(2) = (-1)^{2} * 1 - 2f(1) = 1 * 1 - 2f(1) = 1 - 2f(1)
+
+For n = 2:
+f(3) = (-1)^{3} * 2 - 2f(2) = -1 * 2 - 2f(2) = -2 - 2f(2)
+
+But f(2) is 1 - 2f(1), so substituting that in:
+f(3) = -2 - 2*(1 - 2f(1)) = -2 - 2 + 4f(1) = -4 + 4f(1)
+
+For n = 3:
+f(4) = (-1)^{4} * 3 - 2f(3) = 1 * 3 - 2f(3) = 3 - 2f(3)
+
+Substituting f(3) from above:
+f(4) = 3 - 2*(-4 + 4f(1)) = 3 + 8 - 8f(1) = 11 - 8f(1)
+
+Hmm, this is getting a bit messy. Let me see if there's a better approach. Maybe if I sum the recurrence relation over a range of n, that could help. Since the sum from f(1) to f(1985) is required, and the recurrence relates f(n + 1) to f(n), perhaps summing both sides from n = 1 to n = 1985 would help. Let's try that.
+
+Sum from n = 1 to n = 1985 of f(n + 1) = sum from n = 1 to n = 1985 of [(-1)^{n + 1} * n - 2f(n)]
+
+On the left side, the sum becomes sum_{n=1}^{1985} f(n + 1) = sum_{k=2}^{1986} f(k), since when n=1, k=2, and when n=1985, k=1986.
+
+On the right side, we have sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2 * sum_{n=1}^{1985} f(n)
+
+So putting it all together:
+
+sum_{k=2}^{1986} f(k) = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2 * sum_{n=1}^{1985} f(n)
+
+But the left side is sum_{k=2}^{1986} f(k) = sum_{k=1}^{1986} f(k) - f(1)
+
+Similarly, the right side is sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2 * sum_{n=1}^{1985} f(n)
+
+Therefore, substituting back:
+
+sum_{k=1}^{1986} f(k) - f(1) = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2 * sum_{n=1}^{1985} f(n)
+
+Let me denote S = sum_{n=1}^{1985} f(n). Then, sum_{k=1}^{1986} f(k) = S + f(1986). But given that f(1) = f(1986), we can write sum_{k=1}^{1986} f(k) = S + f(1). Therefore, substituting into the equation:
+
+S + f(1) - f(1) = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2S
+
+Simplify left side: S + f(1) - f(1) = S
+
+So we have:
+
+S = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2S
+
+Bring the 2S to the left:
+
+S + 2S = sum_{n=1}^{1985} [(-1)^{n + 1} * n]
+
+3S = sum_{n=1}^{1985} [(-1)^{n + 1} * n]
+
+Thus, S = (1/3) * sum_{n=1}^{1985} [(-1)^{n + 1} * n]
+
+So if I can compute that sum, then S is one-third of that. Therefore, the problem reduces to computing the sum of (-1)^{n + 1} * n from n=1 to 1985, then dividing by 3.
+
+Let me compute the sum sum_{n=1}^{1985} [(-1)^{n + 1} * n]. Let's denote this sum as T.
+
+So T = sum_{n=1}^{1985} [(-1)^{n + 1} * n]
+
+Let me write out the terms:
+
+For n=1: (-1)^{2} * 1 = 1*1 = 1
+
+n=2: (-1)^3 * 2 = -1*2 = -2
+
+n=3: (-1)^4 * 3 = 1*3 = 3
+
+n=4: (-1)^5 *4 = -1*4 = -4
+
+... and so on.
+
+So the sequence is 1, -2, 3, -4, 5, -6, ..., up to n=1985.
+
+Since 1985 is odd, the last term is positive. Let me group the terms in pairs:
+
+(1 - 2) + (3 - 4) + (5 - 6) + ... + (1983 - 1984) + 1985
+
+Each pair (odd - even) is (-1). How many such pairs are there?
+
+From n=1 to n=1984, that's 1984 terms, which is 992 pairs. Each pair sums to -1, so total sum for pairs: 992*(-1) = -992
+
+Then add the last term, which is 1985.
+
+Therefore, T = -992 + 1985 = 1985 - 992 = 993
+
+Therefore, T = 993
+
+Therefore, S = T / 3 = 993 / 3 = 331
+
+So the sum S = 331. Therefore, the answer is 331. But let me verify this calculation again to be sure.
+
+First, when n is odd: (-1)^{n + 1} = (-1)^{even} = 1, so term is positive.
+
+When n is even: (-1)^{n + 1} = (-1)^{odd} = -1, so term is negative.
+
+Therefore, the series is 1 - 2 + 3 - 4 + 5 - 6 + ... + 1985
+
+Yes, that's correct.
+
+Grouping into pairs: (1 - 2) + (3 - 4) + ... + (1983 - 1984) + 1985
+
+Each pair is -1, and there are 1984 terms before the last term, so 1984 / 2 = 992 pairs.
+
+Each pair is -1, so total from pairs: 992*(-1) = -992
+
+Then add the last term, 1985: -992 + 1985 = 1985 - 992 = 993. Correct.
+
+Then S = 993 / 3 = 331. So the answer is 331. But let me check once more.
+
+Alternatively, maybe there's a formula for the sum T. Let's recall that for an alternating sum of integers, the formula can be derived.
+
+Suppose we have T = sum_{k=1}^{m} (-1)^{k + 1} * k
+
+If m is even: sum = -m/2
+
+If m is odd: sum = (m + 1)/2
+
+Wait, let's check for small m.
+
+For m=1: 1. Formula: (1 + 1)/2 = 1. Correct.
+
+m=2: 1 - 2 = -1. Formula: -2/2 = -1. Correct.
+
+m=3: 1 - 2 + 3 = 2. Formula: (3 + 1)/2 = 2. Correct.
+
+m=4: 1 - 2 + 3 - 4 = -2. Formula: -4/2 = -2. Correct.
+
+So the formula is:
+
+If m is even: T = -m / 2
+
+If m is odd: T = (m + 1)/2
+
+In our case, m = 1985, which is odd.
+
+Therefore, T = (1985 + 1)/2 = 1986 / 2 = 993. Which matches our previous calculation. Therefore, S = 993 / 3 = 331. So answer is 331.
+
+Wait, but the problem says f(1986) = f(1). So the sum from n=1 to 1985 is S = 331. But let me verify if this is correct.
+
+Alternatively, maybe there's a mistake in the initial step when we set up the equation. Let's go through that again.
+
+We had:
+
+sum_{n=1}^{1985} f(n + 1) = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2 * sum_{n=1}^{1985} f(n)
+
+Left side: sum_{n=1}^{1985} f(n + 1) = sum_{k=2}^{1986} f(k) = sum_{k=1}^{1986} f(k) - f(1)
+
+Right side: sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2 * sum_{n=1}^{1985} f(n)
+
+Therefore:
+
+sum_{k=1}^{1986} f(k) - f(1) = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2 * sum_{n=1}^{1985} f(n)
+
+But sum_{k=1}^{1986} f(k) = sum_{n=1}^{1985} f(n) + f(1986) = S + f(1986)
+
+But since f(1986) = f(1), we have sum_{k=1}^{1986} f(k) = S + f(1)
+
+Therefore, substituting:
+
+S + f(1) - f(1) = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2S
+
+Which simplifies to S = sum_{n=1}^{1985} [(-1)^{n + 1} * n] - 2S
+
+Then, 3S = sum ... so S = sum / 3. Which gives S = 993 / 3 = 331.
+
+Therefore, the answer is 331. So I think this is correct.
+
+But let me check again with a smaller example to make sure the approach is right.
+
+Suppose instead of 1985, the upper limit is 3. Let's say n=1 to 3, and f(4)=f(1). Let's compute the sum S = f(1) + f(2) + f(3).
+
+Given the recurrence:
+
+f(2) = (-1)^2 * 1 - 2f(1) = 1 - 2f(1)
+
+f(3) = (-1)^3 * 2 - 2f(2) = -2 - 2*(1 - 2f(1)) = -2 - 2 + 4f(1) = -4 + 4f(1)
+
+f(4) = (-1)^4 * 3 - 2f(3) = 3 - 2*(-4 + 4f(1)) = 3 + 8 - 8f(1) = 11 - 8f(1)
+
+But f(4) = f(1), so:
+
+11 - 8f(1) = f(1)
+
+11 = 9f(1)
+
+f(1) = 11/9
+
+Then, S = f(1) + f(2) + f(3) = 11/9 + (1 - 2*(11/9)) + (-4 + 4*(11/9))
+
+Compute each term:
+
+f(1) = 11/9
+
+f(2) = 1 - 22/9 = (9 - 22)/9 = -13/9
+
+f(3) = -4 + 44/9 = (-36 + 44)/9 = 8/9
+
+Sum S = 11/9 -13/9 +8/9 = (11 -13 +8)/9 = 6/9 = 2/3
+
+Now, according to our formula:
+
+sum_{n=1}^{3} [(-1)^{n + 1} * n] = 1 - 2 + 3 = 2
+
+Then, S = 2 / 3 = 2/3. Which matches the manual calculation. Therefore, the formula works for this case.
+
+Therefore, the method seems correct. So in the original problem, the answer is 331. Therefore, the final answer is \boxed{331}
+
+**Final Answer**
+\boxed{331}
+Therefore, the value of the sum is $\boxed{331}$.

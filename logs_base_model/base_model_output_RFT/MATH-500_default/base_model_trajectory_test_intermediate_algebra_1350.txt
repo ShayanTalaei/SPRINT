@@ -1,0 +1,322 @@
+Okay, let's tackle this problem step by step. The question is about finding the least possible value of |a_{n-1}| for a polynomial with integer coefficients, distinct integer roots, leading coefficient 2, and constant term 66. 
+
+First, let me recall some fundamental concepts. For a polynomial with integer coefficients and integer roots, the roots must divide the constant term. This is due to the Rational Root Theorem, which states that any rational root p/q (in lowest terms) of a polynomial with integer coefficients must have p dividing the constant term and q dividing the leading coefficient. Since our polynomial has integer roots, q must be 1, so each root is a divisor of the constant term, which here is 66.
+
+Given that a_n = 2, the leading coefficient is 2. The constant term a_0 is 66. The polynomial can be expressed in factored form as f(x) = 2(x - r_1)(x - r_2)...(x - r_n), where each r_i is an integer root. 
+
+Our goal is to find the minimal possible absolute value of the coefficient a_{n-1}. Let's recall that in a polynomial, the coefficient a_{n-1} is equal to -2 times the sum of the roots. That is, a_{n-1} = -2(r_1 + r_2 + ... + r_n). Therefore, |a_{n-1}| = 2|sum of roots|. So, to minimize |a_{n-1}|, we need to minimize the absolute value of the sum of the roots.
+
+Therefore, the problem reduces to finding a set of distinct integers whose product is 66 (since the product of the roots, up to a sign, is 66 divided by the leading coefficient, which is 2. Wait, let's check that.
+
+Wait, actually, for a polynomial f(x) = a_n x^n + ... + a_0, the product of the roots (with multiplicity) is (-1)^n * a_0 / a_n. Since all roots are integers and distinct, the product of the roots is (-1)^n * 66 / 2 = (-1)^n * 33. So, the product of the roots is ±33. Therefore, the roots must be distinct integers whose product is either 33 or -33. 
+
+But since the roots are distinct integers, we need to factor 33 or -33 into distinct integer factors. So, first, let's factor 33. 33 factors into 1 * 3 * 11. But since we need distinct integers, we can also include negative factors. For example, 33 can be written as (-1) * 3 * (-11), but that would still be distinct integers. However, the product of the roots is 33 or -33, so the sign depends on the number of negative roots. 
+
+Wait, let's get back to the factored form. The polynomial is f(x) = 2(x - r_1)(x - r_2)...(x - r_n). The constant term a_0 is 66, which is equal to 2*(-1)^n * r_1 r_2 ... r_n. Therefore, the product of the roots r_1 r_2 ... r_n = (-1)^n * 66 / 2 = (-1)^n * 33. So, the product of the roots is either 33 or -33, depending on whether n is even or odd.
+
+Therefore, the roots are distinct integers whose product is ±33. Our task is to find such a set of integers with the minimal possible absolute sum. Then, |a_{n-1}| = 2|sum|. So, the problem is equivalent to finding a set of distinct integers whose product is 33 or -33, and the sum of which has the smallest possible absolute value.
+
+So, first, let's list all possible factorizations of 33 and -33 into distinct integers, and compute their sums. Then, we can find the one with the minimal absolute sum.
+
+But 33 is a positive number, and -33 is negative. Let's first consider the factorizations of 33:
+
+33 can be factored into:
+
+1 and 33
+
+1, 3, 11
+
+But since we need distinct integers, these are the possible factorizations into two factors. However, we can also have negative factors. For example:
+
+-1 and -33
+
+-1, -3, -11
+
+But if we include negative factors, the product remains positive (for even number of negatives) or negative (for odd number of negatives). Wait, but since the product is 33 or -33, depending on the sign. Wait, perhaps I need to clarify.
+
+Wait, the product of the roots is (-1)^n * 33. So, if n is even, the product is 33; if n is odd, the product is -33. Therefore, depending on whether n is even or odd, the product of the roots is either 33 or -33. So, if we factor 33 into distinct integers, their product is 33, and if n is odd, we need the product to be -33. So, perhaps the roots can be a mix of positive and negative numbers.
+
+But first, let's note that 33 is 3 * 11, and 1 * 33. So, possible factorizations into distinct integers:
+
+For two factors:
+
+1 and 33
+
+-1 and -33
+
+1 and -33
+
+But 1 and -33 would give product -33.
+
+Similarly, 3 and 11, -3 and -11, 3 and -11, etc.
+
+But we need to have all roots distinct. So, let's see:
+
+Case 1: Two roots.
+
+Possible pairs:
+
+(1, 33): product 33, sum 34
+
+(1, -33): product -33, sum -32
+
+(3, 11): product 33, sum 14
+
+(3, -11): product -33, sum -8
+
+(-1, -33): product 33, sum -34
+
+(-1, 33): product -33, sum 32
+
+Wait, but the sum of roots is important. For two roots, the possible sums are 34, -32, 14, -8, -34, 32. The minimal absolute sum here is 8 (from 3 and -11, sum -8, absolute value 8).
+
+Case 2: Three roots.
+
+Factorizations of 33 into three distinct integers. Let's see:
+
+33 can be written as 1 * 3 * 11. Similarly, -1 * -3 * -11, but that's product -33. Wait, 1 * 3 * 11 = 33, -1 * -3 * -11 = -33. So, for three factors, to get product 33, the factors must be 1, 3, 11. For product -33, the factors must be, say, -1, -3, 11 (but that's product 33). Wait, maybe not. Let's compute.
+
+Wait, 1 * (-3) * (-11) = 33. So, three factors: 1, -3, -11. Their product is 33. Their sum is 1 -3 -11 = -13. Absolute value 13.
+
+Alternatively, (-1) * 3 * (-11) = 33. Sum is -1 + 3 -11 = -9. Absolute value 9.
+
+Alternatively, (-1) * (-3) * 11 = 33. Sum is -1 -3 +11 = 7. Absolute value 7.
+
+Similarly, 1 * (-1) * (-33) = 33. Sum is 1 -1 -33 = -33. Absolute value 33.
+
+So, the minimal absolute sum in three factors is 7 (from -1, -3, 11). 
+
+Wait, but 1, -3, -11: product 33, sum -13. Absolute sum 13.
+
+-1, 3, -11: product 33, sum -9. Absolute sum 9.
+
+-1, -3, 11: product 33, sum 7. Absolute sum 7. That's the smallest so far.
+
+Case 3: Four roots.
+
+Factorizing 33 into four distinct integers. Let's see. 33 is 3*11, so to factor into four distinct integers, we need to include 1 and -1 as well.
+
+For example: 1, -1, 3, 11. Product is 1*(-1)*3*11 = -33. But we need product 33 or -33 depending on the number of factors. Wait, n is the number of roots, which is the degree of the polynomial. So, if we have four roots, then the product of the roots is (-1)^4 * 33 = 33. So, the product must be 33. So, the four roots must multiply to 33.
+
+So, how can we write 33 as a product of four distinct integers?
+
+Possible options:
+
+1, -1, 3, 11: product is -33. Not good.
+
+1, -1, -3, 11: product is 33. Sum is 1 -1 -3 +11 = 8. Absolute value 8.
+
+Alternatively, 1, -1, 3, -11: product is 33. Sum is 1 -1 +3 -11 = -8. Absolute value 8.
+
+Or 1, 3, 11, -1: same as above.
+
+Alternatively, 1, 3, -1, -11: product is 33. Sum is 1 +3 -1 -11 = -8.
+
+Alternatively, 1, -3, -11, 1: but duplicates. Not allowed.
+
+Alternatively, 3, 11, -1, -1: duplicates. Not allowed.
+
+Wait, maybe another combination. For example, 2, 3, 11, -1: but 2 is not a factor of 33.
+
+Wait, 33's prime factors are 3 and 11. So, to get four distinct integers, we need to include 1, -1, 3, 11, but that gives product -33. To get 33, we need even number of negatives. So, two negatives: 1, -1, -3, 11: product is 33. Sum is 1 -1 -3 +11 = 8. Similarly, 1, -1, 3, -11: product 33, sum -8. So, the minimal absolute sum here is 8.
+
+Alternatively, maybe 1, 3, 11, -1: same as above. So, four roots give a sum of ±8.
+
+Case 4: Five roots.
+
+To factor 33 into five distinct integers. Let's see. 33 is 3*11. To have five distinct integers, we need to include 1, -1, 3, -3, 11. But 1*(-1)*3*(-3)*11 = 99. Not 33. Alternatively, 1, -1, 3, 11, -3: product is -99. Not 33. Alternatively, maybe 1, -1, 3, 11, and another number. Wait, but 33 is 3*11. So, to have five factors, we need to include 1, -1, 3, 11, and 1 or -1 again, but that would duplicate. Not allowed. Alternatively, maybe 1, -1, 3, 11, and 1: duplicates. So, seems impossible to factor 33 into five distinct integers. Therefore, five roots are not possible.
+
+Therefore, the possible numbers of roots are 2, 3, or 4. For each, we can compute the minimal |sum|.
+
+From above:
+
+- Two roots: minimal |sum| is 8 (from 3 and -11 sum -8)
+
+- Three roots: minimal |sum| is 7 (from -1, -3, 11 sum 7)
+
+- Four roots: minimal |sum| is 8 (from 1, -1, 3, -11 sum -8 or 1, -1, -3, 11 sum 8)
+
+Therefore, the minimal |sum| across all possible factorizations is 7 (from three roots: -1, -3, 11). Therefore, |a_{n-1}| = 2*7 = 14.
+
+But wait, let's check if there's a way to get a smaller sum. For example, in three roots, is there a set of three distinct integers whose product is 33 and sum is smaller in absolute value?
+
+Suppose we take 1, -3, 11: sum is 1 -3 +11 = 9. Absolute sum 9.
+
+-1, 3, 11: sum -1 +3 +11 =13.
+
+-1, -3, 11: sum -1 -3 +11 =7.
+
+1, -1, -33: product -33, but n=3, so product should be -33. So sum is 1 -1 -33 = -33. Absolute sum 33.
+
+Alternatively, 1, -1, 33: sum 1 -1 +33=33.
+
+Alternatively, 3, 11, -1: same as above.
+
+So, indeed, the minimal |sum| for three roots is 7.
+
+Similarly, for four roots, the minimal |sum| is 8, which is higher than 7.
+
+Therefore, the minimal |a_{n-1}| is 14.
+
+Wait, but let's check if there's another way to factor 33 into three distinct integers with a smaller sum.
+
+For example, 33 can be written as 1 * (-1) * (-33) = 33. Sum is 1 -1 -33 = -33. Absolute sum 33.
+
+Alternatively, 1 * (-3) * 11 = -33. So, for three roots, product is -33, but n=3, so product should be (-1)^3 *33 = -33. So, that's okay. Sum is 1 -3 +11 =9. Absolute sum 9.
+
+Alternatively, 3 * (-1) * 11 = -33. Sum is 3 -1 +11=13.
+
+Alternatively, -1 * (-3) * 11 =33. Sum is -1 -3 +11=7. That's the same as before.
+
+Alternatively, 1 * 3 * 11=33. Sum 1+3+11=15. Absolute sum 15.
+
+Alternatively, 1 * (-1) * (-33)=33. Sum 1 -1 -33=-33. Absolute sum 33.
+
+So, yeah, the minimal |sum| is 7 for three roots.
+
+So, if we take roots -1, -3, 11, the product is (-1)*(-3)*11=33, which is correct for a polynomial of degree 3 (since n=3, product is (-1)^3 *33= -33, but wait: Wait, hold on. Wait, the product of the roots is r_1 r_2 r_3 = (-1)^3 * a_0 / a_n = (-1)^3 * 66 / 2 = -33. Wait, that's correct. So, the product of the roots is -33. But in the case of three roots: r1*r2*r3 = (-1)*(-3)*11 =33. But according to the formula, it should be -33. Therefore, this is a contradiction. Therefore, that set of roots would not satisfy the product condition.
+
+Wait, hold on. Let's clarify.
+
+Given that the polynomial is f(x) = 2(x - r1)(x - r2)...(x - rn). Then, the constant term a0 is 2*(-1)^n * r1 r2 ... rn. Therefore, the product of the roots r1 r2 ... rn = (-1)^n * a0 / 2 = (-1)^n * 66 / 2 = (-1)^n *33. So, if n is even, the product is 33; if n is odd, the product is -33.
+
+Therefore, in our earlier analysis, if we have three roots (n=3), the product of roots must be -33. Therefore, the roots -1, -3, 11 multiply to 33, which is not equal to -33. Therefore, that set is invalid.
+
+Wait, that changes things. So, in three roots, the product must be -33. So, we need three distinct integers whose product is -33. Let's recast that.
+
+So, for three roots:
+
+Possible factorizations into three distinct integers with product -33:
+
+We need to write -33 as a product of three distinct integers.
+
+Possible triplet factors:
+
+1, 3, -11: product 1*3*(-11) = -33. Sum is 1 +3 -11 = -7. Absolute sum 7.
+
+Similarly, 1, -3, 11: product 1*(-3)*11 = -33. Sum 1 -3 +11=9. Absolute sum 9.
+
+-1, -3, 11: product (-1)*(-3)*11 =33. Not -33. So, invalid.
+
+-1, 3, -11: product (-1)*3*(-11)=33. Not -33. Invalid.
+
+1, -1, 33: product 1*(-1)*33=-33. Sum 1 -1 +33=33. Absolute sum 33.
+
+1, -1, -33: product 1*(-1)*(-33)=33. Not -33. Invalid.
+
+3, -1, 11: product 3*(-1)*11=-33. Sum 3 -1 +11=13. Absolute sum 13.
+
+-3, 1, 11: same as above.
+
+Therefore, the only triplet with product -33 is 1, 3, -11 (sum -7), and 1, -3, 11 (sum 9). Therefore, the minimal |sum| here is 7 (from 1, 3, -11 sum -7). 
+
+But wait, the product is 1*3*(-11)=-33, which is correct. So, that's acceptable. So, |sum| is 7. Therefore, the sum is -7, so |sum|=7. Therefore, |a_{n-1}|=2*7=14.
+
+But wait, is there another triplet with product -33 and smaller |sum|?
+
+Suppose we take -1, 3, 11: product -1*3*11=-33. Sum -1 +3 +11=13. Absolute sum 13. Not better.
+
+Alternatively, 3, -1, -11: product 3*(-1)*(-11)=33. Not -33. So, invalid.
+
+Alternatively, 1, -3, 11: product 1*(-3)*11=-33. Sum 1 -3 +11=9. Absolute sum 9.
+
+Another triplet: -1, -3, 11: product (-1)*(-3)*11=33. Not -33. So, invalid.
+
+Alternatively, 1, 1, -33: but duplicates. Not allowed.
+
+Therefore, the only valid triplet with product -33 is 1, 3, -11, sum -7, absolute sum 7. So, |a_{n-1}|=14.
+
+Therefore, for n=3, the minimal |a_{n-1}| is 14.
+
+For n=2, the minimal |sum| was 8, which gives |a_{n-1}|=16.
+
+For n=4, the minimal |sum| was 8, which gives |a_{n-1}|=16.
+
+Therefore, the minimal |a_{n-1}| is 14, achieved when n=3, with roots 1, 3, -11.
+
+But wait, let's check if there's a way to have a sum of roots with a smaller absolute value. For example, if we can have sum 0, but probably not. Let's see.
+
+Suppose we can find three distinct integers whose product is -33 and sum is 0. Let's see.
+
+Looking for three distinct integers x, y, z such that x + y + z =0 and x y z = -33.
+
+Possible candidates:
+
+Let me check if there are such numbers. Let's see. Let's try small numbers.
+
+Suppose one of them is 1. Then, the other two numbers must multiply to -33 and sum to -1.
+
+So, solving a + b = -1 and a*b = -33.
+
+The quadratic equation would be t^2 + t -33 =0. The discriminant is 1 + 132=133, which is not a perfect square. So, no integer solutions.
+
+Similarly, if one number is -1. Then, the other two numbers multiply to 33 and sum to 1.
+
+Solving a + b =1, a*b=33.
+
+Quadratic equation: t^2 - t +33=0. Discriminant 1 -132=-131. No real solutions.
+
+Similarly, take 3. Then, the other two numbers multiply to -11 and sum to -3.
+
+So, a + b = -3, a*b = -11.
+
+Quadratic equation: t^2 +3t -11=0. Discriminant 9 +44=53. Not a perfect square. No integer solutions.
+
+Take -3. Then, other two numbers multiply to 11 and sum to 3.
+
+Equation: t^2 -3t +11=0. Discriminant 9 -44=-35. No real solutions.
+
+Similarly, take 11. Then, other two numbers multiply to -3 and sum to -11.
+
+Equation: t^2 +11t -3=0. Discriminant 121 +12=133. Not a perfect square.
+
+Take -11. Then, other two numbers multiply to 3 and sum to 11.
+
+Equation: t^2 -11t +3=0. Discriminant 121 -12=109. Not a perfect square.
+
+Therefore, there are no three distinct integers that multiply to -33 and sum to 0. Therefore, the minimal |sum| is indeed 7, achieved by 1, 3, -11.
+
+Therefore, the minimal |a_{n-1}| is 14.
+
+But let's confirm this with another approach. Suppose n=3, and the roots are 1, 3, -11. Then, the polynomial is 2(x -1)(x -3)(x +11). Let's expand this.
+
+First, multiply (x -1)(x -3):
+
+(x -1)(x -3) = x^2 -4x +3.
+
+Then, multiply by (x +11):
+
+(x^2 -4x +3)(x +11) = x^3 +11x^2 -4x^2 -44x +3x +33 = x^3 +7x^2 -41x +33.
+
+Multiply by 2: 2x^3 +14x^2 -82x +66.
+
+Therefore, a_2 =14, a_1=-82. So, |a_{n-1}|=| -82 | =82. Wait, that's not matching. Wait, wait, no. Wait, in the polynomial f(x) = a_n x^n + ... + a_0, so in this case, the polynomial is 2x^3 +14x^2 -82x +66. Therefore, a_{n-1} is a_2, which is14. So, |a_{n-1}|=14. So, that's correct. So, the coefficient a_{n-1} is 14. Therefore, the answer is 14.
+
+But wait, wait, in the expansion above, the coefficient of x^2 is14. So, |a_{n-1}|=14. So, that's correct.
+
+But let's check another factorization. Suppose we have roots -1, -3, 11. Then, the polynomial is 2(x +1)(x +3)(x -11). Let's expand this.
+
+First, multiply (x +1)(x +3) =x^2 +4x +3.
+
+Multiply by (x -11):
+
+(x^2 +4x +3)(x -11) =x^3 -11x^2 +4x^2 -44x +3x -33 =x^3 -7x^2 -41x -33.
+
+Multiply by 2: 2x^3 -14x^2 -82x -66.
+
+Therefore, a_{n-1}= -14. So, |a_{n-1}|=14. Same result.
+
+Therefore, regardless of the order of roots, |a_{n-1}|=14.
+
+Therefore, the minimal possible value is14.
+
+But wait, let's check if there's another set of roots with a smaller sum. For example, suppose we have roots 1, -1, -33. Then, the product is 1*(-1)*(-33)=33. But since n=3, product should be -33. Therefore, invalid. Similarly, roots 3, -1, -11: product is 3*(-1)*(-11)=33. Not -33. So, invalid.
+
+Therefore, the only valid triplet with product -33 and minimal |sum| is 1,3,-11, sum -7, |sum|=7, giving |a_{n-1}|=14.
+
+Therefore, the minimal possible value is14. So, the answer is \boxed{14}.
+
+**Final Answer**
+The least possible value of \(|a_{n-1}|\) is \boxed{14}.
+Therefore, the least possible value of $|a_{n-1}|$ is $\boxed{14}$.
+</think>

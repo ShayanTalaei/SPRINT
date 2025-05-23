@@ -1,0 +1,94 @@
+Okay, so I need to find the equation of a plane that passes through three points: (0, -1, -1), (-4, 4, 4), and (4, 5, 1). The equation should be in the form Ax + By + Cz + D = 0, where A, B, C, D are integers with A > 0 and the greatest common divisor of their absolute values is 1. 
+
+First, I remember that three points not lying on a straight line define a plane. So, since these three points are distinct and not colinear, they should define a unique plane. To find the equation of the plane, I can use the general equation of a plane and substitute the coordinates of these three points into it, then solve the resulting system of equations for A, B, C, D. Alternatively, maybe there's a more straightforward method using vectors?
+
+Let me recall. Another method involves finding two vectors that lie on the plane and then computing their cross product to get the normal vector of the plane. The normal vector will give me the coefficients A, B, C of the plane equation. Then, I can substitute one of the points into the equation to solve for D. That sounds efficient. Let me try that approach.
+
+So, first, I need to find two vectors that lie on the plane. Since the plane contains the three given points, I can take two vectors by subtracting the coordinates of the points. Let's pick the first point (0, -1, -1) as a reference. Then, the vector from this point to the second point (-4, 4, 4) is (-4 - 0, 4 - (-1), 4 - (-1)) = (-4, 5, 5). Similarly, the vector from the first point to the third point (4, 5, 1) is (4 - 0, 5 - (-1), 1 - (-1)) = (4, 6, 2). 
+
+So, the two vectors in the plane are v1 = (-4, 5, 5) and v2 = (4, 6, 2). Now, to find the normal vector n = (A, B, C), I need to compute the cross product of v1 and v2. The cross product formula is:
+
+n = v1 × v2 = |i   j   k|
+             -4   5   5
+              4   6   2
+
+Calculating the determinant:
+
+i*(5*2 - 5*6) - j*(-4*2 - 5*4) + k*(-4*6 - 5*4)
+
+Compute each component:
+
+i*(10 - 30) = i*(-20)
+-j*(-8 - 20) = -j*(-28) = j*28
+k*(-24 - 20) = k*(-44)
+
+So, n = (-20, 28, -44). 
+
+Now, the normal vector is (-20, 28, -44). But I need to check if this can be simplified. Let's see if all components have a common divisor. Let's check the GCD of 20, 28, 44. 
+
+Factors of 20: 2, 4, 5, 10, 20
+Factors of 28: 2, 4, 7, 14, 28
+Factors of 44: 2, 4, 11, 22, 44
+
+The common factors are 2 and 4. So, the GCD is 4. Therefore, we can divide each component by 4 to simplify. 
+
+Dividing each component by 4:
+
+-20/4 = -5
+28/4 = 7
+-44/4 = -11
+
+So, the simplified normal vector is (-5, 7, -11). However, the problem states that A should be positive. Since the normal vector here has A as -5, which is negative, we can multiply the entire normal vector by -1 to make A positive. 
+
+Multiplying by -1 gives (5, -7, 11). 
+
+So, the normal vector is (5, -7, 11). Therefore, the equation of the plane is 5x -7y +11z + D = 0. Now, we need to find D. To do that, substitute one of the given points into the equation. Let's pick the first point (0, -1, -1).
+
+Substituting x=0, y=-1, z=-1:
+
+5*0 -7*(-1) +11*(-1) + D = 0
+0 +7 -11 + D = 0
+(7 -11) + D = 0
+-4 + D = 0
+D = 4
+
+So, the equation becomes 5x -7y +11z +4 = 0. 
+
+But let's verify this with another point to ensure that there were no calculation errors. Let's test the second point (-4, 4, 4):
+
+5*(-4) -7*4 +11*4 +4 = -20 -28 +44 +4 = (-20 -28) + (44 +4) = -48 +48 = 0. Correct.
+
+Testing the third point (4,5,1):
+
+5*4 -7*5 +11*1 +4 = 20 -35 +11 +4 = (20 -35) + (11 +4) = -15 +15 = 0. Correct.
+
+So, the equation works for all three points. Now, check the conditions: A is positive (5>0), and the GCD of |5|, |-7|, |11|, |4| is gcd(5,7,11,4). Let's compute GCD step by step.
+
+GCD(5,7) is 1. Then GCD(1,11) is 1. GCD(1,4) is 1. So, the GCD is 1. Therefore, the equation satisfies all the conditions.
+
+Therefore, the equation of the plane is 5x -7y +11z +4 = 0.
+
+Wait, let me check once again. Maybe I made a mistake in the cross product. Let me recompute the cross product to be sure.
+
+Given vectors v1 = (-4,5,5) and v2 = (4,6,2). Cross product is:
+
+i*(5*2 -5*6) - j*(-4*2 -5*4) + k*(-4*6 -5*4)
+
+Calculates to:
+
+i*(10 -30) - j*(-8 -20) + k*(-24 -20)
+
+Which is:
+
+i*(-20) - j*(-28) + k*(-44)
+
+So, (-20, 28, -44). Then, dividing by GCD 4 gives (-5,7,-11). Then multiplying by -1 gives (5,-7,11). Then substituting (0,-1,-1):
+
+5*0 -7*(-1) +11*(-1) + D = 0 => 0 +7 -11 + D = 0 => D=4. Correct. 
+
+Yes, that seems right. So, the final equation is 5x -7y +11z +4 = 0.
+
+**Final Answer**
+The equation of the plane is \boxed{5x - 7y + 11z + 4 = 0}.
+Therefore, the equation of the plane containing the points $(0,-1,-1)$, $(-4,4,4)$, and $(4,5,1)$ is $\boxed{5x - 7y + 11z + 4 = 0}$.
+</think>

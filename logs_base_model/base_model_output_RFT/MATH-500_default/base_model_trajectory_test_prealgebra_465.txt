@@ -1,0 +1,81 @@
+Okay, so I need to figure out how many digits repeat when converting 31/11111 into a decimal. Hmm, let's start by recalling that a fraction like a/b will result in a repeating decimal if the denominator (after simplifying the fraction) has prime factors other than 2 and 5. Since 11111 is the denominator here, let me check its prime factors first.
+
+Wait, 11111. Let me try dividing that by some small primes. Let me see, 11111 divided by 11. 11 times 1010 is 11110, so 11111 minus 11110 is 1, so 11111 is 11*1010 +1, which is 11*1010 +1. Hmm, so that's not divisible by 11. Maybe 101? Let me check. 101*110 is 11110, so 101*110 +1 is 11111. So 11111 is 101*110 +1, which is 101*110 +1. Wait, but 101*110 is 11110, so 11111 is 101*110 +1. So 11111 = 101*110 +1. Wait, that seems off. Let me compute 101*110. 100*110 is 11000, plus 1*110 is 110, so total 11110. Yes, so 11111 is 11110 +1, which is 101*110 +1. So 101 is a factor? Wait, no, 101*110 is 11110, so 11110 +1 is 11111. So 11111 = 101*110 +1. Wait, but that means 11111 divided by 101 gives 110 with a remainder of 1. So 101 isn't a factor. Hmm.
+
+Wait, maybe 11111 is a prime number? Let me check. Let me try dividing by 101. 101*110 is 11110, so 101*110 +1 is 11111. So 11111 divided by 101 is 110 with a remainder of 1. So 101 isn't a factor. How about 7? Let me check. 7*1587 is 11109, so 11111 -11109=2. So remainder 2. Not divisible by 7. 13? Let's see. 13*854=11102, 11111-11102=9. Not divisible. 17? 17*653=11101, 11111-11101=10. Not divisible. 19? 19*584=11096, 11111-11096=15. Not divisible. 23? 23*483=11109, 11111-11109=2. Not divisible. 29? 29*383=11107, 11111-11107=4. Not divisible. 31? 31*358=11098, 11111-11098=13. Not divisible. 37? Let's see, 37*300=11100, 11111-11100=11. Not divisible. 41? 41*271=11111? Let's check. 41*270=11070, 41*271=11070+41=11111. Oh! Wait, 41*271 is 11111. So 11111 factors into 41 and 271. Are both 41 and 271 primes? Let me check. 41 is a prime number. 271: Let's check divisibility. 271 divided by primes up to sqrt(271) which is around 16.4. So check 2,3,5,7,11,13. 271 is odd, not divisible by 2. 2+7+1=10, not divisible by 3. Ends with 1, so not divisible by 5. 271/7=38.71, not integer. 271/11=24.63, nope. 271/13=20.84, nope. So 271 is prime. So 11111=41*271, both primes. So the denominator after simplifying 31/11111 is 11111, which factors into 41 and 271. Since 41 and 271 are primes other than 2 and 5, the decimal expansion of 31/11111 will be a repeating decimal. The length of the repeating period is the least common multiple (LCM) of the periods of 1/41 and 1/271.
+
+So now, I need to find the period of 1/41 and 1/271. The period of 1/p where p is a prime not dividing 10 is the smallest integer k such that 10^k ≡ 1 mod p. The period is the order of 10 modulo p. So for 41 and 271, I need to find the order of 10 modulo each.
+
+Starting with 41. Let's find the smallest k where 10^k ≡ 1 mod 41. Let's compute powers of 10 modulo 41.
+
+10^1 mod41=10
+
+10^2=100 mod41. 100-2*41=100-82=18
+
+10^3=10*18=180 mod41. 180-4*41=180-164=16
+
+10^4=10*16=160 mod41. 160-3*41=160-123=37
+
+10^5=10*37=370 mod41. 370-9*41=370-369=1
+
+So 10^5 ≡1 mod41. Therefore, the period of 1/41 is 5.
+
+Now for 271. Let's find the order of 10 modulo 271. This might take longer. Let's see.
+
+First, we know that the order must divide φ(271)=270, since 271 is prime. So possible orders are divisors of 270: 1,2,3,5,6,9,10,15,18,27,30,45,54,90,135,270.
+
+We need the smallest k where 10^k ≡1 mod271.
+
+Let's start testing exponents.
+
+First, check if k=1: 10^1=10≡10≠1 mod271.
+
+k=2: 10^2=100≡100≠1.
+
+k=3: 10^3=1000. 1000 mod271: 271*3=813, 1000-813=187. So 187≠1.
+
+k=5: 10^5=100000. Let's compute 100000 mod271.
+
+First, 271*368=271*(300+68)=271*300=81300, 271*68=18328. Total 81300+18328=99628. Then 100000-99628=372. 372 mod271=372-271=101. So 10^5≡101 mod271≠1.
+
+k=9: 10^9. Let's compute 10^5=101, so 10^6=10^5*10=101*10=1010 mod271. 1010-3*271=1010-813=197. 10^7=197*10=1970 mod271. 1970-7*271=1970-1897=73. 10^8=73*10=730 mod271. 730-2*271=730-542=188. 10^9=188*10=1880 mod271. 1880-6*271=1880-1626=254. 254≠1.
+
+k=10: 10^10=10^9*10=254*10=2540 mod271. 2540-9*271=2540-2439=101. 101≠1.
+
+k=15: Let's compute 10^15. Since 10^5=101, 10^10=101^2=10201 mod271. Let's compute 10201 mod271.
+
+271*37=9927. 10201-9927=274. 274 mod271=3. So 10^10≡3 mod271. Then 10^15=10^10 *10^5=3*101=303 mod271=303-271=32. 32≠1.
+
+k=18: Let's compute 10^18=10^15*10^3=32*16=512 mod271. 512-271=241. 241≠1.
+
+k=27: Let's compute 10^27. 10^18=241, 10^9=254. So 10^27=10^18*10^9=241*254 mod271.
+
+Compute 241*254: Let's do 240*254 +1*254 = 240*254 +254.
+
+240*254: 200*254=50,800; 40*254=10,160. Total 50,800+10,160=60,960. Add 254: 60,960+254=61,214.
+
+61,214 divided by 271. Let's see how many times 271 fits into 61,214.
+
+271*225=271*(200+25)=54,200 +6,775=60,975. 61,214-60,975=239. So 241*254 mod271=239. 239≠1.
+
+k=30: 10^30. Since 10^15=32, 10^30=32^2=1024 mod271. 1024-3*271=1024-813=211. 211≠1.
+
+k=45: 10^45=10^30*10^15=211*32=6752 mod271. Let's compute 6752 divided by 271. 271*24=6504. 6752-6504=248. 248≠1.
+
+k=54: 10^54=10^45*10^9=248*254 mod271. 248*254. Let's compute 200*254=50,800; 48*254=12,192. Total 50,800+12,192=62,992. 62,992 mod271.
+
+271*232=271*(200+32)=54,200 +8,672=62,872. 62,992-62,872=120. 120≠1.
+
+k=90: 10^90=(10^45)^2=248^2=61,504 mod271. 61,504 divided by 271. 271*226=271*(200+26)=54,200 +7,046=61,246. 61,504-61,246=258. 258≠1.
+
+k=135: 10^135=10^90*10^45=258*248 mod271. 258*248. Let's compute 200*248=49,600; 58*248=14,384. Total 49,600+14,384=63,984. 63,984 mod271.
+
+271*235=271*(200+35)=54,200 +9,485=63,685. 63,984-63,685=299. 299-271=28. 28≠1.
+
+k=270: 10^270. Since φ(271)=270, by Euler's theorem, 10^270 ≡1 mod271. But we need to check if there's a smaller k. Since none of the divisors of 270 up to 135 worked, the order must be 270. Therefore, the period of 1/271 is 270.
+
+So the periods for 1/41 and 1/271 are 5 and 270, respectively. The period of the decimal expansion of 31/11111 is the LCM of 5 and 270. LCM(5,270)=270. Because 270 is a multiple of 5. Therefore, the decimal repeats every 270 digits. So the answer should be 270.
+
+Wait, let me confirm this. Since 11111=41*271, and the periods are 5 and 270, their LCM is 270. So the decimal expansion of 31/11111 will have a period of 270. Therefore, the number of digits that repeat is 270.
+Therefore, the decimal repeats every $\boxed{270}$ digits.
+</think>

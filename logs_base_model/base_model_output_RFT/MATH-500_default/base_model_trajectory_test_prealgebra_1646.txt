@@ -1,0 +1,187 @@
+Okay, let's try to figure out the measure of angle AFD in this quadrilateral ABCD. First, I need to understand the given information and the diagram. From the Asymptote code, I can see that quadrilateral ABCD has points A at (0,0), B at (2,4), C at (7,4), and D at (7,-2). Points E and F are inside the quadrilateral, with E near the center of AD and F somewhere along the lines from A and D. The angles BAD and CDA are trisected, which means they are each divided into three equal parts. The labels show some angles labeled as x and y, but the specific measures aren't given, except for two angles labeled 110° and 100°. 
+
+Wait, the Asymptote code mentions labels for angles at (1,1.5), (2,1), (2,-1), which are labeled as x, and at (5.5+.3, .5-.3), (6.5+.3, 0), (5+.5, -1.5+.3), which are labeled as y. Also, there are angles labeled 110° and 100° at (2.5,3.5) and (6.5-.2,3.5). So perhaps those are the angles at points B and C? Let me try to parse this.
+
+Looking at the Asymptote code:
+
+- The label "$x$" is at (1,1.5), which is near the middle of AB, so maybe the angle at A? But it's labeled x at (1,1.5), which is the midpoint of AB, so that might be angle BAD? Wait, angle BAD is at point A between BA and AD. Similarly, angle CDA is at point D between CD and DA. The Asymptote code labels x near E, which is near AD. Wait, maybe the trisection points are labeled x and y.
+
+Wait, the Asymptote code draws A--E--D and A--F--D. So E is a point on AD, and F is a point somewhere else. The labels x are at (4.5-.2,1-.2), which is near E, and (5,3), which is point F. The angles x and y are labeled in different places. The angles labeled 110° and 100° are at (2.5,3.5) and (6.5-.2,3.5), which are probably angles at points B and C.
+
+So, angle at B is 110°, angle at C is 100°. Then, angle BAD and angle CDA are trisected. Let me note that:
+
+- Quadrilateral ABCD has angles at B and C given as 110° and 100°, respectively.
+
+- Angles BAD and CDA are each trisected. So angle BAD is divided into three equal angles, each of measure x/3, but the Asymptote code labels x at three different points. Similarly, angle CDA is divided into three equal angles, each of measure y/3.
+
+Wait, maybe the labels x and y are the measures of the trisected angles. Let me check the Asymptote code:
+
+The labels x are at (1,1.5), (2,1), (2,-1), which are three different places. Similarly, y is labeled at three different positions. So perhaps each trisection has three angles labeled x or y.
+
+Wait, but angle BAD is at point A, between BA and AD, and angle CDA is at point D, between CD and DA. So angle BAD is trisected into three equal angles, each labeled x in the diagram. Similarly, angle CDA is trisected into three equal angles, each labeled y. The other angles at B and C are 110° and 100°, respectively.
+
+So the quadrilateral has four angles: angle A (BAD), angle B (110°), angle C (100°), and angle D (CDA). Since the sum of the internal angles in a quadrilateral is 360°, we can write:
+
+angle A + angle B + angle C + angle D = 360°
+
+Given angle B = 110°, angle C = 100°, so angle A + angle D = 360 - 110 - 100 = 150°.
+
+But angle A and angle D are each trisected. Let me denote angle BAD as α and angle CDA as β. Then, angle A = α, angle D = β, so α + β = 150°. Each trisected angle would be α/3 and β/3.
+
+However, looking at the Asymptote code, the labels x and y are placed at different points. The x labels are near point A (E) and near point F, and the y labels are near point D and point F. Maybe the trisected angles at A are labeled x, and the trisected angles at D are labeled y. Let me check:
+
+From the Asymptote code:
+
+- The x labels are at three places: near E, which is on AD, and two other points. Similarly, the y labels are at three places: near D, another point along CD, and point F. So perhaps the trisection angles at A (α) are divided into three angles labeled x, each of measure x°, and the trisection angles at D (β) are divided into three angles labeled y, each of measure y°. So:
+
+α = 3x
+
+β = 3y
+
+And since α + β = 150°, then 3x + 3y = 150°, so x + y = 50°.
+
+Now, the goal is to find angle AFD. Let's see. Points A, F, D are connected, forming triangle AFD. So angle AFD is the angle at point F between A and D.
+
+To find angle AFD, we might need to use some properties of triangles or perhaps trigonometric laws like the Law of Sines or Law of Cosines. Alternatively, since the quadrilateral is divided into triangles by the trisectors, maybe we can find other angles in the figure and use them to find angle AFD.
+
+Alternatively, maybe considering triangle AFD and the angles at A and D related to the trisection.
+
+First, let's note that in quadrilateral ABCD, angles at A and D are α and β, which are trisected into x and y respectively.
+
+So, angle BAD = α = 3x
+
+Angle CDA = β = 3y
+
+From above, x + y = 50°, so x = 50° - y.
+
+But we need more information to find x and y. Maybe the angles at B and C can help us through the structure of the quadrilateral.
+
+Wait, quadrilateral ABCD has sides AB, BC, CD, DA. The Asymptote code draws A to B to C to D to A. The coordinates are given, so maybe we can compute the actual angles at A and D using coordinates? Let me check.
+
+Given coordinates:
+
+A = (0,0)
+
+B = (2,4)
+
+C = (7,4)
+
+D = (7,-2)
+
+So, we can compute vectors for the sides at A and D.
+
+First, at point A (0,0), the sides are AB and AD.
+
+Vector AB is from A to B: (2,4) - (0,0) = (2,4)
+
+Vector AD is from A to D: (7,-2) - (0,0) = (7,-2)
+
+The angle at A is the angle between vectors AB and AD. Let's compute that angle.
+
+The formula for the angle between two vectors u and v is:
+
+cosθ = (u · v) / (|u| |v|)
+
+Compute the dot product of AB and AD:
+
+AB · AD = (2)(7) + (4)(-2) = 14 - 8 = 6
+
+|AB| = sqrt(2² + 4²) = sqrt(4 + 16) = sqrt(20) = 2√5
+
+|AD| = sqrt(7² + (-2)²) = sqrt(49 + 4) = sqrt(53)
+
+So, cosθ = 6 / (2√5 * √53) = 6 / (2√265) = 3 / √265 ≈ 3 / 16.2788 ≈ 0.184
+
+Therefore, θ ≈ arccos(0.184) ≈ 80° approximately.
+
+Wait, but according to the Asymptote code, angle BAD is trisected, so if the actual angle at A is approximately 80°, then each trisected angle x would be 80/3 ≈ 26.666°, which is approximately 26.67°. Similarly, angle CDA at point D.
+
+Let's compute angle CDA. Point D (7,-2), sides DC and DA.
+
+Vector DC is from D to C: (7,4) - (7,-2) = (0,6)
+
+Vector DA is from D to A: (0,0) - (7,-2) = (-7,2)
+
+Compute the angle between DC and DA.
+
+Dot product of DC and DA:
+
+(0)(-7) + (6)(2) = 0 + 12 = 12
+
+|DC| = sqrt(0² + 6²) = 6
+
+|DA| = sqrt(7² + (-2)²) = sqrt(49 + 4) = sqrt(53)
+
+So, cosφ = 12 / (6 * sqrt(53)) = 12 / (6√53) = 2 / √53 ≈ 2 / 7.28 ≈ 0.274
+
+Therefore, φ ≈ arccos(0.274) ≈ 74°
+
+So angle CDA is approximately 74°, which would make each trisected angle y ≈ 74/3 ≈ 24.666°, approximately 24.67°.
+
+Then, x + y ≈ 26.67 + 24.67 ≈ 51.34°, which is close to 50°, but not exact. Wait, but according to our earlier equation, x + y = 50°, but here, using the actual coordinates, x + y ≈ 51.34°, which is a discrepancy. That suggests that either the trisection is approximate, or there's an error in the assumptions.
+
+Wait, but the problem states that angles BAD and CDA are trisected as shown in the diagram. The labels x and y are in the diagram, but the actual angle measures might not be exactly trisected into equal angles. Wait, but the problem says "are trisected as shown," so perhaps the diagram is constructed with the trisection, so the angles are indeed trisected into equal parts. Therefore, the actual angles at A and D must be such that 3x and 3y add up to 150°, so x + y = 50°, but when we computed using coordinates, we found angle A ≈ 80°, angle D ≈ 74°, which sum to 154°, which is not 150°. Therefore, there's a contradiction.
+
+This suggests that either the coordinates given in the Asymptote code are not to scale, or the angles at A and D are not the actual angles of the quadrilateral, but the angles formed by the trisectors. Wait, maybe the Asymptote code is just a rough sketch, and the actual problem is abstract, not based on specific coordinates. Because in the Asymptote code, the coordinates are given, but the problem states "In quadrilateral ABCD, angle BAD and angle CDA are trisected as shown." So perhaps the Asymptote code is a specific instance, but the problem is general. However, the Asymptote code is part of the problem statement, so perhaps we need to use the coordinates to compute the angles.
+
+Alternatively, maybe the Asymptote code is just a rough diagram, and the problem is a general one. But the code includes coordinates, so maybe we need to use them. However, if we use the coordinates, the angles at A and D don't sum up correctly. Therefore, perhaps the problem is abstract, and the coordinates are just for illustration. Therefore, maybe we should ignore the coordinates and focus on the angles given in the Asymptote labels.
+
+Wait, the Asymptote code also labels angles at (2.5,3.5) as 110° and at (6.5-.2,3.5) as 100°, which are angles at points B and C. So, angle at B is 110°, angle at C is 100°, angles at A and D are trisected. So, the problem is a quadrilateral with given angles at B and C, and trisected angles at A and D. Then, we need to find angle AFD.
+
+So, perhaps the coordinates in the Asymptote code are just for drawing purposes, and the actual problem is a general quadrilateral with angles at B and C given as 110° and 100°, respectively, and angles at A and D trisected. Therefore, we need to solve the problem abstractly.
+
+Therefore, let's proceed with the abstract approach.
+
+Given quadrilateral ABCD with angles at B = 110°, angle at C = 100°. Angles at A and D are trisected, each into three equal angles. Let’s denote the measure of each trisected angle at A as x, so angle BAD = 3x. Similarly, the measure of each trisected angle at D as y, so angle CDA = 3y. Then, since the sum of internal angles in a quadrilateral is 360°, we have:
+
+angle A + angle B + angle C + angle D = 360°
+
+So,
+
+3x + 110 + 100 + 3y = 360
+
+Simplify:
+
+3x + 3y = 360 - 110 - 100 = 150
+
+Divide both sides by 3:
+
+x + y = 50°
+
+So, x + y = 50°. Therefore, each trisected angle at A is x, each trisected angle at D is y, and x + y = 50°.
+
+Now, we need to find angle AFD. To do this, perhaps we can consider triangle AFD. To find angle AFD, we might need to know some other angles or sides in triangle AFD. Alternatively, maybe we can use Ceva's Theorem or some properties of angle trisection.
+
+Alternatively, perhaps considering the triangle formed by the trisectors. Let me think.
+
+Since angles BAD and CDA are trisected, the lines AE and DF (assuming E and F are points on AD and somewhere else) divide angles A and D into three equal parts. Then, lines AF and FD are drawn. So, point F is the intersection of the trisectors from A and D.
+
+Wait, in the Asymptote code, E is on AD, and F is somewhere else. The code draws A--E--D and A--F--D. So, E is a point on AD, and F is a point inside the quadrilateral connected to A and D. Therefore, AF and DF are lines connecting A to F and D to F.
+
+Therefore, triangle AFD is formed by points A, F, D. To find angle AFD, we need to know angles at A and D related to this triangle.
+
+But since angles at A and D are trisected, perhaps the angles at A and D in triangle AFD are portions of the trisected angles.
+
+Wait, angle at A in the quadrilateral is 3x, and in triangle AFD, the angle at A is one of the trisected angles, which is x. Similarly, the angle at D in the quadrilateral is 3y, and in triangle AFD, the angle at D is y. Therefore, in triangle AFD, angles at A and D are x and y, respectively. Then, angle AFD would be 180° - x - y. Since x + y = 50°, angle AFD = 180 - 50 = 130°. But that seems too straightforward. However, wait, is that correct?
+
+Wait, in triangle AFD, if angle at A is x and angle at D is y, then angle AFD is 180 - x - y = 130°. But that seems to ignore the other angles. However, is this accurate?
+
+Wait, but in the quadrilateral, angles at A and D are trisected. The trisectors divide angle BAD into three angles of x each, so the angle between BA and AE is x, between AE and AF is x, and between AF and AD is x. Similarly, the trisectors at D divide angle CDA into three angles of y each.
+
+But in triangle AFD, the angle at A is the angle between AF and AD, which is one of the trisected angles, which is x. Similarly, the angle at D is the angle between DF and DA, which is one of the trisected angles, which is y. Therefore, in triangle AFD, angles at A and D are x and y, respectively. Therefore, angle AFD is 180 - x - y = 180 - 50 = 130°. Therefore, the answer would be 130°, or 130 degrees.
+
+But wait, that seems too straightforward. Let me verify.
+
+Alternatively, perhaps the angles at A and D in triangle AFD are not x and y, but are combinations of the trisected angles. For example, if AF is a trisector, then the angle between BA and AF is 2x, and the angle between AF and AD is x. Similarly, if DF is a trisector, then the angle between DC and DF is 2y, and the angle between DF and DA is y. Then, in triangle AFD, the angle at A would be x, and the angle at D would be y, leading to angle AFD being 180 - x - y = 130°. That seems consistent.
+
+But let's check with the Asymptote code labels. In the Asymptote code, x is labeled at three different places, probably near the trisectors. Similarly, y is labeled at three different places. So, each trisected angle is x or y, and the angles in triangle AFD would be x and y. Therefore, angle AFD is 130°. Therefore, the answer is 130°.
+
+But wait, let's confirm with an example. Suppose angle BAD is 60°, so each trisected angle x is 20°, and angle CDA is 90°, so each trisected angle y is 30°. Then x + y = 50°, which fits. Then, angle AFD would be 180 - 20 - 30 = 130°. So, regardless of x and y, as long as x + y = 50°, angle AFD is 130°. Therefore, the answer is 130°.
+
+Therefore, the measure of angle AFD is 130 degrees. Therefore, the final answer is \boxed{130}.
+
+But wait, let me confirm once more. In the problem, angles at B and C are given as 110° and 100°, respectively. The sum of angles in quadrilateral ABCD is 360°, so angles at A and D must sum to 150°, as we had. Then, angles at A and D are trisected, so each trisected angle at A is x, at D is y, with x + y = 50°. Therefore, in triangle AFD, angles at A and D are x and y, so angle AFD is 180 - x - y = 130°. Therefore, the measure is 130°, regardless of the specific values of x and y. Therefore, the answer is 130°, so \boxed{130} degrees.
+
+But just to make sure, let's consider another example. Suppose angle BAD is 90°, so each trisected angle x is 30°, and angle CDA is 60°, so each trisected angle y is 20°. Then, x + y = 50°, so angle AFD is 180 - 30 - 20 = 130°. Again, 130°. Therefore, regardless of the specific trisection, angle AFD is always 130°, as long as the trisection divides angles A and D into three equal parts, which sum to 150°, so x + y = 50°, leading to angle AFD = 130°. Therefore, the answer is 130°, so \boxed{130} degrees.
+Therefore, the degree measure of angle $AFD$ is $\boxed{130}$.
+</think>

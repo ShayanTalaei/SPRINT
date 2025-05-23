@@ -1,0 +1,126 @@
+Okay, so I need to find the smallest distance between the origin and a point on the graph of y = (1/2)x² - 9. Then, express that distance as 'a' and find a². Hmm, let's think about how to approach this.
+
+First, I remember that the distance between two points (x, y) and the origin (0, 0) can be calculated using the distance formula. The formula is sqrt[(x - 0)² + (y - 0)²], which simplifies to sqrt(x² + y²). Since we need the smallest distance, we can minimize this distance. But minimizing the square of the distance should give the same result because the square root is a monotonically increasing function. So, maybe it's easier to minimize the square of the distance, which would be x² + y², and then take the square root at the end if needed. But since the problem asks for a², where 'a' is the smallest distance, then a² would just be the minimum value of x² + y². So, actually, maybe I don't even need to take the square root. Let me confirm that.
+
+Wait, the distance formula is sqrt(x² + y²), so the smallest distance 'a' is sqrt(min(x² + y²)). Therefore, a² is just the minimum value of x² + y². So, if I can find the minimum of x² + y² subject to y = (1/2)x² - 9, then that minimum value is a². Therefore, the problem reduces to minimizing x² + y² with y substituted by (1/2)x² - 9.
+
+So, substituting y into the distance squared expression, we get x² + [(1/2)x² - 9]². Let's write that out:
+
+Distance squared = x² + ( (1/2)x² - 9 )².
+
+Now, let's expand that expression to make it easier to find the minimum. Let me first compute ( (1/2)x² - 9 )². That would be (1/2 x²)^2 - 2*(1/2 x²)*(9) + 9². Calculating each term:
+
+(1/2 x²)^2 = (1/4)x⁴,
+
+-2*(1/2 x²)*(9) = - (9)x²,
+
+9² = 81.
+
+So putting it all together, ( (1/2)x² - 9 )² = (1/4)x⁴ - 9x² + 81.
+
+Therefore, the distance squared becomes:
+
+x² + (1/4)x⁴ - 9x² + 81.
+
+Combine like terms:
+
+x² - 9x² = -8x².
+
+So now, distance squared = (1/4)x⁴ - 8x² + 81.
+
+Now, let me denote this function as f(x) = (1/4)x⁴ - 8x² + 81. To find the minimum value of f(x), we can take its derivative with respect to x, set the derivative equal to zero, and solve for x. Then check if it's a minimum using the second derivative test or analyze the behavior.
+
+First, compute the first derivative f'(x):
+
+f'(x) = d/dx [ (1/4)x⁴ - 8x² + 81 ] = (1/4)*4x³ - 8*2x + 0 = x³ - 16x.
+
+Set f'(x) = 0:
+
+x³ - 16x = 0.
+
+Factor out x:
+
+x(x² - 16) = 0.
+
+So, x = 0 or x² - 16 = 0. Therefore, x = 0 or x = ±4.
+
+Now, we need to check these critical points to see which one gives the minimum distance squared.
+
+Let's compute f(x) at each critical point:
+
+1. x = 0:
+
+f(0) = (1/4)(0)^4 - 8(0)^2 + 81 = 0 - 0 + 81 = 81.
+
+2. x = 4:
+
+f(4) = (1/4)(4)^4 - 8(4)^2 + 81.
+
+Calculate each term:
+
+(1/4)(256) = 64,
+
+-8(16) = -128,
+
+81 remains.
+
+So, 64 - 128 + 81 = (64 + 81) - 128 = 145 - 128 = 17.
+
+3. x = -4:
+
+Since the function f(x) is even (all exponents are even), f(-4) should be the same as f(4). Let's verify:
+
+f(-4) = (1/4)(-4)^4 - 8(-4)^2 + 81 = (1/4)(256) - 8(16) + 81 = 64 - 128 + 81 = 17. Same as x=4.
+
+So, the critical points at x=0 gives f(x)=81, and x=±4 gives f(x)=17. Therefore, the minimum value of f(x) is 17, which occurs at x=±4.
+
+Therefore, the minimal distance squared a² is 17. So, the answer is 17.
+
+But wait, let me double-check my calculations to be sure. Sometimes when dealing with calculus, it's easy to make a mistake.
+
+Starting again with f(x) = (1/4)x⁴ - 8x² + 81.
+
+First derivative: f'(x) = x³ - 16x. Correct.
+
+Setting to zero: x(x² - 16) = 0. So x=0 or x=±4. Correct.
+
+Calculating f(0): 0 - 0 +81=81. Correct.
+
+Calculating f(4): (1/4)(256)=64. 8x²=8*16=128. So 64 -128 +81=17. Correct.
+
+Similarly for x=-4, same result. So yes, 17 is the minimum value. Therefore, a²=17.
+
+Alternatively, maybe I can use the second derivative test to confirm if x=4 is a minimum.
+
+Compute the second derivative f''(x):
+
+f''(x) = derivative of f'(x) = 3x² -16.
+
+At x=4: f''(4) = 3*(16) -16 = 48 -16 =32>0. Since the second derivative is positive, it's a local minimum. Similarly, at x=-4, same second derivative. At x=0: f''(0) = -16 <0, which is a local maximum. So, x=±4 are local minima, and x=0 is a local maximum. Therefore, the minimal value is indeed 17.
+
+Alternatively, maybe I can think of this problem geometrically. The graph of y = (1/2)x² -9 is a parabola opening upwards with vertex at (0, -9). The origin is at (0,0). The distance from the origin to a point on the parabola is the distance between (x, y) and (0,0). Since the parabola is below the origin (vertex at (0,-9)), the closest point might be where the line connecting the origin to the parabola is perpendicular to the tangent of the parabola at that point. But that might be more complicated, but let's see.
+
+The distance squared is x² + y². To minimize this, we can use calculus as above, but maybe using the condition that the vector from the origin to the point (x, y) is perpendicular to the tangent vector of the parabola at that point. The tangent vector can be found by the derivative of y with respect to x, which is dy/dx = x. The direction vector of the tangent line is (1, dy/dx) = (1, x). The vector from the origin is (x, y). For these two vectors to be perpendicular, their dot product should be zero.
+
+So, (x, y) • (1, x) = x*1 + y*x = x + x y = 0.
+
+But since y = (1/2)x² -9, substitute that in:
+
+x + x*( (1/2)x² -9 ) =0.
+
+Factor out x:
+
+x [1 + (1/2)x² -9] =0.
+
+So, either x=0 or 1 + (1/2)x² -9=0.
+
+If x=0, then y= (1/2)(0)² -9= -9. The distance squared is 0² + (-9)^2=81, which is the same as before. But we already saw that at x=4 and x=-4, the distance squared is 17, which is smaller. So x=0 is a local maximum. The other equation:
+
+1 + (1/2)x² -9=0 => (1/2)x² -8=0 => x²=16 => x=±4. Which matches our earlier critical points. Therefore, this method also yields the same result. Therefore, the minimal distance squared is 17, so a²=17.
+
+Therefore, the answer is 17.
+
+**Final Answer**
+The value of \( a^2 \) is \boxed{17}.
+Therefore, the smallest distance squared between the origin and a point on the graph of $y=\frac{1}{2}x^2-9$ is $\boxed{17}$.
+</think>

@@ -1,0 +1,442 @@
+Okay, so I need to find the minimum value of the expression \(x^4 + 4y^2 + 4z^4\) given that \(xyz = 2\), where \(x\), \(y\), and \(z\) are positive real numbers. Hmm, this looks like an optimization problem with a constraint. I remember that for optimization problems with constraints, methods like Lagrange multipliers can be useful. Alternatively, maybe I can use the AM-GM inequality since the variables are positive. Let me think through both approaches.
+
+First, let me recall the AM-GM inequality. The Arithmetic Mean is greater than or equal to the Geometric Mean. For non-negative real numbers, that's the key. So if I can express the given expression in terms of terms that can be directly compared using AM-GM, that might work. But the expression here has different exponents: \(x^4\), \(y^2\), and \(z^4\). Maybe I can split these into multiple terms so that the number of terms is the same as the number of variables in the constraint.
+
+Wait, the constraint is \(xyz = 2\). That's a product equal to 2. So if I can somehow relate the terms in the expression to this product, maybe through substitution or by breaking down the terms into parts that multiply to something related to 2.
+
+Alternatively, using Lagrange multipliers: set up the function \(f(x, y, z) = x^4 + 4y^2 + 4z^4\) and the constraint \(g(x, y, z) = xyz - 2 = 0\). Then, the method says that at the extremum, the gradient of f is proportional to the gradient of g. So, compute the partial derivatives.
+
+Let me try that. The partial derivatives of f are:
+
+\(\frac{\partial f}{\partial x} = 4x^3\)
+
+\(\frac{\partial f}{\partial y} = 8y\)
+
+\(\frac{\partial f}{\partial z} = 16z^3\)
+
+The partial derivatives of g are:
+
+\(\frac{\partial g}{\partial x} = yz\)
+
+\(\frac{\partial g}{\partial y} = xz\)
+
+\(\frac{\partial g}{\partial z} = xy\)
+
+So according to Lagrange multipliers, there exists a λ such that:
+
+4x^3 = λyz
+
+8y = λxz
+
+16z^3 = λxy
+
+And the constraint is xyz = 2.
+
+Hmm, so now we have a system of equations. Let me write them down:
+
+1. \(4x^3 = λyz\)
+
+2. \(8y = λxz\)
+
+3. \(16z^3 = λxy\)
+
+4. \(xyz = 2\)
+
+I need to solve this system for x, y, z, λ. Let me see if I can eliminate λ first.
+
+From equation 1: λ = 4x^3 / (yz)
+
+From equation 2: λ = 8y / (xz)
+
+So set them equal:
+
+4x^3 / (yz) = 8y / (xz)
+
+Multiply both sides by yz * xz to eliminate denominators:
+
+4x^3 * xz = 8y * yz
+
+Simplify left side: 4x^4 z
+
+Right side: 8y^2 z
+
+So 4x^4 z = 8y^2 z
+
+Divide both sides by z (since z ≠ 0):
+
+4x^4 = 8y^2
+
+Divide both sides by 4:
+
+x^4 = 2y^2
+
+Take square roots (since x and y are positive):
+
+x^2 = √2 y
+
+So y = x^2 / √2
+
+Similarly, take equation 2 and equation 3 to eliminate λ.
+
+From equation 2: λ = 8y / (xz)
+
+From equation 3: λ = 16z^3 / (xy)
+
+Set them equal:
+
+8y / (xz) = 16z^3 / (xy)
+
+Multiply both sides by xz * xy to eliminate denominators:
+
+8y * xy = 16z^3 * xz
+
+Left side: 8x y^2
+
+Right side: 16x z^4
+
+So 8x y^2 = 16x z^4
+
+Divide both sides by 8x (since x ≠ 0):
+
+y^2 = 2 z^4
+
+Take square roots:
+
+y = √(2) z^2
+
+But from earlier, y = x^2 / √2
+
+So set equal:
+
+x^2 / √2 = √2 z^2
+
+Multiply both sides by √2:
+
+x^2 = 2 z^2
+
+So x = z √2
+
+So now, we have relationships between x, y, z:
+
+y = x^2 / √2
+
+x = z √2
+
+So let's express everything in terms of z.
+
+First, x = z √2
+
+Then, y = ( (z √2 )^2 ) / √2 = (2 z^2) / √2 = √2 z^2
+
+So x = z √2, y = √2 z^2, z = z
+
+Now, use the constraint xyz = 2.
+
+Compute x * y * z:
+
+(z √2) * (√2 z^2) * z = (z √2) * (√2 z^2) * z
+
+Multiply constants: √2 * √2 = 2
+
+Multiply variables: z * z^2 * z = z^4
+
+So total: 2 * z^4 = 2
+
+Therefore, 2 z^4 = 2 => z^4 = 1 => z = 1 (since z is positive)
+
+Thus, z = 1
+
+Therefore, x = √2 * 1 = √2
+
+y = √2 * (1)^2 = √2
+
+So x = √2, y = √2, z = 1
+
+Now compute the original expression:
+
+x^4 + 4y^2 + 4z^4
+
+x^4 = (√2)^4 = (2)^{2} = 4
+
+4y^2 = 4*(√2)^2 = 4*2 = 8
+
+4z^4 = 4*(1)^4 = 4
+
+Total: 4 + 8 + 4 = 16
+
+So the minimum value is 16.
+
+Wait, but let me check if this is indeed the minimum. Maybe there's a way to confirm this using AM-GM.
+
+Alternatively, let's see if the partial derivatives line up. With x = √2, y = √2, z = 1:
+
+Compute λ from equation 1: 4x^3 / (yz) = 4*(√2)^3 / (√2*1) = 4*(2√2) / √2 = 4*2 = 8
+
+From equation 2: 8y / (xz) = 8*√2 / (√2*1) = 8*√2 / √2 = 8
+
+From equation 3: 16z^3 / (xy) = 16*1 / (√2*√2) = 16 / 2 = 8
+
+So λ is consistent as 8. So that seems correct.
+
+Alternatively, let me try AM-GM. Since the expression has x^4, 4y^2, 4z^4, maybe I can split them into equal terms.
+
+But the coefficients are different: 1 for x^4, 4 for y^2, 4 for z^4.
+
+Alternatively, perhaps write 4y^2 as y^2 + y^2 + y^2 + y^2 and 4z^4 as z^4 + z^4 + z^4 + z^4. Then, total terms would be 1 + 4 + 4 = 9 terms. But then the product of these terms would be x^4 * y^2 * y^2 * y^2 * y^2 * z^4 * z^4 * z^4 * z^4.
+
+Wait, but the product of all terms would be x^4 * y^8 * z^{16}. But from the constraint, xyz = 2. So x^4 * y^8 * z^{16} = (xyz)^4 * y^4 * z^{12} = 2^4 * y^4 * z^{12}. Hmm, not sure if that helps.
+
+Alternatively, maybe group the terms differently. Let me see.
+
+Suppose I group the terms as follows:
+
+x^4 and 4y^2 and 4z^4. Maybe think of x^4 as x^4, 4y^2 as 2y^2 + 2y^2, and 4z^4 as 2z^4 + 2z^4. Then, total terms are 1 + 2 + 2 + 2 + 2 = 9 terms? Wait, not sure. Maybe not the right approach.
+
+Alternatively, use the weighted AM-GM inequality. The weighted AM-GM states that for positive real numbers and positive weights summing to 1, the weighted arithmetic mean is greater than or equal to the weighted geometric mean.
+
+But in this case, the exponents are different. Let me think. The expression is x^4 + 4y^2 + 4z^4. Let me represent this as a sum of terms with equal coefficients.
+
+Alternatively, maybe split x^4 into four terms of x^4/4 each, 4y^2 into two terms of 2y^2 each, and 4z^4 into four terms of z^4 each. Then total terms would be 4 + 2 + 4 = 10 terms. Then apply AM-GM.
+
+But then the product of all terms would be (x^4/4)^4 * (2y^2)^2 * (z^4)^4 = (x^16 / 4^4) * (4y^4) * (z^{16}) = x^16 z^{16} * 4y^4 / 256 = x^16 z^{16} y^4 / 64.
+
+But from the constraint xyz = 2, so x^16 z^{16} y^4 = (xyz)^4 * x^{12} z^{12} = 2^4 * x^{12} z^{12}.
+
+Hmm, not sure if that helps. Maybe this approach is too convoluted.
+
+Alternatively, maybe use substitution. Let me set a = x^2, b = y^2, c = z^2. Then the expression becomes a^2 + 4b + 4c^2. The constraint is sqrt(a) * sqrt(b) * sqrt(c) = 2, so sqrt(abc) = 2, so abc = 4.
+
+So now we need to minimize a^2 + 4b + 4c^2 with abc = 4.
+
+Hmm, now maybe apply AM-GM here. Let me see.
+
+The expression is a^2 + 4b + 4c^2. Let me try to split these terms into parts so that the number of terms corresponds to the number of variables in the constraint.
+
+Wait, the constraint is abc = 4. So three variables. The expression has three terms: a^2, 4b, 4c^2. Maybe split each term into equal parts.
+
+For example, write a^2 as a^2, 4b as b + b + b + b, and 4c^2 as c^2 + c^2 + c^2 + c^2. Then total terms would be 1 + 4 + 4 = 9 terms. Then apply AM-GM on these 9 terms.
+
+But then the product would be a^2 * b^4 * c^8. Not sure if that relates to the constraint abc = 4. Let's check:
+
+Product of all terms: (a^2) * (b^4) * (c^8) = a^2 b^4 c^8. The constraint is abc = 4, so a = 4/(bc). Substitute:
+
+( (4/(bc))^2 ) * b^4 * c^8 = (16 / b^2 c^2) * b^4 c^8 = 16 b^2 c^6.
+
+But this is not necessarily a constant. Hmm, so maybe this approach isn't directly applicable.
+
+Alternatively, maybe use weighted AM-GM. Let me recall that for positive numbers and positive weights, the weighted AM-GM states that:
+
+(k1 * a1 + k2 * a2 + ... + kn * an) / (k1 + k2 + ... + kn) >= (a1^{k1} * a2^{k2} * ... * an^{kn})^{1/(k1 + k2 + ... + kn)}
+
+But in our case, the expression is x^4 + 4y^2 + 4z^4. Let me see if I can represent this as a sum with weights.
+
+Alternatively, think of the expression as 1*x^4 + 4*y^2 + 4*z^4. Then the total weight is 1 + 4 + 4 = 9. Then the weighted AM-GM would say that:
+
+(1*x^4 + 4*y^2 + 4*z^4)/9 >= (x^4^1 * y^2^4 * z^4^4)^{1/9}
+
+But the left side is (x^4 + 4y^2 + 4z^4)/9, and the right side is (x^4 * y^8 * z^{16})^{1/9} = (x^4 y^8 z^{16})^{1/9} = x^{4/9} y^{8/9} z^{16/9}
+
+But from the constraint, xyz = 2. So let's express x^{4/9} y^{8/9} z^{16/9} as (xyz)^{4/9} * y^{8/9 - 4/9} * z^{16/9 - 4/9} = (2)^{4/9} * y^{4/9} * z^{12/9} = 2^{4/9} * y^{4/9} * z^{4/3}
+
+Hmm, not sure if this is helpful. Maybe this approach is not the right one.
+
+Alternatively, perhaps use the method of substituting variables. Since xyz = 2, maybe set x = 2a, y = 2b, z = 2c, such that abc = 1. But not sure if that helps.
+
+Wait, maybe let's set variables in terms of each other. From earlier, with x = √2, y = √2, z = 1, that gives xyz = √2 * √2 * 1 = 2, which satisfies the constraint. So the values we found via Lagrange multipliers are correct. Therefore, the minimum value is 16.
+
+Alternatively, let's check with another method. Suppose we fix z and then express x and y in terms of z. Then use substitution.
+
+From the constraint, xyz = 2 => x = 2/(y z). Substitute into the expression:
+
+x^4 + 4y^2 + 4z^4 = (2/(y z))^4 + 4y^2 + 4z^4
+
+= 16/(y^4 z^4) + 4y^2 + 4z^4
+
+Now, this is a function of y and z. Maybe take partial derivatives with respect to y and z, set to zero.
+
+But this might get complicated. Alternatively, fix z and see if the expression is convex in y.
+
+Alternatively, set t = y z. Then, from x = 2/(y z) = 2/t. Then the expression becomes (2/t)^4 + 4y^2 + 4z^4.
+
+But still, not sure. Alternatively, maybe set u = y z. Then x = 2/u. Then the expression becomes (2/u)^4 + 4y^2 + 4z^4. But then we have to relate y and z. Maybe set y = k z, where k is a positive real number. Then y = k z, so u = k z^2. Then x = 2/(k z^2). Then the expression becomes:
+
+(2/(k z^2))^4 + 4(k z)^2 + 4z^4 = 16/(k^4 z^8) + 4k^2 z^2 + 4z^4
+
+Now, this is a function of z and k. Maybe take derivative with respect to z. Let me see:
+
+Let’s denote f(z) = 16/(k^4 z^8) + 4k^2 z^2 + 4z^4
+
+Take derivative with respect to z:
+
+f’(z) = -128/(k^4 z^9) + 8k^2 z + 16z^3
+
+Set to zero:
+
+-128/(k^4 z^9) + 8k^2 z + 16z^3 = 0
+
+Multiply both sides by z^9 to eliminate denominator:
+
+-128/(k^4) + 8k^2 z^{10} + 16z^{12} = 0
+
+Hmm, this seems messy. Maybe this substitution is not helpful.
+
+Alternatively, perhaps consider symmetry. Since in the optimal solution we found, x = √2, y = √2, z = 1, so x = y, but z is different. Maybe the minimal point has some symmetry. Let me assume that x = y. Then, with x = y, the constraint becomes x^2 z = 2 => z = 2/(x^2). Then substitute into the expression:
+
+x^4 + 4x^2 + 4z^4 = x^4 + 4x^2 + 4*(2/(x^2))^4 = x^4 + 4x^2 + 4*(16)/(x^8) = x^4 + 4x^2 + 64/x^8
+
+Now, take derivative with respect to x:
+
+4x^3 + 8x - 512/x^9
+
+Set to zero:
+
+4x^3 + 8x - 512/x^9 = 0
+
+Multiply both sides by x^9:
+
+4x^{12} + 8x^{10} - 512 = 0
+
+Divide by 4:
+
+x^{12} + 2x^{10} - 128 = 0
+
+This seems difficult to solve. Maybe not the right approach. Alternatively, if we assume that x and y are proportional to z in some way, but that might not lead anywhere.
+
+Alternatively, let's check the value we found earlier: x = √2, y = √2, z = 1. Then, substituting into the original expression:
+
+x^4 = (√2)^4 = 4
+
+4y^2 = 4*(√2)^2 = 4*2 = 8
+
+4z^4 = 4*(1)^4 = 4
+
+Total: 4 + 8 + 4 = 16. So that's the value. Let me check if there's a way to get a lower value.
+
+Suppose I take x = 2, y = 1, z = 1. Then xyz = 2*1*1 = 2. The expression becomes 2^4 + 4*1^2 + 4*1^4 = 16 + 4 + 4 = 24, which is higher than 16.
+
+Another example: x = 1, y = 2, z = 1. Then xyz = 1*2*1 = 2. The expression is 1^4 + 4*2^2 + 4*1^4 = 1 + 16 + 4 = 21, which is still higher.
+
+What if I take x = √2, y = √2, z = 1. Then, as before, 4 + 8 + 4 = 16. If I take x slightly different, say x = √2 + ε, then y and z would adjust accordingly. Let me see.
+
+But according to the Lagrange multipliers, that's the only critical point, so it's a minimum. Therefore, the answer is 16.
+
+Alternatively, maybe use the method of substitution again. Let me try to write the expression in terms of one variable.
+
+From the constraint, xyz = 2. Let me set t = x^2. Then, since x is positive, t is positive. Then, the constraint becomes sqrt(t) * y * z = 2 => y z = 2 / sqrt(t).
+
+Let me express y in terms of z: y = (2 / sqrt(t)) / z = 2 / (z sqrt(t)).
+
+Substitute into the expression:
+
+x^4 + 4y^2 + 4z^4 = t^2 + 4*(4 / (z^2 t)) + 4z^4 = t^2 + 16/(t z^2) + 4z^4
+
+Now, let me set u = z^2. Then, the expression becomes t^2 + 16/(t u) + 4u^2
+
+From the constraint, y z = 2 / sqrt(t) => y = 2 / (z sqrt(t)) => y = 2 / (sqrt(u) sqrt(t)) => y = 2 / sqrt(t u). But since y is positive, that's fine.
+
+But wait, with t and u, we have the expression in terms of t and u: t^2 + 16/(t u) + 4u^2. But u is related to z, which is another variable. Hmm, maybe this substitution isn't helpful.
+
+Alternatively, let me try to fix t and then optimize over u. Let's take the expression t^2 + 16/(t u) + 4u^2. To minimize this with respect to u, take derivative with respect to u:
+
+d/du [ t^2 + 16/(t u) + 4u^2 ] = -16/(t u^2) + 8u
+
+Set to zero:
+
+-16/(t u^2) + 8u = 0 => 8u = 16/(t u^2) => 8u^3 = 16/t => u^3 = 2/t => u = (2/t)^{1/3}
+
+So at minimum, u = (2/t)^{1/3}
+
+Therefore, substitute back into the expression:
+
+t^2 + 16/(t * (2/t)^{1/3}) + 4*( (2/t)^{1/3} )^2
+
+Simplify:
+
+First term: t^2
+
+Second term: 16 / (t * (2/t)^{1/3}) = 16 / ( t^{1 - 1/3} * 2^{1/3} ) = 16 / ( t^{2/3} * 2^{1/3} ) = 16 / (2^{1/3}) * t^{-2/3} = 16 / 2^{1/3} * t^{-2/3}
+
+Third term: 4 * (2/t)^{2/3} = 4 * 2^{2/3} * t^{-2/3}
+
+Thus, the expression becomes:
+
+t^2 + (16 / 2^{1/3}) t^{-2/3} + 4 * 2^{2/3} t^{-2/3}
+
+Combine the second and third terms:
+
+[16 / 2^{1/3} + 4 * 2^{2/3}] t^{-2/3}
+
+Factor out 4 * 2^{2/3}:
+
+4 * 2^{2/3} [ (16 / 2^{1/3}) / (4 * 2^{2/3}) ) + 1 ] t^{-2/3}
+
+Wait, maybe just compute the coefficients:
+
+16 / 2^{1/3} = 16 * 2^{-1/3}
+
+4 * 2^{2/3} = 4 * 2^{2/3}
+
+So combined:
+
+16 * 2^{-1/3} + 4 * 2^{2/3} = 4 * 2^{-1/3} * (4 + 2^{5/3})
+
+Hmm, not sure. Maybe better to compute numerical values:
+
+2^{1/3} ≈ 1.26
+
+So 16 / 1.26 ≈ 12.7
+
+4 * 2^{2/3} ≈ 4 * 1.587 ≈ 6.348
+
+So total ≈ 12.7 + 6.348 ≈ 19.048
+
+So the expression is t^2 + 19.048 t^{-2/3}
+
+Now, we need to minimize this in terms of t > 0. Let's take derivative with respect to t:
+
+2t - (2/3) * 19.048 t^{-5/3}
+
+Set to zero:
+
+2t = (2/3) * 19.048 t^{-5/3}
+
+Multiply both sides by t^{5/3}:
+
+2t^{8/3} = (2/3) * 19.048
+
+Divide both sides by 2:
+
+t^{8/3} = (19.048)/3 ≈ 6.349
+
+Take both sides to the power of 3/8:
+
+t = (6.349)^{3/8}
+
+Compute 6.349^{3/8}:
+
+First, 6.349^(1/8) ≈ e^{(ln 6.349)/8} ≈ e^{1.85/8} ≈ e^{0.231} ≈ 1.26
+
+Then, 1.26^3 ≈ 2.000
+
+So t ≈ 2.000
+
+Therefore, t ≈ 2
+
+Therefore, u = (2/t)^{1/3} ≈ (2/2)^{1/3} = 1^{1/3} = 1
+
+Therefore, z^2 = u = 1 => z = 1
+
+Then, y = 2 / (z sqrt(t)) = 2 / (1 * sqrt(2)) = sqrt(2)
+
+x = sqrt(t) = sqrt(2)
+
+So we end up with x = sqrt(2), y = sqrt(2), z = 1, which matches the earlier result.
+
+Therefore, the minimal value is 16.
+
+Thus, after multiple approaches—Lagrange multipliers, substitution, checking specific values, even trying AM-GM with substitution—it seems that the minimal value is indeed 16. Therefore, I can be confident that the answer is 16.
+
+**Final Answer**
+\boxed{16}
+\boxed{16}
+</think>

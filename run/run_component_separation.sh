@@ -1,7 +1,7 @@
 # Define input variables
 COMPONENT_SEPARATION_MODEL="gpt-4o"
 RANGE=":"
-DATA_HUB_PATH="anonym-submit-paper/OpenThoughts-correct"
+DATA_HUB_PATH="anonym-submit-paper/Orig-R1-Thoughts-correct"
 SUBSET="math"
 NUM_WORKERS=10
 # Run the script with defined variables

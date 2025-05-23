@@ -1,0 +1,124 @@
+Okay, so I need to find the maximum value of the expression (x - y)/(x⁴ + y⁴ + 6) where x and y are real numbers. Hmm, let's start by understanding the problem. I need to maximize this fraction. Both the numerator and the denominator are functions of x and y, so I need to see how they relate.
+
+First, maybe I can try to analyze the behavior of the function. Since it's a fraction, to maximize it, the numerator should be as large as possible relative to the denominator. But both the numerator and denominator can vary depending on x and y. Let me think about possible approaches.
+
+One idea is to use calculus, taking partial derivatives with respect to x and y, setting them to zero, and solving for critical points. But that might get complicated because the denominator is a fourth-degree polynomial, and the numerator is linear. Let's see.
+
+Alternatively, maybe I can use substitution. Let me set u = x - y and v = x + y. Then, maybe express the denominator in terms of u and v. But I'm not sure if that helps immediately. Let's compute:
+
+x = (u + v)/2 and y = (v - u)/2. Then, x⁴ + y⁴ would be [(u + v)/2]^4 + [(v - u)/2]^4. That seems messy. Maybe another substitution?
+
+Wait, perhaps symmetry can help here. The denominator is symmetric in x and y because swapping x and y would result in the same expression. But the numerator is anti-symmetric; swapping x and y changes its sign. So maybe the maximum occurs when x and y are related in a specific way.
+
+Alternatively, maybe set t = x - y, and then express the denominator in terms of t and some other variable. Let's try that. Let t = x - y, so y = x - t. Then substitute into the denominator:
+
+x⁴ + (x - t)⁴ + 6. Hmm, but then we still have two variables, x and t. Maybe not helpful.
+
+Wait, perhaps consider fixing t and then optimizing over x. Or maybe use some inequality to bound the expression.
+
+Let me think about inequalities. The denominator has x⁴ + y⁴ + 6. Since x⁴ and y⁴ are always non-negative, the denominator is at least 6. The numerator is x - y, which can be positive or negative. So the maximum value would be when the numerator is positive and as large as possible relative to the denominator.
+
+Alternatively, maybe use the AM-GM inequality. But the denominator is a sum of fourth powers, which complicates things. Wait, but perhaps I can bound x⁴ + y⁴ from below using some relation to (x - y)² or something like that.
+
+But (x - y)² = x² - 2xy + y², which is different from x⁴ + y⁴. Not sure. Maybe Cauchy-Schwarz?
+
+Alternatively, maybe use the method of Lagrange multipliers. Let me try that. Let me set f(x, y) = (x - y)/(x⁴ + y⁴ + 6). To maximize f, set up the gradient equal to zero.
+
+So, compute the partial derivatives of f with respect to x and y. Let's compute ∂f/∂x:
+
+Using quotient rule: [1*(x⁴ + y⁴ + 6) - (x - y)*(4x³)] / (x⁴ + y⁴ + 6)^2.
+
+Similarly, ∂f/∂y: [ -1*(x⁴ + y⁴ + 6) - (x - y)*(4y³) ] / (x⁴ + y⁴ + 6)^2.
+
+Set both partial derivatives equal to zero. Therefore, the numerators must be zero.
+
+So:
+
+1*(x⁴ + y⁴ + 6) - (x - y)*(4x³) = 0,
+
+and
+
+-1*(x⁴ + y⁴ + 6) - (x - y)*(4y³) = 0.
+
+Let me denote the first equation as Equation (1):
+
+x⁴ + y⁴ + 6 - 4x³(x - y) = 0,
+
+and the second equation as Equation (2):
+
+-x⁴ - y⁴ -6 -4y³(x - y) = 0.
+
+If I add Equations (1) and (2):
+
+(x⁴ + y⁴ +6 -4x³(x - y)) + (-x⁴ - y⁴ -6 -4y³(x - y)) = 0.
+
+Simplify:
+
+0 + 0 + (-4x³(x - y) -4y³(x - y)) = 0.
+
+Factor out -4(x - y):
+
+-4(x - y)(x³ + y³) = 0.
+
+So, either x - y = 0 or x³ + y³ = 0.
+
+Case 1: x - y = 0. Then x = y. Substitute into the original function:
+
+(x - x)/(x⁴ + x⁴ +6) = 0/(2x⁴ +6) = 0. So the function is zero here. So not the maximum.
+
+Case 2: x³ + y³ = 0. So x³ = -y³. Therefore, y = -x. Since x and y are real numbers, this implies y = -x. So substitute y = -x into the original function.
+
+Then, numerator becomes x - (-x) = 2x.
+
+Denominator becomes x⁴ + (-x)⁴ +6 = 2x⁴ +6.
+
+So the function is 2x / (2x⁴ +6) = x / (x⁴ +3).
+
+So now, we need to maximize f(x) = x/(x⁴ +3) for real x. Let's compute derivative of f(x):
+
+f'(x) = [1*(x⁴ +3) - x*(4x³)] / (x⁴ +3)^2 = (x⁴ +3 -4x⁴)/(x⁴ +3)^2 = (-3x⁴ +3)/(x⁴ +3)^2.
+
+Set derivative equal to zero:
+
+-3x⁴ +3 = 0 => x⁴ =1 => x = ±1.
+
+So critical points at x=1 and x=-1.
+
+Compute f(1) = 1/(1 +3) = 1/4.
+
+f(-1) = -1/(1 +3) = -1/4.
+
+So maximum value is 1/4 at x=1, y=-1.
+
+But wait, we need to check if this is indeed the global maximum. Also, check the behavior as x approaches infinity.
+
+As x approaches infinity, f(x) = x/(x⁴ +3) ~ 1/x³ approaches zero. Similarly, as x approaches negative infinity, f(x) approaches zero from the negative side. So the maximum is indeed at x=1, y=-1 with value 1/4.
+
+But wait, let's verify that this is the global maximum. Since the function f(x) = x/(x⁴ +3) has only two critical points at x=1 and x=-1, and the endpoints go to zero, these are indeed the global max and min.
+
+Therefore, the maximum value of the original expression is 1/4. But let's check if there are any other critical points in the original function when using Lagrange multipliers.
+
+Wait, in the case where x³ + y³ =0, we found y = -x, leading to the function x/(x⁴ +3). But in the Lagrange multiplier method, we considered both cases. So that's all the critical points.
+
+Therefore, the maximum value is 1/4. Let me check with some test values.
+
+For example, if x=1, y=-1: numerator is 1 - (-1)=2, denominator is 1 +1 +6=8, so 2/8=1/4. Correct.
+
+If x=2, y=-2: numerator 4, denominator 16 +16 +6=38, so 4/38≈0.105, which is less than 1/4.
+
+If x=0, y=0: numerator 0, denominator 6, value 0.
+
+If x=1/2, y=-1/2: numerator 1, denominator (1/16) + (1/16) +6=1/8 +6=49/8, so 1/(49/8)=8/49≈0.163, which is less than 1/4.
+
+So seems 1/4 is indeed the maximum.
+
+Wait, but let me check another critical point. Suppose we didn't use Lagrange multipliers, maybe there's another critical point.
+
+But according to the Lagrange multiplier method, the only critical points are when x=y (which gives zero) or when x³ + y³=0, leading to y=-x. So that's all. Therefore, the maximum is 1/4.
+
+Hence, the answer should be 1/4.
+
+**Final Answer**
+The maximum value is \boxed{\dfrac{1}{4}}.
+Therefore, the maximum value of the given expression is $\boxed{\dfrac{1}{4}}$.
+</think>

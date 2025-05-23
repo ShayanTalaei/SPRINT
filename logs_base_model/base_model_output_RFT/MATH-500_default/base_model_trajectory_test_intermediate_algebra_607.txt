@@ -1,0 +1,112 @@
+Okay, so I need to find the greatest integer less than (sqrt(7) + sqrt(5))^6. Hmm, that seems a bit tricky without a calculator. Let me think about how to approach this.
+
+First, maybe I can use the binomial theorem to expand (sqrt(7) + sqrt(5))^6. The binomial theorem says that (a + b)^n = Σ (from k=0 to n) C(n, k) * a^(n-k) * b^k. So here, a is sqrt(7), b is sqrt(5), and n is 6. That should give me all the terms. Let me try expanding that.
+
+But before I dive into expanding everything, maybe there's a smarter way. I remember that expressions like (sqrt(a) + sqrt(b))^n can sometimes be related to their conjugates. The conjugate here would be (sqrt(7) - sqrt(5))^6. If I add those two expressions together, maybe the irrational parts cancel out, leaving an integer. Then, if I can find that sum, subtract 1, and take the floor, that might give me the answer.
+
+Let me test this idea. Let me denote x = sqrt(7) + sqrt(5) and y = sqrt(7) - sqrt(5). Then, x + y = 2*sqrt(7) and x - y = 2*sqrt(5). If I compute x^6 + y^6, maybe that's an integer. Let me check.
+
+But first, let's compute x^6 + y^6. Since y is the conjugate, maybe their powers will add up to an integer. Let's see. To compute x^6 + y^6, perhaps I can find a recursion or a pattern.
+
+Alternatively, I can compute x^6 + y^6 by first computing x^2 and y^2, then building up to higher powers. Let's try that.
+
+First, compute x^2 and y^2:
+
+x^2 = (sqrt(7) + sqrt(5))^2 = 7 + 2*sqrt(35) + 5 = 12 + 2*sqrt(35)
+
+y^2 = (sqrt(7) - sqrt(5))^2 = 7 - 2*sqrt(35) + 5 = 12 - 2*sqrt(35)
+
+So x^2 + y^2 = (12 + 2*sqrt(35)) + (12 - 2*sqrt(35)) = 24
+
+x^2 * y^2 = (12 + 2*sqrt(35))(12 - 2*sqrt(35)) = 144 - (2*sqrt(35))^2 = 144 - 4*35 = 144 - 140 = 4
+
+So (x^2)(y^2) = 4
+
+Now, maybe we can find a recurrence relation for x^n + y^n. Let me denote z_n = x^n + y^n. Then, we can find a recurrence relation for z_n.
+
+We know that z_0 = x^0 + y^0 = 1 + 1 = 2
+
+z_1 = x + y = 2*sqrt(7)
+
+z_2 = x^2 + y^2 = 24
+
+z_3 = x^3 + y^3 = (x + y)(x^2 + y^2 - xy) + xy(x + y). Wait, maybe a better way is to use the recurrence relation.
+
+Since x and y are roots of the equation t^2 - (x + y)t + xy = 0. But x + y = 2*sqrt(7), and xy = (sqrt(7) + sqrt(5))(sqrt(7) - sqrt(5)) = 7 - 5 = 2.
+
+So the characteristic equation is t^2 - 2*sqrt(7)*t + 2 = 0.
+
+Therefore, the recurrence relation for z_n is z_n = 2*sqrt(7)*z_{n-1} - 2*z_{n-2}
+
+But since z_n is x^n + y^n, which is an integer? Wait, let's check for n=0,1,2.
+
+z_0 = 2 (integer)
+
+z_1 = 2*sqrt(7) (not integer)
+
+z_2 = 24 (integer)
+
+z_3 = 2*sqrt(7)*z_2 - 2*z_1 = 2*sqrt(7)*24 - 2*(2*sqrt(7)) = 48*sqrt(7) - 4*sqrt(7) = 44*sqrt(7) (not integer)
+
+z_4 = 2*sqrt(7)*z_3 - 2*z_2 = 2*sqrt(7)*(44*sqrt(7)) - 2*24 = 2*44*7 - 48 = 616 - 48 = 568 (integer)
+
+z_5 = 2*sqrt(7)*z_4 - 2*z_3 = 2*sqrt(7)*568 - 2*(44*sqrt(7)) = 1136*sqrt(7) - 88*sqrt(7) = 1048*sqrt(7) (not integer)
+
+z_6 = 2*sqrt(7)*z_5 - 2*z_4 = 2*sqrt(7)*(1048*sqrt(7)) - 2*568 = 2*1048*7 - 1136 = 14656 - 1136 = 13520
+
+So z_6 = 13520. Therefore, (sqrt(7) + sqrt(5))^6 + (sqrt(7) - sqrt(5))^6 = 13520.
+
+But we need (sqrt(7) + sqrt(5))^6. Let's compute (sqrt(7) - sqrt(5))^6. Since sqrt(7) > sqrt(5), sqrt(7) - sqrt(5) is a positive number less than 1. Let's check that.
+
+sqrt(7) ≈ 2.6458, sqrt(5) ≈ 2.2361, so sqrt(7) - sqrt(5) ≈ 0.4097, which is less than 1. Therefore, (sqrt(7) - sqrt(5))^6 is a positive number less than 1. So (sqrt(7) + sqrt(5))^6 = 13520 - (sqrt(7) - sqrt(5))^6. Since (sqrt(7) - sqrt(5))^6 is less than 1, the greatest integer less than (sqrt(7) + sqrt(5))^6 is 13520 - 1 = 13519. Therefore, the answer should be 13519.
+
+Wait, but let me verify this again. Let me check the calculations step by step.
+
+First, x = sqrt(7) + sqrt(5), y = sqrt(7) - sqrt(5). Then x + y = 2*sqrt(7), xy = 2. Then the characteristic equation is t^2 - 2*sqrt(7)t + 2 = 0. Therefore, the recurrence is z_n = 2*sqrt(7)z_{n-1} - 2z_{n-2}.
+
+So z_0 = 2, z_1 = 2*sqrt(7), z_2 = 24, z_3 = 2*sqrt(7)*24 - 2*z_1 = 48*sqrt(7) - 4*sqrt(7) = 44*sqrt(7), z_4 = 2*sqrt(7)*44*sqrt(7) - 2*z_2 = 2*44*7 - 2*24 = 616 - 48 = 568, z_5 = 2*sqrt(7)*568 - 2*44*sqrt(7) = 1136*sqrt(7) - 88*sqrt(7) = 1048*sqrt(7), z_6 = 2*sqrt(7)*1048*sqrt(7) - 2*568 = 2*1048*7 - 1136 = 14656 - 1136 = 13520. So that's correct.
+
+Therefore, x^6 + y^6 = 13520. Since y = sqrt(7) - sqrt(5) ≈ 0.4097, then y^6 ≈ (0.4097)^6. Let's compute that approximately. 0.4^6 = 0.004096, but since 0.4097 is slightly larger than 0.4, maybe around 0.0043 or something. So y^6 is less than 0.01. Therefore, x^6 = 13520 - y^6 ≈ 13520 - 0.0043 ≈ 13519.9957. Therefore, the greatest integer less than x^6 is 13519. So the answer is 13519.
+
+But wait, maybe my estimation of y^6 is too rough. Let me compute y^6 more accurately.
+
+First, y = sqrt(7) - sqrt(5) ≈ 2.6458 - 2.2361 ≈ 0.4097. So y ≈ 0.4097.
+
+Compute y^2 ≈ (0.4097)^2 ≈ 0.1679
+
+y^3 ≈ 0.1679 * 0.4097 ≈ 0.0689
+
+y^4 ≈ 0.0689 * 0.4097 ≈ 0.0283
+
+y^5 ≈ 0.0283 * 0.4097 ≈ 0.0116
+
+y^6 ≈ 0.0116 * 0.4097 ≈ 0.00476
+
+So y^6 ≈ 0.00476. Therefore, x^6 = 13520 - 0.00476 ≈ 13519.99524. Therefore, the greatest integer less than x^6 is 13519, since 13519.99524 is just a bit less than 13520.
+
+Therefore, the answer is 13519.
+
+But let me check if there is another way to compute this, maybe expanding the binomial directly. Let's see.
+
+Compute (sqrt(7) + sqrt(5))^6 using binomial theorem.
+
+The expansion is:
+
+C(6,0)*(sqrt(7))^6*(sqrt(5))^0 + C(6,1)*(sqrt(7))^5*(sqrt(5))^1 + C(6,2)*(sqrt(7))^4*(sqrt(5))^2 + C(6,3)*(sqrt(7))^3*(sqrt(5))^3 + C(6,4)*(sqrt(7))^2*(sqrt(5))^4 + C(6,5)*(sqrt(7))^1*(sqrt(5))^5 + C(6,6)*(sqrt(7))^0*(sqrt(5))^6.
+
+Compute each term:
+
+C(6,0) = 1, term = 1*(7^(3))*(1) = 343
+
+C(6,1) = 6, term = 6*(7^(2.5))*(5^(0.5)) = 6*(sqrt(7^5)*sqrt(5)) = 6*sqrt(7^5 *5). Wait, this seems complicated. Maybe it's better to compute numerically.
+
+But since we need to find the integer part, maybe this approach isn't the best. Alternatively, perhaps recognizing that the method with the conjugate gives an exact integer for x^6 + y^6, and since y^6 is less than 1, x^6 is just less than that integer. Therefore, floor(x^6) = (x^6 + y^6) - 1 = 13520 - 1 = 13519. So that's the answer.
+
+Therefore, I think the answer is 13519. Let me just confirm once again.
+
+Yes, using the conjugate pair method, we found that x^6 + y^6 = 13520, and y^6 is a positive number less than 1, so x^6 must be 13520 - y^6, which is less than 13520. Therefore, the floor of x^6 is 13520 - 1 = 13519. So the greatest integer less than (sqrt(7) + sqrt(5))^6 is 13519.
+
+**Final Answer**
+\boxed{13519}
+Therefore, the greatest integer less than $\left(\sqrt{7} + \sqrt{5}\right)^6$ is $\boxed{13519}$.
+</think>

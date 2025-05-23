@@ -1,0 +1,489 @@
+Okay, so I need to find the minimum value of this expression: √(x² + 400) + √(y² + 900) + √(x² + y² - 80x - 100y + 4100), where x is between 0 and 40, and y is between 0 and 50. Hmm, this looks a bit complicated with three square roots. Let me try to break it down step by step.
+
+First, maybe I can simplify the third square root term. Let me look at the expression inside the square root: x² + y² - 80x - 100y + 4100. That seems like a quadratic in x and y. Maybe I can complete the square for both x and y to make it easier to interpret.
+
+Starting with the x terms: x² - 80x. To complete the square, I take half of -80, which is -40, square it to get 1600. So, x² - 80x = (x - 40)² - 1600. Similarly, for the y terms: y² - 100y. Half of -100 is -50, squared is 2500. So, y² - 100y = (y - 50)² - 2500. 
+
+Putting it all together: x² + y² - 80x - 100y + 4100 becomes [(x - 40)² - 1600] + [(y - 50)² - 2500] + 4100. Simplify the constants: -1600 -2500 + 4100 = (-4100) + 4100 = 0. So, the expression simplifies to (x - 40)² + (y - 50)². 
+
+Therefore, the third term is √[(x - 40)² + (y - 50)²]. Wait, that's the distance from the point (x, y) to the point (40, 50). Interesting. So, the entire expression is the sum of three distances: from the origin to (x, 20), from (0, 0) to (x, y), and from (x, y) to (40, 50). Wait, no. Let me check again.
+
+Wait, the first term is √(x² + 400). That's √(x² + 20²), which is the distance from (x, 0) to (0, 20). The second term is √(y² + 900) = √(y² + 30²), which is the distance from (0, y) to (30, 0). The third term is √[(x - 40)² + (y - 50)²], which is the distance from (x, y) to (40, 50). Hmm, this is getting a bit confusing. Maybe there's a geometric interpretation here.
+
+Wait, maybe all three terms can be thought of as distances in a coordinate system. Let me try to visualize this. Suppose we have a coordinate system where each term represents a distance from a certain point. Let's see:
+
+First term: √(x² + 20²) is the distance from the point (x, 0) to (0, 20). Second term: √(y² + 30²) is the distance from (0, y) to (30, 0). Third term: distance from (x, y) to (40, 50). Wait, maybe this is the sum of three distances: from (0, 20) to (x, 0), then to (0, y), then to (30, 0), and then to (40, 50)? That seems convoluted. Maybe not.
+
+Alternatively, perhaps the problem is about finding a point (x, y) such that the sum of these three distances is minimized. Let me think: the first term is the distance from (x, 0) to (0, 20), the second term is the distance from (0, y) to (30, 0), and the third term is the distance from (x, y) to (40, 50). Hmm, but how do these connect?
+
+Wait, maybe if I consider each term as a separate distance and try to model this as a path. For example, imagine a point (x, y) that needs to be connected to several other points with straight lines, and we need to minimize the total length of these lines. Let me try to map this out.
+
+First, the first term is the distance from (x, 0) to (0, 20). Let's denote this as D1. The second term is the distance from (0, y) to (30, 0), which is D2. The third term is the distance from (x, y) to (40, 50), which is D3. So, the total expression is D1 + D2 + D3.
+
+But how are these connected? If we think of (x, 0) and (0, y) as points on the axes, and (x, y) as a point somewhere in the plane, then maybe there's a path that goes from (0, 20) to (x, 0) to (0, y) to (30, 0) to (40, 50). But that seems like a lot of segments. Wait, no, maybe not. Alternatively, maybe (x, y) is connected to (0, 20) and (30, 0) and (40, 50). Hmm, this is confusing.
+
+Alternatively, perhaps the problem can be transformed into a geometric problem where we need to find a point (x, y) that minimizes the sum of three distances: from (x, y) to (0, 20), from (x, y) to (30, 0), and from (x, y) to (40, 50). Wait, but that would be three distances, but here we have three terms which are distances from different points. Wait, maybe not.
+
+Wait, let's check again the original expression:
+
+√(x² + 400) + √(y² + 900) + √[(x - 40)² + (y - 50)²]
+
+Wait, the first term is √(x² + 20²), which is the distance from (x, 0) to (0, 20). The second term is √(y² + 30²), which is the distance from (0, y) to (30, 0). The third term is the distance from (x, y) to (40, 50). So, maybe this is a path that goes from (0, 20) to (x, 0) to (0, y) to (30, 0) to (40, 50). But that seems like multiple segments. Alternatively, perhaps the problem is to find a point (x, y) such that the sum of these three distances is minimized.
+
+Alternatively, maybe the problem is to find a path that starts at (0, 20), goes to (x, 0), then to (0, y), then to (30, 0), then to (40, 50). But that seems like a lot of segments. Maybe I need to model this as a reflection problem.
+
+Wait, reflection is a common technique in optimization problems involving distances. For example, the shortest path that reflects off a mirror can be found by reflecting a point across the mirror and finding a straight line. Maybe I can apply that idea here.
+
+Let me try to think of this as a path from (0, 20) to (40, 50), but with intermediate points at (x, 0) and (0, y). Wait, but (x, 0) is on the x-axis and (0, y) is on the y-axis. So, the path goes from (0, 20) to (x, 0) to (0, y) to (40, 50). Hmm, but the third term is the distance from (x, y) to (40, 50). Wait, but (x, y) is a point that's connected to both (x, 0) and (0, y). So maybe the total path is (0, 20) to (x, 0) to (x, y) to (40, 50), but the second term is the distance from (0, y) to (30, 0). Wait, this is getting convoluted.
+
+Alternatively, perhaps the problem can be transformed by considering reflections. Let's try to model it as a path from (0, 20) to (40, 50) that reflects off the x-axis and y-axis. 
+
+Wait, if we reflect (40, 50) over the x-axis, we get (40, -50). Then, reflecting that over the y-axis, we get (-40, -50). Then, a straight line from (0, 20) to (-40, -50) would intersect the x-axis and y-axis at some points, which would be our (x, 0) and (0, y). But I'm not sure if that's the case here. Let me think again.
+
+Alternatively, since we have two reflections, perhaps we need to reflect (40, 50) over both axes. Let's try that. First, reflecting over the x-axis gives (40, -50). Then reflecting over the y-axis gives (-40, -50). Then, the straight line from (0, 20) to (-40, -50) would intersect the x-axis and y-axis at points (x, 0) and (0, y). Then, the total distance would be the distance from (0, 20) to (x, 0) to (0, y) to (-40, -50), which is equivalent to the straight line distance from (0, 20) to (-40, -50). But wait, how does that relate to our original problem?
+
+Wait, in the original problem, the third term is the distance from (x, y) to (40, 50). If we reflect (40, 50) over the x-axis and y-axis, maybe we can model the path as a straight line through reflections.
+
+Alternatively, perhaps we can model the problem as finding the shortest path from (0, 20) to (40, 50) that reflects off the x-axis and y-axis. The reflection method is often used in such problems. Let me recall: if you need to go from point A to point B via reflections on two mirrors (here, x-axis and y-axis), you can reflect B over both mirrors and find a straight line from A to the double reflection.
+
+But in this case, the path would go from (0, 20) to (x, 0) to (0, y) to (40, 50). Wait, but (x, 0) is on the x-axis, and (0, y) is on the y-axis. So, it's a path that goes from (0, 20) down to the x-axis at (x, 0), then to the y-axis at (0, y), then to (40, 50). But this is three segments. However, in reflection problems, usually, you reflect over one mirror and find a straight line. Maybe we need to use multiple reflections here.
+
+Alternatively, maybe we can model the problem by reflecting (40, 50) over the x-axis first, getting (40, -50), then reflecting that over the y-axis, getting (-40, -50). Then, the straight line from (0, 20) to (-40, -50) would cross the x-axis at some point (x, 0) and y-axis at (0, y). Then, the total distance would be the distance from (0, 20) to (x, 0) to (0, y) to (-40, -50), which is a straight line in the reflected plane. But how does that relate to our original problem?
+
+Wait, in our problem, the third term is the distance from (x, y) to (40, 50), not (-40, -50). Hmm. So maybe reflecting over both axes isn't the right approach here. Let me think differently.
+
+Alternatively, perhaps we can use calculus to minimize the function. Let me consider the function f(x, y) = √(x² + 400) + √(y² + 900) + √[(x - 40)² + (y - 50)²]. To find its minimum, we can take partial derivatives with respect to x and y, set them equal to zero, and solve for x and y.
+
+Let's compute the partial derivative with respect to x:
+
+df/dx = (x)/√(x² + 400) + 0 + (x - 40)/√[(x - 40)² + (y - 50)²]
+
+Similarly, partial derivative with respect to y:
+
+df/dy = 0 + (y)/√(y² + 900) + (y - 50)/√[(x - 40)² + (y - 50)²]
+
+Set both partial derivatives to zero:
+
+1. x / √(x² + 400) + (x - 40)/√[(x - 40)² + (y - 50)²] = 0
+2. y / √(y² + 900) + (y - 50)/√[(x - 40)² + (y - 50)²] = 0
+
+Hmm, these equations look a bit complicated. Let me denote the third term as D = √[(x - 40)² + (y - 50)²], so the equations become:
+
+1. x / √(x² + 400) + (x - 40)/D = 0
+2. y / √(y² + 900) + (y - 50)/D = 0
+
+Let me rearrange the first equation:
+
+x / √(x² + 400) = - (x - 40)/D
+
+Similarly, the second equation:
+
+y / √(y² + 900) = - (y - 50)/D
+
+Since D is a distance, it's positive, so the right-hand side of both equations must be negative. Therefore, the left-hand sides must also be negative. Let's see:
+
+x / √(x² + 400) is negative only if x is negative. But x is between 0 and 40, so x is non-negative. Therefore, x / √(x² + 400) is non-negative. But the right-hand side is negative. This implies that the equation can't hold unless both sides are zero. But x / √(x² + 400) is zero only when x = 0. Similarly, y / √(y² + 900) is zero only when y = 0. But y is between 0 and 50, so y can be zero. However, if x = 0 and y = 0, then the third term becomes √[(0 - 40)² + (0 - 50)²] = √(1600 + 2500) = √4100 ≈ 64.03. The first term is √(0 + 400) = 20, the second term is √(0 + 900) = 30. So total is 20 + 30 + 64.03 ≈ 114.03. But is this the minimum? Maybe not.
+
+Alternatively, perhaps I made a mistake in the sign. Let's check the equations again.
+
+The partial derivative with respect to x:
+
+df/dx = x / √(x² + 400) + (x - 40)/√[(x - 40)² + (y - 50)²]
+
+Set to zero:
+
+x / √(x² + 400) + (x - 40)/D = 0
+
+Similarly for y:
+
+y / √(y² + 900) + (y - 50)/D = 0
+
+Since D is positive, the second term in each equation is (x - 40)/D and (y - 50)/D. So, if x < 40, then (x - 40) is negative, so the second term is negative. Similarly for y.
+
+So, the first terms are x / √(x² + 400) and y / √(y² + 900). Since x and y are non-negative (0 ≤ x ≤ 40, 0 ≤ y ≤ 50), these terms are non-negative. Therefore, the sum of a non-negative term and a negative term equals zero. So, the positive term must equal the negative term in magnitude.
+
+So, for the x equation:
+
+x / √(x² + 400) = - (x - 40)/D
+
+Similarly, for the y equation:
+
+y / √(y² + 900) = - (y - 50)/D
+
+Therefore, x / √(x² + 400) = (40 - x)/D
+
+And y / √(y² + 900) = (50 - y)/D
+
+Let me denote these as:
+
+(40 - x)/D = x / √(x² + 400)  --> equation (1)
+
+(50 - y)/D = y / √(y² + 900)  --> equation (2)
+
+Let me denote equation (1) and equation (2). Since both equations have D in the denominator, perhaps I can express D in terms of x and y from both equations and set them equal.
+
+From equation (1):
+
+(40 - x) = D * [x / √(x² + 400)]
+
+But D = √[(x - 40)^2 + (y - 50)^2]. Wait, but (40 - x) = -(x - 40), so:
+
+(40 - x) = - (x - 40) = - (x - 40)
+
+Therefore, equation (1) becomes:
+
+- (x - 40) = D * [x / √(x² + 400)]
+
+Similarly, equation (2):
+
+(50 - y) = D * [y / √(y² + 900)]
+
+Therefore, we have:
+
+- (x - 40) / [x / √(x² + 400)] = D
+
+and
+
+(50 - y) / [y / √(y² + 900)] = D
+
+Since both equal D, set them equal to each other:
+
+- (x - 40) / [x / √(x² + 400)] = (50 - y) / [y / √(y² + 900)]
+
+Simplify left side:
+
+- (x - 40) * √(x² + 400) / x = (50 - y) * √(y² + 900) / y
+
+Multiply both sides by x * y to eliminate denominators:
+
+- (x - 40) * y * √(x² + 400) = (50 - y) * x * √(y² + 900)
+
+This is a complicated equation, but maybe we can find a relation between x and y. Let me denote variables:
+
+Let’s denote A = x / √(x² + 400) and B = y / √(y² + 900). Then, from equation (1):
+
+(40 - x)/D = A
+
+and from equation (2):
+
+(50 - y)/D = B
+
+Therefore, (40 - x) = A D and (50 - y) = B D
+
+But D = √[(x - 40)^2 + (y - 50)^2] = √[(40 - x)^2 + (50 - y)^2] = √[(A D)^2 + (B D)^2] = D √(A² + B²)
+
+Therefore, D = D √(A² + B²)
+
+Divide both sides by D (assuming D ≠ 0, which it isn't since x and y are within 0 to 40 and 0 to 50):
+
+1 = √(A² + B²)
+
+Square both sides:
+
+1 = A² + B²
+
+But A = x / √(x² + 400) and B = y / √(y² + 900). Therefore:
+
+(x²)/(x² + 400) + (y²)/(y² + 900) = 1
+
+This is a key equation. Let me write that down:
+
+x² / (x² + 400) + y² / (y² + 900) = 1
+
+Let me simplify this equation. Let's denote:
+
+Let’s write x² / (x² + 400) = 1 - y² / (y² + 900)
+
+So,
+
+x² / (x² + 400) = [ (y² + 900) - y² ] / (y² + 900) = 900 / (y² + 900)
+
+Therefore,
+
+x² / (x² + 400) = 900 / (y² + 900)
+
+Cross-multiplying:
+
+x² (y² + 900) = 900 (x² + 400)
+
+Expand both sides:
+
+x² y² + 900 x² = 900 x² + 900 * 400
+
+Subtract 900 x² from both sides:
+
+x² y² = 900 * 400
+
+Therefore,
+
+x² y² = 360,000
+
+Take square roots:
+
+x y = 600
+
+So, we have the relationship x y = 600.
+
+Wow, that's a neat relation. So, the product of x and y must be 600. Now, since x is between 0 and 40, and y is between 0 and 50, let's check if this is possible.
+
+x y = 600.
+
+Since x ≤ 40, then y ≥ 600 / 40 = 15. Similarly, since y ≤ 50, then x ≥ 600 / 50 = 12. So, x must be between 12 and 40, and y between 15 and 50.
+
+So, the critical points lie within these intervals. Now, we can use this relation to substitute into one of the earlier equations.
+
+Let me recall that from equation (1):
+
+(40 - x)/D = x / √(x² + 400)
+
+Similarly, equation (2):
+
+(50 - y)/D = y / √(y² + 900)
+
+But since we have x y = 600, maybe we can express y in terms of x: y = 600 / x.
+
+Then substitute into equation (2):
+
+(50 - (600 / x)) / D = (600 / x) / √[(600 / x)² + 900]
+
+But D is √[(x - 40)^2 + (y - 50)^2] = √[(x - 40)^2 + (600/x - 50)^2]
+
+This is getting complicated, but let's try to substitute y = 600/x into equation (2):
+
+Left side: (50 - 600/x)/D
+
+Right side: (600/x)/√[(600/x)^2 + 900]
+
+Let me compute the right side first:
+
+(600/x)/√[(600/x)^2 + 900] = (600/x)/√[(360000/x²) + 900] = (600/x)/√[(360000 + 900 x²)/x²] = (600/x) / [√(360000 + 900 x²)/x] = (600/x) * (x / √(360000 + 900 x²)) = 600 / √(360000 + 900 x²)
+
+Simplify denominator:
+
+√(360000 + 900 x²) = √[900 (400 + x²)] = 30 √(400 + x²)
+
+Therefore, right side becomes 600 / [30 √(400 + x²)] = 20 / √(400 + x²)
+
+So, equation (2) becomes:
+
+(50 - 600/x)/D = 20 / √(400 + x²)
+
+But D is √[(x - 40)^2 + (600/x - 50)^2]
+
+Let me compute D:
+
+D = √[(x - 40)^2 + (600/x - 50)^2]
+
+Let me compute each term:
+
+First term: (x - 40)^2 = x² - 80x + 1600
+
+Second term: (600/x - 50)^2 = (600/x)^2 - 2*(600/x)*50 + 50² = 360000/x² - 60000/x + 2500
+
+Therefore, D² = x² -80x +1600 + 360000/x² -60000/x +2500
+
+Combine like terms:
+
+x² + 360000/x² -80x -60000/x +1600 +2500
+
+= x² + 360000/x² -80x -60000/x +4100
+
+So, D² = x² + 360000/x² -80x -60000/x +4100
+
+Therefore, D = √[x² + 360000/x² -80x -60000/x +4100]
+
+Now, going back to equation (2):
+
+(50 - 600/x) / D = 20 / √(400 + x²)
+
+Multiply both sides by D:
+
+50 - 600/x = 20 D / √(400 + x²)
+
+But D is √[x² + 360000/x² -80x -60000/x +4100]
+
+So, 50 - 600/x = 20 * √[x² + 360000/x² -80x -60000/x +4100] / √(400 + x²)
+
+Square both sides to eliminate the square roots:
+
+[50 - 600/x]^2 = [400] * [x² + 360000/x² -80x -60000/x +4100] / (400 + x²)
+
+Let me compute [50 - 600/x]^2:
+
+= 50² - 2*50*(600/x) + (600/x)^2
+
+= 2500 - 60000/x + 360000/x²
+
+So, left side is 2500 - 60000/x + 360000/x²
+
+Right side is 400*(x² + 360000/x² -80x -60000/x +4100)/(400 + x²)
+
+Therefore, equation becomes:
+
+2500 - 60000/x + 360000/x² = [400*(x² + 360000/x² -80x -60000/x +4100)] / (400 + x²)
+
+Multiply both sides by (400 + x²):
+
+(2500 - 60000/x + 360000/x²)(400 + x²) = 400*(x² + 360000/x² -80x -60000/x +4100)
+
+Let me expand the left side:
+
+First, multiply 2500 by (400 + x²):
+
+2500*400 + 2500*x² = 1,000,000 + 2500x²
+
+Then, multiply -60000/x by (400 + x²):
+
+-60000/x *400 -60000/x *x² = -24,000,000/x -60,000x
+
+Then, multiply 360000/x² by (400 + x²):
+
+360000/x² *400 + 360000/x² *x² = 144,000,000/x² + 360,000
+
+So, combining all terms:
+
+Left side becomes:
+
+1,000,000 + 2500x² -24,000,000/x -60,000x +144,000,000/x² +360,000
+
+Combine constants: 1,000,000 + 360,000 = 1,360,000
+
+So, left side:
+
+1,360,000 + 2500x² -60,000x -24,000,000/x +144,000,000/x²
+
+Right side:
+
+400*(x² + 360000/x² -80x -60000/x +4100)
+
+Multiply term by term:
+
+400x² + 400*360000/x² -400*80x -400*60000/x +400*4100
+
+= 400x² + 144,000,000/x² -32,000x -24,000,000/x +1,640,000
+
+Therefore, equation:
+
+1,360,000 + 2500x² -60,000x -24,000,000/x +144,000,000/x² = 400x² + 144,000,000/x² -32,000x -24,000,000/x +1,640,000
+
+Subtract right side from both sides:
+
+Left side - Right side = 0
+
+So,
+
+1,360,000 + 2500x² -60,000x -24,000,000/x +144,000,000/x² -400x² -144,000,000/x² +32,000x +24,000,000/x -1,640,000 = 0
+
+Simplify term by term:
+
+Constants: 1,360,000 -1,640,000 = -280,000
+
+x² terms: 2500x² -400x² = 2100x²
+
+x terms: -60,000x +32,000x = -28,000x
+
+1/x terms: -24,000,000/x +24,000,000/x = 0
+
+1/x² terms: 144,000,000/x² -144,000,000/x² = 0
+
+So, overall:
+
+2100x² -28,000x -280,000 = 0
+
+Divide all terms by 2100 to simplify:
+
+x² - (28,000 / 2100)x - (280,000 / 2100) = 0
+
+Simplify fractions:
+
+28,000 / 2100 = 280 / 21 = 40 / 3 ≈ 13.333
+
+280,000 / 2100 = 2800 / 21 ≈ 133.333
+
+So, the equation becomes:
+
+x² - (40/3)x - (2800/21) = 0
+
+Multiply through by 21 to eliminate denominators:
+
+21x² - 280x -2800 = 0
+
+Divide by 7:
+
+3x² -40x -400 = 0
+
+Now, solve quadratic equation 3x² -40x -400 = 0
+
+Using quadratic formula:
+
+x = [40 ± √(1600 + 4800)] / 6 = [40 ± √6400]/6 = [40 ± 80]/6
+
+So, two solutions:
+
+x = (40 + 80)/6 = 120/6 = 20
+
+x = (40 - 80)/6 = (-40)/6 ≈ -6.666...
+
+Since x must be between 0 and 40, we discard the negative solution. Therefore, x = 20.
+
+Therefore, x = 20. Then, from x y = 600, y = 600 / 20 = 30.
+
+So, the critical point is at (20, 30). Now, we need to verify if this is indeed a minimum.
+
+To confirm that this critical point is a minimum, we can check the second derivative or analyze the behavior of the function. However, given the problem's setup and the nature of the distances involved, it's likely that this critical point is indeed the minimum.
+
+Therefore, substitute x = 20 and y = 30 into the original expression:
+
+First term: √(20² + 400) = √(400 + 400) = √800 = 20√2 ≈ 28.284
+
+Second term: √(30² + 900) = √(900 + 900) = √1800 = 30√2 ≈ 42.426
+
+Third term: √[(20 - 40)² + (30 - 50)²] = √[(-20)² + (-20)²] = √(400 + 400) = √800 = 20√2 ≈ 28.284
+
+Total sum: 20√2 + 30√2 + 20√2 = (20 + 30 + 20)√2 = 70√2 ≈ 98.9949
+
+But wait, let's check if this is correct. Wait, 20√2 + 30√2 + 20√2 = 70√2. But 70√2 is approximately 98.9949. However, since we have exact values, maybe we can write it as 70√2. But let me check again.
+
+Wait, first term: √(20² + 400) = √(400 + 400) = √800 = 20√2
+
+Second term: √(30² + 900) = √(900 + 900) = √1800 = 30√2
+
+Third term: √[(20 - 40)^2 + (30 - 50)^2] = √[(-20)^2 + (-20)^2] = √(400 + 400) = √800 = 20√2
+
+So, total sum is 20√2 + 30√2 + 20√2 = 70√2. Therefore, the minimum value is 70√2.
+
+Wait, but let me check if there is a lower value by testing the boundaries.
+
+For example, if x = 0, then y must be 600 / 0, which is undefined. Wait, but x cannot be zero because then y would be undefined. Wait, but if x approaches zero, y approaches infinity, which is outside the allowed range. So, the feasible region for x is from 12 to 40, as we saw earlier, since y must be ≤ 50.
+
+Similarly, if y = 0, then x = 600 / 0, which is undefined. So, not possible. So, the minimum must be at the critical point (20, 30).
+
+Alternatively, let's check another point. For example, x = 12, then y = 600 / 12 = 50. Then compute the total:
+
+First term: √(12² + 400) = √(144 + 400) = √544 ≈ 23.323
+
+Second term: √(50² + 900) = √(2500 + 900) = √3400 ≈ 58.309
+
+Third term: √[(12 - 40)^2 + (50 - 50)^2] = √[(-28)^2 + 0] = 28
+
+Total ≈ 23.323 + 58.309 + 28 ≈ 109.632, which is higher than 70√2 ≈ 98.9949.
+
+Similarly, check x = 40, then y = 600 / 40 = 15. Compute the total:
+
+First term: √(40² + 400) = √(1600 + 400) = √2000 ≈ 44.721
+
+Second term: √(15² + 900) = √(225 + 900) = √1125 ≈ 33.541
+
+Third term: √[(40 - 40)^2 + (15 - 50)^2] = √[0 + (-35)^2] = 35
+
+Total ≈ 44.721 + 33.541 + 35 ≈ 113.262, which is also higher.
+
+Therefore, the critical point (20, 30) gives the minimal value of 70√2.
+
+But let me check if 70√2 is indeed the minimal value. Alternatively, since we have three terms each involving distances, maybe there's another way to see this. For example, using the triangle inequality or other geometric interpretations.
+
+But given the calculus approach leads us to this point and the boundary checks confirm that this is lower, I think we can conclude that the minimal value is 70√2.
+
+**Final Answer**
+\boxed{70\sqrt{2}}
+</think>

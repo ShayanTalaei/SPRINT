@@ -1,0 +1,42 @@
+Okay, so I need to compute the binomial coefficient C(31, 28). Hmm, binomial coefficients are those numbers you see in combinations, right? Like "31 choose 28". I remember that C(n, k) is equal to n! divided by (k! times (n - k)!). So, in this case, it should be 31! divided by (28! times 3!). That makes sense because combinations don't care about the order, so we divide out the extra permutations.
+
+But wait, 31 factorial is a huge number. Multiplying all numbers from 1 to 31 sounds impossible to do by hand. Maybe there's a way to simplify this before calculating. Let me think. Since 31 choose 28 is the same as 31 choose 3 because of the symmetry property of combinations, where C(n, k) = C(n, n - k). So, instead of computing 31! / (28! * 3!), maybe it's easier to compute 31! / (28! * 3!) as 31 * 30 * 29 / (3 * 2 * 1). Because when you have C(n, k) where k is close to n, you can cancel out the factorials.
+
+Let me verify that. If C(n, k) = n! / (k! (n - k)!), then C(n, n - k) = n! / ((n - k)! k!) which is the same as C(n, k). So yes, that works. So in this case, since 28 is 31 - 3, we can compute C(31, 3) instead, which is 31 * 30 * 29 / (3 * 2 * 1). That seems easier because multiplying three numbers and then dividing by 6.
+
+So let me compute that step by step. First, multiply 31, 30, and 29. Let's see:
+
+31 * 30 = 930. Then 930 * 29. Hmm, 930 * 30 would be 27,900, but since it's 930 * 29, that's 27,900 minus 930, which is 26,970. Then divide that by 6. So 26,970 divided by 6. Let me do that division.
+
+6 goes into 26 nine times (9*6=54), wait, 6 into 26 is 4 times (4*6=24), remainder 2. Then bring down the 9 to make 29. 6 into 29 is 4 times (4*6=24), remainder 5. Bring down the 7 to make 57. 6 into 57 is 9 times (9*6=54), remainder 3. Bring down the 0. 6 into 30 is 5 times. So putting it all together: 4 (from 26/6=4), then 4 (29/6=4), then 9 (57/6=9), then 5 (30/6=5). So 4495? Wait, let me check:
+
+Wait, 26,970 divided by 6. Let's do it step by step.
+
+6 into 2 is 0, 6 into 26 is 4 (4*6=24), remainder 2. Bring down 9 to make 29. 6 into 29 is 4 (4*6=24), remainder 5. Bring down 7 to make 57. 6 into 57 is 9 (9*6=54), remainder 3. Bring down 0 to make 30. 6 into 30 is 5. So the quotient is 4 (from first division), 4, 9, 5. So 4495. Let me verify 4495 * 6. 4000*6=24,000, 400*6=2,400, 90*6=540, 5*6=30. Adding those together: 24,000 + 2,400 = 26,400, +540 = 26,940, +30 = 26,970. Yes, that's correct. So 26,970 / 6 = 4495. Therefore, C(31, 28) is 4495.
+
+Wait, but let me make sure I didn't make a mistake in the multiplication earlier. 31 * 30 is 930, correct. Then 930 * 29. Let me check that again. 930 * 29. Break it down into 930*(30 - 1) = 930*30 - 930*1. 930*30 is 27,900. 27,900 - 930 = 26,970. Yes, that's right. Then divided by 6 gives 4495. So that seems correct.
+
+Alternatively, maybe there's another way to compute this. Let me try a different approach to confirm. Let's use the multiplicative formula for combinations. For C(n, k), it's n*(n-1)*...*(n - k + 1) / k!. So here, n=31, k=28. So the numerator is 31*30*29*...*4 (since 31-28+1=4). Wait, but that's a lot of terms. Instead, maybe using the symmetry again, as before, is better. Or maybe compute it step by step by canceling factors.
+
+Alternatively, maybe compute 31 choose 3 directly. Let's see:
+
+C(31,3) = 31*30*29 / (3*2*1) = (31*30*29)/6. Which is exactly what we did before. So same result. So 31*30=930, 930*29=26,970, divided by 6 is 4495. So same answer.
+
+Alternatively, maybe compute 31 choose 3 in a different way. Let's compute 31*30 first: 31*30=930. Then divide by 3 first: 930 / 3=310. Then multiply by 29: 310*29. Let's compute that. 310*30=9,300. Subtract 310 to get 9,300 - 310=8,990. Then divide by 2: 8,990 /2=4,495. So same result. So that works too. So that's another way to compute it.
+
+Alternatively, maybe compute 31*29 first. 31*29: 30*29=870, plus 1*29=29, so 870+29=899. Then multiply by 30: 899*30=26,970. Then divide by 6: 26,970 /6=4,495. Same answer again.
+
+So all methods lead to 4495. So that seems solid. Therefore, the answer should be 4495.
+
+But let me check with another approach. Let's compute C(31,3) step by step. The formula is C(n, k) = n! / [k! (n - k)!]. So here, n=31, k=3. So 31! / (3! 28!). But 31! / 28! is 31*30*29*28! / 28! = 31*30*29. Then divide by 3! which is 6. So same as before. So 31*30*29 /6=4495. Yep.
+
+Alternatively, maybe use prime factorization to compute. Let's see. 31 is prime, 30=2*3*5, 29 is prime. So numerator is 31*2*3*5*29. Denominator is 2*3. So cancel out 2 and 3. So remaining factors: 31*5*29. 31*5=155, 155*29. Let's compute 155*29. 150*29=4,350, 5*29=145. Total is 4,350 +145=4,495. Same result. So that's another way to see it.
+
+Therefore, all methods confirm that the answer is 4495. So I think that's correct. Let me just recap to make sure I didn't skip any steps or make a miscalculation.
+
+First, recognize that 31 choose 28 is equal to 31 choose 3. Then compute 31*30*29 divided by 3*2*1. Multiply 31*30=930, 930*29=26,970. Divide by 6: 26,970 /6=4,495. All steps check out. Cross-verified using multiple methods: direct multiplication, breaking down into smaller steps, prime factorization. All lead to the same answer. So I feel confident that 4495 is the correct result.
+
+Another sanity check: combinations should be integers, which they are. The numbers involved are all integers, so the result must be an integer. Since all steps result in integers, that's good. Also, 4495 is a reasonable number given the size of the binomial coefficients. For example, C(30,3) is 4060, so C(31,3) should be a bit higher, which it is. C(31,4) would be even higher, but here we have C(31,3)=4495, which is in the right ballpark. So that gives me more confidence.
+
+Therefore, after all these checks and different methods, I conclude that the value of $\dbinom{31}{28}$ is 4495.
+</think>

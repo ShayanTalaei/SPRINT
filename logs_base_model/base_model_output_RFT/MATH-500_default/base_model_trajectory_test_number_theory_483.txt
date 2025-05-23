@@ -1,0 +1,120 @@
+Okay, so I need to find the remainder when the 100th Fibonacci number is divided by 4. Hmm, Fibonacci sequence starts with 1, 1, and each subsequent term is the sum of the previous two. The question is about the 100th term, which is pretty far along. Dividing a huge number by 4 and finding the remainder... that seems tricky. But maybe there's a pattern or a cycle in the remainders when Fibonacci numbers are divided by 4. Let me think about how to approach this.
+
+First, I remember that when dealing with modular arithmetic, especially with recursive sequences like Fibonacci, the remainders often repeat after a certain period. This period is called the Pisano period. For modulus 4, I need to find the Pisano period first. Once I know the period, I can find the remainder of 100 divided by the period length and then find the corresponding Fibonacci number modulo 4. That should give me the answer without having to compute the 100th Fibonacci number directly.
+
+Let me confirm if that's the right approach. Pisano period for modulus m is the period with which the sequence of Fibonacci numbers taken modulo m repeats. So if I can find the Pisano period for m=4, then I can use it to reduce the problem. Let's try to compute the Pisano period for 4.
+
+To compute the Pisano period for modulus 4, I can list the Fibonacci numbers modulo 4 until the sequence starts repeating. Let's start writing down the Fibonacci numbers and their remainders modulo 4:
+
+Term 1: 1 mod 4 = 1  
+Term 2: 1 mod 4 = 1  
+Term 3: (1 + 1) = 2 mod 4 = 2  
+Term 4: (1 + 2) = 3 mod 4 = 3  
+Term 5: (2 + 3) = 5 mod 4 = 1  
+Term 6: (3 + 1) = 4 mod 4 = 0  
+Term 7: (1 + 0) = 1 mod 4 = 1  
+Term 8: (0 + 1) = 1 mod 4 = 1  
+Term 9: (1 + 1) = 2 mod 4 = 2  
+Term 10: (1 + 2) = 3 mod 4 = 3  
+Term 11: (2 + 3) = 5 mod 4 = 1  
+Term 12: (3 + 1) = 4 mod 4 = 0  
+Term 13: (1 + 0) = 1 mod 4 = 1  
+Term 14: (0 + 1) = 1 mod 4 = 1  
+...
+
+Wait a second, looking at the remainders, after term 6, the remainders start repeating 1, 1, 2, 3, 1, 0, and then again 1, 1, 2, 3, 1, 0. So the sequence of remainders is periodic with a period of 6. Let me check:
+
+From term 1 to term 6: 1, 1, 2, 3, 1, 0  
+Then term 7: 1, term 8:1, term9:2, term10:3, term11:1, term12:0, and so on. Yes, so the Pisano period for modulus 4 is 6. That means every 6 terms, the remainders cycle.
+
+Therefore, to find the 100th term modulo 4, I can find 100 divided by 6 and get the remainder, then find the corresponding term in the cycle.
+
+Let's compute 100 divided by 6. 6*16=96, so 100-96=4. So the remainder is 4. That means the 100th term's remainder is the same as the 4th term in the cycle. Looking back at the remainders: term 1:1, term2:1, term3:2, term4:3. So the 4th term's remainder is 3. Therefore, the remainder when the 100th Fibonacci number is divided by 4 is 3.
+
+Wait, but let me verify this again. Let's list out the first 12 terms modulo 4 to make sure the cycle is indeed 6:
+
+Term 1:1  
+Term 2:1  
+Term3:2  
+Term4:3  
+Term5:1  
+Term6:0  
+Term7:1  
+Term8:1  
+Term9:2  
+Term10:3  
+Term11:1  
+Term12:0  
+Term13:1  
+Term14:1  
+...
+
+Yes, so the cycle is 1,1,2,3,1,0 and repeats every 6 terms. So term numbers 1-6, 7-12, 13-18, etc., all have the same remainders. Therefore, term 100 is equivalent to term (6*16 +4)= term100, which is the 4th term in the cycle. The 4th term's remainder is 3. So the answer should be 3.
+
+But wait, let me check with another method to confirm. Maybe using matrix exponentiation or Binet's formula? But Fibonacci numbers grow exponentially, so Binet's formula might not be helpful here. Alternatively, using the Pisano period is more straightforward. Alternatively, maybe I can compute the Fibonacci numbers modulo 4 directly for the first few terms and check.
+
+Alternatively, maybe I can use the formula for Fibonacci numbers in terms of the Pisano period. Since the Pisano period is 6, then F(n) mod 4 = F(n mod 6) mod 4. But wait, actually, Pisano period is the period after which the sequence repeats. So if the Pisano period is 6, then F(n) mod 4 = F(n mod 6) mod 4. Wait, but n mod 6 could be 0, which would correspond to F(6) mod4=0. Let me check:
+
+If n=6, F6=8, 8 mod4=0. Then n=7: F7=13, 13 mod4=1. Which matches F1=1. So n mod6=1 corresponds to F1=1. Similarly, n=8: F8=21, 21 mod4=1, which is F2=1. Therefore, the mapping is n mod6 gives the position in the cycle. So F(n) mod4 = F(n mod6) mod4, but if n mod6=0, then it's F6 mod4=0. Therefore, for n=100, 100 mod6=4, so F100 mod4=F4 mod4=3. Which matches the previous result. So that's consistent.
+
+Therefore, the remainder is 3. Hmm, seems correct. But let me check with another approach just to be thorough. Let's compute the Fibonacci numbers modulo 4 up to term 10 and see the cycle.
+
+Term1:1  
+Term2:1  
+Term3:2  
+Term4:3  
+Term5:5 mod4=1  
+Term6:8 mod4=0  
+Term7:13 mod4=1  
+Term8:21 mod4=1  
+Term9:34 mod4=2  
+Term10:55 mod4=3  
+Term11:89 mod4=1  
+Term12:144 mod4=0  
+Term13:233 mod4=1  
+Term14:377 mod4=1  
+...
+
+Yes, so starting from term1, the remainders are: 1,1,2,3,1,0,1,1,2,3,1,0,1,1,... So every 6 terms, it repeats. Therefore, the cycle is indeed 6. Therefore, the 100th term modulo4 is the same as the 4th term in the cycle, which is 3.
+
+Alternatively, maybe using generating functions or another method? Let's see. The generating function for Fibonacci numbers is G(x) = x / (1 - x - x^2). But I don't think that helps here. Alternatively, maybe using the matrix exponentiation approach. The Fibonacci numbers can be represented by the matrix [[1,1],[1,0]]^n. However, computing this modulo4 might be easier. Let's see.
+
+The matrix [[1,1],[1,0]] raised to the (n-1)th power gives the nth Fibonacci number. However, since we are working modulo4, we can perform exponentiation modulo4. But even so, the exponent is 100, which is a large number. However, the order of the matrix modulo4 might be a divisor of the Pisano period. Since we already know the Pisano period is 6, maybe the matrix has order 6 modulo4. Let's check.
+
+Compute the matrix [[1,1],[1,0]]^k mod4:
+
+For k=1: [[1,1],[1,0]]
+
+k=2: [[1*1+1*1, 1*1+1*0],[1*1+0*1, 1*1+0*0]] = [[2,1],[1,1]] mod4: [[2,1],[1,1]]
+
+k=3: Multiply the above by the original matrix:
+
+First row: [2*1 +1*1, 2*1 +1*0] = [3,2]  
+Second row: [1*1 +1*1, 1*1 +1*0] = [2,1]  
+Mod4: [[3,2],[2,1]]
+
+k=4: Multiply k=3 by original matrix:
+
+First row: [3*1 +2*1, 3*1 +2*0] = [5,3] mod4: [1,3]  
+Second row: [2*1 +1*1, 2*1 +1*0] = [3,2]  
+Mod4: [[1,3],[3,2]]
+
+k=5: Multiply k=4 by original matrix:
+
+First row: [1*1 +3*1, 1*1 +3*0] = [4,1] mod4: [0,1]  
+Second row: [3*1 +2*1, 3*1 +2*0] = [5,3] mod4: [1,3]  
+Mod4: [[0,1],[1,3]]
+
+k=6: Multiply k=5 by original matrix:
+
+First row: [0*1 +1*1, 0*1 +1*0] = [1,0]  
+Second row: [1*1 +3*1, 1*1 +3*0] = [4,1] mod4: [0,1]  
+Mod4: [[1,0],[0,1]]
+
+Ah, so after 6 multiplications, we get the identity matrix modulo4. Therefore, the matrix has order 6 modulo4, which means that the Fibonacci numbers modulo4 repeat every 6 terms. Therefore, this confirms the Pisano period of 6. Therefore, the 100th Fibonacci number modulo4 is equal to the 4th Fibonacci number modulo4, which is 3. So the answer is 3.
+
+Alternatively, maybe using the formula for Fibonacci numbers in terms of the Pisano period. Since the Pisano period is 6, then F(n) mod4 = F(n mod6) mod4. So 100 mod6 is 4, so F(4) mod4=3. Therefore, the answer is 3.
+
+Therefore, after multiple methods and checks, the remainder when the 100th Fibonacci number is divided by 4 is 3.
+Therefore, the remainder when the $100^{\mathrm{th}}$ term of the sequence is divided by $4$ is $\boxed{3}$.
+</think>

@@ -1,0 +1,87 @@
+Okay, so I need to figure out where the reflection takes the vector (-2, 3) to. The problem says that a reflection takes (5, 0) to (4, 3). Hmm, reflections... right, reflections are linear transformations that flip points over a line in the plane. The line is called the line of reflection. So, if I can find the line of reflection, then I can apply the same reflection to the vector (-2, 3) and find its image.
+
+First, let me recall that a reflection matrix is symmetric and orthogonal, and it has determinant -1. But maybe I don't need to get into matrices here. Let's think geometrically. The reflection of a point over a line means that the line is the perpendicular bisector of the segment joining the original point and its image. So, if (5, 0) reflects to (4, 3), then the line of reflection must be the perpendicular bisector of the segment connecting (5, 0) and (4, 3).
+
+Let me plot these points mentally. (5, 0) is on the x-axis, 5 units to the right. (4, 3) is one unit left and three units up. The midpoint between these two points should lie on the line of reflection. Let me compute the midpoint. The midpoint formula is average of x-coordinates and average of y-coordinates. So midpoint is ((5 + 4)/2, (0 + 3)/2) = (9/2, 3/2) or (4.5, 1.5). So the line of reflection passes through (4.5, 1.5).
+
+Next, the line of reflection is perpendicular to the segment connecting (5, 0) and (4, 3). Let's find the slope of the segment. The slope between (5,0) and (4,3) is (3 - 0)/(4 - 5) = 3/(-1) = -3. Therefore, the line of reflection, being perpendicular, has a slope that is the negative reciprocal of -3, which is 1/3. So the line has slope 1/3 and passes through (4.5, 1.5). Let me write the equation of this line.
+
+Using point-slope form: y - 1.5 = (1/3)(x - 4.5). Let's convert this to standard form. Multiply both sides by 3 to eliminate the fraction: 3(y - 1.5) = x - 4.5. Then, 3y - 4.5 = x - 4.5. Adding 4.5 to both sides: 3y = x. So the equation is x - 3y = 0. Wait, let me check that again.
+
+Wait, original equation: y - 1.5 = (1/3)(x - 4.5). Multiply both sides by 3: 3y - 4.5 = x - 4.5. Then, 3y = x. So x - 3y = 0. Yes, that's correct. So the line of reflection is x - 3y = 0. Let me confirm this. The midpoint (4.5, 1.5) should lie on this line. Plugging into x - 3y: 4.5 - 3*(1.5) = 4.5 - 4.5 = 0. Correct. And the slope of x - 3y = 0 is 1/3, which matches our earlier calculation. Good.
+
+So now, the line of reflection is x - 3y = 0. Now, I need to find the reflection of the point (-2, 3) over this line. To do this, I can use the formula for reflection over a line. The formula for reflecting a point (x, y) over the line ax + by + c = 0 is:
+
+x' = (x(b² - a²) - 2a(b y + c)) / (a² + b²)
+
+y' = (y(a² - b²) - 2b(a x + c)) / (a² + b²)
+
+But wait, actually, maybe it's easier to use the formula for reflection over a line in the form y = mx + c. Since our line is x - 3y = 0, which is y = (1/3)x. So slope m = 1/3. Then the reflection formula over y = mx can be used. Let me recall the formula.
+
+If we have a line y = mx, the reflection of a point (x, y) over this line is given by:
+
+x' = [(1 - m²)x + 2m y] / (1 + m²)
+
+y' = [2m x - (1 - m²)y] / (1 + m²)
+
+Yes, that's the formula. Let me verify this. For example, if m = 0, it's reflection over x-axis: x' = x, y' = -y. Which matches the formula. If m approaches infinity, reflection over y-axis: x' = -x, y' = y. Also matches. So this formula should be correct.
+
+So in our case, m = 1/3. Therefore, m² = 1/9. So plugging into the formula:
+
+x' = [(1 - 1/9)x + 2*(1/3)y] / (1 + 1/9) = [(8/9)x + (2/3)y] / (10/9) = [(8x + 6y)/9] / (10/9) = (8x + 6y)/10 = (4x + 3y)/5
+
+Similarly,
+
+y' = [2*(1/3)x - (1 - 1/9)y] / (10/9) = [(2/3)x - (8/9)y] / (10/9) = [(6x - 8y)/9] / (10/9) = (6x - 8y)/10 = (3x - 4y)/5
+
+Therefore, the reflection of any point (x, y) over the line y = (1/3)x is ( (4x + 3y)/5 , (3x - 4y)/5 ).
+
+So now, applying this to the point (-2, 3):
+
+x' = (4*(-2) + 3*3)/5 = (-8 + 9)/5 = 1/5
+
+y' = (3*(-2) - 4*3)/5 = (-6 -12)/5 = (-18)/5
+
+Therefore, the reflection of (-2, 3) is (1/5, -18/5). Let me check if this makes sense.
+
+Wait, let me verify using another method. Another way to find reflection is to find the midpoint between the original point and its reflection, which should lie on the line of reflection, and the line connecting the original point and its reflection should be perpendicular to the line of reflection.
+
+So if the reflection of (-2, 3) is (1/5, -18/5), then the midpoint should be on the line x - 3y = 0.
+
+Midpoint is ((-2 + 1/5)/2, (3 + (-18/5))/2 ) = ( (-10/5 + 1/5)/2, (15/5 - 18/5)/2 ) = ( (-9/5)/2, (-3/5)/2 ) = (-9/10, -3/10 )
+
+Check if this lies on x - 3y = 0: (-9/10) - 3*(-3/10) = (-9/10) + 9/10 = 0. Correct. Also, the line connecting (-2, 3) and (1/5, -18/5) should be perpendicular to the line x - 3y = 0 (slope 1/3), so the slope of the connecting line should be -3.
+
+Compute the slope between (-2, 3) and (1/5, -18/5):
+
+Slope = ( (-18/5 - 3) / (1/5 - (-2)) ) = ( (-18/5 - 15/5) / (1/5 + 10/5) ) = ( (-33/5) / (11/5) ) = (-33/5) * (5/11) = -3. Correct. So the slope is -3, which is the negative reciprocal of 1/3. Therefore, the reflection is correct.
+
+Therefore, the answer is (1/5, -18/5). In boxed form, that's \boxed{\begin{pmatrix} \frac{1}{5} \\ -\frac{18}{5} \end{pmatrix}}.
+
+Wait, but let me check again. The reflection formula I used was for the line y = mx. Let me confirm that. Yes, because our line is x - 3y = 0, which can be rewritten as y = (1/3)x. So m = 1/3. Therefore, the formula applies. So the calculations are correct.
+
+Alternatively, another way to compute the reflection is to use the formula for reflection over a line in the form ax + by + c = 0. The general formula is:
+
+x' = x - 2a(ax + by + c)/(a² + b²)
+
+y' = y - 2b(ax + by + c)/(a² + b²)
+
+But in our case, the line is x - 3y = 0, so a = 1, b = -3, c = 0.
+
+Therefore,
+
+x' = x - 2*1*(1*x + (-3)*y + 0)/(1² + (-3)²) = x - 2*(x - 3y)/10 = x - (x - 3y)/5 = (5x - x + 3y)/5 = (4x + 3y)/5
+
+Similarly,
+
+y' = y - 2*(-3)*(x - 3y)/10 = y + 6*(x - 3y)/10 = y + (3x - 9y)/5 = (5y + 3x - 9y)/5 = (3x - 4y)/5
+
+Which matches the previous formula. So applying this to (-2, 3):
+
+x' = (4*(-2) + 3*3)/5 = (-8 + 9)/5 = 1/5
+
+y' = (3*(-2) - 4*3)/5 = (-6 -12)/5 = -18/5
+
+Same result. Therefore, confident that the reflection is (1/5, -18/5). So the final answer is as above.
+Therefore, the reflection takes $\begin{pmatrix} -2 \\ 3 \end{pmatrix}$ to $\boxed{\begin{pmatrix} \frac{1}{5} \\ -\frac{18}{5} \end{pmatrix}}$.
+</think>

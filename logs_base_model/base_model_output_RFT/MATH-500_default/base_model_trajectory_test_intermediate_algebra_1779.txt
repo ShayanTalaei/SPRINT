@@ -1,0 +1,240 @@
+Okay, so I need to find the area of the quadrilateral formed by the four points of tangency between the circle x² + y² = 2 and the parabola y² = 8x. Hmm, let's start by understanding the problem.
+
+First, the circle has radius √2 centered at the origin. The parabola y² = 8x opens to the right with vertex at (0,0). The Asymptote code shows that the tangents are drawn between these two curves, forming four points where they touch. The quadrilateral is then formed by connecting these four points. The task is to find the area of that quadrilateral.
+
+Since there are two common tangents, each tangent will touch both the circle and the parabola at exactly one point. So, each tangent will have two points of tangency: one on the circle and one on the parabola. Wait, but the problem mentions four points of tangency. Hmm, maybe each tangent line touches both the circle and the parabola at two points each? Wait, no, that can't be because a tangent line to a conic touches at only one point. So, there are four points total: two on the circle and two on the parabola? Wait, but the problem states "four points of tangency," so maybe each tangent line touches both the circle and the parabola at one point each, so two tangent lines, each contributing two points, making four points total. That must be it. So, two tangent lines, each tangent to both curves, so each tangent line touches the circle at one point and the parabola at another point, so two points per tangent line, four points in total. Then connecting these four points forms the quadrilateral.
+
+So, the first step is to find the equations of these two common tangents. Once we have their points of tangency, we can plot those points and then compute the area of the quadrilateral they form.
+
+To find the common tangents to both the circle and the parabola, we can use the condition that a line is tangent to both curves. Let's recall that the equation of a tangent line to a circle and a parabola can be found using their respective tangent conditions.
+
+Let's denote the equation of a line as y = mx + c. For this line to be tangent to the circle x² + y² = 2, the distance from the center (0,0) to the line must be equal to the radius. The distance from (0,0) to the line y = mx + c is |0 - m*0 + c| / sqrt(m² + 1) = |c| / sqrt(m² + 1). Since the radius is √2, this distance must equal √2. Therefore, |c| / sqrt(m² + 1) = √2 ⇒ |c| = √2 * sqrt(m² + 1). So, c = ±√2 * sqrt(m² + 1). Let's note that.
+
+Now, for the line y = mx + c to be tangent to the parabola y² = 8x, the condition is that substituting y from the line into the parabola equation gives a quadratic equation with exactly one solution. Let's substitute y = mx + c into y² = 8x:
+
+(mx + c)² = 8x ⇒ m²x² + 2mcx + c² = 8x ⇒ m²x² + (2mc - 8)x + c² = 0.
+
+For this quadratic equation to have exactly one solution, the discriminant must be zero. The discriminant D is:
+
+D = [2mc - 8]^2 - 4 * m² * c² = 0.
+
+Let's compute that:
+
+First, expand [2mc - 8]^2: 4m²c² - 32mc + 64.
+
+Then subtract 4m²c²: 4m²c² - 32mc + 64 - 4m²c² = -32mc + 64.
+
+Set this equal to zero:
+
+-32mc + 64 = 0 ⇒ -32mc = -64 ⇒ mc = 2.
+
+So, from the parabola condition, we have mc = 2. Therefore, c = 2/m, provided that m ≠ 0. If m = 0, then the line would be horizontal, but substituting into the parabola equation y = c would give c² = 8x, which is not a horizontal line (since x would be fixed as c²/8). Therefore, m cannot be zero, so c = 2/m.
+
+Now, we have two conditions:
+
+1. From the circle: |c| = √2 * sqrt(m² + 1)
+2. From the parabola: c = 2/m
+
+So, substitute c = 2/m into the first equation:
+
+|2/m| = √2 * sqrt(m² + 1)
+
+Since m ≠ 0, and considering both positive and negative values, let's square both sides to eliminate the absolute value and square root:
+
+(4/m²) = 2(m² + 1)
+
+Multiply both sides by m²:
+
+4 = 2m²(m² + 1)
+
+Divide both sides by 2:
+
+2 = m²(m² + 1)
+
+Let me set t = m². Then the equation becomes:
+
+2 = t(t + 1) ⇒ t² + t - 2 = 0
+
+Solve the quadratic equation:
+
+t = [-1 ± sqrt(1 + 8)] / 2 = [-1 ± 3]/2
+
+So, t = (-1 + 3)/2 = 1 or t = (-1 - 3)/2 = -2
+
+But t = m² cannot be negative, so t = 1. Therefore, m² = 1 ⇒ m = ±1.
+
+Therefore, the slopes of the common tangents are m = 1 and m = -1.
+
+Now, let's find c for each case:
+
+For m = 1: c = 2/m = 2/1 = 2
+
+For m = -1: c = 2/m = 2/(-1) = -2
+
+Therefore, the two tangent lines are:
+
+1. y = x + 2
+2. y = -x - 2
+
+Wait, but the Asymptote code in the problem has points like (-1,1), (2,4), etc. Let me check if these tangent lines pass through those points. Let's take the first tangent line y = x + 2. When x = -1, y = -1 + 2 = 1. So, the point (-1,1) is on this line. Similarly, when x = 2, y = 4. So, (2,4) is on this line. Similarly, for y = -x -2, when x = -1, y = 1, so (-1, -1) is on this line, and when x = 2, y = -4. So, (2, -4) is on this line. Therefore, the four points of tangency are (-1,1), (2,4), (-1,-1), and (2,-4). These points form a quadrilateral. Wait, but connecting (-1,1) to (2,4) and (-1,-1) to (2,-4) would form two lines, but the quadrilateral is formed by connecting (-1,1) to (-1,-1), (-1,-1) to (2,-4), (2,-4) to (2,4), and (2,4) to (-1,1). Wait, but actually, the quadrilateral is formed by connecting the four points in order. Wait, but the Asymptote code draws lines between A-B and C-D, then draws A-C and B-D. So, perhaps the quadrilateral is a kite? Let's see.
+
+Wait, but maybe the quadrilateral is a convex quadrilateral with vertices at (-1,1), (2,4), (2,-4), (-1,-1). Let's check the coordinates:
+
+If we plot these points:
+
+(-1,1) and (-1,-1) are vertical points on x = -1, at y = 1 and y = -1.
+
+(2,4) and (2,-4) are vertical points on x = 2, at y = 4 and y = -4.
+
+Connecting these points in order would form a quadrilateral with vertices at (-1,1), (2,4), (2,-4), (-1,-1), and back to (-1,1). Wait, but that seems like a trapezoid, but actually, if you connect (-1,1) to (2,4), then (2,4) to (2,-4), then (2,-4) to (-1,-1), then (-1,-1) to (-1,1), that's not a convex quadrilateral. Wait, but maybe the correct order is (-1,1), (2,4), (2,-4), (-1,-1), but that would create a bowtie shape, which is not a convex quadrilateral. Wait, maybe the quadrilateral is formed by connecting (-1,1) to (2,4), (2,4) to (2,-4), (2,-4) to (-1,-1), and (-1,-1) to (-1,1), but that seems like a bowtie. But the problem says the quadrilateral formed by the four points of tangency. Wait, but maybe the four points are (-1,1), (2,4), (2,-4), (-1,-1), and the quadrilateral is the convex hull of these points. Let's see: the convex hull would be a quadrilateral with vertices at (-1,1), (2,4), (2,-4), (-1,-1), but arranged such that the sides are between (-1,1) to (2,4), (2,4) to (2,-4), (2,-4) to (-1,-1), and (-1,-1) to (-1,1). But wait, that doesn't form a convex quadrilateral because the sides between (2,4) to (2,-4) and (-1,-1) to (-1,1) are vertical lines, and the sides between (-1,1) to (2,4) and (2,-4) to (-1,-1) would cross each other. Wait, maybe the quadrilateral is actually a rectangle? Let me check the coordinates again.
+
+Wait, the four points are (-1,1), (2,4), (2,-4), (-1,-1). Let's compute the distances between consecutive points.
+
+First, between (-1,1) and (2,4): distance is sqrt[(2 - (-1))² + (4 - 1)²] = sqrt[9 + 9] = sqrt[18] = 3√2.
+
+Between (2,4) and (2,-4): distance is sqrt[(2-2)² + (-4 - 4)^2] = sqrt[0 + 64] = 8.
+
+Between (2,-4) and (-1,-1): sqrt[(-1 - 2)^2 + (-1 - (-4))^2] = sqrt[9 + 9] = sqrt[18] = 3√2.
+
+Between (-1,-1) and (-1,1): sqrt[(-1 - (-1))^2 + (1 - (-1))^2] = sqrt[0 + 4] = 2.
+
+Wait, but the sides between (2,4) and (2,-4) is 8 units, and the sides between (-1,1) and (-1,-1) is 2 units. The other sides are 3√2 each. So, the quadrilateral has two sides of length 3√2 and two sides of length 8 and 2. That seems irregular. Wait, perhaps the quadrilateral is a trapezoid? Wait, but for a trapezoid, two sides need to be parallel. Let's check the slopes of the sides:
+
+From (-1,1) to (2,4): slope is (4 - 1)/(2 - (-1)) = 3/3 = 1.
+
+From (2,4) to (2,-4): slope is (-4 - 4)/(2 - 2) = (-8)/0, which is undefined (vertical line).
+
+From (2,-4) to (-1,-1): slope is (-1 - (-4))/(-1 - 2) = (3)/(-3) = -1.
+
+From (-1,-1) to (-1,1): slope is (1 - (-1))/(-1 - (-1)) = 2/0, which is undefined (vertical line).
+
+Wait, so the sides between (-1,1) to (2,4) has slope 1, (2,4) to (2,-4) is vertical, (2,-4) to (-1,-1) has slope -1, and (-1,-1) to (-1,1) is vertical. So, the sides with slopes 1 and -1 are not parallel, but the vertical sides are parallel. So, the quadrilateral has two vertical sides and two sides with slopes 1 and -1. So, it's a trapezoid with two parallel sides (the vertical ones) and the other two sides intersecting. Wait, but in a trapezoid, only one pair of sides needs to be parallel. But here, both pairs of sides are vertical, so actually, it's a rectangle? Wait, but the vertical sides are of different lengths. Wait, the vertical sides are from (-1,1) to (-1,-1): length 2, and from (2,4) to (2,-4): length 8. So, the vertical sides are not equal, so they can't form a rectangle. But if two sides are vertical and the other two sides are non-parallel, then it's a trapezoid. But in this case, since the two vertical sides are parallel, but the other two sides are not parallel, so it's a trapezoid.
+
+Alternatively, perhaps the quadrilateral is symmetric with respect to the x-axis. Let me check:
+
+The points (-1,1) and (-1,-1) are symmetric across the x-axis. Similarly, (2,4) and (2,-4) are symmetric across the x-axis. Therefore, the quadrilateral is symmetric with respect to the x-axis. Therefore, the area can be computed by finding the area of the upper half and doubling it.
+
+Alternatively, since the quadrilateral is symmetric, perhaps it's a kite. Wait, a kite has two pairs of adjacent sides equal. Let's check:
+
+From (-1,1) to (2,4): distance 3√2.
+
+From (2,4) to (2,-4): distance 8.
+
+From (2,-4) to (-1,-1): distance 3√2.
+
+From (-1,-1) to (-1,1): distance 2.
+
+So, the sides are 3√2, 8, 3√2, 2. So, two sides are equal (3√2), and the other two sides are unequal (8 and 2). Therefore, it's not a kite. Alternatively, maybe it's a trapezoid.
+
+Alternatively, perhaps the quadrilateral is a convex quadrilateral with vertices at (-1,1), (2,4), (2,-4), (-1,-1). Let's compute the coordinates again:
+
+Plotting the points:
+
+(-1,1) is left upper, (2,4) is right upper, (2,-4) is right lower, (-1,-1) is left lower.
+
+Connecting these in order would form a quadrilateral that's symmetric over the x-axis. The area can be calculated using the shoelace formula.
+
+Yes, the shoelace formula is a good approach here. Let's list the coordinates in order. Since the quadrilateral is symmetric, maybe listing them as (-1,1), (2,4), (2,-4), (-1,-1), and back to (-1,1). Let's apply the shoelace formula.
+
+Shoelace formula: For coordinates (x1,y1), (x2,y2), ..., (xn,yn), area = 1/2 |sum_{i=1 to n} (xi*yi+1 - xi+1*yi)|, where xn+1 = x1, yn+1 = y1.
+
+Let's list the coordinates in order:
+
+1. (-1, 1)
+2. (2, 4)
+3. (2, -4)
+4. (-1, -1)
+5. (-1, 1)  // back to the first point
+
+Compute the sum:
+
+Term 1: x1*y2 - x2*y1 = (-1)*4 - 2*1 = -4 - 2 = -6
+
+Term 2: x2*y3 - x3*y2 = 2*(-4) - 2*4 = -8 - 8 = -16
+
+Term 3: x3*y4 - x4*y3 = 2*(-1) - (-1)*(-4) = -2 - 4 = -6
+
+Term 4: x4*y5 - x5*y4 = (-1)*1 - (-1)*(-1) = -1 - 1 = -2
+
+Sum of terms: (-6) + (-16) + (-6) + (-2) = -29
+
+Take absolute value and multiply by 1/2: | -29 | * 1/2 = 29/2 = 14.5
+
+Wait, that's 29/2. But let's verify the calculations step by step to make sure.
+
+First, term 1: (-1)*4 - 2*1 = -4 - 2 = -6. Correct.
+
+Term 2: 2*(-4) - 2*4 = -8 -8 = -16. Correct.
+
+Term 3: 2*(-1) - (-1)*(-4) = -2 -4 = -6. Correct.
+
+Term 4: (-1)*1 - (-1)*(-1) = -1 -1 = -2. Correct.
+
+Sum: -6 -16 -6 -2 = -29. Absolute value 29, half of that is 14.5, which is 29/2. So, area is 29/2.
+
+But wait, the problem states "the quadrilateral formed by the four points of tangency," and according to the Asymptote code, the points are A(-1,1), B(2,4), C(-1,-1), D(2,-4). So, perhaps the quadrilateral is actually a convex quadrilateral with vertices A, B, D, C? Wait, let's check the order. The Asymptote code draws A--B and C--D, then A--C and B--D. So, the quadrilateral is formed by the lines connecting A to B, B to D, D to C, and C to A. Wait, but that might form a different quadrilateral. Wait, maybe the four points form two triangles? Wait, the Asymptote code draws A--B and C--D, then draws A--C and B--D, which are the diagonals, forming a quadrilateral with vertices A, B, D, C. Wait, but then the area would be the sum of the areas of triangles ABC and ADC? Wait, perhaps not. Wait, maybe the quadrilateral is A-B-D-C-A, which is a convex quadrilateral.
+
+Let me check the coordinates again:
+
+A(-1,1), B(2,4), D(2,-4), C(-1,-1). So, connecting A to B to D to C to A. Let's compute the area using shoelace formula for these points.
+
+List the coordinates in order:
+
+1. (-1,1)
+2. (2,4)
+3. (2,-4)
+4. (-1,-1)
+5. (-1,1)
+
+Compute the terms:
+
+Term 1: (-1)*4 - 2*1 = -4 -2 = -6
+
+Term 2: 2*(-4) - 2*4 = -8 -8 = -16
+
+Term 3: 2*(-1) - (-1)*(-4) = -2 -4 = -6
+
+Term 4: (-1)*1 - (-1)*(-1) = -1 -1 = -2
+
+Sum: -6 -16 -6 -2 = -29
+
+Area: 1/2 * | -29 | = 29/2. So, same result. Therefore, the area is 29/2. So, 14.5.
+
+Wait, but according to the Asymptote code, the figure is drawn with lines A--B and C--D, then A--C and B--D. So, the quadrilateral is formed by the four points A, B, D, C. Wait, but in the Asymptote code, the points are A, B, C, D in the order of (-1,1), (2,4), (-1,-1), (2,-4). So, the original order is A, B, C, D. Then, the code draws A--B, C--D, A--C, B--D. So, the figure is a quadrilateral with vertices A, B, D, C. Wait, maybe the actual quadrilateral is A-B-D-C. Let me confirm the order.
+
+Wait, the Asymptote code draws A--B and C--D, then draws A--C and B--D. So, the figure is a bowtie shape, with two triangles ABC and ADC overlapping. But the problem mentions "the quadrilateral formed by the four points of tangency," so perhaps the actual convex hull is the quadrilateral with vertices A, B, D, C, which is a convex quadrilateral with area 29/2. Therefore, the answer is 29/2, which is 14.5. But let me confirm once again.
+
+Alternatively, maybe the quadrilateral is the convex hull of the four points. Let's compute the convex hull. The four points are (-1,1), (2,4), (-1,-1), (2,-4). The convex hull would be the largest convex polygon that contains all four points. Since the points are in two pairs symmetric over the x-axis, the convex hull would include the two upper points (2,4) and (-1,1), and the two lower points (2,-4) and (-1,-1). Therefore, the convex hull is a quadrilateral with vertices (-1,1), (2,4), (2,-4), (-1,-1). Which is exactly the same as before, so the area is 29/2.
+
+Therefore, the area is 29/2. So, \boxed{\dfrac{29}{2}}.
+
+But let me confirm once more using another method, like dividing into triangles.
+
+Alternatively, since the quadrilateral is symmetric with respect to the x-axis, we can compute the area of the upper half and double it.
+
+The upper half consists of the points (-1,1), (2,4), and (-1,-1). Wait, no. Wait, the upper half would be the triangle formed by (-1,1), (2,4), and the reflection of (-1,1) over the x-axis, which is (-1,-1). Wait, but that's not the case. Wait, perhaps better to split the quadrilateral into two triangles: one above the x-axis and one below.
+
+The upper triangle has vertices (-1,1), (2,4), (-1,-1). Wait, no, that would cross over. Wait, perhaps the upper part is the triangle (-1,1), (2,4), and (2,-4). Wait, no, that's mixing upper and lower parts.
+
+Alternatively, split the quadrilateral along the x-axis. The upper part is the triangle formed by (-1,1), (2,4), and (2,1). Wait, but there's no such point. Alternatively, maybe the area can be split into two trapezoids.
+
+Alternatively, using coordinates, the area can be calculated as the sum of two triangles: one above the x-axis and one below.
+
+But since the points are symmetric, the area above the x-axis is the same as the area below the x-axis. So, compute the area above the x-axis and double it.
+
+The upper points are (-1,1) and (2,4). The lower points are (-1,-1) and (2,-4). The area above the x-axis can be considered as the area of the polygon with vertices (-1,1), (2,4), (2,1), (-1,1). Wait, but (2,1) isn't a point here. Alternatively, the upper part is a triangle with vertices (-1,1), (2,4), and (2,1), but there's no point at (2,1). Wait, perhaps the upper part is a trapezoid with vertices (-1,1), (2,4), (2,1), (-1,1). But again, (2,1) isn't a point. Wait, maybe not.
+
+Alternatively, since the quadrilateral is symmetric, the area can be calculated as twice the area of the upper half.
+
+The upper half consists of the triangle formed by (-1,1), (2,4), and the projection of (-1,1) onto the x-axis, which is (-1,0). Wait, no, that's not correct.
+
+Alternatively, maybe the upper part is a triangle between (-1,1), (2,4), and (2,1). But again, (2,1) is not a point. Wait, perhaps the upper part is a triangle between (-1,1), (2,4), and the origin (0,0). But that might not be accurate.
+
+Alternatively, maybe it's better to stick with the shoelace formula. Since the shoelace formula gave 29/2, and the symmetry confirms that, I think that's the correct area.
+
+Therefore, the area of the quadrilateral formed by the four points of tangency is 29/2.
+
+**Final Answer**
+\boxed{\dfrac{29}{2}}
+Therefore, the area of the quadrilateral formed by the four points of tangency is $\boxed{\dfrac{29}{2}}$.
+</think>

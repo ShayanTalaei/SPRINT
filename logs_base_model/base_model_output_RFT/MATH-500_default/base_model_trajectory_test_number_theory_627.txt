@@ -1,0 +1,55 @@
+Okay, let's see. The problem says that if n is congruent to 2 modulo 7, then find the remainder when (n + 2)(n + 4)(n + 6) is divided by 7. Hmm, modular arithmetic. Alright, so n ≡ 2 mod 7. That means when n is divided by 7, the remainder is 2. So n can be written as 7k + 2 for some integer k. But maybe instead of dealing with k, I can just substitute n with 2 modulo 7. Let me think.
+
+So, if n ≡ 2 mod 7, then adding numbers to n would be straightforward. Let me break down each term:
+
+First term: n + 2. Since n ≡ 2 mod 7, then n + 2 ≡ 2 + 2 ≡ 4 mod 7.
+
+Second term: n + 4. Similarly, 2 + 4 = 6, so n + 4 ≡ 6 mod 7.
+
+Third term: n + 6. 2 + 6 = 8, but 8 mod 7 is 1, so n + 6 ≡ 1 mod 7.
+
+So now, the product is (4)(6)(1) mod 7. Let's compute that. 4*6 is 24, and 24 mod 7. Hmm, 7*3=21, so 24-21=3. So 24 ≡ 3 mod 7. Then 3*1 = 3. So the product is 3 mod 7. Therefore, the remainder is 3.
+
+Wait, that seems straightforward. But maybe I should check with an actual number to verify. Let's pick n such that n ≡ 2 mod 7. Let's take n = 2. Then (2 + 2)(2 + 4)(2 + 6) = 4*6*8 = 192. Divide 192 by 7. 7*27=189, so 192 - 189 = 3. Remainder 3. Same as before.
+
+Another example: n = 9 (since 9 ≡ 2 mod 7). Then (9 + 2)(9 + 4)(9 + 6) = 11*13*15. Let's compute that: 11*13 = 143, 143*15. 143*10=1430, 143*5=715, so total 2145. Divide 2145 by 7. 7*306=2142, so remainder 3. Again, same result. So seems consistent.
+
+Alternatively, maybe using properties of modulo arithmetic. Since n ≡ 2 mod 7, we can substitute n with 2 in the expression (n + 2)(n + 4)(n + 6), and then compute modulo 7. As above, that gives 4*6*1 = 24 ≡ 3 mod 7. So that works.
+
+Alternatively, maybe there's a smarter way. Let's note that (n + 2)(n + 4)(n + 6) can be written as (n + 2)(n + 4)(n + 6). Let me see if there's a pattern or expansion here. Expanding might be tedious, but let's try.
+
+First, multiply (n + 2)(n + 4):
+
+(n + 2)(n + 4) = n² + 6n + 8.
+
+Then multiply by (n + 6):
+
+(n² + 6n + 8)(n + 6) = n³ + 6n² + 8n + 6n² + 36n + 48.
+
+Combine like terms:
+
+n³ + (6n² + 6n²) + (8n + 36n) + 48 = n³ + 12n² + 44n + 48.
+
+Now, since we're working modulo 7, we can reduce the coefficients modulo 7.
+
+12n² mod 7: 12 ≡ 5 mod 7, so 5n².
+
+44n mod 7: 44 ÷ 7 is 6*7=42, remainder 2, so 2n.
+
+48 mod 7: 48 ÷ 7 is 6*7=42, remainder 6, so 6.
+
+So the expression simplifies to n³ + 5n² + 2n + 6 mod 7.
+
+But since n ≡ 2 mod 7, substitute n = 2:
+
+2³ + 5*(2)² + 2*2 + 6 = 8 + 5*4 + 4 + 6 = 8 + 20 + 4 + 6 = 38.
+
+38 mod 7: 7*5=35, 38-35=3. So remainder 3. Again, same answer.
+
+So regardless of the method, the remainder is 3. Therefore, the answer should be 3.
+
+Alternatively, maybe using polynomial congruences. Since n ≡ 2 mod 7, we can substitute into the polynomial.
+
+But seems like all approaches lead to the same result. So I think 3 is the correct remainder.
+Therefore, the remainder when $(n + 2)(n + 4)(n + 6)$ is divided by $7$ is $\boxed{3}$.
+</think>

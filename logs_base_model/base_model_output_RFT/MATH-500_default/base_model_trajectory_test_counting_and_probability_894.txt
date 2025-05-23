@@ -1,0 +1,65 @@
+Okay, so I need to figure out how many ways six distinguishable cars can stack up at a red light with three lanes: left-turn, straight-going, and right-turn. All three lanes must be occupied. The cars come one at a time, so the order matters. Let me think through this step by step.
+
+First, since each car is distinguishable and the order in which they arrive is fixed, the problem is about assigning each car to one of the three lanes such that each lane has at least one car. This sounds like a permutation problem with restrictions. Specifically, it's similar to counting the number of onto functions from a set of six elements (cars) to a set of three elements (lanes), but with the added complexity that the cars are ordered. Wait, but actually, the cars are coming one at a time, so the order matters, but each car is assigned to a lane as they arrive. Hmm, maybe it's more about permutations with certain conditions.
+
+Wait, let me clarify. The problem states that the cars pull up one at a time, so the sequence in which they arrive is fixed. Each car is assigned to a lane when it arrives. The lanes must all be occupied, meaning that each of the three lanes must have at least one car. So the problem reduces to counting the number of assignments of six cars to three lanes, where each lane gets at least one car, and the order of cars is fixed. But since the order of arrival is fixed, perhaps the problem is equivalent to counting the number of ways to partition the six cars into three non-empty subsets, where each subset corresponds to a lane. But since the lanes are distinct (left, straight, right), the order of the subsets matters. So this is equivalent to the number of surjective functions from the set of cars to the set of lanes, multiplied by the number of orderings of the cars? Wait, no, because the cars are already arriving in a fixed order. So maybe it's similar to arranging the cars into three ordered groups where each group is non-empty, and the order within each group matters?
+
+Wait, perhaps it's better to model this as assigning each car to one of the three lanes, such that each lane has at least one car. Since the cars are distinguishable and the order of arrival is fixed, each assignment corresponds to a sequence of lane choices for each car. However, the problem is about the final stacking up, which is the order of cars in each lane. Since the cars are distinguishable and the order in which they arrive is fixed, the stacking up would be the order in which they arrive in each lane. Wait, but the problem says "how many ways can the cars stack up so that all three lanes are occupied?" So the stacking up refers to the order in which the cars are arranged in each lane? Or is it just the assignment of cars to lanes, regardless of order within the lane? The problem statement says that if the first car turns left and the second goes straight, this is different from the first car going straight and the second turning left. So the order in which the cars arrive at the intersection matters, but each car is assigned to a lane when it arrives. So the final stacking up would be the order of cars in each lane. Therefore, the problem is equivalent to: given six cars arriving in a fixed order, assign each car to one of three lanes (left, straight, right), such that each lane has at least one car, and then the order within each lane is determined by the arrival order. Therefore, the total number of ways is the number of assignments where each lane has at least one car, multiplied by the number of possible orderings within each lane, but since the arrival order is fixed, the order within each lane is fixed as well. Wait, maybe not. Wait, if the cars arrive in a fixed order, but each car is assigned to a lane, then the order in which they appear in each lane is determined by their arrival order. So for example, the first car is assigned to left, the second to straight, etc. So the stacking up is just the assignment of each car to a lane, but the order in which they appear in each lane is fixed by their arrival order. Therefore, the problem reduces to assigning each car to a lane, with the constraint that each lane has at least one car. Since the order of arrival is fixed, the problem is similar to counting the number of onto functions from the set of six cars to the three lanes, where each car is assigned to exactly one lane, and each lane is assigned at least one car. Then, since the order of arrival is fixed, the order within each lane is determined by the arrival order.
+
+Therefore, the number of ways is equal to the number of onto functions from 6 elements to 3 elements. The number of onto functions is given by the formula:
+
+Number of onto functions = 3! * S(6,3)
+
+where S(6,3) is the Stirling numbers of the second kind, which count the number of ways to partition a set of 6 elements into 3 non-empty subsets. Then, since the lanes are distinguishable, we multiply by 3! to account for the different assignments of subsets to lanes.
+
+Alternatively, another formula for the number of onto functions is:
+
+∑_{k=0 to 3} (-1)^k * C(3, k) * (3 - k)^6
+
+Using inclusion-exclusion principle. Let's compute that.
+
+First, compute the total number of functions: 3^6.
+
+Subtract the functions that miss at least one lane. So subtract functions where cars are assigned to only two lanes: C(3,1)*(2^6).
+
+But then add back the functions that miss two lanes: C(3,2)*(1^6).
+
+Finally, subtract the functions that miss all three lanes, but that's zero. So:
+
+Number of onto functions = 3^6 - 3*2^6 + 3*1^6.
+
+Compute each term:
+
+3^6 = 729
+
+2^6 = 64, so 3*64 = 192
+
+1^6 = 1, so 3*1 = 3
+
+Therefore:
+
+729 - 192 + 3 = 729 - 192 is 537, plus 3 is 540.
+
+Alternatively, using Stirling numbers:
+
+S(6,3) = ?
+
+The formula for Stirling numbers of the second kind is:
+
+S(n,k) = S(n-1,k-1) + k*S(n-1,k)
+
+But maybe we can compute S(6,3) directly.
+
+Alternatively, S(6,3) can be calculated as:
+
+S(6,3) = (3^6 - 3*2^6 + 3*1^6)/3! = (729 - 192 + 3)/6 = 540/6 = 90.
+
+Therefore, the number of onto functions is 3! * S(6,3) = 6 * 90 = 540. Which matches the inclusion-exclusion result. So the number of ways is 540.
+
+Wait, but let me make sure. The key here is that each car is assigned to a lane, and each lane must have at least one car. Since the cars are distinguishable and the order of arrival is fixed, the number of such assignments is indeed the number of onto functions, which is 540. Therefore, the answer should be 540.
+
+But let me double-check. Let's consider a simpler case. Suppose there are 3 cars and 3 lanes. Then the number of onto functions is 3! = 6. Which is correct, as each car can go to a different lane. If there are 2 cars and 3 lanes, the number of onto functions is 0, since you can't have 2 cars covering 3 lanes. If there are 4 cars and 3 lanes, the number of onto functions is 3^4 - 3*2^4 + 3*1^4 = 81 - 48 + 3 = 36. Let me verify with Stirling numbers: S(4,3) = 6, so 3! * 6 = 36. Correct. So the formula works for the simpler case.
+
+Therefore, applying it to 6 cars and 3 lanes: 3^6 - 3*2^6 + 3*1^6 = 729 - 192 + 3 = 540. So the answer is 540. Therefore, the cars can stack up in 540 different ways such that all three lanes are occupied.
+Therefore, the total number of ways the cars can stack up so that all three lanes are occupied is $\boxed{540}$.
+</think>

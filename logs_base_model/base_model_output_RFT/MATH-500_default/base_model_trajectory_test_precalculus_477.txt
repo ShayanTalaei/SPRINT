@@ -1,0 +1,155 @@
+Okay, so I need to find the area of triangle OAB given the vectors OA and OB. Let me start by recalling how to calculate the area of a triangle when you have two vectors from the same point. I think the formula involves the cross product of the vectors. Let me remember: the area is half the magnitude of the cross product of the two vectors. So if I have vectors OA and OB, then the area should be (1/2) times the magnitude of OA cross OB. 
+
+Let me verify that. For a triangle with vertices at points O, A, and B, the vectors from O to A and from O to B are indeed OA and OB. The area can be found using the cross product because the cross product of OA and OB gives a vector whose magnitude is equal to the area of the parallelogram formed by OA and OB. Therefore, half of that would be the area of the triangle. Yeah, that makes sense. So the formula is Area = (1/2) || OA × OB ||.
+
+Alright, so my next step is to compute the cross product of OA and OB. Let me write down the vectors again. OA is (1, 2, 3) and OB is (-3, -2, 1). The cross product OA × OB can be calculated using the determinant formula for a 3x3 matrix with the standard unit vectors i, j, k in the first row, the components of OA in the second row, and the components of OB in the third row.
+
+So, setting that up:
+
+i  j  k
+1  2  3
+-3 -2 1
+
+The determinant would be calculated as:
+
+i*(2*1 - 3*(-2)) - j*(1*1 - 3*(-3)) + k*(1*(-2) - 2*(-3))
+
+Let me compute each component step by step.
+
+First, the i component: 2*1 is 2, and 3*(-2) is -6. So 2 - (-6) is 2 + 6 = 8. So i*8.
+
+Next, the j component: It's subtracted, so it's -(1*1 - 3*(-3)). Let's compute inside the parentheses first: 1*1 is 1, and 3*(-3) is -9. So 1 - (-9) is 1 + 9 = 10. Therefore, the j component is -10.
+
+Wait, hold on. Wait, the formula is i*(j component determinant) - j*(i component determinant) + k*(the other determinant). So for the j component, it's minus the determinant of the matrix without the j column. Let me make sure I did that right.
+
+Yes, the cross product formula is:
+
+If vector OA = (a1, a2, a3) and vector OB = (b1, b2, b3), then OA × OB is:
+
+( a2*b3 - a3*b2, a3*b1 - a1*b3, a1*b2 - a2*b1 )
+
+Wait, maybe I confused the signs. Let me confirm.
+
+Alternatively, using the determinant:
+
+|i  j  k|
+|1  2  3|
+|-3 -2 1|
+
+The cross product is computed as:
+
+i*(2*1 - 3*(-2)) - j*(1*1 - 3*(-3)) + k*(1*(-2) - 2*(-3))
+
+So let's compute each part again to be precise.
+
+First component (i): 2*1 = 2, 3*(-2) = -6. So 2 - (-6) = 8. So i*8.
+
+Second component (j): It's subtracted. The determinant here is 1*1 = 1, 3*(-3) = -9. So 1 - (-9) = 10. Then we subtract that, so -10. So j*(-10) is -10j.
+
+Third component (k): 1*(-2) = -2, 2*(-3) = -6. So -2 - (-6) = -2 + 6 = 4. So k*4.
+
+Therefore, the cross product OA × OB is (8, -10, 4). Wait, but the components are in the order i, j, k, so that's 8i -10j +4k, which is (8, -10, 4).
+
+Now, to find the magnitude of this vector. The magnitude is sqrt(8^2 + (-10)^2 + 4^2). Let's compute each term:
+
+8^2 = 64
+
+(-10)^2 = 100
+
+4^2 = 16
+
+Adding them up: 64 + 100 = 164, 164 + 16 = 180.
+
+So the magnitude is sqrt(180). Simplify sqrt(180). 180 factors into 36*5, so sqrt(36*5) = 6*sqrt(5). Therefore, the magnitude is 6√5.
+
+Therefore, the area of the triangle is (1/2)*6√5 = 3√5.
+
+Wait, let me check my cross product again to make sure I didn't make a mistake. Maybe I messed up the signs.
+
+Original vectors:
+
+OA = (1, 2, 3)
+
+OB = (-3, -2, 1)
+
+Cross product formula:
+
+i*(2*1 - 3*(-2)) - j*(1*1 - 3*(-3)) + k*(1*(-2) - 2*(-3))
+
+Calculations:
+
+First term: 2*1 = 2, 3*(-2) = -6. So 2 - (-6) = 8. Correct.
+
+Second term: 1*1 = 1, 3*(-3) = -9. So 1 - (-9) = 10. Then multiplied by -1: -10. Correct.
+
+Third term: 1*(-2) = -2, 2*(-3) = -6. So -2 - (-6) = 4. Correct.
+
+So cross product is (8, -10, 4). Correct. Then magnitude squared is 8^2 + (-10)^2 + 4^2 = 64 + 100 + 16 = 180. Square root of 180 is 6√5. Then half of that is 3√5. So area is 3√5.
+
+Wait, but let me confirm if the cross product formula is correctly applied. The cross product of OA and OB is indeed (OA_y*OB_z - OA_z*OB_y, OA_z*OB_x - OA_x*OB_z, OA_x*OB_y - OA_y*OB_x). Let's check that.
+
+OA_y = 2, OB_z = 1, so 2*1 = 2. OA_z = 3, OB_y = -2, so 3*(-2) = -6. So 2 - (-6) = 8. Correct for the first component.
+
+Second component: OA_z*OB_x = 3*(-3) = -9. OA_x*OB_z = 1*1 = 1. So -9 -1 = -10. Wait, but the cross product formula for the second component is OA_z*OB_x - OA_x*OB_z, which is 3*(-3) - 1*1 = -9 -1 = -10. Then since the cross product formula for the second component is subtracted, so it's -(-10) = 10? Wait, no. Wait, in the cross product formula, the components are:
+
+i*(OA_y*OB_z - OA_z*OB_y) - j*(OA_x*OB_z - OA_z*OB_x) + k*(OA_x*OB_y - OA_y*OB_x)
+
+Wait, so the second component is subtracted (because of the -j), and inside the parentheses is OA_x*OB_z - OA_z*OB_x. Let me compute that.
+
+OA_x*OB_z = 1*1 = 1
+
+OA_z*OB_x = 3*(-3) = -9
+
+So OA_x*OB_z - OA_z*OB_x = 1 - (-9) = 10
+
+Then the second component is -10, which is correct. So the cross product is (8, -10, 4). So magnitude squared is 64 + 100 +16 = 180. So area is 3√5. Hmm, that seems correct.
+
+Wait, but let me check once more. Maybe using another method, like Heron's formula, to confirm.
+
+Heron's formula requires the lengths of all three sides. Let's compute the lengths OA, OB, and AB.
+
+First, OA is given by the vector (1, 2, 3). Its magnitude is sqrt(1^2 + 2^2 + 3^2) = sqrt(1 +4 +9) = sqrt(14).
+
+Similarly, OB is (-3, -2, 1). Its magnitude is sqrt((-3)^2 + (-2)^2 +1^2) = sqrt(9 +4 +1) = sqrt(14). Wait, both OA and OB have magnitude sqrt(14)? Interesting.
+
+Now, AB is the vector from A to B, which is OB - OA. So AB = OB - OA = (-3 -1, -2 -2, 1 -3) = (-4, -4, -2). The magnitude of AB is sqrt((-4)^2 + (-4)^2 + (-2)^2) = sqrt(16 +16 +4) = sqrt(36) = 6.
+
+So the sides of the triangle are OA = sqrt(14), OB = sqrt(14), AB = 6.
+
+Now, using Heron's formula: the semi-perimeter s = (sqrt(14) + sqrt(14) +6)/2 = (2*sqrt(14) +6)/2 = sqrt(14) +3.
+
+Then the area is sqrt[s(s - OA)(s - OB)(s - AB)].
+
+Plugging in:
+
+sqrt[ (sqrt(14) +3)(sqrt(14) +3 - sqrt(14))(sqrt(14) +3 - sqrt(14))(sqrt(14) +3 -6) ]
+
+Simplify each term:
+
+s = sqrt(14) +3
+
+s - OA = sqrt(14) +3 - sqrt(14) = 3
+
+s - OB = same as s - OA =3
+
+s - AB = sqrt(14) +3 -6 = sqrt(14) -3
+
+Therefore, the area is sqrt[ (sqrt(14) +3)(3)(3)(sqrt(14) -3) ]
+
+Multiply the terms inside the square root:
+
+First, multiply (sqrt(14) +3)(sqrt(14) -3) = (sqrt(14))^2 -3^2 =14 -9=5
+
+Then multiply by 3*3=9. So 5*9=45
+
+Thus, the area is sqrt(45) =3*sqrt(5). Which matches the previous result. So that's a good check.
+
+Therefore, the area is indeed 3√5. So the answer should be 3√5. 
+
+But just to make sure, let me think if there's another way to approach this problem. For example, using coordinates. Let's see. Since O is the origin, points A and B have coordinates (1,2,3) and (-3,-2,1) respectively. The area of triangle OAB is half the area of the parallelogram formed by OA and OB. So again, that's the cross product method. So same result.
+
+Alternatively, if I project the vectors onto a plane, but that might complicate things. The cross product method is straightforward here. Since we've confirmed it with Heron's formula, which is a bit more involved but gives the same answer, I can be confident that 3√5 is correct.
+
+So, the area is 3√5. Therefore, the final answer is \boxed{3\sqrt{5}}.
+Therefore, the area of triangle $OAB$ is $\boxed{3\sqrt{5}}$.
+</think>

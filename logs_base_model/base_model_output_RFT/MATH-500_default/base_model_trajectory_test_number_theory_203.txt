@@ -1,0 +1,166 @@
+Okay, let's see. The problem is asking for the least possible sum of a set of distinct positive integers whose product is 84. Hmm. So I need to find a set of numbers, all different, multiply to 84, and when you add them up, that sum is as small as possible. Alright, let me start by breaking down the problem.
+
+First, I should factorize 84 into its prime factors. Let me do that. 84 divided by 2 is 42, divided by 2 again is 21, which is 3 times 7. So the prime factors are 2, 2, 3, 7. So 84 = 2² × 3 × 7. Now, the challenge is to split these prime factors into distinct integers in such a way that their product is 84, and their sum is minimized.
+
+Since we need distinct integers, I can't just have multiple 2s or 3s. So I need to combine these prime factors into different numbers. The key here is that combining factors can either increase or decrease the sum. For example, if I combine 2 and 3 to make 6, the sum would be 6 instead of 2+3=5. Wait, that actually increases the sum. Hmm, so maybe combining factors isn't always better? Wait, but maybe if we combine in a way that leads to a smaller sum overall. Let me think.
+
+Alternatively, perhaps breaking down the factors into smaller distinct numbers. Wait, the prime factors are 2, 2, 3, 7. So maybe I can make numbers like 2, 3, 14 (since 2×7=14), which would be 2, 3, 14. Their sum is 2+3+14=19. Alternatively, if I make 4 (from 2×2), 3, 7. Then the sum is 4+3+7=14. That's better. Wait, 4 is 2², so that uses the two 2s. Then 3 and 7. So the product is 4×3×7=84, and the sum is 14. That seems better.
+
+But maybe there's a way to get an even smaller sum. Let me check. Let's see, 84 can also be represented as 6×14. But 6 and 14 are distinct, but their sum is 6+14=20, which is higher than 14. Alternatively, 84 as 2×2×3×7. If we group them as 2, 2, 3, 7. But those are not distinct. So we need to combine some factors. Let's see.
+
+Another approach: Maybe using more numbers. For example, 2, 3, 4, 7. Their product is 2×3×4×7=168, which is too big. So that's not 84. Wait, that's incorrect. Wait, 2×3×4×7 is 168. So that's double 84. So that's not helpful. So maybe using fewer numbers is better.
+
+Wait, maybe another combination. Let's see. Let's try using 3 numbers. For example, 3, 4, 7. Product is 3×4×7=84. Sum is 3+4+7=14. Same as before. Or 2, 6, 7. Product is 2×6×7=84. Sum is 2+6+7=15. That's higher. Or 2, 3, 14. Sum is 19. So 3,4,7 is better with sum 14.
+
+Alternatively, could I get a sum lower than 14? Let's see. Let's try 2, 2, 3, 7. But those are not distinct. So combining the two 2s into a 4. Then 4, 3, 7. Sum 14. Is there a way to get lower?
+
+Wait, maybe if I use four numbers. Let's see. For example, 2, 3, 4, 7. But that product is 168. That's too big. So maybe 2, 3, 6, 7. Product is 2×3×6×7=252. Still too big. Wait, maybe using smaller numbers. Let's see. Let's try 2, 2, 3, 7. Again, duplicates. So we need to combine. Hmm.
+
+Alternatively, maybe 3, 4, 7. That's three numbers, product 84, sum 14. Is there a way to split 7 into smaller numbers? But 7 is prime, so we can't split it. Similarly, 3 is prime. 4 is 2². So perhaps we can't split further. Wait, but maybe if we use 1 in the set? Wait, but 1 is allowed? The problem says positive integers, so 1 is allowed. But if we include 1, then we have to have other numbers to compensate. Let's see. Suppose we include 1 as one of the numbers. Then the product of the remaining numbers must be 84. But 1 doesn't contribute to the product, so the remaining numbers need to multiply to 84. However, including 1 might allow us to split the factors into more numbers, potentially leading to a smaller sum. Let's test that.
+
+For example, if we include 1, then the other numbers need to multiply to 84. Let's try. Let's take 1, 2, 3, 14. Product is 1×2×3×14=84. Sum is 1+2+3+14=20. That's higher than 14. Alternatively, 1, 2, 4, 21. Product is 1×2×4×21=168. No. Wait, 1, 2, 3, 4, 7. Product is 1×2×3×4×7=168. Still too big. So that's not helpful.
+
+Alternatively, 1, 2, 6, 7. Product is 1×2×6×7=84. Sum is 1+2+6+7=16. Still higher than 14. So including 1 doesn't seem to help lower the sum. So maybe the minimal sum is 14. But let me check again.
+
+Wait, another approach: Let's consider all possible sets of distinct positive integers whose product is 84, and compute their sums. Then find the minimum.
+
+First, list all possible factorizations of 84 into distinct integers. Let's start with the prime factors: 2, 2, 3, 7. So we need to combine these into distinct integers.
+
+Possible combinations:
+
+1. 2, 2, 3, 7: Not distinct. So invalid.
+
+2. Combine two 2s into 4: 4, 3, 7. Product 4×3×7=84. Sum 4+3+7=14.
+
+3. Combine 2 and 3 into 6: 6, 2, 7. But 2 and 6 are both even. Wait, no, 6, 2, 7. But 6 and 2 are both factors. Wait, but 6 is 2×3, and 2 is already a factor. But the factors must be distinct. Wait, 6, 2, 7: 2 is already used, but 6 is 2×3. So if we take 6, we can't take 2 and 3 separately. So 6, 2, 7 would be 6×2×7=84, but 2 and 6 share a factor of 2. Wait, but in the original prime factors, we have two 2s. So if we take 6 (which is 2×3), then we have to use the remaining 2 and 7. But 6, 2, 7: product is 6×2×7=84. So that's a valid set. Sum is 6+2+7=15. Which is higher than 14.
+
+Alternatively, 6, 14. Product is 6×14=84. Sum is 6+14=20. Higher.
+
+Alternatively, 12, 7. Product 12×7=84. Sum 12+7=19. Higher.
+
+Alternatively, 3, 4, 7. Product 3×4×7=84. Sum 3+4+7=14. Same as 4,3,7.
+
+Alternatively, 2, 3, 14. Sum 19.
+
+Alternatively, 2, 6, 7. Sum 15.
+
+Alternatively, 1, 2, 3, 14. Sum 20.
+
+Alternatively, 1, 3, 4, 7. Sum 15.
+
+Wait, is there a way to get four numbers with a sum less than 14? Let's see. Let's try.
+
+Suppose we take 2, 3, 4, 7. Product is 2×3×4×7=168. Too big. So that's not 84. So that's invalid.
+
+Alternatively, 2, 2, 3, 7. Not distinct. So invalid.
+
+Alternatively, 1, 2, 2, 3, 7. Not distinct. So invalid.
+
+Alternatively, 1, 3, 4, 7. Product 1×3×4×7=84. Sum is 1+3+4+7=15. Which is higher than 14.
+
+Alternatively, 1, 2, 6, 7. Product 84. Sum 16.
+
+Alternatively, 1, 4, 3, 7. Same as 1,3,4,7. Sum 15.
+
+Alternatively, 2, 3, 4, 7. As above, product is 168. So invalid.
+
+Alternatively, 2, 3, 14. Sum 19.
+
+Alternatively, 3, 4, 7. Sum 14.
+
+Is there a way to split 7 into smaller numbers? But 7 is prime. So we can't. Alternatively, maybe combine 3 and 7 into 21. Then 2, 2, 21. But 2 and 21 are distinct, but the other 2 is already there. Wait, 2, 2, 21. Not distinct. So can't do that.
+
+Alternatively, 3 and 7 as 21. Then 2, 21. But then we need another 2 to get the product 84. Wait, but 2×21=42. So 42×2=84. But that would be 2, 2, 21. Not distinct. So invalid.
+
+Alternatively, 4 and 7 as 28. Then 2, 28. But then 2×28=56. So need another 1.5 to get 84. But 1.5 isn't integer. So that's invalid.
+
+Alternatively, 3 and 2 as 6. Then 6, 2, 7. Sum 15. As before.
+
+Alternatively, 3 and 4 as 12. Then 12, 7. Sum 19. As before.
+
+Alternatively, 2 and 7 as 14. Then 14, 3. Sum 17. Higher.
+
+Alternatively, 2 and 3 as 6. Then 6, 7. But then we need another 2 to get 84. So 6, 2, 7. Again, sum 15.
+
+Alternatively, 3 and 7 as 21. Then 21, 2, 2. Not distinct. So invalid.
+
+Alternatively, 4 and 3 as 12. Then 12, 7. Sum 19.
+
+Alternatively, 2 and 4 as 8. Then 8, 3, 7. Product 8×3×7=168. Too big. So invalid.
+
+Alternatively, 3 and 2 as 6. Then 6, 4, 7. Wait, 6×4×7=168. Again, too big.
+
+Alternatively, 2, 3, 4, 7. Product 168. So no.
+
+Alternatively, 2, 3, 14. Sum 19.
+
+Alternatively, 4, 7, 3. Same as 3,4,7. Sum 14.
+
+Alternatively, 2, 6, 7. Sum 15.
+
+Alternatively, 3, 28. Sum 31. Not helpful.
+
+So from all these possibilities, the minimal sum seems to be 14, from the sets {3,4,7} or {4,3,7}. Are there any other sets?
+
+Wait, let's check if there's another way to split the factors. Let's see. The prime factors are 2, 2, 3, 7. So we need to combine these into distinct integers. The possible combinations are:
+
+- Combine 2 and 2 into 4: then 4, 3, 7. Sum 14.
+
+- Combine 2 and 3 into 6: then 6, 2, 7. Sum 15.
+
+- Combine 2 and 7 into 14: then 14, 3, 2. Sum 19.
+
+- Combine 3 and 7 into 21: then 21, 2, 2. Not distinct.
+
+Alternatively, combine two pairs: 2 and 2 into 4, 3 and 7 into 21. Then 4,21. Product 84. Sum 25. Higher.
+
+Alternatively, combine 2 and 2 into 4, then 3 and 4 into 12. Then 12 and 7. Product 84. Sum 19. Still higher.
+
+Alternatively, 3 and 2 into 6, 2 and 7 into 14. Then 6 and 14. Product 84. Sum 20. Higher.
+
+Alternatively, 2, 3, 4, 7. Product 168. Not 84. So invalid.
+
+Alternatively, 6, 7. Then 6×7=42. So need another 2. So 6,7,2. Product 84. Sum 15.
+
+Alternatively, 7, 12. 7×12=84. Sum 19.
+
+Alternatively, 4, 21. 4×21=84. Sum 25.
+
+Alternatively, 3, 28. 3×28=84. Sum 31.
+
+Alternatively, 2, 42. 2×42=84. Sum 44.
+
+Alternatively, 1, 84. Sum 85.
+
+So all these combinations seem to result in a sum of 14 or higher. So 14 is the minimal sum. But let me check another angle.
+
+Is there a way to split the factors into more numbers, thus possibly getting a lower sum? For example, using four numbers. Let's see. Let's take 2, 3, 4, 7. Product is 168. Too big. So can't do that. What if we take 2, 2, 3, 7. Not distinct. So no. Alternatively, 1, 2, 3, 14. Product 84. Sum 20. Higher.
+
+Alternatively, 1, 3, 4, 7. Product 84. Sum 15. Still higher.
+
+Alternatively, 1, 2, 6, 7. Product 84. Sum 16.
+
+Alternatively, 2, 3, 4, 7. As before, product 168.
+
+Alternatively, 1, 4, 3, 7. Same as 1,3,4,7. Sum 15.
+
+Alternatively, 2, 3, 14. Sum 19.
+
+Alternatively, 3, 4, 7. Sum 14.
+
+So all four-number combinations either repeat factors or result in a higher sum. So it seems that the minimal sum is indeed 14, achieved by the set {3,4,7} or {4,3,7}.
+
+Wait, but let me check if there's another way to combine the factors. For example, 2×3=6, and then 7. Then we have 6 and 7, but we still need another factor to get to 84. Wait, 6×7=42, so 42×2=84. But 2 is already a factor. So if we take 2, 6, 7. Then the product is 2×6×7=84. Sum is 2+6+7=15. Which is higher than 14.
+
+Alternatively, 3×7=21. Then 21×4=84. So 4 and 21. Sum 25.
+
+Alternatively, 2×2×3×7=84. But these are not distinct. So we have to combine them. So the only way is to combine two 2s into 4, giving 4,3,7. Sum 14.
+
+Alternatively, is there a way to split 7 into smaller factors? But 7 is prime, so no. Similarly, 3 is prime, 2 is prime. So we can't split them further.
+
+So, after considering all possible combinations, the minimal sum seems to be 14. Therefore, the least possible sum of these integers is 14.
+
+**Final Answer**
+The least possible sum of these integers is \boxed{14}.
+Therefore, the least possible sum of these integers is $\boxed{14}$.
+</think>

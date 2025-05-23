@@ -1,0 +1,199 @@
+Okay, so I need to find the minimum value of the expression \(\frac{1}{a} + \frac{1}{b} + \frac{4}{c} + \frac{16}{d}\) given that \(a + b + c + d = 1\) and all variables are positive real numbers. Hmm, minima problems with constraints usually make me think of using the method of Lagrange multipliers, but maybe there's a simpler approach using inequalities like Cauchy-Schwarz or AM-HM. Let me explore both options.
+
+First, let's recall the Cauchy-Schwarz inequality. In its basic form, for sequences of positive numbers, it says that \((\sum u_i v_i)^2 \leq (\sum u_i^2)(\sum v_i^2)\). But here, I need to relate the sum of reciprocals to the sum of the variables. Alternatively, the AM-HM inequality states that \(\frac{x_1 + x_2 + \dots + x_n}{n} \geq \frac{n}{\frac{1}{x_1} + \frac{1}{x_2} + \dots + \frac{1}{x_n}}\). However, in this case, our expression is a weighted sum of reciprocals, so maybe a weighted AM-HM approach would be better.
+
+Wait, maybe using the method of Lagrange multipliers is more straightforward here. Let me set up the function to minimize: \(f(a, b, c, d) = \frac{1}{a} + \frac{1}{b} + \frac{4}{c} + \frac{16}{d}\), with the constraint \(g(a, b, c, d) = a + b + c + d - 1 = 0\).
+
+The Lagrangian would be \(L = \frac{1}{a} + \frac{1}{b} + \frac{4}{c} + \frac{16}{d} - \lambda(a + b + c + d - 1)\).
+
+Taking partial derivatives with respect to each variable and setting them to zero:
+
+1. \(\frac{\partial L}{\partial a} = -\frac{1}{a^2} - \lambda = 0\)
+2. \(\frac{\partial L}{\partial b} = -\frac{1}{b^2} - \lambda = 0\)
+3. \(\frac{\partial L}{\partial c} = -\frac{4}{c^2} - \lambda = 0\)
+4. \(\frac{\partial L}{\partial d} = -\frac{16}{d^2} - \lambda = 0\)
+5. The constraint: \(a + b + c + d = 1\)
+
+From the first four equations, we can express \(\lambda\) in terms of each variable:
+
+From equation 1: \(\lambda = -\frac{1}{a^2}\)
+
+From equation 2: \(\lambda = -\frac{1}{b^2}\)
+
+From equation 3: \(\lambda = -\frac{4}{c^2}\)
+
+From equation 4: \(\lambda = -\frac{16}{d^2}\)
+
+Since all these expressions equal \(\lambda\), we can set them equal to each other:
+
+\(-\frac{1}{a^2} = -\frac{1}{b^2}\) implies \(a = b\)
+
+Similarly, \(-\frac{1}{a^2} = -\frac{4}{c^2}\) implies \(\frac{1}{a^2} = \frac{4}{c^2}\) so \(c = 2a\)
+
+And \(-\frac{1}{a^2} = -\frac{16}{d^2}\) implies \(\frac{1}{a^2} = \frac{16}{d^2}\) so \(d = 4a\)
+
+Therefore, we can express all variables in terms of \(a\):
+
+\(b = a\), \(c = 2a\), \(d = 4a\)
+
+Now, substitute these into the constraint equation:
+
+\(a + a + 2a + 4a = 1\)
+
+Adding them up: \(8a = 1\) => \(a = \frac{1}{8}\)
+
+Then, substituting back:
+
+\(b = \frac{1}{8}\), \(c = 2 \times \frac{1}{8} = \frac{1}{4}\), \(d = 4 \times \frac{1}{8} = \frac{1}{2}\)
+
+Now, compute the original expression:
+
+\(\frac{1}{a} + \frac{1}{b} + \frac{4}{c} + \frac{16}{d}\)
+
+Plugging in the values:
+
+\(\frac{1}{\frac{1}{8}} + \frac{1}{\frac{1}{8}} + \frac{4}{\frac{1}{4}} + \frac{16}{\frac{1}{2}}\)
+
+Calculating each term:
+
+\(8 + 8 + 16 + 32 = 64\)
+
+So the minimum value is 64. Wait, that seems straightforward, but let me check if I did everything correctly.
+
+First, checking the derivatives. The partial derivatives with respect to each variable minus lambda equal zero. So we have:
+
+For a: \( -1/a^2 - \lambda = 0 \implies \lambda = -1/a^2 \)
+
+For b: same as a, so \( \lambda = -1/b^2 \implies a = b \)
+
+For c: \( -4/c^2 - \lambda = 0 \implies \lambda = -4/c^2 \implies -1/a^2 = -4/c^2 \implies c^2 = 4a^2 \implies c = 2a \)
+
+Similarly, for d: \( -16/d^2 - \lambda = 0 \implies \lambda = -16/d^2 \implies -1/a^2 = -16/d^2 \implies d^2 = 16a^2 \implies d = 4a \)
+
+So all substitutions are correct. Then adding up a + a + 2a + 4a = 8a = 1 => a = 1/8. Then substituting back gives c = 1/4, d = 1/2, which are correct. Then plugging into the expression:
+
+1/(1/8) = 8
+
+1/(1/8) = 8
+
+4/(1/4) = 16
+
+16/(1/2) = 32
+
+Adding them up: 8 + 8 + 16 + 32 = 64. That's correct.
+
+Alternatively, maybe using Cauchy-Schwarz or AM-HM. Let me see if there's another way to approach this.
+
+Suppose we consider the expression as a sum of terms each involving 1/a, 1/b, 4/c, 16/d. Maybe we can use Cauchy-Schwarz on these terms.
+
+Let me think. Let's think of the expression as:
+
+(1/a + 1/b + 4/c + 16/d) * (a + b + c + d) >= (1 + 1 + 2 + 4)^2
+
+Wait, let's apply Cauchy-Schwarz in the form:
+
+(\sum \frac{1}{x_i}) (\sum x_i) >= (\sum 1)^2
+
+But here, the weights are different. The standard Cauchy-Schwarz would be:
+
+(\sum (1/\sqrt{x_i})^2)(\sum (\sqrt{x_i})^2) >= (\sum 1)^2
+
+But in our case, the terms are not all the same. Hmm.
+
+Alternatively, maybe use the method of weighted AM-HM inequality. The weighted AM-HM states that:
+
+\(\frac{\sum w_i x_i}{\sum w_i} \geq \frac{\sum w_i}{\sum \frac{w_i}{x_i}}\)
+
+But not sure. Alternatively, maybe use the method of Lagrange multipliers as above is the most straightforward here.
+
+Alternatively, let's consider variables scaled by their coefficients. Let me set up variables such that each term in the expression has the same denominator. For example, let me write:
+
+Let’s denote \(x = a\), \(y = b\), \(z = c\), \(w = d\). Then the expression is \(1/x + 1/y + 4/z + 16/w\) and the constraint is \(x + y + z + w = 1\).
+
+Alternatively, maybe use substitution. Let me set \(u = a\), \(v = b\), \(m = c\), \(n = d\). Then the same as above.
+
+Alternatively, suppose we use variables substitution where we set each term's coefficient to be squared or something. Wait, maybe not. Alternatively, think of the coefficients as squares: 1, 1, 2^2, 4^2. Wait, 1,1,4,16. Wait, 1,1,4,16 are 1^2, 1^2, 2^2, 4^2. Hmm, but not sure.
+
+Alternatively, maybe use the Cauchy-Schwarz inequality in the following way:
+
+Let’s consider vectors:
+
+Let’s have vectors \( (1/\sqrt{a}, 1/\sqrt{b}, 2/\sqrt{c}, 4/\sqrt{d}) \) and \( (\sqrt{a}, \sqrt{b}, \sqrt{c}/2, \sqrt{d}/4) \). Then their dot product is:
+
+\( (1/\sqrt{a} \cdot \sqrt{a}) + (1/\sqrt{b} \cdot \sqrt{b}) + (2/\sqrt{c} \cdot \sqrt{c}/2) + (4/\sqrt{d} \cdot \sqrt{d}/4) = 1 + 1 + 1 + 1 = 4 \)
+
+By Cauchy-Schwarz, the square of this dot product is less than or equal to the product of the sums of squares of each vector.
+
+So:
+
+\( (4)^2 \leq \left( \frac{1}{a} + \frac{1}{b} + \frac{4}{c} + \frac{16}{d} \right) \left( a + b + \frac{c}{4} + \frac{d}{16} \right) \)
+
+But our constraint is \(a + b + c + d = 1\). However, the second term in the product is \(a + b + c/4 + d/16\). To relate this to the given constraint, we need to make sure that \(c/4 + d/16 \leq c + d\). Which is true since \(c/4 \leq c\) and \(d/16 \leq d\) for positive c, d. But since we have \(a + b + c + d = 1\), maybe we can bound the second term.
+
+But perhaps not helpful here. Alternatively, maybe we can adjust variables. Let’s set \(c' = c/4\) and \(d' = d/16\), then \(c = 4c'\), \(d = 16d'\). Then the constraint becomes \(a + b + 4c' + 16d' = 1\). But the expression becomes \(\frac{1}{a} + \frac{1}{b} + \frac{4}{4c'} + \frac{16}{16d'} = \frac{1}{a} + \frac{1}{b} + \frac{1}{c'} + \frac{1}{d'}\). So now, we have to minimize \(\frac{1}{a} + \frac{1}{b} + \frac{1}{c'} + \frac{1}{d'}\) with \(a + b + 4c' + 16d' = 1\). But this might complicate further.
+
+Alternatively, maybe use AM-HM on the terms. Let's consider the terms as four separate terms:
+
+But in the original expression, we have four terms: 1/a, 1/b, 4/c, 16/d. Let's consider using Cauchy-Schwarz with weights. The Cauchy-Schwarz inequality in weighted form states that:
+
+\(\left( \sum_{i=1}^n w_i x_i \right) \left( \sum_{i=1}^n \frac{x_i}{w_i} \right) \geq \left( \sum_{i=1}^n x_i \right)^2\)
+
+But in our case, if we set \(w_1 = 1\), \(w_2 = 1\), \(w_3 = 2\), \(w_4 = 4\), and \(x_1 = 1/a\), \(x_2 = 1/b\), \(x_3 = 4/c\), \(x_4 = 16/d\), then:
+
+\(\left( 1 \cdot \frac{1}{a} + 1 \cdot \frac{1}{b} + 2 \cdot \frac{4}{c} + 4 \cdot \frac{16}{d} \right) \left( 1 \cdot a + 1 \cdot b + \frac{1}{2} \cdot c + \frac{1}{4} \cdot d \right) \geq (1 + 1 + 2 + 4)^2 = 36\)
+
+But the left side is \(\left( \frac{1}{a} + \frac{1}{b} + \frac{8}{c} + \frac{64}{d} \right) \left( a + b + \frac{c}{2} + \frac{d}{4} \right)\), which is different from our original expression. So maybe not useful here.
+
+Alternatively, maybe use Hölder's inequality? Hölder's inequality generalizes Cauchy-Schwarz and might be applicable here. Hölder's inequality states that for positive real numbers and exponents p, q such that 1/p + 1/q = 1:
+
+\(\sum a_i b_i \leq (\sum a_i^p)^{1/p} (\sum b_i^q)^{1/q}\)
+
+But again, not sure how to apply it here.
+
+Alternatively, perhaps use the AM-GM inequality on the terms. Since we have the sum of reciprocals, AM-GM might give a lower bound. Let's see.
+
+The AM-GM inequality states that for positive real numbers, the arithmetic mean is at least the geometric mean. So, for four terms:
+
+\(\frac{\frac{1}{a} + \frac{1}{b} + \frac{4}{c} + \frac{16}{d}}{4} \geq \sqrt[4]{\frac{1}{a} \cdot \frac{1}{b} \cdot \frac{4}{c} \cdot \frac{16}{d}}\)
+
+Calculating the geometric mean:
+
+\(\sqrt[4]{\frac{1 \cdot 1 \cdot 4 \cdot 16}{a b c d}} = \sqrt[4]{\frac{64}{a b c d}}\)
+
+But since \(a + b + c + d = 1\), the product \(a b c d\) is maximized when all variables are equal, but here we have different coefficients. However, the AM-GM approach here gives a lower bound of \(\sqrt[4]{64/(a b c d)}\), but this doesn't directly give a numerical value. To use this, we would need to find a relationship between the product \(a b c d\) and the sum \(a + b + c + d\), which might not be straightforward.
+
+Alternatively, perhaps use the method of substitution. Let me set \(x = a\), \(y = b\), \(z = c\), \(w = d\) again. Then we need to minimize \(1/x + 1/y + 4/z + 16/w\) under \(x + y + z + w = 1\).
+
+Suppose we fix the ratios between variables. For example, from the Lagrange multiplier method, we found that \(a = b\), \(c = 2a\), \(d = 4a\). Then substituting into the constraint gives \(a + a + 2a + 4a = 8a = 1\), so \(a = 1/8\). Then the variables are determined as above, leading to the minimal value of 64. This seems straightforward, and since the method of Lagrange multipliers gives a consistent solution, it's likely correct.
+
+Alternatively, let's test if this is indeed the minimum by checking another point. Suppose we take different values for \(a, b, c, d\) that sum to 1 and compute the expression.
+
+For example, let’s take \(a = 1/4\), \(b = 1/4\), \(c = 1/4\), \(d = 1/4\). Then the expression becomes:
+
+\(4 + 4 + 16 + 64 = 88\), which is higher than 64.
+
+Another test case: \(a = 1/2\), \(b = 1/2\), \(c = 0\), \(d = 0\). But c and d must be positive, so this is invalid. Let's take \(a = 1/3\), \(b = 1/3\), \(c = 1/3\), \(d = 0\), but again d must be positive. Let's take \(a = 1/3\), \(b = 1/3\), \(c = 1/6\), \(d = 1/6\). Then the expression is:
+
+\(3 + 3 + 4/(1/6) + 16/(1/6) = 3 + 3 + 24 + 96 = 126\), which is much higher.
+
+Alternatively, take \(a = 1/5\), \(b = 1/5\), \(c = 2/5\), \(d = 0\). But d must be positive. Let's take \(a = 1/5\), \(b = 1/5\), \(c = 1/5\), \(d = 3/5\). Then the expression is:
+
+\(5 + 5 + 4/(1/5) + 16/(3/5) = 5 + 5 + 20 + 80/3 ≈ 5 + 5 + 20 + 26.666 ≈ 56.666\), which is still higher than 64.
+
+Alternatively, take \(a = 1/8\), \(b = 1/8\), \(c = 1/4\), \(d = 1/2\), which is the solution we found. The expression is 64. So, another test case near this point: \(a = 1/8 + \epsilon\), \(b = 1/8 - \epsilon\), \(c = 1/4\), \(d = 1/2\). Let's compute the expression:
+
+\(\frac{1}{1/8 + \epsilon} + \frac{1}{1/8 - \epsilon} + \frac{4}{1/4} + \frac{16}{1/2}\)
+
+Simplify:
+
+\(\frac{1}{1/8 + \epsilon} + \frac{1}{1/8 - \epsilon} + 16 + 32\)
+
+Which is \(\frac{1}{1/8 + \epsilon} + \frac{1}{1/8 - \epsilon} + 48\)
+
+Compute the first two terms:
+
+Using \(x = 1/8\), the expression becomes \(\frac{1}{x + \epsilon} + \frac{1}{x - \epsilon} = \frac{2x}{x^2 - \epsilon^2}\). For small \(\epsilon\), this is approximately \(\frac{2x}{x^2} = \frac{2}{x} = 16\). Therefore, the total expression is approximately \(16 + 48 = 64\). So, perturbing \(a\) and \(b\) slightly around 1/8 doesn't change the total much, confirming that 64 is indeed the minimum.
+
+Therefore, after considering multiple approaches and verifying with test cases, the minimum value is 64.
+Therefore, the minimum value of the given expression is $\boxed{64}$.
+</think>

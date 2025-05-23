@@ -1,0 +1,173 @@
+Okay, so I need to find the matrix A multiplied by the vector (-13, 3, 4). Hmm, but I don't actually know what matrix A is. The problem gives me two equations where A is applied to two different vectors, resulting in two specific output vectors. Let me write down what I know.
+
+First, they told me that when A acts on the vector (3, 1, 0), it gives (2, 4, -3). So, mathematically, that's A * [3; 1; 0] = [2; 4; -3]. Second, A acting on (-5, 2, 2) gives (0, -5, -5). So, A * [-5; 2; 2] = [0; -5; -5]. 
+
+I need to find A * [-13; 3; 4]. Since I don't know the matrix A, but I have two instances of A acting on vectors, maybe I can figure out the matrix A first. If I can find the matrix A, then I can just multiply it by the desired vector. 
+
+But how do I find matrix A? Well, if I have enough information, maybe I can set up a system of equations. Since A is a 3x3 matrix (since it's multiplying a 3-dimensional vector and giving another 3-dimensional vector), it has 9 entries. Each multiplication gives three equations. So, with two vectors, I might get six equations, but since the vectors are in 3D space, they might not be enough to uniquely determine A. Wait, but maybe the vectors are linearly independent? Let me check.
+
+The first vector is (3, 1, 0), the second is (-5, 2, 2). To check if they are linearly independent, I can compute the determinant of the matrix formed by them, but since they are 3-dimensional vectors, the determinant would require a third vector. Alternatively, if I can express the third standard basis vector as a combination of these two, then they span the space. But since they are two vectors in 3D, they might not be enough. Wait, but maybe the problem assumes that A is a square matrix and the given vectors are part of a basis? Or maybe we can proceed without knowing the third column.
+
+Wait, perhaps the key is that the given vectors are part of a basis for R^3. If the two vectors are linearly independent, then they can be extended to a basis. But since we have only two vectors, we need more information. Hmm. Alternatively, maybe the two vectors and their images under A are enough to reconstruct A? Let me think.
+
+Alternatively, perhaps we can express the desired vector (-13, 3, 4) as a linear combination of the two given vectors (3,1,0) and (-5,2,2), and then use the linearity of matrix multiplication to compute A times that vector.
+
+Wait, that might be the key. If the vectors (3,1,0) and (-5,2,2) are linearly independent (which they are, because the determinant of the matrix formed by them and another vector would be non-zero if they span the space), then any vector in R^3 can be expressed as a linear combination of them and a third vector. But since we don't have the third vector, maybe we can proceed by assuming that the third vector is arbitrary? Or perhaps we need to find the third column of A.
+
+Wait, perhaps I can set up the problem as follows. Let me denote the matrix A as:
+
+A = [a b c]
+    [d e f]
+    [g h i]
+
+Then, multiplying A by the first vector (3,1,0) gives:
+
+3a + 1b + 0c = 2
+3d + 1e + 0f = 4
+3g + 1h + 0i = -3
+
+Similarly, multiplying A by the second vector (-5,2,2) gives:
+
+-5a + 2b + 2c = 0
+-5d + 2e + 2f = -5
+-5g + 2h + 2i = -5
+
+So, that gives us six equations:
+
+1. 3a + b = 2
+2. 3d + e = 4
+3. 3g + h = -3
+4. -5a + 2b + 2c = 0
+5. -5d + 2e + 2f = -5
+6. -5g + 2h + 2i = -5
+
+But we have 9 variables (a, b, c, d, e, f, g, h, i) and only 6 equations. So, we can't solve for all variables uniquely. Therefore, we need more information. 
+
+Wait, but the problem is to compute A * [-13; 3; 4]. Maybe we don't need the entire matrix A, but just enough to express the result as a linear combination of the two known columns of A. Let me explain.
+
+If we can express the vector [-13; 3; 4] as a linear combination of the vectors (3,1,0) and (-5,2,2), then we can use the linearity of matrix multiplication to compute A times that vector. But wait, a linear combination of two vectors in R^3 would only span a plane, so unless [-13; 3; 4] is in that plane, which is not necessarily the case. Let me check.
+
+To see if [-13; 3; 4] can be expressed as a linear combination of (3,1,0) and (-5,2,2), we need to find scalars x and y such that:
+
+x*(3,1,0) + y*(-5,2,2) = (-13, 3, 4)
+
+Which gives the system:
+
+3x -5y = -13
+x + 2y = 3
+0x + 2y = 4
+
+Wait, let's solve this system. From the third equation: 2y = 4 => y = 2.
+
+Substitute y = 2 into the second equation: x + 4 = 3 => x = -1.
+
+Now check the first equation: 3*(-1) -5*2 = -3 -10 = -13. Which matches. So yes, the vector [-13; 3; 4] is indeed in the span of the first two vectors. Therefore, we can express it as x*(3,1,0) + y*(-5,2,2) with x = -1 and y = 2.
+
+Therefore, A * [-13; 3; 4] = A * [x*(3,1,0) + y*(-5,2,2)] = x*A*(3,1,0) + y*A*(-5,2,2) = x*[2;4;-3] + y*[0;-5;-5].
+
+Substituting x = -1 and y = 2:
+
+= (-1)*[2;4;-3] + 2*[0;-5;-5]
+= [-2; -4; 3] + [0; -10; -10]
+= [-2 + 0; -4 + (-10); 3 + (-10)]
+= [-2; -14; -7]
+
+So the result is [-2; -14; -7]. Therefore, the answer should be that vector.
+
+Wait, let me double-check the calculations step by step to make sure I didn't make a mistake.
+
+First, solving the system for x and y:
+
+Equation 3: 2y = 4 => y = 2.
+
+Equation 2: x + 2y = 3 => x + 4 = 3 => x = -1.
+
+Equation 1: 3x -5y = -13 => 3*(-1) -5*2 = -3 -10 = -13. Correct.
+
+Then, applying A to the vector:
+
+A*(3,1,0) = (2,4,-3)
+
+A*(-5,2,2) = (0,-5,-5)
+
+Then, scaling them by x = -1 and y = 2:
+
+-1*(2,4,-3) = (-2, -4, 3)
+
+2*(0,-5,-5) = (0, -10, -10)
+
+Adding these two results:
+
+(-2 + 0, -4 + (-10), 3 + (-10)) = (-2, -14, -7)
+
+Yes, that seems correct. So the answer is [-2; -14; -7].
+
+Alternatively, to confirm, maybe I can check if the result is consistent with the matrix A. Let me try to find the matrix A.
+
+Given that we have six equations with nine variables. But since we can express the desired vector as a combination of the two given vectors, we don't need the entire matrix A. However, if we were to try to reconstruct A, we might need to assume some values for the other variables. But since the problem only asks for the product A * [-13;3;4], and we have already found it by linearity, we don't need the entire matrix. So I think the answer is correct.
+
+Just to be thorough, maybe I can check if there's another way to approach this problem. For example, setting up the matrix A and solving for the unknowns. Let's see.
+
+We have equations:
+
+1. 3a + b = 2
+
+2. 3d + e = 4
+
+3. 3g + h = -3
+
+4. -5a + 2b + 2c = 0
+
+5. -5d + 2e + 2f = -5
+
+6. -5g + 2h + 2i = -5
+
+We can solve equations 1, 2, 3 for a, d, g:
+
+From equation 1: b = 2 - 3a
+
+From equation 2: e = 4 - 3d
+
+From equation 3: h = -3 - 3g
+
+Substituting into equations 4, 5, 6:
+
+Equation 4: -5a + 2(2 - 3a) + 2c = 0
+
+=> -5a + 4 -6a + 2c = 0
+
+=> -11a + 2c = -4
+
+Equation 5: -5d + 2(4 - 3d) + 2f = -5
+
+=> -5d + 8 -6d + 2f = -5
+
+=> -11d + 2f = -13
+
+Equation 6: -5g + 2(-3 - 3g) + 2i = -5
+
+=> -5g -6 -6g + 2i = -5
+
+=> -11g + 2i = 1
+
+So now we have:
+
+-11a + 2c = -4
+
+-11d + 2f = -13
+
+-11g + 2i = 1
+
+But we still have variables a, c, d, f, g, i. So, we can express c, f, i in terms of a, d, g:
+
+c = (11a -4)/2
+
+f = (11d -13)/2
+
+i = (11g +1)/2
+
+But since we don't have any more equations, we can't determine a, d, g. So, as previously, the matrix A is not unique. However, since the problem asks for A * [-13;3;4], which we already found by expressing the vector as a combination of the given vectors, the result is unique regardless of the other columns of A. Therefore, the answer is indeed [-2; -14; -7].
+
+Thus, after careful consideration and checking, I'm confident that the answer is correct.
+Therefore, the answer is $\boxed{\begin{pmatrix} -2 \\ -14 \\ -7 \end{pmatrix}}$.
+</think>

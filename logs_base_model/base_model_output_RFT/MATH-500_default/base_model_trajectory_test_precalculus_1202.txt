@@ -1,0 +1,262 @@
+Okay, so I need to solve the equation arccos x + arccos 2x + arccos 3x = π, and then find the cubic polynomial that x satisfies. Finally, I have to find the smallest possible value of the sum of the absolute values of the coefficients. Hmm, let's start by understanding the problem step by step.
+
+First, arccos is the inverse cosine function, which has a domain of [-1, 1]. So, the arguments of arccos must be within this interval. That means for each term:
+
+1. arccos x: x must be between -1 and 1.
+2. arccos 2x: 2x must be between -1 and 1, so x must be between -0.5 and 0.5.
+3. arccos 3x: 3x must be between -1 and 1, so x must be between -1/3 and 1/3.
+
+Therefore, the intersection of these domains is x ∈ [-1/3, 1/3]. So, x must be in this interval for the equation to be valid. That's a crucial point because it restricts the possible values of x.
+
+Now, the equation is arccos x + arccos 2x + arccos 3x = π. Let's denote:
+
+Let’s set θ = arccos x, φ = arccos 2x, and ψ = arccos 3x. Then, the equation becomes θ + φ + ψ = π. Since all arccos terms are angles in [0, π], their sum being π suggests that one of them is π minus the sum of the other two. Maybe we can use trigonometric identities or properties of arccos to relate these angles.
+
+I recall that arccos a + arccos b = arccos [ab - sqrt(1 - a²)sqrt(1 - b²)] when certain conditions are met. But here, we have three terms. Maybe I can combine two of them first and then deal with the third.
+
+Alternatively, since θ + φ + ψ = π, perhaps we can take cosine of both sides. Let me try that.
+
+cos(θ + φ + ψ) = cos π = -1.
+
+Using the cosine addition formula: cos(θ + φ + ψ) = cos θ cos φ cos ψ - cos θ sin φ sin ψ - sin θ cos φ sin ψ - sin θ sin φ cos ψ.
+
+But this seems complicated. Maybe there's a smarter way. Let me think.
+
+Alternatively, since θ + φ + ψ = π, then ψ = π - θ - φ. Then, we can take cosine of both sides:
+
+cos ψ = cos(π - θ - φ) = -cos(θ + φ).
+
+But cos ψ is also equal to 3x because ψ = arccos 3x. Similarly, cos(θ + φ) can be expanded as cos θ cos φ - sin θ sin φ. So:
+
+3x = -[cos θ cos φ - sin θ sin φ] = -cos θ cos φ + sin θ sin φ.
+
+So, 3x = -cos θ cos φ + sin θ sin φ.
+
+But cos θ is x, cos φ is 2x, so substituting:
+
+3x = -x*(2x) + sin θ sin φ.
+
+Which simplifies to 3x = -2x² + sin θ sin φ.
+
+So, sin θ sin φ = 3x + 2x².
+
+Now, sin θ and sin φ can be expressed in terms of x. Since θ = arccos x, sin θ = sqrt(1 - x²). Similarly, sin φ = sqrt(1 - (2x)^2) = sqrt(1 - 4x²). Therefore:
+
+sqrt(1 - x²) * sqrt(1 - 4x²) = 3x + 2x².
+
+Let me square both sides to eliminate the square roots:
+
+(1 - x²)(1 - 4x²) = (3x + 2x²)^2.
+
+Expanding both sides:
+
+Left side: (1)(1) + (1)(-4x²) + (-x²)(1) + (-x²)(-4x²) = 1 - 4x² - x² + 4x⁴ = 1 - 5x² + 4x⁴.
+
+Right side: (3x)^2 + 2*(3x)*(2x²) + (2x²)^2 = 9x² + 12x³ + 4x⁴.
+
+So, set left side equal to right side:
+
+1 - 5x² + 4x⁴ = 9x² + 12x³ + 4x⁴.
+
+Subtract left side from both sides:
+
+0 = 9x² + 12x³ + 4x⁴ - (1 - 5x² + 4x⁴) = 9x² + 12x³ + 4x⁴ -1 +5x² -4x⁴.
+
+Simplify:
+
+0 = (9x² +5x²) +12x³ + (4x⁴ -4x⁴) -1 =14x² +12x³ -1.
+
+Thus, 12x³ +14x² -1 =0.
+
+Hmm, so we get 12x³ +14x² -1=0. Let me check if this is correct.
+
+Wait, when I squared both sides, I might have introduced extraneous solutions, so I need to verify the solutions later.
+
+But before that, let me check the coefficients:
+
+Original equation after squaring: (1 - x²)(1 -4x²) = (3x +2x²)^2.
+
+Left side: 1 -4x² -x² +4x⁴ =1 -5x² +4x⁴.
+
+Right side: 9x² +12x³ +4x⁴.
+
+So, 1 -5x² +4x⁴ =9x² +12x³ +4x⁴.
+
+Subtract left side:
+
+0=9x² +12x³ +4x⁴ -1 +5x² -4x⁴=14x² +12x³ -1. So yes, 12x³ +14x² -1=0.
+
+But the problem states that the cubic polynomial should be ax³ +bx² +cx +d=0 with integer coefficients, a≠0. So, 12x³ +14x² -1=0 is a cubic with a=12, b=14, c=0, d=-1. Therefore, the sum |a| + |b| + |c| + |d| is 12+14+0+1=27.
+
+But maybe there's a simpler cubic? Let me check if this cubic actually has a solution in the domain x ∈ [-1/3, 1/3]. Let's test x=1/3:
+
+12*(1/3)^3 +14*(1/3)^2 -1=12*(1/27) +14*(1/9) -1= (12/27)+(14/9)-1= (4/9)+(14/9)-1=18/9 -1=2 -1=1≠0.
+
+x= -1/3:
+
+12*(-1/3)^3 +14*(-1/3)^2 -1=12*(-1/27)+14*(1/9)-1= (-12/27)+(14/9)-1= (-4/9)+(14/9)-1=10/9 -1=1/9≠0.
+
+So, x=±1/3 are not roots. Let's try x=0: 0 +0 -1=-1≠0. x=1:12+14-1=25≠0. So, maybe this cubic is correct, but perhaps there's another equation. Wait, let's check my steps again.
+
+Starting from arccos x + arccos 2x + arccos 3x = π.
+
+I set θ = arccos x, φ = arccos 2x, ψ=arccos 3x. Then θ + φ + ψ = π.
+
+Then ψ = π - θ - φ.
+
+Taking cosine of both sides:
+
+cos ψ = -cos(θ + φ).
+
+But cos ψ = 3x, cos(θ + φ) = cos θ cos φ - sin θ sin φ.
+
+Therefore:
+
+3x = -[cos θ cos φ - sin θ sin φ] = -cos θ cos φ + sin θ sin φ.
+
+Substituting cos θ = x, cos φ = 2x, sin θ = sqrt(1 -x²), sin φ = sqrt(1 -4x²):
+
+3x = -x*(2x) + sqrt(1 -x²)*sqrt(1 -4x²).
+
+So, 3x = -2x² + sqrt{(1 -x²)(1 -4x²)}.
+
+Then, sqrt{(1 -x²)(1 -4x²)} = 3x + 2x².
+
+Squaring both sides:
+
+(1 -x²)(1 -4x²) = (3x +2x²)^2.
+
+Expanding both sides gives 1 -5x² +4x⁴ =9x² +12x³ +4x⁴.
+
+Subtracting left side from right side:
+
+0=12x³ +14x² -1.
+
+So, yes, that's correct. Therefore, the cubic is 12x³ +14x² -1=0.
+
+But maybe there is a lower-degree polynomial that x satisfies? Let me check if this cubic can be factored or simplified.
+
+Looking at 12x³ +14x² -1. Let's try rational roots. Possible rational roots are ±1, ±1/2, ±1/3, ±1/4, ±1/6, ±1/12.
+
+Testing x=1: 12 +14 -1=25≠0.
+
+x=-1: -12 +14 -1=1≠0.
+
+x=1/2: 12*(1/8) +14*(1/4) -1=1.5 +3.5 -1=4≠0.
+
+x=-1/2: 12*(-1/8)+14*(1/4)-1=-1.5 +3.5 -1=1≠0.
+
+x=1/3: 12*(1/27)+14*(1/9)-1≈0.444 +1.555 -1≈1≠0.
+
+x=-1/3: 12*(-1/27)+14*(1/9)-1≈-0.444 +1.555 -1≈0.111≠0.
+
+x=1/4: 12*(1/64)+14*(1/16)-1=0.1875 +0.875 -1=0.0625≠0.
+
+x=-1/4: 12*(-1/64)+14*(1/16)-1≈-0.1875 +0.875 -1≈-0.3125≠0.
+
+x=1/6: 12*(1/216)+14*(1/36)-1≈0.055 +0.388 -1≈-0.557≠0.
+
+x=-1/6: 12*(-1/216)+14*(1/36)-1≈-0.055 +0.388 -1≈-0.667≠0.
+
+x=1/12: 12*(1/1728)+14*(1/144)-1≈0.0069 +0.0972 -1≈-0.8959≠0.
+
+x=-1/12: 12*(-1/1728)+14*(1/144)-1≈-0.0069 +0.0972 -1≈-0.9099≠0.
+
+So, no rational roots. Therefore, the cubic is irreducible over rationals, so the minimal polynomial is indeed 12x³ +14x² -1=0. Therefore, the coefficients are a=12, b=14, c=0, d=-1.
+
+Hence, the sum |12| + |14| + |0| + |-1| =12+14+0+1=27.
+
+But wait, the problem says "satisfies a cubic polynomial of the form ax³ +bx² +cx +d=0", so we need to confirm if this is indeed the minimal polynomial, or if there's a lower-degree polynomial with integer coefficients. However, since x is in the interval [-1/3, 1/3], we need to check if x can satisfy a quadratic equation.
+
+Suppose there exists a quadratic equation with integer coefficients that x satisfies. Let's see.
+
+Suppose ax³ +bx² +cx +d=0 is reducible to a quadratic. Then, it must factor as (x - r)(quadratic) where r is a root. But since the cubic is irreducible, as we saw, there are no rational roots, so it can't be factored into a linear term and a quadratic with integer coefficients. Therefore, the minimal polynomial is indeed cubic, so the answer is 27.
+
+But let me verify once again to make sure I didn't make any miscalculations.
+
+Starting again, the equation:
+
+arccos x + arccos 2x + arccos 3x = π.
+
+Let me pick a value of x in the domain [-1/3, 1/3] and check if the equation holds. For example, x=0. Let's see:
+
+arccos 0 = π/2,
+
+arccos 0 = π/2,
+
+arccos 0 = π/2. So, sum is 3*(π/2) = 3π/2 ≠ π. So, x=0 is not a solution.
+
+x=1/3:
+
+arccos(1/3) + arccos(2/3) + arccos(1) = arccos(1/3) + arccos(2/3) + 0. Let's compute approximate values:
+
+arccos(1/3) ≈ 1.23096 radians,
+
+arccos(2/3) ≈ 0.84106 radians,
+
+Sum ≈1.23096 +0.84106≈2.072 radians, which is less than π≈3.1416. So, sum is less than π. So, x=1/3 is too big.
+
+x=1/4:
+
+arccos(1/4)≈1.318 radians,
+
+arccos(1/2)=π/3≈1.047 radians,
+
+arccos(3/4)≈0.7227 radians,
+
+Sum≈1.318 +1.047 +0.7227≈3.087 radians, which is still less than π (≈3.1416). So, close. Maybe x=1/4 is a solution?
+
+But according to our earlier cubic equation, x=1/4 gives 12*(1/4)^3 +14*(1/4)^2 -1=12*(1/64)+14*(1/16)-1≈0.1875 +0.875 -1≈0.0625≠0. So, x=1/4 is not a root. So, maybe the actual solution is near x=1/4, but not exactly 1/4.
+
+Alternatively, maybe the cubic is correct.
+
+Alternatively, perhaps I made a mistake in the trigonometric identity step. Let me check again.
+
+Starting from θ + φ + ψ = π.
+
+Then, ψ = π - θ - φ.
+
+So, cos ψ = cos(π - θ - φ) = -cos(θ + φ).
+
+But cos(θ + φ) = cos θ cos φ - sin θ sin φ. So, cos ψ = -[cos θ cos φ - sin θ sin φ] = -cos θ cos φ + sin θ sin φ.
+
+But cos ψ is 3x, so:
+
+3x = -cos θ cos φ + sin θ sin φ.
+
+Substituting cos θ = x, cos φ =2x:
+
+3x = -x*(2x) + sin θ sin φ.
+
+So, 3x = -2x² + sin θ sin φ.
+
+Therefore, sin θ sin φ = 3x +2x².
+
+But sin θ = sqrt(1 -x²), sin φ = sqrt(1 - (2x)^2) = sqrt(1 -4x²).
+
+Thus, sqrt(1 -x²) sqrt(1 -4x²) =3x +2x².
+
+Squaring both sides:
+
+(1 -x²)(1 -4x²) = (3x +2x²)^2.
+
+Which gives 1 -5x² +4x⁴ =9x² +12x³ +4x⁴.
+
+Subtracting left side:
+
+0=12x³ +14x² -1.
+
+Yes, same result. So, the cubic is correct.
+
+Therefore, the minimal polynomial is 12x³ +14x² -1=0, so the sum of absolute values is 12+14+0+1=27.
+
+But the problem says "the cubic polynomial of the form ax³ +bx² +cx +d=0", so the coefficients are 12,14,0,-1. Therefore, the sum is 27. But the problem asks for the smallest possible value of |a| + |b| + |c| + |d|. Since 27 is the sum here, but maybe there's a multiple of this equation with smaller coefficients?
+
+If we multiply the equation by a constant, the coefficients would change, but since we need integer coefficients, the minimal coefficients would be when the polynomial is primitive (gcd of coefficients is 1). Since 12,14,0,-1 have gcd 1, so this is the minimal polynomial. Therefore, the sum is indeed 27.
+
+Therefore, the answer is 27. So, the final answer is \boxed{27}.
+
+**Final Answer**
+\boxed{27}
+Therefore, the smallest possible value of $|a| + |b| + |c| + |d|$ is $\boxed{27}$.
+</think>

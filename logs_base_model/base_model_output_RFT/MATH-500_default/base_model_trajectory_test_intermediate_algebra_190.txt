@@ -1,0 +1,492 @@
+Okay, so I need to find the minimum value of (x + y)(y + z) given that x, y, z are positive real numbers and satisfy the condition xyz(x + y + z) = 1. Hmm, let's start by understanding the problem.
+
+First, the expression we need to minimize is (x + y)(y + z). Let me expand that to see if it simplifies or if there's a pattern. Expanding (x + y)(y + z) gives:
+
+x*y + x*z + y*y + y*z = xy + xz + y² + yz.
+
+So, it's xy + xz + y² + yz. Hmm, that's a quadratic in terms of y? Maybe not directly helpful. Alternatively, perhaps I can use some inequality here, like AM-GM or Cauchy-Schwarz.
+
+The constraint is xyz(x + y + z) = 1. Let's denote S = x + y + z. Then the constraint becomes xyzS = 1. So, xyzS = 1. Maybe I can express one variable in terms of the others using this constraint, but that might get complicated. Alternatively, perhaps I can use substitution or homogenization.
+
+Wait, since all variables are positive, maybe substituting variables with some symmetry could help. Let me see. If I set variables such that x = a, y = b, z = c, but that doesn't seem to help immediately. Alternatively, maybe using Lagrange multipliers? Since this is an optimization problem with a constraint. Let's consider that.
+
+Let me recall that with Lagrange multipliers, we can set up the gradients of the function to be minimized and the constraint to be proportional. So, if f(x, y, z) = (x + y)(y + z) and the constraint is g(x, y, z) = xyz(x + y + z) - 1 = 0, then ∇f = λ∇g.
+
+Calculating the partial derivatives:
+
+First, ∇f = (df/dx, df/dy, df/dz). Let's compute each component.
+
+df/dx = derivative of (x + y)(y + z) with respect to x is (1)(y + z) = y + z.
+
+df/dy = derivative with respect to y is (x + y)(0 + 1) + (y + z)(1 + 0) = (x + y) + (y + z) = x + 2y + z.
+
+df/dz = derivative with respect to z is (x + y)(1) + (y + z)(0) = x + y.
+
+Now, ∇g. Let's compute the partial derivatives of g = xyz(x + y + z) - 1.
+
+First, partial derivative with respect to x:
+
+dg/dx = yz(x + y + z) + xyz(1) = yz(x + y + z) + xyz.
+
+Similarly, dg/dy = xz(x + y + z) + xyz(1) = xz(x + y + z) + xyz.
+
+dg/dz = xy(x + y + z) + xyz(1) = xy(x + y + z) + xyz.
+
+Therefore, ∇g = (yz(x + y + z) + xyz, xz(x + y + z) + xyz, xy(x + y + z) + xyz).
+
+According to Lagrange multipliers, ∇f = λ∇g. So, we have the following equations:
+
+1. y + z = λ(yz(x + y + z) + xyz)
+2. x + 2y + z = λ(xz(x + y + z) + xyz)
+3. x + y = λ(xy(x + y + z) + xyz)
+
+Hmm, these equations look a bit messy. Maybe we can simplify them by dividing or substituting. Let's see.
+
+First, notice that the constraint xyz(x + y + z) = 1. Let me denote that as xyzS = 1, where S = x + y + z. Then, the denominators in the Lagrange equations can be written as xyzS, which is 1. Wait, let me check.
+
+Wait, in the first equation, ∇g's x-component is yzS + xyz. But xyzS = 1, so this becomes yzS + 1. Similarly for the others. Wait, is that correct?
+
+Wait, if S = x + y + z, then dg/dx = yzS + xyz = yz(S + x). Similarly, dg/dy = xzS + xyz = xz(S + y), and dg/dz = xyS + xyz = xy(S + z). So, actually, ∇g = (yz(S + x), xz(S + y), xy(S + z)).
+
+Therefore, the equations become:
+
+1. y + z = λ yz(S + x)
+2. x + 2y + z = λ xz(S + y)
+3. x + y = λ xy(S + z)
+
+And we have the constraint xyzS = 1.
+
+Hmm, so perhaps we can find ratios here. Let's divide equation 1 by equation 3.
+
+Equation 1: (y + z) / (x + y) = [λ yz(S + x)] / [λ xy(S + z)] = [yz(S + x)] / [xy(S + z)] = [z(S + x)] / [x(S + z)]
+
+Similarly, equation 2 divided by equation 3:
+
+Equation 2 / Equation 3: [x + 2y + z] / [x + y] = [xz(S + y)] / [xy(S + z)] = [z(S + y)] / [y(S + z)]
+
+So, let's denote equation 1 / equation 3 ratio as R1 = [z(S + x)] / [x(S + z)] = (y + z)/(x + y)
+
+Similarly, equation 2 / equation 3 ratio as R2 = [z(S + y)] / [y(S + z)] = (x + 2y + z)/(x + y)
+
+So, let's write these two ratios:
+
+R1 = [z(S + x)] / [x(S + z)] = (y + z)/(x + y)
+
+R2 = [z(S + y)] / [y(S + z)] = (x + 2y + z)/(x + y)
+
+Hmm, these ratios might help us find relationships between variables. Let's try to manipulate R1 and R2.
+
+From R1:
+
+[z(S + x)] / [x(S + z)] = (y + z)/(x + y)
+
+Cross-multiplying:
+
+z(S + x)(x + y) = x(S + z)(y + z)
+
+Similarly, expand both sides:
+
+Left side: z(S + x)(x + y) = z[ Sx + x² + Sy + xy ]
+
+Right side: x(S + z)(y + z) = x[ Sy + Sz + zy + z² ] = x[ Sy + Sz + yz + z² ]
+
+So, left side: zSx + zx² + zSy + zxy
+
+Right side: xSy + xSz + xyz + xz²
+
+Hmm, let's write all terms:
+
+Left: zSx + zx² + zSy + zxy
+
+Right: xSy + xSz + xyz + xz²
+
+Let's subtract right side from left side:
+
+(zSx + zx² + zSy + zxy) - (xSy + xSz + xyz + xz²) = 0
+
+Simplify term by term:
+
+zSx - xSy - xSz = zxS - xSy - xSz = xS(z - y - z) = xS(-y) = -xSy
+
+zx² - xz² = xz(x - z)
+
+zSy - xyz = yz(S - x)
+
+Wait, perhaps I should group differently. Wait, maybe factor terms:
+
+Looking at the terms:
+
+zSx - xSy = xS(z - y)
+
+zx² - xz² = xz(x - z)
+
+zSy - xyz = zy(S - x)
+
+Hmm, so overall:
+
+xS(z - y) + xz(x - z) + zy(S - x) = 0
+
+Hmm, maybe factor out x from the first two terms:
+
+x[S(z - y) + z(x - z)] + zy(S - x) = 0
+
+Compute S(z - y) + z(x - z):
+
+S(z - y) + z(x - z) = zS - yS + zx - z²
+
+But S = x + y + z, so substitute:
+
+z(x + y + z) - y(x + y + z) + zx - z²
+
+= zx + zy + z² - yx - y² - yz + zx - z²
+
+Simplify:
+
+zx + zy + z² - yx - y² - yz + zx - z²
+
+= (zx + zx) + (zy - yz) + (z² - z²) - yx - y²
+
+= 2zx + 0 + 0 - yx - y²
+
+= 2zx - yx - y²
+
+Factor:
+
+x(2z - y) - y²
+
+So, putting back into the equation:
+
+x[ x(2z - y) - y² ] + zy(S - x) = 0
+
+Hmm, this is getting complicated. Maybe another approach.
+
+Alternatively, perhaps assuming some symmetry. Let's suppose that x = z. Maybe that could simplify things.
+
+Let me try setting x = z. Then, in the original problem, variables x, y, z are positive real numbers with xyz(x + y + z) = 1. If x = z, then the constraint becomes x y x (x + y + x) = x² y (2x + y) = 1.
+
+The expression to minimize becomes (x + y)(y + x) = (x + y)². So, if x = z, then (x + y)(y + z) becomes (x + y)². Interesting.
+
+So, if we can minimize (x + y)² under the constraint x² y (2x + y) = 1. Let's see if this is easier.
+
+Let me denote t = x/y. Then, x = ty. Then, substituting into the constraint:
+
+(ty)² y (2 ty + y) = t² y² * y * y(2t + 1) = t² y³ * y(2t + 1) = t² (2t + 1) y⁴ = 1.
+
+So, y⁴ = 1 / [t²(2t + 1)]. Then, y = [1 / (t²(2t + 1))]^{1/4}.
+
+Then, (x + y)² = (ty + y)² = y²(t + 1)². Substitute y² from above:
+
+y² = [1 / (t²(2t + 1))]^{1/2} = 1 / sqrt(t²(2t + 1)).
+
+Thus, (x + y)² = (t + 1)² / sqrt(t²(2t + 1)).
+
+Let me define f(t) = (t + 1)² / sqrt(t²(2t + 1)).
+
+We need to find the minimum of f(t) over t > 0.
+
+This seems more manageable. Let's compute f(t):
+
+f(t) = (t + 1)² / [sqrt(t²(2t + 1))] = (t + 1)² / [t sqrt(2t + 1)].
+
+Simplify numerator and denominator:
+
+= (t² + 2t + 1) / [t sqrt(2t + 1)] = [ (t² + 2t + 1) ] / [ t (2t + 1)^{1/2} ]
+
+Let me write this as:
+
+= (t² + 2t + 1) / ( t (2t + 1)^{1/2} )
+
+Maybe substitute u = sqrt(2t + 1). Let me see.
+
+Let u = sqrt(2t + 1). Then, u² = 2t + 1 => t = (u² - 1)/2.
+
+Then, substitute into f(t):
+
+Numerator: t² + 2t + 1 = [(u² - 1)/2]^2 + 2*(u² - 1)/2 + 1
+
+Compute each term:
+
+[(u² - 1)/2]^2 = (u⁴ - 2u² + 1)/4
+
+2*(u² - 1)/2 = (u² - 1)
+
+So, numerator:
+
+= (u⁴ - 2u² + 1)/4 + (u² - 1) + 1
+
+= (u⁴ - 2u² + 1)/4 + (u² - 1 + 4)/4
+
+= (u⁴ - 2u² + 1 + 4u² - 4 + 4)/4
+
+= (u⁴ + 2u² + 1)/4
+
+Denominator: t * u = [(u² - 1)/2] * u = [u³ - u]/2
+
+Thus, f(t) = [ (u⁴ + 2u² + 1)/4 ] / [ (u³ - u)/2 ] = [ (u⁴ + 2u² + 1)/4 ] * [ 2 / (u³ - u) ] = (u⁴ + 2u² + 1)/(2(u³ - u))
+
+Note that u⁴ + 2u² + 1 = (u² + 1)^2. So,
+
+f(t) = (u² + 1)^2 / [2u(u² - 1)]
+
+Let me write this as:
+
+f(u) = (u² + 1)^2 / [2u(u² - 1)]
+
+Now, to minimize f(u) over u > 1, since t > 0 and u = sqrt(2t + 1) > 1 (since t > 0).
+
+Let me set v = u². Then, since u > 1, v > 1.
+
+Then, f(u) = (v + 1)^2 / [2u(v - 1)] = (v + 1)^2 / [2 sqrt(v) (v - 1)]
+
+Hmm, maybe express in terms of v:
+
+f(v) = (v + 1)^2 / [2 sqrt(v) (v - 1)]
+
+We need to minimize f(v) for v > 1.
+
+Let me take the derivative of f(v) with respect to v and set it to zero.
+
+First, compute f(v):
+
+f(v) = (v + 1)^2 / [2 sqrt(v) (v - 1)]
+
+Let me write this as f(v) = (v + 1)^2 / [2 (v - 1) v^{1/2} ] = (v + 1)^2 / [2 (v - 1) v^{1/2} ]
+
+Let me compute the derivative f’(v):
+
+Using the quotient rule:
+
+Let numerator N = (v + 1)^2, denominator D = 2 (v - 1) v^{1/2}
+
+Then, f’(v) = (N’ D - N D’) / D²
+
+Compute N’:
+
+N = (v + 1)^2 => N’ = 2(v + 1)
+
+Compute D:
+
+D = 2 (v - 1) v^{1/2}
+
+Compute D’:
+
+First, derivative of (v - 1) v^{1/2}:
+
+Let’s denote A = (v - 1) v^{1/2}
+
+A’ = derivative of (v - 1) * derivative of v^{1/2} + (v - 1) * derivative of v^{1/2}
+
+Wait, no. Wait, it's (v - 1) multiplied by v^{1/2}, so derivative is:
+
+A’ = (1) * v^{1/2} + (v - 1) * (1/2) v^{-1/2} = v^{1/2} + (v - 1)/(2 v^{1/2})
+
+Therefore, D = 2 A, so D’ = 2 A’ = 2 [ v^{1/2} + (v - 1)/(2 v^{1/2}) ] = 2 v^{1/2} + (v - 1)/v^{1/2}
+
+Simplify:
+
+= 2 v^{1/2} + (v - 1)/v^{1/2} = [2 v + (v - 1)] / v^{1/2} = (3v - 1)/v^{1/2}
+
+Therefore, D’ = (3v - 1)/v^{1/2}
+
+So, putting back into f’(v):
+
+N’ D - N D’ = 2(v + 1) * 2 (v - 1) v^{1/2} - (v + 1)^2 * (3v - 1)/v^{1/2}
+
+Wait, no. Wait, the derivative f’(v) = (N’ D - N D’) / D²
+
+But N = (v + 1)^2, N’ = 2(v + 1)
+
+D = 2 (v - 1) v^{1/2}, D’ = (3v - 1)/v^{1/2}
+
+Therefore:
+
+N’ D = 2(v + 1) * 2 (v - 1) v^{1/2} = 4 (v + 1)(v - 1) v^{1/2}
+
+N D’ = (v + 1)^2 * (3v - 1)/v^{1/2}
+
+So, f’(v) = [4 (v + 1)(v - 1) v^{1/2} - (v + 1)^2 (3v - 1)/v^{1/2}] / [ (2 (v - 1) v^{1/2})^2 ]
+
+Simplify numerator:
+
+Factor out (v + 1)/v^{1/2}:
+
+= (v + 1)/v^{1/2} [4 (v - 1) v - (v + 1)(3v - 1) ]
+
+Let me compute the term inside the brackets:
+
+4 (v - 1) v - (v + 1)(3v - 1)
+
+First term: 4v(v - 1) = 4v² - 4v
+
+Second term: (v + 1)(3v - 1) = 3v² - v + 3v - 1 = 3v² + 2v - 1
+
+So, subtracting:
+
+4v² - 4v - (3v² + 2v - 1) = 4v² - 4v - 3v² - 2v + 1 = v² - 6v + 1
+
+Therefore, numerator becomes:
+
+(v + 1)/v^{1/2} (v² - 6v + 1)
+
+Denominator of f’(v): [2 (v - 1) v^{1/2}]^2 = 4 (v - 1)^2 v
+
+Therefore, f’(v) = [ (v + 1)(v² - 6v + 1) / v^{1/2} ] / [4 (v - 1)^2 v ] = (v + 1)(v² - 6v + 1) / [4 (v - 1)^2 v^{3/2} ]
+
+Set f’(v) = 0:
+
+The numerator must be zero: (v + 1)(v² - 6v + 1) = 0
+
+Since v > 1, v + 1 ≠ 0. So, solve v² - 6v + 1 = 0.
+
+Solutions: v = [6 ± sqrt(36 - 4)] / 2 = [6 ± sqrt(32)] / 2 = [6 ± 4 sqrt(2)] / 2 = 3 ± 2 sqrt(2)
+
+Since v > 1, both 3 + 2 sqrt(2) ≈ 3 + 2.828 ≈ 5.828 and 3 - 2 sqrt(2) ≈ 3 - 2.828 ≈ 0.172. But since v > 1, only v = 3 + 2 sqrt(2) is valid.
+
+Therefore, critical point at v = 3 + 2 sqrt(2). Let's check if this is a minimum.
+
+Second derivative test might be complicated, but since it's the only critical point in v > 1 and considering the behavior as v approaches 1+ and infinity, likely this is the minimum.
+
+So, v = 3 + 2 sqrt(2). Then, u = sqrt(v) = sqrt(3 + 2 sqrt(2)). Let's compute u.
+
+Note that sqrt(3 + 2 sqrt(2)) can be simplified. Suppose sqrt(3 + 2 sqrt(2)) = sqrt(a) + sqrt(b). Then, squaring both sides:
+
+3 + 2 sqrt(2) = a + b + 2 sqrt(ab)
+
+Therefore, we need a + b = 3 and 2 sqrt(ab) = 2 sqrt(2). So, sqrt(ab) = sqrt(2) => ab = 2.
+
+Solving a + b = 3 and ab = 2. The solutions are a = 1, b = 2. Therefore, sqrt(3 + 2 sqrt(2)) = sqrt(1) + sqrt(2) = 1 + sqrt(2).
+
+So, u = 1 + sqrt(2). Therefore, t = (u² - 1)/2.
+
+Compute u²: (1 + sqrt(2))² = 1 + 2 sqrt(2) + 2 = 3 + 2 sqrt(2). Therefore, t = (3 + 2 sqrt(2) - 1)/2 = (2 + 2 sqrt(2))/2 = 1 + sqrt(2).
+
+Thus, t = 1 + sqrt(2). Then, recall that t = x/y, so x = (1 + sqrt(2)) y.
+
+Now, going back to the constraint x² y (2x + y) = 1.
+
+Substitute x = (1 + sqrt(2)) y:
+
+[(1 + sqrt(2)) y]^2 * y * [2*(1 + sqrt(2)) y + y] = 1
+
+Compute each term:
+
+First term: [(1 + sqrt(2)) y]^2 = (1 + 2 sqrt(2) + 2) y² = (3 + 2 sqrt(2)) y²
+
+Second term: y
+
+Third term: 2*(1 + sqrt(2)) y + y = [2 + 2 sqrt(2) + 1] y = (3 + 2 sqrt(2)) y
+
+Multiply all together:
+
+(3 + 2 sqrt(2)) y² * y * (3 + 2 sqrt(2)) y = (3 + 2 sqrt(2))² y⁴ = 1
+
+Compute (3 + 2 sqrt(2))²: 9 + 12 sqrt(2) + 8 = 17 + 12 sqrt(2)
+
+Thus, (17 + 12 sqrt(2)) y⁴ = 1 => y⁴ = 1 / (17 + 12 sqrt(2))
+
+Compute y² = 1 / sqrt(17 + 12 sqrt(2)). Let's rationalize sqrt(17 + 12 sqrt(2)).
+
+Suppose sqrt(17 + 12 sqrt(2)) = sqrt(a) + sqrt(b). Then, squaring:
+
+17 + 12 sqrt(2) = a + b + 2 sqrt(ab)
+
+Thus, a + b = 17 and 2 sqrt(ab) = 12 sqrt(2) => sqrt(ab) = 6 sqrt(2) => ab = 72.
+
+Solving a + b = 17 and ab = 72. The solutions are a = 8, b = 9 (since 8 + 9 = 17 and 8*9 = 72). Therefore, sqrt(17 + 12 sqrt(2)) = sqrt(8) + sqrt(9) = 2 sqrt(2) + 3.
+
+Therefore, sqrt(17 + 12 sqrt(2)) = 3 + 2 sqrt(2). Therefore, y² = 1 / (3 + 2 sqrt(2)).
+
+Again, rationalize 1 / (3 + 2 sqrt(2)):
+
+Multiply numerator and denominator by (3 - 2 sqrt(2)):
+
+= [1 * (3 - 2 sqrt(2))] / [(3 + 2 sqrt(2))(3 - 2 sqrt(2))] = (3 - 2 sqrt(2)) / (9 - 8) = 3 - 2 sqrt(2).
+
+Therefore, y² = 3 - 2 sqrt(2). Therefore, y = sqrt(3 - 2 sqrt(2)).
+
+Again, sqrt(3 - 2 sqrt(2)) can be simplified. Suppose sqrt(3 - 2 sqrt(2)) = sqrt(a) - sqrt(b). Then, squaring:
+
+3 - 2 sqrt(2) = a + b - 2 sqrt(ab)
+
+Thus, a + b = 3 and 2 sqrt(ab) = 2 sqrt(2) => sqrt(ab) = sqrt(2) => ab = 2.
+
+Solving a + b = 3, ab = 2. Solutions are a = 1, b = 2. Therefore, sqrt(3 - 2 sqrt(2)) = sqrt(2) - 1.
+
+Therefore, y = sqrt(2) - 1.
+
+Then, x = (1 + sqrt(2)) y = (1 + sqrt(2))(sqrt(2) - 1).
+
+Compute this:
+
+= (1)(sqrt(2) - 1) + sqrt(2)(sqrt(2) - 1) = sqrt(2) - 1 + 2 - sqrt(2) = (sqrt(2) - sqrt(2)) + (-1 + 2) = 0 + 1 = 1.
+
+So, x = 1.
+
+Then, since x = 1, y = sqrt(2) - 1, and z = x = 1.
+
+Therefore, in this case, x = z = 1, y = sqrt(2) - 1.
+
+Now, let's compute (x + y)(y + z):
+
+x + y = 1 + (sqrt(2) - 1) = sqrt(2)
+
+y + z = (sqrt(2) - 1) + 1 = sqrt(2)
+
+Therefore, (x + y)(y + z) = sqrt(2) * sqrt(2) = 2.
+
+Therefore, the minimum value is 2.
+
+But wait, I need to confirm if this is indeed the minimum. Let's check another approach without assuming x = z. Maybe using AM-GM or another inequality.
+
+Alternatively, let's consider the expression (x + y)(y + z). Let me expand it again:
+
+(x + y)(y + z) = xy + xz + y² + yz.
+
+Hmm. The constraint is xyz(x + y + z) = 1. Let's denote S = x + y + z.
+
+So, xyzS = 1.
+
+We need to minimize E = xy + xz + y² + yz.
+
+Let me group terms:
+
+E = y(x + z) + xz + y².
+
+But from S = x + y + z, x + z = S - y.
+
+Therefore, E = y(S - y) + xz + y² = yS - y² + xz + y² = yS + xz.
+
+So, E = yS + xz.
+
+So, now we need to minimize yS + xz, given that xyzS = 1.
+
+Hmm, so E = yS + xz. Let me denote this as E = yS + xz.
+
+We can use AM-GM on terms yS and xz. But first, let's express variables in terms of S.
+
+But S = x + y + z. So, perhaps express xz in terms of S.
+
+Alternatively, since xyzS = 1, we can write xz = 1 / (y S). Therefore, E = yS + 1/(y S).
+
+Thus, E = yS + 1/(y S).
+
+Let me set t = yS. Then, E = t + 1/t. The minimum of t + 1/t is 2, achieved when t = 1.
+
+Therefore, E ≥ 2, with equality when t = 1, i.e., yS = 1.
+
+But since xyzS = 1, and yS = 1, then xz = 1 / (y S) = 1 / 1 = 1.
+
+Therefore, when yS = 1 and xz = 1, we have E = 2.
+
+Therefore, the minimum value of E is 2.
+
+Therefore, the minimal value of (x + y)(y + z) is 2.
+
+This aligns with the earlier result when we assumed x = z. So, even without assuming symmetry, we can see that the minimum is 2.
+
+Therefore, the answer is 2.
+
+**Final Answer**
+\boxed{2}
+Therefore, the minimum value of \((x + y)(y + z)\) is \boxed{2}.
+</think>

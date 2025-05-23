@@ -1,0 +1,70 @@
+Okay, let's try to figure out how many degrees are in the measure of angle ADC in the given diagram. So, from the problem, we have two circles with the same center D. The smaller circle has a radius of 1, and the larger one has a radius of 2. The shaded region's total area is 5/12 of the area of the larger circle. Hmm, I need to relate this to the angle ADC. Let me start by understanding the diagram better.
+
+First, the Asymptote code shows that there are two arcs: one for the inner circle and one for the outer circle. The inner circle has a radius of 1, and the outer one has a radius of 2. Points A, D, and C are connected, forming triangle ADC. The shaded regions are the areas between the two arcs and the lines connecting them. So, the shaded area is like a lens-shaped region formed by the intersection of the two circles. Wait, but since both circles have the same center, actually, the shaded area might be the area of the sector of the larger circle minus the area of the sector of the smaller circle, or something like that. Let me visualize this again.
+
+Looking at the Asymptote code, the path for region1 is from A to A/2, then through the inner arc to C/2, then through the outer arc back to C. So, this region is a sort of crescent shape, but since both circles are centered at D, maybe it's a sector of the larger circle minus a sector of the smaller circle? But then there's another shaded region. The second region is the arc from A/2 to C/2 in the inner circle, then connecting back to D and A/2. Hmm, maybe the total shaded area consists of two parts: one lens-shaped area from the outer circle and another smaller lens from the inner circle? Wait, but the problem says the total area is 5/12 of the larger circle. So maybe the shaded area is the area between the two sectors of the two circles. Let me clarify.
+
+The problem states that the total area of the shaded region is 5/12 of the area of the larger circle. The larger circle has radius 2, so its area is π*(2)^2 = 4π. Therefore, the shaded area is (5/12)*4π = (5/3)π. So, the shaded area is 5π/3.
+
+Now, I need to figure out how this shaded area relates to angle ADC. Let's denote angle ADC as θ degrees. Since both circles are centered at D, the sector of the larger circle with angle θ will have an area of (θ/360)*π*(2)^2 = (θ/360)*4π. Similarly, the sector of the smaller circle with angle θ will have an area of (θ/360)*π*(1)^2 = (θ/360)*π. 
+
+But the shaded area is the difference between these two sectors? Wait, but according to the Asymptote code, there are two shaded regions. The first region is the area between the outer arc (radius 2) and the inner arc (radius 1) from point A to point C. The second shaded region is the area between the inner arc and the line segments DC and DA. Hmm, maybe the total shaded area is the area of the sector of the larger circle minus the area of the sector of the smaller circle, plus the area of the triangle ADC? Wait, I need to be careful here.
+
+Looking at the Asymptote code again, the first region is constructed as (a--a/2)..inner..(c/2--c)..outer..cycle. So, this is a path that starts at A, goes to A/2, then follows the inner arc to C/2, then follows the outer arc back to C, and then back to A. So, this region is a sort of annular sector, like a ring-shaped region between the two arcs. The second region is arc(d, a/2, c/2, CCW)..(c/2--d--a/2)..cycle, which seems to be the inner sector minus the triangle. Wait, maybe the second region is the area bounded by the inner arc from A/2 to C/2 and the lines from C/2 to D to A/2. So, this is the area of the inner sector minus the triangle DAC/2? Hmm, not sure. Let me try to parse this.
+
+Alternatively, maybe the total shaded area is the area of the outer annular sector (between radius 1 and 2) plus the area of the inner sector. Wait, but the problem says the total shaded region is 5/12 of the larger circle. So, maybe it's the area of the annular sector (between radii 1 and 2) plus the area of the inner sector. Let's compute that.
+
+The annular sector area between radii 1 and 2 with angle θ is (θ/360)*(π*2² - π*1²) = (θ/360)*3π. The inner sector area is (θ/360)*π*1² = (θ/360)*π. So, total shaded area would be (θ/360)*3π + (θ/360)*π = (θ/360)*4π. But according to the problem, the shaded area is 5π/3. Therefore, (θ/360)*4π = 5π/3. Solving for θ: 4θ/360 = 5/3 => θ = (5/3)*(360/4) = (5/3)*(90) = 150 degrees. Wait, that seems straightforward. But wait, is the shaded area actually the annular sector plus the inner sector? Looking back at the Asymptote code, the first region is a path that goes from A to A/2, along the inner arc to C/2, then along the outer arc back to C, and then back to A. So, this is the area between the two arcs, which is the annular sector. Then the second shaded region is the path from A/2 along the inner arc to C/2, then along the line segments back to D and to A/2. So, that's the inner sector minus the triangle ADC. Wait, but the Asymptote code says it's filled, so maybe it's the inner sector. Wait, the second region is the arc from A/2 to C/2 (which is the inner circle) and then the lines from C/2 to D to A/2. So, that's the inner sector (from A/2 to C/2) connected via lines back to D. So, that's the inner sector minus the triangle. Wait, but since it's a path, it's closed by the lines. So, the area is the inner sector minus the triangle? Or is it the inner sector plus the triangle? Wait, no. The path is from A/2 to C/2 along the inner arc, then from C/2 to D to A/2, which is the triangle. So, the filled region is the area bounded by the inner arc and the two lines from C/2 to D and D to A/2. So, that's the inner sector (which is 1/2 * r² * θ) minus the triangle? Wait, no. The inner sector is 1/2 * r² * θ, but the filled region is actually just the inner sector minus the triangle DAC/2? Wait, maybe not. Let me think.
+
+Wait, the path is (A/2 -- C/2) along the inner arc, then (C/2 -- D -- A/2). So, the area bounded by that path is the region between the inner arc and the two lines. So, that's the area of the inner sector minus the area of triangle DAC/2? Wait, but DAC is the angle θ. Wait, but DAC is the angle at D between points A and C. Wait, but in the diagram, points A, D, and C form triangle ADC with angle θ at D. So, the inner sector would be the sector from A/2 to C/2 with angle θ, but actually, A/2 and C/2 are points on the inner circle. Wait, A is a point on the outer circle (radius 2), so A/2 is a point on the inner circle (radius 1). Similarly, C is a point on the outer circle (radius 2), so C/2 is a point on the inner circle. So, the inner circle has radius 1, so A/2 and C/2 are points on the inner circle. Therefore, the inner arc from A/2 to C/2 is part of the inner circle, and the outer arc from A to C is part of the outer circle.
+
+Therefore, the first shaded region is the area between the two arcs, which is an annular sector. The second shaded region is the area bounded by the inner arc and the lines from C/2 to D to A/2. So, that's the inner sector minus the triangle formed by points D, A/2, and C/2. Wait, but the filled region is the path (A/2 -- C/2) along the inner arc, then (C/2 -- D -- A/2). So, this is a closed path, which is the inner sector minus the triangle? Or is it just the inner sector? Wait, if you draw the inner arc from A/2 to C/2 and then connect back to A/2 via the lines C/2 to D to A/2, then the filled region is the inner sector minus the triangle DAC/2. Wait, maybe not. Let me think again.
+
+Alternatively, the filled region is the area bounded by the inner arc and the two radii from D to A/2 and D to C/2. So, that's the inner sector. Then, the second shaded region is the area between the outer arc and the lines from A to D to C. But wait, no. The second region is the path from A/2 along the inner arc to C/2, then along the lines back to D and to A/2. So, that would create a shape that's like a sector of the inner circle, but then connected to D. Wait, this is confusing. Maybe I need to compute the areas separately.
+
+Let me try to break it down. The total shaded area is the sum of two parts:
+
+1. The area between the outer arc AC and the inner arc A/2 C/2. This is an annular sector with angle θ, outer radius 2, inner radius 1. The area of this annular sector is (θ/360)*(π*2² - π*1²) = (θ/360)*3π.
+
+2. The area of the inner sector formed by points D, A/2, and C/2. This is a sector with radius 1 and angle θ. Its area is (θ/360)*π*1² = (θ/360)*π.
+
+Therefore, the total shaded area is the sum of these two areas: (θ/360)*3π + (θ/360)*π = (θ/360)*4π. The problem states that this total shaded area is 5/12 of the area of the larger circle. The area of the larger circle is π*2² = 4π. So, 5/12 of that is (5/12)*4π = (5/3)π. Therefore, we have:
+
+(θ/360)*4π = (5/3)π
+
+Divide both sides by π:
+
+(θ/360)*4 = 5/3
+
+Multiply both sides by 360:
+
+θ*4 = (5/3)*360
+
+θ*4 = 600
+
+θ = 600 / 4 = 150 degrees.
+
+Wait, so is the answer 150 degrees? That seems straightforward. Let me verify this with another approach to be sure.
+
+Alternatively, maybe the shaded area is only the annular sector. Then, (θ/360)*3π = (5/12)*4π. Let's check:
+
+(θ/360)*3π = (5/12)*4π => (θ/360)*3 = 5/3 => θ = (5/3)*(360/3) = (5/3)*120 = 200 degrees. But 200 degrees is not matching the previous answer. Hmm, so which one is correct?
+
+Wait, according to the Asymptote code, the first shaded region is the annular sector (between radii 1 and 2) and the second shaded region is the inner sector. So, the total shaded area is annular sector + inner sector. Therefore, my first calculation is correct: 4π*(θ/360) = 5π/3, leading to θ = 150 degrees.
+
+But why does the second approach give 200? Because in the second approach, I only considered the annular sector. But according to the Asymptote code, there are two shaded regions. So, the total shaded area is annular sector plus inner sector. Therefore, the first approach is correct.
+
+Therefore, the measure of angle ADC is 150 degrees. Let me check once more.
+
+Total shaded area = annular sector (area between radii 1 and 2) + inner sector (radius 1). Annular sector area = (θ/360)*(π*2² - π*1²) = (θ/360)*3π. Inner sector area = (θ/360)*π. Total shaded area = 4π*(θ/360) = 5π/3. Solving for θ: 4θ/360 = 5/3 => θ = (5/3)*(360/4) = (5/3)*90 = 150 degrees. Yep, that checks out.
+
+So, I think the answer is 150 degrees. Let me just make sure there's no alternative interpretation of the shaded regions. The Asymptote code draws two shaded regions: one is the annular sector from A to C via the outer and inner arcs, and the other is the inner sector from A/2 to C/2 via the inner arc and lines back to D. Therefore, both regions are indeed shaded, so the total shaded area is the sum of the annular sector and the inner sector. Therefore, the calculation is correct.
+
+Another way to think about it: if the angle is 150 degrees, then the annular sector is 150/360 * (π*4 - π*1) = (5/12)*3π = 5π/4. The inner sector is 150/360 * π*1 = 5π/12. Adding them together: 5π/4 + 5π/12 = (15π/12 + 5π/12) = 20π/12 = 5π/3, which matches the given shaded area. Therefore, this confirms that θ = 150 degrees is correct.
+
+So, the measure of angle ADC is 150 degrees.
+
+**Final Answer**
+The measure of angle ADC is $\boxed{150}$ degrees.
+Therefore, the measure of angle ADC is $\boxed{150}$ degrees.
+</think>

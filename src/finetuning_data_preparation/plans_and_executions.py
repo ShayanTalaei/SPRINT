@@ -17,6 +17,7 @@ sys.path.append("src/utils/")
 import text_processing_utils
 import component_formatting_utils
 import evaluate_utils
+from sklearn.model_selection import train_test_split
 from dotenv import load_dotenv
 np.random.seed(42)
 
@@ -328,6 +329,17 @@ def visualize_dag(dag):
         dot.edge(str(edge[0]), str(edge[1]))
     return dot
 
+def prepare_dataset_for_R1_Distill_full_trajectory(df):
+    def add_messages(row):
+        row["messages"] = [
+            {"role": "user", "content": row["UserPrompt"]},
+            {"role": "assistant", "content": row["ExpectedOutput"]}
+        ]
+        return row
+    df["ExpectedOutput"] = df["ExpectedOutput"].apply(lambda x: x.replace("**Final Answer**\n", ""))
+    dataset = Dataset.from_pandas(df)
+    dataset = dataset.map(add_messages)
+    return dataset, df
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -454,3 +466,29 @@ if __name__ == "__main__":
             continue
 
     print(f"{num_dags_removed_due_to_low_parallelization} out of {int(data_range.split(':')[1]) - int(data_range.split(':')[0])} DAGs were removed due to low parallelization")
+
+    df = []
+    for filename in tqdm(sorted(os.listdir(trajectory_data_dir))):
+        problem_idx = filename.split('.')[0].split('_')[-1]
+        trajectory = text_processing_utils.read_file_as_string(os.path.join(trajectory_data_dir, filename))
+        question_content = re.search(r"<Question>(.*?)</Question>", trajectory, re.DOTALL).group(1)
+        trajectory = re.sub(r"<Question>.*?</Question>", "", trajectory, flags=re.DOTALL).strip()
+        system_prompt = text_processing_utils.read_file_as_string("src/prompts/global_agent_prompt.txt")
+        system_prompt += f"\n\n<Question>\n{question_content.strip()}\n</Question>\n\n"
+        user_prompt = system_prompt
+        expected_output = "<think>\n"+trajectory.strip()+"\n</think>"
+        final_answer_line = evaluate_utils.get_final_answer_line(trajectory)
+        if "boxed" in final_answer_line:
+            final_answer = evaluate_utils.remove_boxed(evaluate_utils.last_boxed_only_string(final_answer_line))
+        else:
+            raise Exception(f"Final answer not found for {filename}")
+        df.append((problem_idx, user_prompt, expected_output, final_answer))
+    df = pd.DataFrame(df, columns=["ProblemIdx", "UserPrompt", "ExpectedOutput", "FinalAnswer"])
+    df = df.sort_values(by="ProblemIdx", key=lambda col: col.astype(int))
+    if push_to_hub:
+        train_df, test_df = train_test_split(df, test_size=0.1, random_state=42)
+        dataset_dict = DatasetDict({
+            "train": prepare_dataset_for_R1_Distill_full_trajectory(train_df)[0],
+            "test": prepare_dataset_for_R1_Distill_full_trajectory(test_df)[0]
+        })
+        dataset_dict.push_to_hub(output_hub_path)

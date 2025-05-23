@@ -1,0 +1,366 @@
+Okay, let me try to figure out this problem step by step. So, Steve is thinking of a polynomial of the form P(x) = 2x³ - 2a x² + (a² - 81)x - c, where a and c are positive integers. All the roots of this polynomial are positive integers. Jon initially thinks there's more than one possible polynomial, but after Steve gives the value of a, there are still two possible c values. We need to find the sum of these two c's.
+
+First, since the polynomial has three roots, all positive integers, let's denote them as r, s, t. Then, using Vieta's formula for a cubic polynomial, we can relate the coefficients to the roots.
+
+Given the polynomial P(x) = 2x³ - 2a x² + (a² - 81)x - c, let's divide both sides by 2 to make it monic. So, the monic polynomial would be x³ - a x² + [(a² - 81)/2]x - c/2. But since the original polynomial has integer coefficients, dividing by 2 might introduce fractions unless the coefficients are even. Let's check:
+
+- The coefficient of x² is -2a, which is even, so that's fine.
+- The coefficient of x is (a² - 81). If a is an integer, then a² is an integer, so a² - 81 is also an integer. Divided by 2, that might not necessarily be an integer unless a² - 81 is even. So, a² must be odd because 81 is odd. Therefore, a must be odd since the square of an even number is even, and the square of an odd number is odd. So, a is an odd positive integer.
+- The constant term is -c, so when divided by 2, it's -c/2. For this to be an integer, c must be even. Wait, but the original polynomial has integer coefficients, so all coefficients must be integers. Therefore, the monic polynomial must have integer coefficients. So:
+
+1. The coefficient of x² is -a, which is integer.
+2. The coefficient of x is (a² - 81)/2. For this to be integer, a² - 81 must be even. Since a is odd, a² is odd, so odd minus odd is even, so yes, (a² - 81)/2 is integer.
+3. The constant term is -c/2. For this to be integer, c must be even.
+
+Therefore, a is an odd positive integer, and c is an even positive integer.
+
+Now, applying Vieta's formula to the original polynomial:
+
+Sum of roots: r + s + t = (2a)/2 = a.
+
+Sum of products of roots two at a time: rs + rt + st = (a² - 81)/2.
+
+Product of roots: rst = c/2.
+
+So, we have:
+
+1. r + s + t = a
+2. rs + rt + st = (a² - 81)/2
+3. rst = c/2
+
+Our goal is to find possible a and c such that all roots r, s, t are positive integers, and c is even. Jon initially can't determine the polynomial, which suggests there are multiple possible triples (r, s, t) for a given a. But once a is revealed, there are still two possible c's. So, there's ambiguity in the roots even after knowing a.
+
+Let me denote S = r + s + t = a, Q = rs + rt + st = (a² - 81)/2, and P = rst = c/2.
+
+We need to find triples of positive integers (r, s, t) such that:
+
+S = a,
+
+Q = (a² - 81)/2,
+
+and P = c/2.
+
+Note that (a² - 81)/2 must be an integer, which as established, it is because a is odd.
+
+So, let's try to relate S, Q, and P.
+
+We know that for three variables, we can relate these symmetric sums. Let's consider that r, s, t are positive integers, so each is at least 1.
+
+Given that, let's try to express Q in terms of S and the variables:
+
+Q = rs + rt + st = (r + s + t)^2 - (r² + s² + t²) / 2.
+
+But that might not be helpful. Alternatively, maybe express in terms of variables.
+
+Alternatively, perhaps consider that Q = (a² - 81)/2. But S = a, so Q = (S² - 81)/2.
+
+We can write Q = (S² - 81)/2.
+
+So, Q is determined by S. Therefore, for a given S = a, Q is fixed. Therefore, the possible triples (r, s, t) must satisfy these equations.
+
+But since S and Q are fixed for a given a, the roots are determined up to permutation. However, since the polynomial is given with integer coefficients and leading coefficient 2, the roots could be in any order, but the coefficients are symmetric functions of the roots.
+
+But the problem is that, even with fixed S and Q, there could be multiple triples (r, s, t) that satisfy these conditions. So, Jon can't determine the polynomial because he can't distinguish between the different possible root triples.
+
+But once a is given, there are still two possible c's. So, even after knowing a, there are two different products P = rst that correspond to different triples (r, s, t). Therefore, the problem reduces to finding a such that there are two different triples (r, s, t) with the same sum S = a and same Q = (a² - 81)/2, leading to different products P.
+
+Therefore, our task is to find all a (odd positive integers) such that there are two distinct triples (r, s, t) of positive integers with r + s + t = a and rs + rt + st = (a² - 81)/2, and then compute the corresponding c's as 2rst and sum them.
+
+Therefore, we need to find such a's and the corresponding c's.
+
+So, the approach is:
+
+1. For each odd a, check if there are at least two different triples (r, s, t) with sum a, and Q = (a² - 81)/2.
+
+2. For each such a, compute c1 = 2rst1 and c2 = 2rst2, and then sum c1 + c2.
+
+But since a is given in the problem, and Jon says there are still two possible c's after knowing a, that suggests that there's a unique a for which there are two possible c's. Wait, but the problem says "Jon says, 'There are still two possible values of c'." So, perhaps there are multiple a's with two possible c's, and we need to find all such a's, compute the c's, and sum them. Wait, but the problem says "the sum of the two possible values of c." So, there must be only two possible c's in total across all a's? Or perhaps there's a unique a with two c's, so the sum is c1 + c2.
+
+Wait, let me re-read the problem.
+
+"Steve says to Jon, "I am thinking of a polynomial whose roots are all positive integers. The polynomial has the form $P(x) = 2x^3-2ax^2+(a^2-81)x-c$ for some positive integers $a$ and $c$. Can you tell me the values of $a$ and $c$?"
+
+After some calculations, Jon says, "There is more than one such polynomial."
+
+Steve says, "You're right. Here is the value of $a$." He writes down a positive integer and asks, "Can you tell me the value of $c$?"
+
+Jon says, "There are still two possible values of $c$."
+
+Find the sum of the two possible values of $c$.
+
+So, the key point is that after knowing a, there are still two possible c's. So, for the given a, there are two distinct triples (r, s, t) leading to two different c's. Therefore, the answer is the sum of these two c's. So, we need to find the a such that there are two different triples (r, s, t) with sum a and Q = (a² - 81)/2, leading to two different c's, and then sum these c's.
+
+Therefore, the problem reduces to finding such an a, and then computing the corresponding c's and adding them.
+
+So, our steps are:
+
+1. Find all odd positive integers a such that there exist at least two distinct triples (r, s, t) of positive integers with r + s + t = a and rs + rt + st = (a² - 81)/2.
+
+2. For each such a, compute the two possible c's (2rst1 and 2rst2) and sum them.
+
+But since the problem states that after knowing a, there are still two possible c's, it's possible that there's only one such a. Therefore, we need to find that a and compute the sum.
+
+Alternatively, perhaps there are multiple a's with two possible c's, but the problem asks for the sum of the two possible c's, which might be unique.
+
+But let's proceed step by step.
+
+First, let's express Q in terms of S:
+
+Q = (S² - 81)/2.
+
+So, Q must be equal to rs + rt + st. But also, for three variables, we have the identity:
+
+(r + s + t)^2 = r² + s² + t² + 2(rs + rt + st).
+
+Therefore, S² = r² + s² + t² + 2Q.
+
+But Q is given as (S² - 81)/2, so substituting:
+
+S² = r² + s² + t² + 2*(S² - 81)/2
+
+Simplify:
+
+S² = r² + s² + t² + (S² - 81)
+
+Therefore:
+
+S² = r² + s² + t² + S² - 81
+
+Subtract S² from both sides:
+
+0 = r² + s² + t² - 81
+
+Therefore:
+
+r² + s² + t² = 81
+
+So, this is a crucial equation: the sum of the squares of the roots is 81.
+
+Therefore, we have:
+
+1. r + s + t = a (odd positive integer)
+2. rs + rt + st = (a² - 81)/2
+3. r² + s² + t² = 81
+
+So, the problem reduces to finding triples of positive integers (r, s, t) with sum a, product P = rst, and sum of squares 81.
+
+Given that, we need to find all triples (r, s, t) with r² + s² + t² = 81, and r + s + t = a (odd), and then check if there are multiple such triples for some a.
+
+Since r, s, t are positive integers, their squares must be positive integers less than or equal to 81. Therefore, each root is at most 9 (since 9² = 81). So, each root is in 1 to 9.
+
+Moreover, since the roots are positive integers, and the sum of squares is 81, we can list all possible triples (r, s, t) such that r² + s² + t² = 81, considering that order doesn't matter (since the polynomial is symmetric in roots). Then, for each such triple, compute the sum a = r + s + t, and check if a is odd. Then, group triples by their sum a, and see if any sum a has multiple triples, leading to different products rst.
+
+Our goal is to find all such a's with multiple triples, and then compute the sum of the corresponding c's (which are 2rst).
+
+So, first step: list all possible triples (r, s, t) with r ≤ s ≤ t (to avoid permutations) and r² + s² + t² = 81.
+
+Let's start enumerating possible triples.
+
+First, note that since r, s, t are at least 1, and squares add up to 81.
+
+Let's consider the possible values for t:
+
+t can be from 9 down to 3, because if t = 1 or 2, then t² = 1 or 4, leaving 80 or 77 for r² + s², which would be difficult to split into two squares.
+
+Wait, but maybe t can be 9, 8, ..., 1. Let's check.
+
+Starting with t = 9:
+
+t = 9, then r² + s² = 81 - 81 = 0. But r and s must be positive integers, so this is impossible. Therefore, t cannot be 9.
+
+Next, t = 8:
+
+t = 8, t² = 64. Then r² + s² = 81 - 64 = 17.
+
+Looking for positive integers r ≤ s such that r² + s² = 17.
+
+Possible pairs:
+
+1² + 4² = 1 + 16 = 17. So, (1, 4, 8). Also, check if 1, 4, 8 are all distinct and positive.
+
+Yes, 1, 4, 8. So, one triple is (1, 4, 8). Sum a = 1 + 4 + 8 = 13. Then, product rst = 1*4*8 = 32. So, c = 2*32 = 64.
+
+But let's check if there are other triples with t =8.
+
+Is there another pair (r, s) with r² + s² =17?
+
+Looking for r ≤ s:
+
+r=2: 4 + s² =17 → s²=13, not square.
+
+r=3: 9 + s²=17 → s²=8, not square.
+
+So, only (1,4,8).
+
+Next, t =7:
+
+t² =49. Then r² + s² =81 -49=32.
+
+Looking for r ≤ s with r² + s²=32.
+
+Possible pairs:
+
+0² + (sqrt(32))², but r must be at least 1.
+
+1² + sqrt(31)² → not integer.
+
+2² + sqrt(28)² → nope.
+
+3² + sqrt(23)² → nope.
+
+4² + sqrt(16)²=4² +4²=16+16=32. So, (4,4,7). Sum a=4+4+7=15. Product rst=4*4*7=112. c=2*112=224.
+
+Another pair: 0² + sqrt(32)² invalid. So, only (4,4,7).
+
+t=6:
+
+t²=36. Then r² + s²=81 -36=45.
+
+Looking for r ≤ s with r² + s²=45.
+
+Possible pairs:
+
+1² + sqrt(44)² → nope.
+
+2² + sqrt(41)² → nope.
+
+3² + sqrt(36)²=3² +6²=9+36=45. So, (3,6,6). Sum a=3+6+6=15. Product rst=3*6*6=108. c=2*108=216.
+
+Another pair:
+
+r= sqrt(45 - s²). Let's check if there are other integer solutions.
+
+s=5: 25 + r²=45 → r²=20 → nope.
+
+s=4: 16 + r²=45 → r²=29 → nope.
+
+s=3: 9 + r²=45 → r²=36 → r=6. So, (3,6,6) is the only one.
+
+t=5:
+
+t²=25. Then r² + s²=81 -25=56.
+
+Looking for r ≤ s with r² + s²=56.
+
+Possible pairs:
+
+1² + sqrt(55)² → nope.
+
+2² + sqrt(52)² → nope.
+
+4² + sqrt(48)² → nope.
+
+5² + sqrt(31)² → nope.
+
+7² + sqrt(56 -49)=sqrt(7) → nope.
+
+Wait, 56 can be 49 +7, but 7 isn't a square. 36 +20=56, 25 +31=56, 16 +40=56, 4 +52=56. None of these are squares except perhaps 16 + 40, but 40 isn't a square. So, no integer solutions here.
+
+Wait, 56 can be expressed as 16 + 40, but 40 isn't a square. 25 +31, same. 36 +20, same. So, no solutions here. Therefore, t=5 gives no triples.
+
+t=4:
+
+t²=16. Then r² + s²=81 -16=65.
+
+Looking for r ≤ s with r² + s²=65.
+
+Possible pairs:
+
+1² + 8²=1 +64=65 → (1,8,4). But since we need t=4, but here t=4, but the triple would be (1,8,4), but since we need r ≤ s ≤ t, it's (1,4,8). Wait, but t=4 here, so this would be (1,4,8). Wait, but t is supposed to be 4. So, that's not possible. Wait, perhaps t=4, but then r and s must be ≤4.
+
+Wait, but 1² + 8²=65, but 8>4, which contradicts r ≤ s ≤ t=4. Therefore, no solutions here because r and s must be ≤4, but 4² +4²=32 <65. So, no triples with t=4.
+
+t=3:
+
+t²=9. Then r² + s²=81 -9=72.
+
+Looking for r ≤ s ≤3. But 3² +3²=18 <72. So, impossible. Therefore, no triples with t=3.
+
+So, compiling the triples we found:
+
+1. (1,4,8) with sum a=13, product 32, c=64
+
+2. (4,4,7) with sum a=15, product 112, c=224
+
+3. (3,6,6) with sum a=15, product 108, c=216
+
+Are there any other triples?
+
+Wait, let's check t=7 again. When t=7, we had (4,4,7). Are there other possibilities? For example, (5, something,7). Let's check:
+
+If t=7, then r² + s²=81 -49=32. We already considered (4,4,7). But are there other pairs?
+
+For example, 1² + sqrt(31)², which is invalid. 2² + sqrt(28)², invalid. 3² + sqrt(23)², invalid. 4² +4²=32, so only (4,4,7). So, no other triples here.
+
+Similarly, t=6: (3,6,6). If we tried t=6, but tried other values, but couldn't find any.
+
+t=8: (1,4,8). Any other triples with t=8? For example, (2, something,8). Then 2² + s²=17, s²=13, invalid. So, no.
+
+t=5: nothing. t=4: nothing. t=3: nothing.
+
+Therefore, the only triples are (1,4,8), (4,4,7), and (3,6,6).
+
+Now, let's check their sums:
+
+- (1,4,8): sum=13 (odd)
+- (4,4,7): sum=15 (odd)
+- (3,6,6): sum=15 (odd)
+
+So, the possible sums a are 13 and 15. For a=13, there's only one triple (1,4,8). For a=15, there are two triples: (4,4,7) and (3,6,6). Therefore, when Steve reveals a=15, Jon would see two possible triples, leading to two different c's: 224 and 216. The sum of these c's is 224 + 216 = 440.
+
+But wait, let's confirm that there are indeed these two triples for a=15.
+
+For a=15, the sum is 15, and sum of squares is 81.
+
+Triple (4,4,7): sum=15, squares=16+16+49=81.
+
+Triple (3,6,6): sum=15, squares=9+36+36=81.
+
+Yes, both are valid. Therefore, when a=15, there are two possible triples, leading to c=224 and c=216. Therefore, the sum is 224 + 216 = 440.
+
+But wait, let's check if there are other a's with two triples.
+
+For example, a=13: only one triple. So, if a=13, there's only one c=64. So, after knowing a=13, Jon would know c=64. Therefore, the only a that leads to two possible c's is a=15.
+
+Therefore, the answer is 224 + 216 = 440.
+
+But let me check if there are any other triples that I might have missed.
+
+Wait, let's consider if there are triples with repeated numbers. For example, (5, something, something). But as we saw earlier, t=5 gives nothing. Let's check t=5 again.
+
+t=5: r² + s²=81 -25=56. With r ≤ s ≤5. The maximum s can be 5, so r² + s² ≤25 +25=50 <56. Therefore, no solutions here.
+
+t=2: t=2, t²=4. Then r² + s²=81 -4=77. But r and s must be at least 1, so possible pairs:
+
+1² + sqrt(76)² → invalid.
+
+2² + sqrt(73)² → invalid.
+
+... up to 8² + sqrt(77 -64)=sqrt(13) → invalid.
+
+So, no solutions.
+
+Similarly, t=1: same problem.
+
+Therefore, the only triples are the three we found: (1,4,8), (4,4,7), and (3,6,6). So, only a=15 has two triples, leading to c=224 and 216. Therefore, the answer is 440.
+
+But let me confirm once more.
+
+Wait, the problem says "Jon says, 'There is more than one such polynomial.'" So, initially, there are multiple polynomials possible, meaning multiple triples for some a. Then Steve provides a, and Jon says there are still two possible c's. So, for the given a, there are two possible c's. So, the answer is the sum of these two c's.
+
+But in our case, only a=15 has two triples, leading to c=224 and 216. Therefore, the sum is 224 +216=440. Therefore, the answer is 440.
+
+But let me check if there's another possible a with two triples.
+
+Wait, suppose a=9. Let's check: sum a=9, sum of squares=81.
+
+But then, r + s + t=9, and r² + s² + t²=81. But the maximum sum of squares for three numbers summing to 9 is when one is 9 and the others are 0, but since they must be positive integers, the maximum sum of squares is 81 +1 +1=83, which is greater than 81. Wait, but we need sum of squares exactly 81.
+
+But in our earlier analysis, the only triples we found with sum of squares 81 are the ones with (1,4,8), (4,4,7), and (3,6,6). So, a=13 and a=15. So, a=15 is the only a with two triples, leading to two c's. Therefore, the answer is 440.
+
+Therefore, the sum of the two possible values of c is 440.
+
+**Final Answer**
+\boxed{440}
+Therefore, the sum of the two possible values of $c$ is $\boxed{440}$.
+</think>
