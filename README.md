@@ -14,6 +14,8 @@ Before running the code, please make sure to set the following environment varia
 - `OPENAI_API_KEY`: OpenAI API key for using OpenAI models.
 - `LOGS_DIR`: Directory to save logs and outputs.
 
+Our datasets and models are available at this anonymous HuggingFace repository: https://huggingface.co/anonym-submit-paper 
+
 ## Directory Structure
 
 - `src`: Source code for the data curation pipeline and SPRINT inference

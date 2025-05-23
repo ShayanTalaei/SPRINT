@@ -1,4 +1,4 @@
-BASE_MODEL="xyz/model_name"
+BASE_MODEL="anonym-submit-paper/RFT-DeepSeek-R1-Distill-Qwen-7B"
 BASE_MODEL_SERVER_URL="http://127.0.0.1:8000/v1/"
 BASE_MODEL_TEMP="0.6"
 BASE_MODEL_TYPE="think_ft_trajectory"
