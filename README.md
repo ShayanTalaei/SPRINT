@@ -17,6 +17,11 @@ Before running the code, please make sure to set the following environment varia
 ## Directory Structure
 
 - `src`: Source code for the data curation pipeline and SPRINT inference
+  - `src/component_separation`: Code for component separation
+  - `src/dag_creation`: Code for DAG creation
+  - `src/finetuning_data_preparation`: Code for preparing finetuning data
+  - `src/base_model_evaluation`: Code for RFT model inference
+  - `src/agent_orchestration`: Code for SPRINT inference
   - `src/prompts`: Prompts used for all LLM calls.
   - `src/utils`: Utility functions for text processing, evaluating results, and making API calls to models.
 - `run`: Bash scripts for running the data curation pipeline, model training and SPRINT inference. 

@@ -1,7 +1,7 @@
 # Define input variables
 DAG_CREATION_MODEL="gpt-4o"
 COMPONENT_SEPARATION_MODEL="gpt-4o"
-DATA_HUB_PATH="xyz/dataset_name"
+DATA_HUB_PATH="anonym-submit-paper/OpenThoughts-correct"
 SUBSET="math"
 RANGE="1:5"
 NUM_WORKERS=10
