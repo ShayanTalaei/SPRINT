@@ -1,0 +1,140 @@
+Okay, so I need to find the uncertainty in P_z for a given quantum state. The state is given as a column vector (-1/2, 1/√2, -1/2). The operators P_x, P_y, and P_z are represented by their respective matrices. The basis vectors are the eigenvectors of P_z. 
+
+First, I remember that the uncertainty ΔP_z is the square root of the expectation value of P_z squared minus the square of the expectation value of P_z. So, ΔP_z = sqrt⟨P_z²⟩ - ⟨P_z⟩². 
+
+Since the basis vectors are the eigenvectors of P_z, maybe working in that basis would simplify things. Let me check the matrix of P_z. The first row is (ℏ, 0, 0), the second row is (0, 0, 0), and the third row is (0, 0, -ℏ). So, this is a diagonal matrix with ℏ on the first diagonal element and -ℏ on the third. Therefore, the eigenvalues of P_z are ℏ and -ℏ. The eigenvectors corresponding to these eigenvalues are the basis vectors. 
+
+Wait, but the state given is a column vector in the original basis. Hmm. Wait, the basis here might be the standard basis, but the eigenvectors of P_z are probably the basis vectors. Let me confirm. If P_z is diagonal with entries ℏ, 0, -ℏ, then the eigenvectors are e1, e2, e3 where e1 = (1,0,0), e2 = (0,1,0), e3 = (0,0,1). But the given state is (-1/2, 1/√2, -1/2). Let me check if this state can be expressed in terms of the eigenvectors of P_z. 
+
+Alternatively, maybe the basis here is the standard basis, and the eigenvectors of P_z are e1, e2, e3. So, the state is given in this basis. If that's the case, then the expectation values can be computed directly using the matrix elements. 
+
+But since the state is an eigenstate of P_x with eigenvalue -ℏ, maybe there's a connection there. Wait, the problem says the system is found in the eigenstate of P_x corresponding to eigenvalue -ℏ. The explicit form of the state is given as (-1/2, 1/√2, -1/2). So, perhaps I can verify if this state is indeed an eigenstate of P_x. Let me check. 
+
+The matrix for P_x is given as:
+Row 1: (0, ℏ/√2, 0)
+Row 2: (ℏ/√2, 0, ℏ/√2)
+Row 3: (0, ℏ/√2, 0)
+
+So, to find P_x acting on the state vector (a, b, c), it's:
+
+First component: 0*a + (ℏ/√2)*b + 0*c = (ℏ/√2)*b
+Second component: (ℏ/√2)*a + 0*b + (ℏ/√2)*c
+Third component: 0*a + (ℏ/√2)*b + 0*c = (ℏ/√2)*b
+
+Given the state vector is (-1/2, 1/√2, -1/2). Let's compute P_x times this vector:
+
+First component: (ℏ/√2)*(1/√2) = ℏ/2
+Second component: (ℏ/√2)*(-1/2) + (ℏ/√2)*(-1/2) = (ℏ/√2)*(-1) = -ℏ/√2
+Third component: (ℏ/√2)*(1/√2) = ℏ/2
+
+So the resulting vector is (ℏ/2, -ℏ/√2, ℏ/2). For this to be an eigenstate with eigenvalue -ℏ, we should have P_x |ψ⟩ = -ℏ |ψ⟩. Let's check:
+
+Left-hand side: (ℏ/2, -ℏ/√2, ℏ/2)
+Right-hand side: -ℏ*(-1/2, 1/√2, -1/2) = (ℏ/2, -ℏ/√2, ℏ/2)
+
+Yes, they match. So the state is indeed an eigenstate of P_x with eigenvalue -ℏ. That checks out. 
+
+Now, back to calculating ΔP_z. Since the state is given, we can compute ⟨P_z⟩ and ⟨P_z²⟩. 
+
+First, let's compute ⟨P_z⟩. Since P_z is a diagonal matrix, the expectation value is simply the sum of the diagonal elements multiplied by the squares of the components of the state. Wait, no. Let me recall that for a diagonal operator in the standard basis, the expectation value ⟨P_z⟩ is the sum over |c_i|^2 * eigenvalues. 
+
+Given the state vector is (-1/2, 1/√2, -1/2). The components are the coefficients in the standard basis. The eigenvalues of P_z are ℏ, 0, -ℏ. So, the expectation value ⟨P_z⟩ is:
+
+(-1/2)^2 * ℏ + (1/√2)^2 * 0 + (-1/2)^2 * (-ℏ) 
+
+Calculating each term:
+
+(1/4) * ℏ + (1/2) * 0 + (1/4) * (-ℏ) 
+
+So that's (ℏ/4) - (ℏ/4) = 0. 
+
+So ⟨P_z⟩ = 0. 
+
+Now, ⟨P_z²⟩. Since P_z squared is a diagonal matrix with entries ℏ², 0, ℏ². So, the expectation value of P_z squared is the sum of |c_i|^2 * (eigenvalues of P_z squared). 
+
+So, | -1/2 |^2 * ℏ² + |1/√2 |^2 * 0 + | -1/2 |^2 * ℏ² 
+
+Calculating each term:
+
+(1/4) * ℏ² + (1/2) * 0 + (1/4) * ℏ² 
+
+Adding these up: (1/4 + 1/4) ℏ² = (1/2) ℏ² 
+
+Therefore, ⟨P_z²⟩ = (1/2) ℏ² 
+
+Then, the uncertainty ΔP_z is sqrt(⟨P_z²⟩ - ⟨P_z⟩²) = sqrt( (1/2 ℏ²) - 0 ) = sqrt(ℏ² / 2) = ℏ / sqrt(2) 
+
+Wait, but looking at the options, option C is ℏ/√2, which is the same as this result. So the answer should be C. 
+
+But wait, let me double-check. The state is given as a column vector. Let me confirm the calculation again. 
+
+The state vector is ψ = (-1/2, 1/√2, -1/2). The inner product ⟨P_z⟩ is ψ† P_z ψ. Since P_z is diagonal, the multiplication is straightforward. 
+
+Alternatively, since P_z is diagonal with entries ℏ, 0, -ℏ, then ⟨P_z⟩ = (-1/2)^2 * ℏ + (1/√2)^2 * 0 + (-1/2)^2 * (-ℏ) = (1/4)ℏ - (1/4)ℏ = 0. Correct. 
+
+⟨P_z²⟩ is ψ† P_z² ψ. Since P_z² is diagonal with entries ℏ², 0, ℏ². So ⟨P_z²⟩ = (1/4)ℏ² + (1/2)*0 + (1/4)ℏ² = (1/2)ℏ². 
+
+So ΔP_z = sqrt( (1/2)ℏ² ) = ℏ / sqrt(2). 
+
+Therefore, the correct answer is C. 
+
+But wait, the answer options are given as A. ℏ/2, B. √2 ℏ, C. ℏ/√2, D. ℏ. So yes, C is the correct option. 
+
+Alternatively, maybe I made a mistake in assuming the basis is the standard basis. Let me check. The problem states that the basis vectors here are the eigenvectors of P_z. So if the basis is the standard basis, then P_z's eigenvectors are e1, e2, e3. But if the basis is different, perhaps the state is expressed in a different basis. Wait, the problem says "the basis vectors here are the eigenvectors of P_z". So that would be the standard basis, since P_z is diagonal in that basis. 
+
+Therefore, the state is expressed in the standard basis, which is the eigenbasis of P_z. So the calculation as above holds. 
+
+Alternatively, if the basis were not the standard basis, but the problem states that the basis vectors here are the eigenvectors of P_z, which are standard basis vectors. Therefore, the calculation is correct. 
+
+Another way to think: Since the basis is the eigenbasis of P_z, the state is expressed in terms of these eigenstates. So the state ψ is a linear combination of the eigenstates of P_z. The coefficients are the amplitudes in the eigenbasis. 
+
+So the state ψ can be written as a|+> + b|-> where |+> is the eigenstate with eigenvalue ℏ, and |-> is the eigenstate with eigenvalue -ℏ. 
+
+Looking at the state vector (-1/2, 1/√2, -1/2), it's in the standard basis. So to express it in terms of the eigenstates of P_z (which are the standard basis vectors), the coefficients are just the components. 
+
+But wait, the eigenstates of P_z are e1, e2, e3. So the state ψ is already in the eigenbasis. Therefore, the coefficients are the expansion in the eigenbasis. 
+
+Therefore, the expectation value of P_z is the weighted sum of the eigenvalues with the squares of the coefficients. 
+
+As calculated before, the expectation value is 0. 
+
+Similarly, ⟨P_z²⟩ is the sum of the squares of the coefficients multiplied by the squares of the eigenvalues. 
+
+Which gives (1/4)(ℏ²) + (1/2)(0) + (1/4)(ℏ²) = (1/2)ℏ². 
+
+Therefore, the uncertainty is sqrt(1/2 ℏ²) = ℏ/sqrt(2). 
+
+So the correct answer is C. 
+
+I think this is correct. Let me check once more. 
+
+Another approach: The state is given as (-1/2, 1/√2, -1/2). The P_z operator in the standard basis is diagonal with entries (ℏ, 0, -ℏ). 
+
+So to compute ⟨P_z⟩, it's the sum over |c_i|² * eigenvalue_i. 
+
+Components: 
+
+First component: (-1/2)^2 = 1/4, multiplied by ℏ: 1/4 ℏ 
+
+Second component: (1/√2)^2 = 1/2, multiplied by 0: 0 
+
+Third component: (-1/2)^2 = 1/4, multiplied by -ℏ: -1/4 ℏ 
+
+Total: 1/4 ℏ - 1/4 ℏ = 0. Correct. 
+
+⟨P_z²⟩ is sum |c_i|² * (eigenvalue_i)^2 
+
+First component: 1/4 * ℏ² 
+
+Second component: 1/2 * 0 
+
+Third component: 1/4 * ℏ² 
+
+Total: (1/4 + 1/4) ℏ² = 1/2 ℏ² 
+
+Thus, ΔP_z = sqrt(1/2 ℏ²) = ℏ/sqrt(2). 
+
+Yes, that's correct. So the answer is C. 
+
+I think this is solid. I don't see any mistakes here.
+</think>
